@@ -94,6 +94,9 @@
 <p>select sname,name,degree from student,course,score where student.no=score.s_no and course.no=score.c_no;<br>成功！</p>
 <p>mysql&gt; select sname,name,degree from student,course,score where student.no=score.s_no and course.no=score.c_no;<br>+———–+—————–+——–+<br>| sname     | name            | degree |<br>+———–+—————–+——–+<br>| 王丽      | 计算机导论      |     92 |<br>| 王丽      | 操作系统        |     86 |<br>| 王丽      | 数字电路        |     85 |<br>| 王芳      | 计算机导论      |     88 |<br>| 王芳      | 操作系统        |     75 |<br>| 王芳      | 数字电路        |     79 |<br>| 赵铁柱    | 计算机导论      |     76 |<br>| 赵铁柱    | 操作系统        |     68 |<br>| 赵铁柱    | 数字电路        |     81 |<br>+———–+—————–+——–+<br>!!重点 数据操作指令多加练习<br>前面更改数据表列名的方法很麻烦<br>查找后发现可以直接修改列名的方法<br>alter table student change sname name varchar(20);<br>change oldname newname +数据类型</p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>ubuntu, mysql</tag>
       </tags>
