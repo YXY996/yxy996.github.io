@@ -16,7 +16,7 @@
 <meta property="og:description" content="mysql的学习笔记(持续更新中)mysql登陆mysqlmysql -uroot-p输入密码–显示数据库show databases; –如何在数据库服务器中创建我们的数据库create database test;–切换数据库use test–显示数据库中所有的表show tables;–如何创建一个数据表create table pet(name varchar(20),owner varc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-01T16:31:40.000Z">
-<meta property="article:modified_time" content="2021-02-02T06:46:48.301Z">
+<meta property="article:modified_time" content="2021-02-02T08:47:40.725Z">
 <meta property="article:author" content="杨新宇">
 <meta property="article:tag" content="ubuntu, mysql">
 <meta name="twitter:card" content="summary">
@@ -63,8 +63,6 @@
 				<li><a href="/categories">categories</a></li>
 	        
 				<li><a href="/tags">tags</a></li>
-	        
-				<li><a href="/download">download</a></li>
 	        
 				<li><a href="/about">about</a></li>
 	        
@@ -133,8 +131,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -155,15 +151,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">home</a></li>
+					<li style="width: 25%"><a href="/">home</a></li>
 		        
-					<li style="width: 20%"><a href="/categories">categories</a></li>
+					<li style="width: 25%"><a href="/categories">categories</a></li>
 		        
-					<li style="width: 20%"><a href="/tags">tags</a></li>
+					<li style="width: 25%"><a href="/tags">tags</a></li>
 		        
-					<li style="width: 20%"><a href="/download">download</a></li>
-		        
-					<li style="width: 20%"><a href="/about">about</a></li>
+					<li style="width: 25%"><a href="/about">about</a></li>
 		        
 				</ul>
 			</nav>
@@ -202,7 +196,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>mysql的学习笔记(持续更新中)<br>mysql<br>登陆mysql<br>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;</p>
-<p>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);<br>–查看数据表结构<br>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
+<p>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);<br>&lt; !– more –&gt;<br>–查看数据表结构<br>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
 <p>INSERT INTO testType VALUES(127);<br>select * from testType;<br>+——–+<br>| number |<br>+——–+<br>|    127 |<br>+——–+<br>1 row in set (0.00 sec)</p>
 <p>–数据记录常见操作<br>–增加<br>INSERT<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>–删除<br>Delete<br>删除数据<br>DELETE FROM pet where name = ‘squirrel’;<br>删除表<br>delete table pet;<br>–修改<br>update<br>UPDATE pet SET name = ‘squirrel’ where owner = ‘Diane’;<br>–查询<br>select<br>SELECT * from pet;</p>
 <p>mysql建表约束 .sql<br>–主键约束<br>他能够唯一确定一张表中的一条记录，也就是我们通过给某个字段添加约束，使得该字段不重复且不为空<br>create table user(<br>    id int primary key,<br>    name varchar(20)<br>    );<br>INSERT INTO user VALUES(1,’张三’);<br>INSERT INTO user VALUES(2,’李四’);<br>//注意一定要注意逗号等符号的格式，中英文切换容易造成格式错误<br>–联合主键<br>–只要联合的主键值加起来不重复就可以 //完全重复不可以.其中至少有一个不相同可以<br>create table user2(<br>id int,<br>name varchar(20),<br>password varchar(20),<br>primary key (id,name)<br>);<br>insert into user2 values(1,’张三’,’123’);<br>insert into user2 values(2,’张三’,’123’);<br>insert into user2 values(1,’李四’,’123’);<br>insert into user2 values(NULL,’李四’,’123’);<br>//并且主键值都不能为空<br>– 添加主键约束<br>– 如果忘记设置主键，还可以通过SQL语句设置（两种方式）：<br>ALTER TABLE user ADD PRIMARY KEY(id);//选择数据表，然后添加数据类型为主键约束<br>ALTER TABLE user MODIFY id INT PRIMARY KEY;//将数据表中的某一个数据修改为主键约束<br>–自增约束<br>–自增约束的主键由系统自动递增分配<br>create table user(<br>    id int primary key auto_increment,<br>    name varchar(20));<br>–唯一约束<br>insert into user5 values(1,’张三’);</p>
