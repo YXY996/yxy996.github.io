@@ -166,19 +166,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-hello" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/mysql/">mysql</a>
+      <a class="article-title" href="/2021/02/01/hello/">小杨的编程之路</a>
     </h1>
   
 
         
-        <a href="/2021/02/01/mysql/" class="archive-article-date">
+        <a href="/2021/02/01/hello/" class="archive-article-date">
   	<time datetime="2021-02-02T04:54:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
 </a>
         
@@ -199,7 +199,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">冲呀</a>
         		</li>
       		
 		</ul>
@@ -211,7 +211,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/C//" class="article-tag-list-link color4">C++</a>
+        			<a href="/categories/C-学习//" class="article-tag-list-link color1">C++学习</a>
         		</li>
       		
 		</ul>
@@ -220,7 +220,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/mysql/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/02/01/hello/">展开全文 >></a>
         </p>
       
 
@@ -250,19 +250,19 @@
 
 
   
-    <article id="post-hello" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-sql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/hello/">小杨的编程之路</a>
+      <a class="article-title" href="/2021/02/01/sql/">MySQL</a>
     </h1>
   
 
         
-        <a href="/2021/02/01/hello/" class="archive-article-date">
+        <a href="/2021/02/01/sql/" class="archive-article-date">
   	<time datetime="2021-02-01T16:31:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
 </a>
         
@@ -270,7 +270,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>mysql的学习笔记，我也不知道能不能看到，先试验一下<br>mysql<br>登陆mysql<br>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;</p>
+        <p>mysql的学习笔记(持续更新中)<br>mysql<br>登陆mysql<br>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;</p>
 <p>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);<br>–查看数据表结构<br>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
 <p>INSERT INTO testType VALUES(127);<br>select * from testType;<br>+——–+<br>| number |<br>+——–+<br>|    127 |<br>+——–+<br>1 row in set (0.00 sec)</p>
 <p>–数据记录常见操作<br>–增加<br>INSERT<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>–删除<br>Delete<br>删除数据<br>DELETE FROM pet where name = ‘squirrel’;<br>删除表<br>delete table pet;<br>–修改<br>update<br>UPDATE pet SET name = ‘squirrel’ where owner = ‘Diane’;<br>–查询<br>select<br>SELECT * from pet;</p>
@@ -356,7 +356,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ubuntu, C++,mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ubuntu, mysql</a>
         		</li>
       		
 		</ul>
@@ -366,7 +366,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/hello/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/02/01/sql/">展开全文 >></a>
         </p>
       
 
@@ -489,11 +489,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">冲呀</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ubuntu, C++,mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">ubuntu, mysql</a>
               </li>
             
             <div class="clearfix"></div>

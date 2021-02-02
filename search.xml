@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>mysql</title>
-    <url>/2021/02/01/mysql/</url>
+    <title>小杨的编程之路</title>
+    <url>/2021/02/01/hello/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>C++</category>
+        <category>C++学习</category>
       </categories>
       <tags>
-        <tag>数据库</tag>
+        <tag>冲呀</tag>
       </tags>
   </entry>
   <entry>
-    <title>小杨的编程之路</title>
-    <url>/2021/02/01/hello/</url>
-    <content><![CDATA[<p>mysql的学习笔记，我也不知道能不能看到，先试验一下<br>mysql<br>登陆mysql<br>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;</p>
+    <title>MySQL</title>
+    <url>/2021/02/01/sql/</url>
+    <content><![CDATA[<p>mysql的学习笔记(持续更新中)<br>mysql<br>登陆mysql<br>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;</p>
 <p>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);<br>–查看数据表结构<br>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
 <p>INSERT INTO testType VALUES(127);<br>select * from testType;<br>+——–+<br>| number |<br>+——–+<br>|    127 |<br>+——–+<br>1 row in set (0.00 sec)</p>
 <p>–数据记录常见操作<br>–增加<br>INSERT<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>–删除<br>Delete<br>删除数据<br>DELETE FROM pet where name = ‘squirrel’;<br>删除表<br>delete table pet;<br>–修改<br>update<br>UPDATE pet SET name = ‘squirrel’ where owner = ‘Diane’;<br>–查询<br>select<br>SELECT * from pet;</p>
@@ -89,7 +89,7 @@
 <p>mysql&gt; select sname,name,degree from student,course,score where student.no=score.s_no and course.no=score.c_no;<br>+———–+—————–+——–+<br>| sname     | name            | degree |<br>+———–+—————–+——–+<br>| 王丽      | 计算机导论      |     92 |<br>| 王丽      | 操作系统        |     86 |<br>| 王丽      | 数字电路        |     85 |<br>| 王芳      | 计算机导论      |     88 |<br>| 王芳      | 操作系统        |     75 |<br>| 王芳      | 数字电路        |     79 |<br>| 赵铁柱    | 计算机导论      |     76 |<br>| 赵铁柱    | 操作系统        |     68 |<br>| 赵铁柱    | 数字电路        |     81 |<br>+———–+—————–+——–+<br>!!重点 数据操作指令多加练习<br>前面更改数据表列名的方法很麻烦<br>查找后发现可以直接修改列名的方法<br>alter table student change sname name varchar(20);<br>change oldname newname +数据类型</p>
 ]]></content>
       <tags>
-        <tag>ubuntu, C++,mysql</tag>
+        <tag>ubuntu, mysql</tag>
       </tags>
   </entry>
 </search>
