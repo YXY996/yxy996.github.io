@@ -59,11 +59,9 @@
 			
 				<li><a href="/">home</a></li>
 	        
-				<li><a href="/categories/">categories</a></li>
+				<li><a href="/categories">categories</a></li>
 	        
-				<li><a href="/tags/">tags</a></li>
-	        
-				<li><a href="/about/">about</a></li>
+				<li><a href="/tags">tags</a></li>
 	        
 			</ul>
 		</nav>
@@ -128,8 +126,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -150,13 +146,11 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">home</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">home</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/">categories</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/">tags</a></li>
-		        
-					<li style="width: 25%"><a href="/about/">about</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags">tags</a></li>
 		        
 				</ul>
 			</nav>
@@ -193,6 +187,65 @@
     字数：0字 | 预计阅读时长：1分钟
     </div>
     <div class="article-entry" itemprop="articleBody">
+        
+  <!-- 这里也可用type去判断，放在tags标签页或者categories分类页都可以 -->
+    <hr>
+    <br>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-%E5%AD%A6%E4%B9%A0/">-C++学习</a><span class="category-list-count">1</span></li></ul>
+    <div class="tags">
+        <a href="/tags/ubuntu-mysql/" style="font-size: 16px; color: #00f">ubuntu, mysql</a> <a href="/tags/%E5%86%B2%E5%91%80/" style="font-size: 16px; color: #00f">冲呀</a>
+    </div>
+    
+    <!-- 这里也可以放进css文件中，这样阅读性好些 -->
+    <style>
+        .category-list li{
+            display: inline-block;
+            margin: 0 1em .5em 0;
+            padding: 4px;
+            border: 1px solid green;
+            font-size: 1.2em;
+        }
+        .category-list a {
+            color: #ffffff;
+        }
+        .category-list-item {
+          background-color: #55daff;
+          border-radius: 15%;
+          opacity:0.5; 
+        }
+
+        .category-list-item:hover a {
+            color: #c16431;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .category-list-count {
+            margin-left: 2px;
+            font-size: .9em;
+        }
+        .article-entry ul li:before{
+            display: none;
+        }
+        
+        .tags {
+            max-width: 40em;
+            margin: 2em auto;
+            margin-top: 0em;
+        }
+        .tags a {
+            margin-right: 1em;
+            border-bottom: 1px solid blue;
+            line-height: 65px;
+            white-space: nowrap;
+        }
+        .tags a:hover {
+            border-bottom: 2px solid green;
+            font-style: italic;
+            color: #22323a;
+            text-decoration: none;
+        }
+    </style>
+
       
         
       
