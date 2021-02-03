@@ -14,7 +14,7 @@
   </entry>
   <entry>
     <title>MySQL</title>
-    <url>/2021/02/01/sql/</url>
+    <url>/2021/01/31/sql/</url>
     <content><![CDATA[<p>[toc]<br>mysql的学习笔记(持续更新中)<br>mysql<br>#登陆mysql<br>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;</p>
 <p>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);</p>
 <a id="more"></a>
