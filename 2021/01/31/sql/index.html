@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="MySQL, 小杨的博客">
-    <meta name="description" content="&amp;lt;%- toc(page.content) %&amp;gt;[toc]mysql的学习笔记(持续更新中)mysql#登陆mysqlmysql -uroot-p输入密码–显示数据库show databases;
-–如何在数据库服务器中创建我们">
+    <meta name="description" content="tocmysql的学习笔记(持续更新中)mysql
+登陆mysqlmysql -uroot-p输入密码–显示数据库show databases;–如何在数据库服务器中创建我们的数据库create database test;–切换数据库us">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -435,11 +435,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&lt;%- toc(page.content) %&gt;<br>[toc]<br>mysql的学习笔记(持续更新中)<br>mysql<br>#登陆mysql<br>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;</p>
-<p>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);<br>&lt;%- toc(list.content) %&gt;</p>
+                <p><a href="%E7%9B%AE%E5%BD%95%E6%98%AF%E5%9C%A8%E8%BF%99%E9%87%8C%E5%90%97%EF%BC%9F">toc</a><br>mysql的学习笔记(持续更新中)<br>mysql</p>
+<h1><span id="登陆mysql">登陆mysql</span></h1><p>mysql -uroot-p输入密码<br>–显示数据库<br>show databases;<br>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);</p>
 <a id="more"></a>
-<p>##查看数据表结构<br>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
-<p>INSERT INTO testType VALUES(127);<br>select * from testType;<br>+——–+<br>| number |<br>+——–+<br>|    127 |<br>+——–+<br>1 row in set (0.00 sec)<br>[toc]: 操作<br>###数据记录常见操作<br>–增加<br>INSERT<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>–删除<br>Delete<br>删除数据<br>DELETE FROM pet where name = ‘squirrel’;<br>删除表<br>delete table pet;<br>–修改<br>update<br>UPDATE pet SET name = ‘squirrel’ where owner = ‘Diane’;<br>–查询<br>select<br>SELECT * from pet;</p>
+<h2><span id="查看数据表结构">查看数据表结构</span></h2><p>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
+<p>INSERT INTO testType VALUES(127);<br>select * from testType;<br>+——–+<br>| number |<br>+——–+<br>|    127 |<br>+——–+<br>1 row in set (0.00 sec)<br>[toc]: 操作</p>
+<h2><span id="数据记录常见操作">数据记录常见操作</span></h2><p>–增加<br>INSERT<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>–删除<br>Delete<br>删除数据<br>DELETE FROM pet where name = ‘squirrel’;<br>删除表<br>delete table pet;<br>–修改<br>update<br>UPDATE pet SET name = ‘squirrel’ where owner = ‘Diane’;<br>–查询<br>select<br>SELECT * from pet;</p>
 <p>mysql建表约束 .sql<br>–主键约束<br>他能够唯一确定一张表中的一条记录，也就是我们通过给某个字段添加约束，使得该字段不重复且不为空<br>create table user(<br>    id int primary key,<br>    name varchar(20)<br>    );<br>INSERT INTO user VALUES(1,’张三’);<br>INSERT INTO user VALUES(2,’李四’);<br>//注意一定要注意逗号等符号的格式，中英文切换容易造成格式错误<br>–联合主键<br>–只要联合的主键值加起来不重复就可以 //完全重复不可以.其中至少有一个不相同可以<br>create table user2(<br>id int,<br>name varchar(20),<br>password varchar(20),<br>primary key (id,name)<br>);<br>insert into user2 values(1,’张三’,’123’);<br>insert into user2 values(2,’张三’,’123’);<br>insert into user2 values(1,’李四’,’123’);<br>insert into user2 values(NULL,’李四’,’123’);<br>//并且主键值都不能为空<br>#约束<br>– 添加主键约束<br>– 如果忘记设置主键，还可以通过SQL语句设置（两种方式）：<br>ALTER TABLE user ADD PRIMARY KEY(id);//选择数据表，然后添加数据类型为主键约束<br>ALTER TABLE user MODIFY id INT PRIMARY KEY;//将数据表中的某一个数据修改为主键约束<br>–自增约束<br>–自增约束的主键由系统自动递增分配<br>create table user(<br>    id int primary key auto_increment,<br>    name varchar(20));<br>–唯一约束<br>insert into user5 values(1,’张三’);</p>
 <p>create table user6(<br>    id int,<br>    name varchar(20),<br>    unique (name));<br>create table user7(<br>    id int,<br>    name varchar(20)unique);<br>create table user8(<br>    id int,<br>    name varchar(20),<br>    unique (id,name));<br>mysql&gt; desc user8;<br>+——-+————-+——+—–+———+——-+<br>| Field | Type        | Null | Key | Default | Extra |<br>+——-+————-+——+—–+———+——-+<br>| id    | int         | YES  | MUL | NULL    |       |<br>| name  | varchar(20) | YES  |     | NULL    |       |<br>+——-+————-+——+—–+———+——-+</p>
 <p>insert into user8 values(1,’张三’);<br>insert into user8 values(1,’张三’);<br>如何删除唯一约束<br>–mysql&gt; alter table user7 drop index name;<br>Query OK, 0 rows affected (0.00 sec)<br>Records: 0  Duplicates: 0  Warnings: 0</p>
@@ -733,8 +734,8 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">&lt;%- toc(page.content) %&gt;[toc]mysql的学习笔记(持续更新中)mysql#登陆mysqlmysql -uroot-p输入密码–显示数据库show databases;
-–如何在数据库服务器中创建我们</div>
+                    <div class="summary">tocmysql的学习笔记(持续更新中)mysql
+登陆mysqlmysql -uroot-p输入密码–显示数据库show databases;–如何在数据库服务器中创建我们的数据库create database test;–切换数据库us</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-01
