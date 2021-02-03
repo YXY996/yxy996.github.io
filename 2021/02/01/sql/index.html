@@ -86,8 +86,8 @@
     		</div>
 		</nav>
 		<nav>
-    		<a>总文章数 2</a>
-			<a>总字数 <span class="post-count">5k</span></a>
+    		<a>总文章数 3</a>
+			<a>总字数 <span class="post-count">6.3k</span></a>
 		</nav>
 
 		<nav class="header-nav">
@@ -257,7 +257,7 @@
 <p>mysql&gt; select * from student;<br>+——-+—–+—–+————+——-+<br>| sname | no  | sex | birthday   | class |<br>+——-+—–+—–+————+——-+<br>| NULL  | 101 | 男  | 1977-09-01 | 95033 |<br>| NULL  | 102 | 男  | 1975-10-02 | 95031 |<br>| NULL  | 103 | 女  | 1976-01-23 | 95033 |<br>| NULL  | 104 | 男  | 1976-02-20 | 95033 |<br>| NULL  | 105 | 女  | 1975-02-10 | 95031 |<br>| NULL  | 106 | 男  | 1974-06-03 | 95031 |<br>| NULL  | 107 | 男  | 1976-02-20 | 95033 |<br>| NULL  | 108 | 男  | 1975-02-10 | 95031 |<br>| NULL  | 109 | 男  | 1974-06-03 | 95031 |<br>+——-+—–+—–+————+——-+</p>
 <p>select sname,name,degree from student,course,score where student.no=score.s_no and course.no=score.c_no;<br>成功！</p>
 <p>mysql&gt; select sname,name,degree from student,course,score where student.no=score.s_no and course.no=score.c_no;<br>+———–+—————–+——–+<br>| sname     | name            | degree |<br>+———–+—————–+——–+<br>| 王丽      | 计算机导论      |     92 |<br>| 王丽      | 操作系统        |     86 |<br>| 王丽      | 数字电路        |     85 |<br>| 王芳      | 计算机导论      |     88 |<br>| 王芳      | 操作系统        |     75 |<br>| 王芳      | 数字电路        |     79 |<br>| 赵铁柱    | 计算机导论      |     76 |<br>| 赵铁柱    | 操作系统        |     68 |<br>| 赵铁柱    | 数字电路        |     81 |<br>+———–+—————–+——–+<br>!!重点 数据操作指令多加练习<br>前面更改数据表列名的方法很麻烦<br>查找后发现可以直接修改列名的方法<br>alter table student change sname name varchar(20);<br>change oldname newname +数据类型</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
 
       
