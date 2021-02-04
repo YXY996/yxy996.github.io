@@ -686,6 +686,28 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2021-02-01T08-31-40',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
 
     
 
@@ -917,31 +939,6 @@
 </div>
 
 
-<div id="weather-v2-plugin-simple"></div>
-<script>
-WIDGET = {
-  CONFIG: {
-    "modules": "01234",
-    "background": 1,
-    "tmpColor": "FFFFFF",
-    "tmpSize": 16,
-    "cityColor": "FFFFFF",
-    "citySize": 16,
-    "aqiSize": 16,
-    "weatherIconSize": 24,
-    "alertIconSize": 18,
-    "padding": "10px 10px 10px 10px",
-    "shadow": "1",
-    "language": "auto",
-    "borderRadius": 5,
-    "fixed": "false",
-    "vertical": "middle",
-    "horizontal": "center",
-    "key": "7eCS5npwgi"
-  }
-}
-</script>
-<script src="https://apip.weatherdt.com/simple/static/js/weather-simple-common.js?v=2.0"></script>
 
 
 <script src="/libs/materialize/js/materialize.min.js"></script>
