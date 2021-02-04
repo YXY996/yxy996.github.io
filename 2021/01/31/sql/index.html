@@ -413,14 +413,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5.7k
+                        5.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        27 分
+                        28 分
                     </div>
                     
                 
@@ -537,6 +537,11 @@
 <p>mysql&gt; select year(birthday) from student where no in(108,101);<br>+—————-+<br>| year(birthday) |<br>+—————-+<br>|           1977 |<br>|           1975 |<br>+—————-+</p>
 <p>mysql&gt; select * from student where year(birthday) in (select year(birthday) from student where no in(108,101));<br>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>| 王芳      | 105 | 女  | 1975-02-10 | 95031 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>+———–+—–+—–+————+——-+<br>//这里的条件用in 不用= 是因为这是对于多个条件</p>
 <h3><span id="21查询张旭教师任课的学生成绩">21.查询“张旭”教师任课的学生成绩</span></h3><p>理清思路<br>1.查询成绩 先选择课程号c_no(来源于score表)<br>2.选择的课程号根据任课教师编号 t_no（来源于course表）<br>3.选择任课教师根据教师名字（来源于teacher表）<br>mysql&gt; select * from score where c_no=(select no from course where t_no=(select<br>no from teacher where name= ‘张旭’));<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 6-166 |     85 |<br>| 105  | 6-166 |     79 |<br>| 109  | 6-166 |     81 |<br>+——+——-+——–+</p>
+<h3><span id="22查询选修课课程的同学数多于5人的教师姓名">22.查询选修课课程的同学数多于5人的教师姓名</span></h3><h4><span id="数据不够自己凑">数据不够自己凑</span></h4><p>INSERT INTO score VALUES(‘101’, ‘3-105’, ‘90’);<br>INSERT INTO score VALUES(‘102’, ‘3-105’, ‘81’);<br>INSERT INTO score VALUES(‘104’, ‘3-105’, ‘89’);</p>
+<h4><span id="无限套娃-一步步理解">无限套娃 一步步理解</span></h4><p>mysql&gt; select name from teacher where no=(select t_no from course where no=(select c_no from score group by c_no having count(<em>)&gt;5));<br>+——–+<br>| name   |<br>+——–+<br>| 王萍   |<br>+——–+<br>//</em> 来查询更多信息<br>mysql&gt; select * from teacher where no=(select t_no from course where no=(select c_no from score group by c_no having count(*)&gt;5));<br>+—–+——–+—–+————+————+————–+<br>| no  | name   | sex | birthday   | profession | department   |<br>+—–+——–+—–+————+————+————–+<br>| 825 | 王萍   | 女  | 1972-05-05 | 助教       | 计算机系     |<br>+—–+——–+—–+————+————+————–+</p>
+<p>——————————————————————————————————————————————————————————————————————</p>
+<pre><code>                            End！
+</code></pre>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
             </div>
             <hr/>
@@ -856,7 +861,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">5.7k</span>
+                <span class="white-color">5.8k</span>
             
 
             
