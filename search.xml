@@ -15,7 +15,35 @@
   <entry>
     <title>mysql安装 取消root密码</title>
     <url>/2021/02/01/mysql%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%8F%96%E6%B6%88%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><img src="header.jpeg" alt="alt"><br>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="密码忘记-关闭mysql">密码忘记 关闭mysql</span></h2><p>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server<br>第二步：进入mysql安装路径，用系统管理员权限跳过mysql安全认证，命令结果如下图所示。</p>
+<p>1.打开启动台–》其他 –》终端</p>
+<p>2.进入mysql安装路径  cd /usr/local/mysql/bin/</p>
+<p>3.登录管理员权限 sudo su</p>
+<p>4.输入开机密码 <strong>**</strong></p>
+<p>5.输入跳过mysql安全认证的命令  ./mysqld_safe –skip-grant-tables &amp;</p>
+<p>6.在第一步的mysql设置的画面中发现 关闭的mysql server 又重新变成running了</p>
+<p>7.进入mysql 输入命令  ./mysql</p>
+<p>如果显示以下字样，则为登录成功。</p>
+<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
+<p>Your MySQL connection id is 12</p>
+<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
+<p>8.刷新权限 FLUSH PRIVILEGES</p>
+<p>Query OK, 0 rows affected (0.01 sec)</p>
+<h2><span id="强行修改跳过密码">强行修改跳过密码</span></h2><p>忘记密码强行修改一：</p>
+<p>1.停止mysql服务 sudo /usr/local/mysql/support-files/mysql.server stop 输入开机密码</p>
+<p>2.进入安装目录 cd /usr/local/mysql/bin</p>
+<p>3.禁止mysql安全验证  ./mysqld_safe –skip-grant-tables &amp;</p>
+<p>显示如下时，禁止成功</p>
+<p>root@guofei:/usr/local/mysql-5.7.24-macos10.14-x86_64/bin#     2019-02-14T05:18:51.6NZ mysqld_safe Logging to ‘/usr/local/mysql-5.7.24-macos10.14-x86_64/data/guofei.local.err’.</p>
+<p>2019-02-14T05:18:51.6NZ mysqld_safe Starting mysqld daemon with databases from /usr/local/mysql-5.7.24-macos10.14-x86_64/data</p>
+<p>输入./mysql 显示如下时，无安全认证情况下登录成功</p>
+<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
+<p>Your MySQL connection id is 2</p>
+<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
+<p>4.刷新权限  FLUSH PRIVILEGES;</p>
+<p>5.修改密码 ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘888888’;</p>
+<p>6.退出mysql重新登录 quit</p>
+<p>mysql -u root -p 输入刚刚更新的 888888，登录成功</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>MYSQL</category>
@@ -34,11 +62,6 @@
       <tags>
         <tag>数据库</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>post_name</title>
-    <url>/2021/02/03/post-name/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
   </entry>
   <entry>
     <title>MySQL</title>
