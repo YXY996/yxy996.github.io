@@ -57,24 +57,38 @@
     <url>/2021/01/31/mysql%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=812400&auto=1&height=66"></iframe>
 
-<h2><span id="查询联系">查询联系</span></h2><h3><span id="-23-查询95033班和95031班全体学生的记录">-23 查询95033班和95031班全体学生的记录</span></h3><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<h2><span id="查询联系">查询联系</span></h2><h3><span id="-23-查询95033班和95031班全体学生的记录">-23 查询95033班和95031班全体学生的记录</span></h3><p>//<br>在这里where添加条件限制<br>在条件为多个的时候用 in<br>单个条件可以用 =<br>//<br>mysql&gt; select * from student where class in(‘95031’,’95033’);</p>
+<p>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>| 王丽      | 103 | 女  | 1976-01-23 | 95033 |<br>| 李军      | 104 | 男  | 1976-02-20 | 95033 |<br>| 王芳      | 105 | 女  | 1975-02-10 | 95031 |<br>| 陆军      | 106 | 男  | 1974-06-03 | 95031 |<br>| 王尼玛    | 107 | 男  | 1976-02-20 | 95033 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>| 赵铁柱    | 109 | 男  | 1974-06-03 | 95031 |<br>+———–+—–+—–+————+——-+</p>
+<h3><span id="-24查询存在85分以上成绩的课程c_no">-24.查询存在85分以上成绩的课程c_no</span></h3><p>依然是练习where条件语句<br>mysql&gt; select c_no,degree from score where degree &gt;85;<br>+——-+——–+<br>| c_no  | degree |<br>+——-+——–+<br>| 3-105 |     90 |<br>| 3-105 |     92 |<br>| 3-245 |     86 |<br>| 3-105 |     89 |<br>| 3-105 |     88 |<br>+——-+——–+</p>
+<h3><span id="-25-查询出计算机系教师所教课程的成绩表">-25。查询出“计算机系”教师所教课程的成绩表</span></h3><p>select * from  teacher where department=’计算机系’；<br>+—–+——–+—–+————+————+————–+<br>| no  | name   | sex | birthday   | profession | department   |<br>+—–+——–+—–+————+————+————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系     |<br>| 825 | 王萍   | 女  | 1972-05-05 | 助教       | 计算机系     |<br>+—–+——–+—–+————+————+————–+</p>
+<p>select * from course where t_no in(select no from teacher where department=’计算机系’)；<br>+——-+—————–+——+<br>| no    | name            | t_no |<br>+——-+—————–+——+<br>| 3-245 | 操作系统        | 804  |<br>| 3-105 | 计算机导论      | 825  |<br>+——-+—————–+——+</p>
+<p>//这里要注意多层套娃条件的时候，结尾处的括号个数一定要与前面的一致，要不会出错的</p>
+<p>select * from score where c_no in(select no from course where t_no in(select no from teacher where department=’计算机系’));</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-245 |     86 |<br>| 105  | 3-245 |     75 |<br>| 109  | 3-245 |     68 |<br>| 101  | 3-105 |     90 |<br>| 102  | 3-105 |     81 |<br>| 103  | 3-105 |     92 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<h3><span id="-26查询计算机系与电子工程系不同职称的教师的名字-name">-26.查询“计算机系”与“电子工程系”不同职称的教师的名字 name</span></h3><p>–union联合查询<br>–not in </p>
+<p>为了方便理解这里先查看以下教师表格</p>
+<p>mysql&gt; select * from teacher;<br>+—–+——–+—–+————+————+—————–+<br>| no  | name   | sex | birthday   | profession | department      |<br>+—–+——–+—–+————+————+—————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系        |<br>| 825 | 王萍   | 女  | 1972-05-05 | 助教       | 计算机系        |<br>| 831 | 刘冰   | 女  | 1977-08-14 | 助教       | 电子工程系      |<br>| 856 | 张旭   | 男  | 1969-03-12 | 讲师       | 电子工程系      |<br>+—–+——–+—–+————+————+—————–+<br>——问题是要查找什么再简单一点说明——<br>找到计算机系和电子工程系中 职称不重复的教师名字<br>用集合的概念去想</p>
+<p>这里计算机系和电子工程系 重合部分是助教，计算机系非助教的集合+电子工程系非助教的集合</p>
+<p>select * from teacher where department =’计算机系’ and profession not in(select<br> profession from teacher where department=’电子工程系’);<br>+—–+——–+—–+————+————+————–+<br>| no  | name   | sex | birthday   | profession | department   |<br>+—–+——–+—–+————+————+————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系     |<br>+—–+——–+—–+————+————+————–+<br>select * from teacher where department =’电子工程系’ and profession not in(select<br> profession from teacher where department=’计算机系’);<br> +—–+——–+—–+————+————+—————–+<br>| no  | name   | sex | birthday   | profession | department      |<br>+—–+——–+—–+————+————+—————–+<br>| 856 | 张旭   | 男  | 1969-03-12 | 讲师       | 电子工程系      |<br>+—–+——–+—–+————+————+—————–+</p>
+<p>两个语句通过union语句联合起来，代表同时满足两个条件<br>//分号代表语句结束 只能末尾有哦</p>
+<p>select * from teacher where department =’计算机系’ and profession not in(select<br> profession from teacher where department=’电子工程系’)<br> union<br> select * from teacher where department =’电子工程系’ and profession not in(select<br> profession from teacher where department=’计算机系’);</p>
+<p>+—–+——–+—–+————+————+—————–+<br>| no  | name   | sex | birthday   | profession | department      |<br>+—–+——–+—–+————+————+—————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系        |<br>| 856 | 张旭   | 男  | 1969-03-12 | 讲师       | 电子工程系      |<br>+—–+——–+—–+————+————+—————–+</p>
+<h3><span id="-27查询选修编号为3-105课程且成绩至少高于选修编号3-245的同学的c_nos_no和degree并且按照degree从高到低次序排列">-27.查询选修编号为“3-105”课程且成绩至少高于选修编号“3-245”的同学的c_no，s_no和degree，并且按照degree从高到低次序排列</span></h3><p>/问题理解/<br>至少高于?—&gt;大于其中至少一个，any<br>选修“3-105”课程的同学，只要成绩高于选修“3-245”同学中的至少一名同学的成绩，这个数据就被选择</p>
+<p>select * from score where c_no=’3-105’ and degree&gt;any(select degree from score where c_no=’3-245’);</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 101  | 3-105 |     90 |<br>| 102  | 3-105 |     81 |<br>| 103  | 3-105 |     92 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<p>//紧接着进行排序<br>select * from score where c_no=’3-105’ and degree&gt;any(select degree from score where c_no=’3-245’) order by degree desc;<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>| 101  | 3-105 |     90 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>| 102  | 3-105 |     81 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<h3><span id="-28查询选修编号为3-105课程且成绩至少高于选修编号3-245的同学的c_nos_no和degree">-28.查询选修编号为“3-105”课程且成绩至少高于选修编号“3-245”的同学的c_no，s_no和degree</span></h3><p>–且？ all表示所有的关系</p>
+<p>select * from score where c_no=’3-105’ and degree&gt;all(select degree from score where c_no=’3-245’);</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 101  | 3-105 |     90 |<br>| 103  | 3-105 |     92 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>+——+——-+——–+</p>
+<h3><span id="-29查询所有教师和同学的namesexbirthday">-29.查询所有教师和同学的name，sex，birthday</span></h3><p>//<br>先看数据 在我进行操作之后name和sname都变成了name<br>因为所有数据名称都是按查找的第一组数据的命名来算的<br>//<br>select name ,sex,birthday from teacher<br>union<br>select sname ,sex,birthday from student;<br>+———–+—–+————+<br>| name      | sex | birthday   |<br>+———–+—–+————+<br>| 李诚      | 男  | 1958-12-02 |<br>| 王萍      | 女  | 1972-05-05 |<br>| 刘冰      | 女  | 1977-08-14 |<br>| 张旭      | 男  | 1969-03-12 |<br>| 曾华      | 男  | 1977-09-01 |<br>| 匡明      | 男  | 1975-10-02 |<br>| 王丽      | 女  | 1976-01-23 |<br>| 李军      | 男  | 1976-02-20 |<br>| 王芳      | 女  | 1975-02-10 |<br>| 陆军      | 男  | 1974-06-03 |<br>| 王尼玛    | 男  | 1976-02-20 |<br>| 张全蛋    | 男  | 1975-02-10 |<br>| 赵铁柱    | 男  | 1974-06-03 |<br>| 张飞      | 男  | 1974-06-03 |<br>+———–+—–+————+</p>
+<p>//为了看效果这里将两个查询互换位置//<br>select sname as trueename,sex,birthday from student<br>union<br>select name,sex,birthday from teacher;</p>
+<p>+———–+—–+————+<br>| trueename | sex | birthday   |<br>+———–+—–+————+<br>| 曾华      | 男  | 1977-09-01 |<br>| 匡明      | 男  | 1975-10-02 |<br>| 王丽      | 女  | 1976-01-23 |<br>| 李军      | 男  | 1976-02-20 |<br>| 王芳      | 女  | 1975-02-10 |<br>| 陆军      | 男  | 1974-06-03 |<br>| 王尼玛    | 男  | 1976-02-20 |<br>| 张全蛋    | 男  | 1975-02-10 |<br>| 赵铁柱    | 男  | 1974-06-03 |<br>| 张飞      | 男  | 1974-06-03 |<br>| 李诚      | 男  | 1958-12-02 |<br>| 王萍      | 女  | 1972-05-05 |<br>| 刘冰      | 女  | 1977-08-14 |<br>| 张旭      | 男  | 1969-03-12 |<br>+———–+—–+————+</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>MySQL</category>
       </categories>
       <tags>
         <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客报错</title>
-    <url>/2021/02/03/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>hexo erro</tag>
       </tags>
   </entry>
   <entry>
@@ -121,6 +135,18 @@
       </categories>
       <tags>
         <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客报错</title>
+    <url>/2021/02/03/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo erro</tag>
       </tags>
   </entry>
   <entry>
