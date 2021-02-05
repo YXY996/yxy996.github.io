@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>小杨的编程之路</title>
+    <url>/2021/02/01/hello/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++学习</category>
+      </categories>
+      <tags>
+        <tag>冲呀</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql安装 取消root密码</title>
     <url>/2021/02/01/mysql%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%8F%96%E6%B6%88%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="密码忘记-关闭mysql">密码忘记 关闭mysql</span></h2><p>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server<br>第二步：进入mysql安装路径，用系统管理员权限跳过mysql安全认证，命令结果如下图所示。</p>
@@ -52,35 +64,6 @@
       </tags>
   </entry>
   <entry>
-    <title>小杨的编程之路</title>
-    <url>/2021/02/01/hello/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>C++学习</category>
-      </categories>
-      <tags>
-        <tag>冲呀</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序员面试题</title>
-    <url>/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1><span id="c风格字符串和字符数组">C风格字符串和字符数组</span></h1><h3><span id="字符串常量">字符串常量</span></h3><p>以双引号括起来的字符序列是字符串常量，通常编译器会在末尾自动添加一个空字符</p>
-<p>//字符常量‘A’表示单个字符A<br>–”A“是字符串常量表示单个字符A和空字符null<br>–！!C风格字符串末尾必须有一个’\0’<br>–char ca1[]={‘1’,’C’,’+’} —–不是C风格字符串因为不是0结尾<br>–”a”                      —–不是字符常量，因为是双引号</p>
-<h3><span id="字符数组">字符数组</span></h3><p>–const char ch[6]=”Daniel”——错误，因为这个C风格字符串包含<br>–D a n i e l null共七个字符</p>
-<p>–char c[5]={‘a’,’b’,’\0’,’c’,’\0’};<br>–print (“%s”,c);<br>–这里的输出结果为ab 因为字符串输出遇到\0终止</p>
-<h2><span id="二维数组">二维数组</span></h2><h3><span id="二维数组的声明和初始化">二维数组的声明和初始化</span></h3><p>例子<br>指定其初始化式 int ia[3][4]={ {1,2,3,4}, {5,6,7,8}，{ 9,10,11,12 } };<br>顺序初始化式   int ia[3][4]={ 1,2,3,4,5,6,7,8,9,10,11,12 };</p>
-<p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/1.jpg"></p>
-<h2><span id>//</span></h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>博客报错</title>
     <url>/2021/02/03/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码<br>报错提示：<br>Context Dump Ends            =====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
@@ -90,6 +73,50 @@
       </categories>
       <tags>
         <tag>hexo erro</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序员面试题</title>
+    <url>/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="c风格字符串和字符数组">C风格字符串和字符数组</span></h2><h3><span id="字符串常量">字符串常量</span></h3><p>以双引号括起来的字符序列是字符串常量，通常编译器会在末尾自动添加一个空字符</p>
+<p>//字符常量‘A’表示单个字符A<br>–”A“是字符串常量表示单个字符A和空字符null<br>–！!C风格字符串末尾必须有一个’\0’<br>–char ca1[]={‘1’,’C’,’+’} —–不是C风格字符串因为不是0结尾<br>–”a”                      —–不是字符常量，因为是双引号</p>
+<h3><span id="字符数组">字符数组</span></h3><p>–const char ch[6]=”Daniel”——错误，因为这个C风格字符串包含<br>–D a n i e l null共七个字符</p>
+<p>–char c[5]={‘a’,’b’,’\0’,’c’,’\0’};<br>–print (“%s”,c);<br>–这里的输出结果为ab 因为字符串输出遇到\0终止</p>
+<h2><span id="二维数组">二维数组</span></h2><h3><span id="二维数组的声明和初始化">二维数组的声明和初始化</span></h3><p>例子<br>指定其初始化式 int ia[3][4]={ {1,2,3,4}, {5,6,7,8}，{ 9,10,11,12 } };<br>顺序初始化式   int ia[3][4]={ 1,2,3,4,5,6,7,8,9,10,11,12 };</p>
+<p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/0.jpg"></p>
+<h3><span id="二维数组的省略">二维数组的省略</span></h3><h4><span id="第一维可以省略">第一维可以省略</span></h4><p>二维数组的所有元素都赋值的情况下，可以省略<br>int array[][3]={ 1,2,3,4,5,6};<br>int array[2][3]={ 1,2,3,4,5,6};</p>
+<h3><span id="逗号运算符">逗号运算符</span></h3><p>逗号运算符：多个表达式用逗号分开，其中用逗号分开的表达式的值分别结算，但整个表达的值是最后一个表达式的值</p>
+<p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/1.JPG"></p>
+<p>对于语句1来说，最终的值是最后一个表达式的值，也就是d＋３ a1=8;</p>
+<p>对于语句2来说，最终表达式的值为8，但a2=4；</p>
+<h4><span id="问题">问题</span></h4><p>赋值运算符比逗号运算符的优先级高<br>因为“，”所以最终表达式的值是最后一个值d＋３，但a2的值是a2=＋＋b=4</p>
+<h3><span id="行优先存储和列优先存储">行优先存储和列优先存储</span></h3><h4><span id="c中数组是采用行优先存储">C＋＋中数组是采用行优先存储</span></h4><p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/2.JPG"></p>
+<h4><span id="二位数组向一维数组转化">二位数组向一维数组转化</span></h4><p>a[x][y]=b[x* 列数＋y]</p>
+<p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/3.JPG"></p>
+<p>p[i]=* (p+i)<br>根据上述式子 i= N* x+y 代入<br>得到 p[i]= * （p+i* N+j)</p>
+<h4><span id="练习题">练习题</span></h4><p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/4.JPG"><br>一个二维数组 a[1…100] [1…65],行数M 100，列数N 65<br> p[i]= * （p+i* N+j)<br>首地址* p为10000 a[56] [22]<br>注意下标是从1开始 因此<br>a[56] [22]= 10000+(65* 55+21)* 2=17912</p>
+<h3><span id="指针运算和操作">指针运算和操作</span></h3><h4><span id="指针运算">指针运算</span></h4><p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/5.JPG"></p>
+<p>p指向i，p不能修改i的值，p本身不是const类型，<br>这里可以修改。p＋＋的时候，指针p跳过i指向下一个内存单元（32位机器为4个字节），此内存单元未定义，所以这里是垃圾值。</p>
+<h4><span id="算数运算">算数运算</span></h4><p>加法运算</p>
+<p>减法运算</p>
+<p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/6.JPG"></p>
+<p>两个指针都指向同一个数组中的元素时，才允许从一个指针减去另一个指针<br>p2-p1 =3<br>p1-p2 =-3</p>
+<h4><span id="关系运算">关系运算</span></h4><p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/7.JPG"></p>
+<p>这个代码用于清除一个数组中的全部元素</p>
+<h3><span id="指针数组和数组指针">指针数组和数组指针</span></h3><h4><span id="指针数组">指针数组</span></h4><p>指针数组是数组<br>一个有十个指针的数组 int * a[10],每个指针指向一个整型数<br><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/8.JPG"></p>
+<h4><span id="数组指针">数组指针</span></h4><p>数组指针是指针<br>数组指针是一个指向数组的指针<br>一个指向有10个元素整型数组的指针的定义为 int (* p) [10]<br>二维数组的数组名是数组指针<br>代码1<br>int a[4] [10];<br>int  (* p)[10];<br>p=a; a的类型是int （ * ）p [ 10 ]<br>p可被替换为a 这里的a是常量不可以进行赋值操作<br><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/9.JPG"></p>
+<p>代码2</p>
+<p>int a[ 10 ];<br>int ( * p) [10]=&amp; a;<br>//<br> 这里是&amp;a不是a 。 a的类型是int * .&amp; a的类型是 int （ * ）[10]<br>//<br>int * q=a;</p>
+<p><img src="/2021/02/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98/10.JPG"></p>
+<hr>
+<p>未完结</p>
+<hr>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
