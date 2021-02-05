@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>小杨的编程之路</title>
+    <url>/2021/02/01/hello/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1804380596&auto=1&height=66"></iframe><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++学习</category>
+      </categories>
+      <tags>
+        <tag>冲呀</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql安装 取消root密码</title>
     <url>/2021/02/01/mysql%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%8F%96%E6%B6%88%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="密码忘记-关闭mysql">密码忘记 关闭mysql</span></h2><p>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server<br>第二步：进入mysql安装路径，用系统管理员权限跳过mysql安全认证，命令结果如下图所示。</p>
@@ -41,21 +53,11 @@
       </tags>
   </entry>
   <entry>
-    <title>小杨的编程之路</title>
-    <url>/2021/02/01/hello/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1804380596&auto=1&height=66"></iframe><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>C++学习</category>
-      </categories>
-      <tags>
-        <tag>冲呀</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL第二部分</title>
     <url>/2021/01/31/mysql%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="查询联系">查询联系</span></h2><h3><span id="-23-查询95033班和95031班全体学生的记录">-23 查询95033班和95031班全体学生的记录</span></h3><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=812400&auto=1&height=66"></iframe>
+
+<h2><span id="查询联系">查询联系</span></h2><h3><span id="-23-查询95033班和95031班全体学生的记录">-23 查询95033班和95031班全体学生的记录</span></h3><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>MySQL</category>
       </categories>
@@ -122,7 +124,9 @@
   <entry>
     <title>MySQL</title>
     <url>/2021/01/31/sql/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>mysql的学习笔记(持续更新中)<br>mysql<br>##基础操作</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1409311773&auto=1&height=66"></iframe>
+
+<p>mysql的学习笔记(持续更新中)<br>mysql<br>##基础操作</p>
 <h3><span id="登陆mysql">登陆mysql</span></h3><p>mysql -uroot-p输入密码</p>
 <h3><span id="查看数据库信息的基本指令">查看数据库信息的基本指令</span></h3><p>–显示数据库<br>show databases;<br>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);<br>-查看数据表结构<br>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
 <p>INSERT INTO testType VALUES(127);<br>select * from testType;<br>+——–+<br>| number |<br>+——–+<br>|    127 |<br>+——–+<br>1 row in set (0.00 sec)</p>
