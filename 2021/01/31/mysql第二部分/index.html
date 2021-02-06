@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-05
+                    2021-02-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    12 分
                 </div>
                 
 
@@ -542,6 +542,38 @@
 <h3><span id="-29查询所有教师和同学的namesexbirthday">-29.查询所有教师和同学的name，sex，birthday</span></h3><p>//<br>先看数据 在我进行操作之后name和sname都变成了name<br>因为所有数据名称都是按查找的第一组数据的命名来算的<br>//<br>select name ,sex,birthday from teacher<br>union<br>select sname ,sex,birthday from student;<br>+———–+—–+————+<br>| name      | sex | birthday   |<br>+———–+—–+————+<br>| 李诚      | 男  | 1958-12-02 |<br>| 王萍      | 女  | 1972-05-05 |<br>| 刘冰      | 女  | 1977-08-14 |<br>| 张旭      | 男  | 1969-03-12 |<br>| 曾华      | 男  | 1977-09-01 |<br>| 匡明      | 男  | 1975-10-02 |<br>| 王丽      | 女  | 1976-01-23 |<br>| 李军      | 男  | 1976-02-20 |<br>| 王芳      | 女  | 1975-02-10 |<br>| 陆军      | 男  | 1974-06-03 |<br>| 王尼玛    | 男  | 1976-02-20 |<br>| 张全蛋    | 男  | 1975-02-10 |<br>| 赵铁柱    | 男  | 1974-06-03 |<br>| 张飞      | 男  | 1974-06-03 |<br>+———–+—–+————+</p>
 <p>//为了看效果这里将两个查询互换位置//<br>select sname as trueename,sex,birthday from student<br>union<br>select name,sex,birthday from teacher;</p>
 <p>+———–+—–+————+<br>| trueename | sex | birthday   |<br>+———–+—–+————+<br>| 曾华      | 男  | 1977-09-01 |<br>| 匡明      | 男  | 1975-10-02 |<br>| 王丽      | 女  | 1976-01-23 |<br>| 李军      | 男  | 1976-02-20 |<br>| 王芳      | 女  | 1975-02-10 |<br>| 陆军      | 男  | 1974-06-03 |<br>| 王尼玛    | 男  | 1976-02-20 |<br>| 张全蛋    | 男  | 1975-02-10 |<br>| 赵铁柱    | 男  | 1974-06-03 |<br>| 张飞      | 男  | 1974-06-03 |<br>| 李诚      | 男  | 1958-12-02 |<br>| 王萍      | 女  | 1972-05-05 |<br>| 刘冰      | 女  | 1977-08-14 |<br>| 张旭      | 男  | 1969-03-12 |<br>+———–+—–+————+</p>
+<h3><span id="-30查询所有女教师和女同学的namesexbirthday">-30.查询所有女教师和女同学的name，sex，birthday</span></h3><p>同理上一道题，到后面视频是越来越短。。。。就是加了一个where条件<br>我最开始输入的信息都是name,sex,birthday 其实不需要改变，这里换个大写<br>select name as Name,sex as Sex,birthday as Birthday from teacher where sex=’女’<br>union<br>select sname,sex,birthday from student where sex=’女’;</p>
+<p>+——–+—–+————+<br>| Name   | Sex | Birthday   |<br>+——–+—–+————+<br>| 王萍   | 女  | 1972-05-05 |<br>| 刘冰   | 女  | 1977-08-14 |<br>| 王丽   | 女  | 1976-01-23 |<br>| 王芳   | 女  | 1975-02-10 |<br>+——–+—–+————+</p>
+<h3><span id="-31查询成绩比该课程平均成绩低的同学的成绩表">-31.查询成绩比该课程平均成绩低的同学的成绩表</span></h3><p>各门课程的平均成绩</p>
+<p>mysql&gt; select avg(degree) from score group by c_no;<br>+————-+<br>| avg(degree) |<br>+————-+<br>|     86.0000 |<br>|     76.3333 |<br>|     81.6667 |<br>+————-+</p>
+<p>这里为了找出低于平均分的成绩，将表格中的每一个数据都和平均成绩进行比较<br>//？？？为什么不用和之前一样的方法 where条件语句+group by 分类比较呢？？？//<br>验证一下</p>
+<p>mysql&gt; select * from score  where degree&lt;(select avg(degree) from score a group<br>by c_no);<br>ERROR 1242 (21000): Subquery returns more than 1 row<br>这里erro的意思大概是 子查询返回多行<br>我也没看定义，就可以理解成课程平均成绩有多个，这里寻找低于平均值数据的时候，是要在同一门课程比较的<br>用group by无法知道应该谁和谁比较</p>
+<hr>
+<p>正确操作<br>//score a 和score b都是指向score表，数据相同 。不信的话动手实践<br>select * from score a;<br>select * from score b;<br>去看结果相同不？<br>这里用where a.c_no=b.c_no去相同课程一一对应比较//<br>select * from score a where degree&lt;(select avg(degree) from score b where a.c_no=b.c_no);</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 102  | 3-105 |     81 |<br>| 105  | 3-245 |     75 |<br>| 105  | 6-166 |     79 |<br>| 109  | 3-105 |     76 |<br>| 109  | 3-245 |     68 |<br>| 109  | 6-166 |     81 |<br>+——+——-+——–+</p>
+<h3><span id="-32查询排了课的教师的name和department">-32.查询排了课的教师的name和department</span></h3><p>select name ,department from teacher where no in(select t_no from course);<br>+——–+—————–+<br>| name   | department      |<br>+——–+—————–+<br>| 李诚   | 计算机系        |<br>| 王萍   | 计算机系        |<br>| 刘冰   | 电子工程系      |<br>| 张旭   | 电子工程系      |<br>+——–+—————–+</p>
+<h3><span id="-33查询至少有两名男生的班级号">-33.查询至少有两名男生的班级号</span></h3><p>select class from student where sex=’男’ group by class having count(*)&gt;1;<br>+——-+<br>| class |<br>+——-+<br>| 95033 |<br>| 95031 |<br>+——-+</p>
+<h3><span id="-34查询student表中不姓王的同学记录">-34.查询student表中不姓王的同学记录</span></h3><p>//like ‘…..%’ 模糊查询<br>select * from student where sname not like ‘王%’;<br>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>| 李军      | 104 | 男  | 1976-02-20 | 95033 |<br>| 陆军      | 106 | 男  | 1974-06-03 | 95031 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>| 赵铁柱    | 109 | 男  | 1974-06-03 | 95031 |<br>| 张飞      | 110 | 男  | 1974-06-03 | 95038 |<br>+———–+—–+—–+————+——-+</p>
+<h3><span id="-35查询student表中的每个学生的姓名和年龄">-35.查询student表中的每个学生的姓名和年龄</span></h3><p>–年龄=当前年份-出生年月</p>
+<p>select year(now());<br>+————-+<br>| year(now()) |<br>+————-+<br>|        2021 |<br>+————-+</p>
+<p>select year(birthday) from student;<br>+—————-+<br>| year(birthday) |<br>+—————-+<br>|           1977 |<br>|           1975 |<br>|           1976 |<br>|           1976 |<br>|           1975 |<br>|           1974 |<br>|           1976 |<br>|           1975 |<br>|           1974 |<br>|           1974 |<br>+—————-+</p>
+<p>!!有点高级了</p>
+<p>select sname,year(now())-year(birthday) as ‘年龄’ from student;<br>+———–+——–+<br>| sname     | 年龄   |<br>+———–+——–+<br>| 曾华      |     44 |<br>| 匡明      |     46 |<br>| 王丽      |     45 |<br>| 李军      |     45 |<br>| 王芳      |     46 |<br>| 陆军      |     47 |<br>| 王尼玛    |     45 |<br>| 张全蛋    |     46 |<br>| 赵铁柱    |     47 |<br>| 张飞      |     47 |<br>+———–+——–+</p>
+<h3><span id="36查询student表中最大和最小的birthday日期值">36.查询student表中最大和最小的birthday日期值</span></h3><p>select max(birthday) as ‘最大’,min(birthday) as ‘最小’ from student;<br>+————+————+<br>| 最大       | 最小       |<br>+————+————+<br>| 1977-09-01 | 1974-06-03 |<br>+————+————+</p>
+<h3><span id="37以班号和年龄从大到小的顺序查询student表中的全部记录">37.以班号和年龄从大到小的顺序查询student表中的全部记录</span></h3><p>select * from student order by class desc,birthday asc;<br>这里的asc升序排列，可以省略。<br>生日升序排列相当于年龄降序排列<br>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 张飞      | 110 | 男  | 1974-06-03 | 95038 |<br>| 王丽      | 103 | 女  | 1976-01-23 | 95033 |<br>| 李军      | 104 | 男  | 1976-02-20 | 95033 |<br>| 王尼玛    | 107 | 男  | 1976-02-20 | 95033 |<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 陆军      | 106 | 男  | 1974-06-03 | 95031 |<br>| 赵铁柱    | 109 | 男  | 1974-06-03 | 95031 |<br>| 王芳      | 105 | 女  | 1975-02-10 | 95031 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>+———–+—–+—–+————+——-+</p>
+<h3><span id="-38查询男教师及其所上的课程">-38.查询男教师及其所上的课程</span></h3><p>select * from course where t_no in(select no from teacher where sex=’男’);<br>+——-+————–+——+<br>| no    | name         | t_no |<br>+——-+————–+——+<br>| 3-245 | 操作系统     | 804  |<br>| 6-166 | 数字电路     | 856  |<br>+——-+————–+——+</p>
+<h3><span id="-39查询最高分同学的s_noc_nodegree">-39.查询最高分同学的s_no,c_no,degree</span></h3><p>select * from score where degree=(select max(degree) from score);<br>//这里用的where =<br>但是如果两个同学并列最高分的时候还是用where in 比较严谨<br>//<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>+——+——-+——–+</p>
+<h3><span id="-40查询和李军同性别的所有同学的sname">-40.查询和李军同性别的所有同学的sname</span></h3><p>select sname from student where sex=(select sex from student where sname=’李军’);<br>+———–+<br>| sname     |<br>+———–+<br>| 曾华      |<br>| 匡明      |<br>| 李军      |<br>| 陆军      |<br>| 王尼玛    |<br>| 张全蛋    |<br>| 赵铁柱    |<br>| 张飞      |<br>+———–+</p>
+<h3><span id="-41查询和李军同性别并且同班级的同学sname">-41.查询和李军同性别并且同班级的同学sname</span></h3><p>select sname from student where sex=(select sex from student where sname=’李军’)<br>and<br>class=(select class from student where sname=’李军’);</p>
+<p>+———–+<br>| sname     |<br>+———–+<br>| 曾华      |<br>| 李军      |<br>| 王尼玛    |<br>+———–+</p>
+<h3><span id="-42查询所有选修计算机导论课程的男同学的成绩表">-42.查询所有选修计算机导论课程的男同学的成绩表</span></h3><p>select * from score where c_no=(select no from course where name=’计算机导论’)<br>and<br>s_no in (select no from student where sex=’男’); </p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 101  | 3-105 |     90 |<br>| 102  | 3-105 |     81 |<br>| 104  | 3-105 |     89 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<h3><span id="-43定义分数类型">-43.定义分数类型</span></h3><p>假设使用以下命令建立一个grade表<br>create table grade(<br>low int(3),<br>upp int (3),<br>grade char(1)<br>);</p>
+<p>insert into grade values(90,100,’A’);<br>insert into grade values(80,89,’B’);<br>insert into grade values(70,79,’C’);<br>insert into grade values(60,69,’D’);</p>
+<p>select s_no,c_no,grade from score,grade where degree between low and upp;</p>
+<p>+——+——-+——-+<br>| s_no | c_no  | grade |<br>+——+——-+——-+<br>| 101  | 3-105 | A     |<br>| 102  | 3-105 | B     |<br>| 103  | 3-105 | A     |<br>| 103  | 3-245 | B     |<br>| 103  | 6-166 | B     |<br>| 104  | 3-105 | B     |<br>| 105  | 3-105 | B     |<br>| 105  | 3-245 | C     |<br>| 105  | 6-166 | C     |<br>| 109  | 3-105 | C     |<br>| 109  | 3-245 | D     |<br>| 109  | 6-166 | B     |<br>+——+——-+——-+</p>
+<hr>
+<p>例题到此结束<br>之后进入mysql第三部分，就剩下最后十节课啦！</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1276,7 +1308,7 @@ mysql的学习笔记(持续更新中)mysql##基础操作
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.6k</span>&nbsp;字
+                class="white-color">9.9k</span>&nbsp;字
             
             
             
