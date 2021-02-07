@@ -1,62 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Mysql安装 取消Root密码</title>
-    <url>/2021/02/01/mysql%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%8F%96%E6%B6%88%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="密码忘记-关闭mysql">密码忘记 关闭mysql</span></h2><p>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server<br>第二步：进入mysql安装路径，用系统管理员权限跳过mysql安全认证，命令结果如下图所示。</p>
-<p>1.打开启动台–》其他 –》终端</p>
-<p>2.进入mysql安装路径  cd /usr/local/mysql/bin/</p>
-<p>3.登录管理员权限 sudo su</p>
-<p>4.输入开机密码 <strong>**</strong></p>
-<p>5.输入跳过mysql安全认证的命令  ./mysqld_safe –skip-grant-tables &amp;</p>
-<p>6.在第一步的mysql设置的画面中发现 关闭的mysql server 又重新变成running了</p>
-<p>7.进入mysql 输入命令  ./mysql</p>
-<p>如果显示以下字样，则为登录成功。</p>
-<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
-<p>Your MySQL connection id is 12</p>
-<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
-<p>8.刷新权限 FLUSH PRIVILEGES</p>
-<p>Query OK, 0 rows affected (0.01 sec)</p>
-<h2><span id="强行修改跳过密码">强行修改跳过密码</span></h2><p>忘记密码强行修改一：</p>
-<p>1.停止mysql服务 sudo /usr/local/mysql/support-files/mysql.server stop 输入开机密码</p>
-<p>2.进入安装目录 cd /usr/local/mysql/bin</p>
-<p>3.禁止mysql安全验证  ./mysqld_safe –skip-grant-tables &amp;</p>
-<p>显示如下时，禁止成功</p>
-<p>root@guofei:/usr/local/mysql-5.7.24-macos10.14-x86_64/bin#     2019-02-14T05:18:51.6NZ mysqld_safe Logging to ‘/usr/local/mysql-5.7.24-macos10.14-x86_64/data/guofei.local.err’.</p>
-<p>2019-02-14T05:18:51.6NZ mysqld_safe Starting mysqld daemon with databases from /usr/local/mysql-5.7.24-macos10.14-x86_64/data</p>
-<p>输入./mysql 显示如下时，无安全认证情况下登录成功</p>
-<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
-<p>Your MySQL connection id is 2</p>
-<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
-<p>4.刷新权限  FLUSH PRIVILEGES;</p>
-<p>5.修改密码 ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘888888’;</p>
-<p>6.退出mysql重新登录 quit</p>
-<p>mysql -u root -p 输入刚刚更新的 888888，登录成功</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>安装问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小杨的编程之路</title>
-    <url>/2021/02/01/hello/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1804380596&auto=1&height=66"></iframe><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>冲呀</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL第三部分</title>
     <url>/2021/02/06/MySQL%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1296271984&auto=1&height=66"></iframe>
 
+<p><img src="/YXY996/2021/02/06/MySQL%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/0.jpg"></p>
 <h2><span id="sql-的四种连接查询">SQL 的四种连接查询</span></h2><p>1.内连接<br>2.外连接<br>  -左连接<br>  -右连接<br>  -完全外连接</p>
 <h2><span id="创建两个表格">创建两个表格</span></h2><h3><span id="peson表格">peson表格</span></h3><p>–person表</p>
 <p>id,name,cardID<br>create table person(<br>id int,<br>name varchar(20),<br>cardID int);</p>
@@ -109,6 +58,58 @@
       </categories>
       <tags>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小杨的编程之路</title>
+    <url>/2021/02/01/hello/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1804380596&auto=1&height=66"></iframe><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>冲呀</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql安装 取消Root密码</title>
+    <url>/2021/02/01/mysql%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%8F%96%E6%B6%88%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="密码忘记-关闭mysql">密码忘记 关闭mysql</span></h2><p>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server<br>第二步：进入mysql安装路径，用系统管理员权限跳过mysql安全认证，命令结果如下图所示。</p>
+<p>1.打开启动台–》其他 –》终端</p>
+<p>2.进入mysql安装路径  cd /usr/local/mysql/bin/</p>
+<p>3.登录管理员权限 sudo su</p>
+<p>4.输入开机密码 <strong>**</strong></p>
+<p>5.输入跳过mysql安全认证的命令  ./mysqld_safe –skip-grant-tables &amp;</p>
+<p>6.在第一步的mysql设置的画面中发现 关闭的mysql server 又重新变成running了</p>
+<p>7.进入mysql 输入命令  ./mysql</p>
+<p>如果显示以下字样，则为登录成功。</p>
+<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
+<p>Your MySQL connection id is 12</p>
+<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
+<p>8.刷新权限 FLUSH PRIVILEGES</p>
+<p>Query OK, 0 rows affected (0.01 sec)</p>
+<h2><span id="强行修改跳过密码">强行修改跳过密码</span></h2><p>忘记密码强行修改一：</p>
+<p>1.停止mysql服务 sudo /usr/local/mysql/support-files/mysql.server stop 输入开机密码</p>
+<p>2.进入安装目录 cd /usr/local/mysql/bin</p>
+<p>3.禁止mysql安全验证  ./mysqld_safe –skip-grant-tables &amp;</p>
+<p>显示如下时，禁止成功</p>
+<p>root@guofei:/usr/local/mysql-5.7.24-macos10.14-x86_64/bin#     2019-02-14T05:18:51.6NZ mysqld_safe Logging to ‘/usr/local/mysql-5.7.24-macos10.14-x86_64/data/guofei.local.err’.</p>
+<p>2019-02-14T05:18:51.6NZ mysqld_safe Starting mysqld daemon with databases from /usr/local/mysql-5.7.24-macos10.14-x86_64/data</p>
+<p>输入./mysql 显示如下时，无安全认证情况下登录成功</p>
+<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
+<p>Your MySQL connection id is 2</p>
+<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
+<p>4.刷新权限  FLUSH PRIVILEGES;</p>
+<p>5.修改密码 ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘888888’;</p>
+<p>6.退出mysql重新登录 quit</p>
+<p>mysql -u root -p 输入刚刚更新的 888888，登录成功</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>安装问题</tag>
       </tags>
   </entry>
   <entry>
