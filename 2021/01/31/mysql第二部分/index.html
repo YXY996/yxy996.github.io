@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL第三部分, 小杨的博客">
+    <meta name="keywords" content="MySQL第二部分, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>MySQL第三部分 | 小杨的博客</title>
+    <title>MySQL第二部分 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MySQL第三部分</h1>
+                    <h1 class="description center-align post-title">MySQL第二部分</h1>
                 </div>
             </div>
         </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-06
+                    2021-02-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-07
+                    2021-02-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    12 分
                 </div>
                 
 
@@ -514,55 +514,66 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1296271984&auto=1&height=66"></iframe>
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1352427635&auto=1&height=66"></iframe>
 
-<p><img src="/YXY996/2021/02/06/MySQL%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/0.jpg"></p>
-<h2><span id="sql-的四种连接查询">SQL 的四种连接查询</span></h2><p>1.内连接<br>2.外连接<br>  -左连接<br>  -右连接<br>  -完全外连接</p>
-<h2><span id="创建两个表格">创建两个表格</span></h2><h3><span id="peson表格">peson表格</span></h3><p>–person表</p>
-<p>id,name,cardID<br>create table person(<br>id int,<br>name varchar(20),<br>cardID int);</p>
-<h3><span id="card表格">card表格</span></h3><p>–card表<br>id ,name<br>create table card(<br>id int,<br>name varchar(20));</p>
-<h2><span id="插入数据">插入数据</span></h2><h3><span id="card数据">card数据</span></h3><p>insert into card values(1,’饭卡’);<br>insert into card values(2,’建行卡’);<br>insert into card values(3,’农行卡’);<br>insert into card values(4,’工商卡’);<br>insert into card values(5,’邮政卡’);</p>
-<h3><span id="person数据">person数据</span></h3><p>insert into person values(1,’张三’,1);<br>insert into person values(2,’李四’,3);<br>insert into person values(3,’王五’,6);</p>
-<h2><span id="连接实战">“连接”实战</span></h2><p>select * from person;<br>+——+——–+——–+<br>| id   | name   | cardID |<br>+——+——–+——–+<br>|    1 | 张三   |      1 |<br>|    2 | 李四   |      3 |<br>|    3 | 王五   |      6 |<br>+——+——–+——–+</p>
-<p>–并没有创建外键，</p>
-<h3><span id="内连接">内连接</span></h3><p>inner join<br>内联查询，就是两张表中的数据通过某个字段相对，查询出相关记录数据<br>– inner join 查询</p>
-<p>select * from person inner join card on person.cardId=card.id;<br>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>+——+——–+——–+——+———–+</p>
-<h3><span id="外连接">外连接</span></h3><h4><span id="1左外连接">1.左外连接</span></h4><p>left join或者left outer join<br>select * from person left join card on person.cardId=card.id;</p>
-<p>左外连接，会把左边表里面的所有数据取出来，而右边表中的数据，如果有相等的，就会显示出来<br>如果没有，就会补NULL</p>
-<p>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>|    3 | 王五   |      6 | NULL | NULL      |<br>+——+——–+——–+——+———–+</p>
-<h4><span id="2右外连接">2.右外连接</span></h4><p>right或者right outer join<br>select * from person right join card on person.cardId=card.id;<br>右外连接，会把右边表里面的所有数据取出来，而左边表中的数据，如果有相等的，就显示出来<br>如果没有，就会补NULL<br>select * from person right outer join card on person.cardId=card.id;</p>
-<p>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>| NULL | NULL   |   NULL |    2 | 建行卡    |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>| NULL | NULL   |   NULL |    4 | 工商卡    |<br>| NULL | NULL   |   NULL |    5 | 邮政卡    |<br>+——+——–+——–+——+———–+</p>
-<h4><span id="2完全外连接">2.完全外连接</span></h4><p>full join或者full outer join<br>select * from person full join card on person.cardId=card.id;</p>
-<p>mysql&gt; select * from person full join card on person.cardId=card.id;<br>ERROR 1054 (42S22): Unknown column ‘person.cardId’ in ‘on clause’</p>
-<p>mysql不支持全外连接，原因不知，下节课再议<br>集合考虑：<br>全外连接=左连接union右连接<br>select * from person left join card on person.cardId=card.id<br>union<br>select * from person right join card on person.cardId=card.id;</p>
-<p>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>|    3 | 王五   |      6 | NULL | NULL      |<br>| NULL | NULL   |   NULL |    2 | 建行卡    |<br>| NULL | NULL   |   NULL |    4 | 工商卡    |<br>| NULL | NULL   |   NULL |    5 | 邮政卡    |<br>+——+——–+——–+——+———–+</p>
-<h2><span id="mysql事务">mysql事务</span></h2><p>mysql中，事务其实是一个最小的不可分割的工作单元。事务能够保证一个业务的完整性<br>比如我们的银行转账：<br>    a-&gt;100<br>    update user set money =money-100 where name=’a’<br>    b-&gt;<br>    update user set money=money+100 where name=’b’<br>–实际的程序中，如果只有一条语句执行成功了，而另外一条没有执行成功？<br>–出现数据前后不一致<br>     update user set money =money-100 where name=’a’<br>     update user set money=money+100 where name=’b’<br>–多条sql语句，可能会有同时成功的要求，要么就同时失败<br>–mysql如何控制事务</p>
-<h3><span id="mysql默认是开启事务的自动提交">mysql默认是开启事务的(自动提交)</span></h3><p>mysql&gt; select @@autocommit;<br>+————–+<br>| @@autocommit |<br>+————–+<br>|            1 |<br>+————–+<br>–默认事务开启的作用是什么？<br>–当我们区执行sql语句的时候，效果就会立即体现出来，且不能回滚<br>create database bank;<br>create table user(<br>id int primary key,<br>name varchar(20),<br>money int);</p>
-<p>insert into user values(1,’a’,1000);</p>
-<p>–事务回滚：撤销sql语句</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>+—-+——+——-+<br>1 row in set (0.00 sec)</p>
-<p>–设置自动提交为false</p>
-<p>set @@autocommit=0</p>
-<p>mysql&gt; select @@autocommit;<br>+————–+<br>| @@autocommit |<br>+————–+<br>|            0 |<br>+————–+</p>
-<p>–上面的操作关闭了mysql的自动提交（commit)<br>insert into user values(2,’b’,1000);</p>
-<p>mysql&gt; insert into user values(2,’b’,1000);<br>Query OK, 1 row affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>+—-+——+——-+<br>1 row in set (0.00 sec)</p>
-<p>–再一次插入数据<br>mysql&gt; insert into user values(2,’b’,1000);<br>Query OK, 1 row affected (0.00 sec)<br>–手动提交数据<br>mysql&gt; commit;<br>Query OK, 0 rows affected (0.01 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+<br>2 rows in set (0.01 sec)<br>–再撤销，是不可以撤销的（持久性）</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
-<p>–自动提交？<br>@@autocommit=1<br>–手动提交？<br>commit;<br>–事务回滚？<br>rollback;<br>–如果说这个时候转账</p>
-<h3><span id="转账实际操作">转账实际操作</span></h3><p>如果要执行成功撤销操作 需要@@autocommit=0</p>
-<p>mysql&gt; set @@autocommit=0;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select @@autocommit;<br>+————–+<br>| @@autocommit |<br>+————–+<br>|            0 |<br>+————–+</p>
-<p>update user set money =money+100 where name=’a’;<br>update user set money=money-100 where name=’b’;</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1100 |<br>|  2 | b    |   900 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.01 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+</p>
-<p>–事务给我们提供了一个反悔的机会</p>
+<h2><span id="查询练习">查询练习</span></h2><h3><span id="-23-查询95033班和95031班全体学生的记录">-23 查询95033班和95031班全体学生的记录</span></h3><p>//<br>在这里where添加条件限制<br>在条件为多个的时候用 in<br>单个条件可以用 =<br>//<br>mysql&gt; select * from student where class in(‘95031’,’95033’);</p>
+<p>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>| 王丽      | 103 | 女  | 1976-01-23 | 95033 |<br>| 李军      | 104 | 男  | 1976-02-20 | 95033 |<br>| 王芳      | 105 | 女  | 1975-02-10 | 95031 |<br>| 陆军      | 106 | 男  | 1974-06-03 | 95031 |<br>| 王尼玛    | 107 | 男  | 1976-02-20 | 95033 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>| 赵铁柱    | 109 | 男  | 1974-06-03 | 95031 |<br>+———–+—–+—–+————+——-+</p>
+<h3><span id="-24查询存在85分以上成绩的课程c_no">-24.查询存在85分以上成绩的课程c_no</span></h3><p>依然是练习where条件语句<br>mysql&gt; select c_no,degree from score where degree &gt;85;<br>+——-+——–+<br>| c_no  | degree |<br>+——-+——–+<br>| 3-105 |     90 |<br>| 3-105 |     92 |<br>| 3-245 |     86 |<br>| 3-105 |     89 |<br>| 3-105 |     88 |<br>+——-+——–+</p>
+<h3><span id="-25查询出计算机系教师所教课程的成绩表">-25.查询出“计算机系”教师所教课程的成绩表</span></h3><p>select * from  teacher where department=’计算机系’；<br>+—–+——–+—–+————+————+————–+<br>| no  | name   | sex | birthday   | profession | department   |<br>+—–+——–+—–+————+————+————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系     |<br>| 825 | 王萍   | 女  | 1972-05-05 | 助教       | 计算机系     |<br>+—–+——–+—–+————+————+————–+</p>
+<p>select * from course where t_no in(select no from teacher where department=’计算机系’)；<br>+——-+—————–+——+<br>| no    | name            | t_no |<br>+——-+—————–+——+<br>| 3-245 | 操作系统        | 804  |<br>| 3-105 | 计算机导论      | 825  |<br>+——-+—————–+——+</p>
+<p>//这里要注意多层套娃条件的时候，结尾处的括号个数一定要与前面的一致，要不会出错的</p>
+<p>select * from score where c_no in(select no from course where t_no in(select no from teacher where department=’计算机系’));</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-245 |     86 |<br>| 105  | 3-245 |     75 |<br>| 109  | 3-245 |     68 |<br>| 101  | 3-105 |     90 |<br>| 102  | 3-105 |     81 |<br>| 103  | 3-105 |     92 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<h3><span id="-26查询计算机系与电子工程系不同职称的教师的名字-name">-26.查询“计算机系”与“电子工程系”不同职称的教师的名字 name</span></h3><p>–union联合查询<br>–not in </p>
+<p>为了方便理解这里先查看以下教师表格</p>
+<p>mysql&gt; select * from teacher;<br>+—–+——–+—–+————+————+—————–+<br>| no  | name   | sex | birthday   | profession | department      |<br>+—–+——–+—–+————+————+—————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系        |<br>| 825 | 王萍   | 女  | 1972-05-05 | 助教       | 计算机系        |<br>| 831 | 刘冰   | 女  | 1977-08-14 | 助教       | 电子工程系      |<br>| 856 | 张旭   | 男  | 1969-03-12 | 讲师       | 电子工程系      |<br>+—–+——–+—–+————+————+—————–+<br>——问题是要查找什么再简单一点说明——<br>找到计算机系和电子工程系中 职称不重复的教师名字<br>用集合的概念去想</p>
+<p>这里计算机系和电子工程系 重合部分是助教，计算机系非助教的集合+电子工程系非助教的集合</p>
+<p>select * from teacher where department =’计算机系’ and profession not in(select<br> profession from teacher where department=’电子工程系’);<br>+—–+——–+—–+————+————+————–+<br>| no  | name   | sex | birthday   | profession | department   |<br>+—–+——–+—–+————+————+————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系     |<br>+—–+——–+—–+————+————+————–+<br>select * from teacher where department =’电子工程系’ and profession not in(select<br> profession from teacher where department=’计算机系’);<br> +—–+——–+—–+————+————+—————–+<br>| no  | name   | sex | birthday   | profession | department      |<br>+—–+——–+—–+————+————+—————–+<br>| 856 | 张旭   | 男  | 1969-03-12 | 讲师       | 电子工程系      |<br>+—–+——–+—–+————+————+—————–+</p>
+<p>两个语句通过union语句联合起来，代表同时满足两个条件<br>//分号代表语句结束 只能末尾有哦</p>
+<p>select * from teacher where department =’计算机系’ and profession not in(select<br> profession from teacher where department=’电子工程系’)<br> union<br> select * from teacher where department =’电子工程系’ and profession not in(select<br> profession from teacher where department=’计算机系’);</p>
+<p>+—–+——–+—–+————+————+—————–+<br>| no  | name   | sex | birthday   | profession | department      |<br>+—–+——–+—–+————+————+—————–+<br>| 804 | 李诚   | 男  | 1958-12-02 | 副教授     | 计算机系        |<br>| 856 | 张旭   | 男  | 1969-03-12 | 讲师       | 电子工程系      |<br>+—–+——–+—–+————+————+—————–+</p>
+<h3><span id="-27查询选修编号为3-105课程且成绩至少高于选修编号3-245的同学的c_nos_no和degree并且按照degree从高到低次序排列">-27.查询选修编号为“3-105”课程且成绩至少高于选修编号“3-245”的同学的c_no，s_no和degree，并且按照degree从高到低次序排列</span></h3><p>/问题理解/<br>至少高于?—&gt;大于其中至少一个，any<br>选修“3-105”课程的同学，只要成绩高于选修“3-245”同学中的至少一名同学的成绩，这个数据就被选择</p>
+<p>select * from score where c_no=’3-105’ and degree&gt;any(select degree from score where c_no=’3-245’);</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 101  | 3-105 |     90 |<br>| 102  | 3-105 |     81 |<br>| 103  | 3-105 |     92 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<p>//紧接着进行排序<br>select * from score where c_no=’3-105’ and degree&gt;any(select degree from score where c_no=’3-245’) order by degree desc;<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>| 101  | 3-105 |     90 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>| 102  | 3-105 |     81 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<h3><span id="-28查询选修编号为3-105课程且成绩至少高于选修编号3-245的同学的c_nos_no和degree">-28.查询选修编号为“3-105”课程且成绩至少高于选修编号“3-245”的同学的c_no，s_no和degree</span></h3><p>–且？ all表示所有的关系</p>
+<p>select * from score where c_no=’3-105’ and degree&gt;all(select degree from score where c_no=’3-245’);</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 101  | 3-105 |     90 |<br>| 103  | 3-105 |     92 |<br>| 104  | 3-105 |     89 |<br>| 105  | 3-105 |     88 |<br>+——+——-+——–+</p>
+<h3><span id="-29查询所有教师和同学的namesexbirthday">-29.查询所有教师和同学的name，sex，birthday</span></h3><p>//<br>先看数据 在我进行操作之后name和sname都变成了name<br>因为所有数据名称都是按查找的第一组数据的命名来算的<br>//<br>select name ,sex,birthday from teacher<br>union<br>select sname ,sex,birthday from student;<br>+———–+—–+————+<br>| name      | sex | birthday   |<br>+———–+—–+————+<br>| 李诚      | 男  | 1958-12-02 |<br>| 王萍      | 女  | 1972-05-05 |<br>| 刘冰      | 女  | 1977-08-14 |<br>| 张旭      | 男  | 1969-03-12 |<br>| 曾华      | 男  | 1977-09-01 |<br>| 匡明      | 男  | 1975-10-02 |<br>| 王丽      | 女  | 1976-01-23 |<br>| 李军      | 男  | 1976-02-20 |<br>| 王芳      | 女  | 1975-02-10 |<br>| 陆军      | 男  | 1974-06-03 |<br>| 王尼玛    | 男  | 1976-02-20 |<br>| 张全蛋    | 男  | 1975-02-10 |<br>| 赵铁柱    | 男  | 1974-06-03 |<br>| 张飞      | 男  | 1974-06-03 |<br>+———–+—–+————+</p>
+<p>//为了看效果这里将两个查询互换位置//<br>select sname as trueename,sex,birthday from student<br>union<br>select name,sex,birthday from teacher;</p>
+<p>+———–+—–+————+<br>| trueename | sex | birthday   |<br>+———–+—–+————+<br>| 曾华      | 男  | 1977-09-01 |<br>| 匡明      | 男  | 1975-10-02 |<br>| 王丽      | 女  | 1976-01-23 |<br>| 李军      | 男  | 1976-02-20 |<br>| 王芳      | 女  | 1975-02-10 |<br>| 陆军      | 男  | 1974-06-03 |<br>| 王尼玛    | 男  | 1976-02-20 |<br>| 张全蛋    | 男  | 1975-02-10 |<br>| 赵铁柱    | 男  | 1974-06-03 |<br>| 张飞      | 男  | 1974-06-03 |<br>| 李诚      | 男  | 1958-12-02 |<br>| 王萍      | 女  | 1972-05-05 |<br>| 刘冰      | 女  | 1977-08-14 |<br>| 张旭      | 男  | 1969-03-12 |<br>+———–+—–+————+</p>
+<h3><span id="-30查询所有女教师和女同学的namesexbirthday">-30.查询所有女教师和女同学的name，sex，birthday</span></h3><p>同理上一道题，到后面视频是越来越短。。。。就是加了一个where条件<br>我最开始输入的信息都是name,sex,birthday 其实不需要改变，这里换个大写<br>select name as Name,sex as Sex,birthday as Birthday from teacher where sex=’女’<br>union<br>select sname,sex,birthday from student where sex=’女’;</p>
+<p>+——–+—–+————+<br>| Name   | Sex | Birthday   |<br>+——–+—–+————+<br>| 王萍   | 女  | 1972-05-05 |<br>| 刘冰   | 女  | 1977-08-14 |<br>| 王丽   | 女  | 1976-01-23 |<br>| 王芳   | 女  | 1975-02-10 |<br>+——–+—–+————+</p>
+<h3><span id="-31查询成绩比该课程平均成绩低的同学的成绩表">-31.查询成绩比该课程平均成绩低的同学的成绩表</span></h3><p>各门课程的平均成绩</p>
+<p>mysql&gt; select avg(degree) from score group by c_no;<br>+————-+<br>| avg(degree) |<br>+————-+<br>|     86.0000 |<br>|     76.3333 |<br>|     81.6667 |<br>+————-+</p>
+<p>这里为了找出低于平均分的成绩，将表格中的每一个数据都和平均成绩进行比较<br>//？？？为什么不用和之前一样的方法 where条件语句+group by 分类比较呢？？？//<br>验证一下</p>
+<p>mysql&gt; select * from score  where degree&lt;(select avg(degree) from score a group<br>by c_no);<br>ERROR 1242 (21000): Subquery returns more than 1 row<br>这里erro的意思大概是 子查询返回多行<br>我也没看定义，就可以理解成课程平均成绩有多个，这里寻找低于平均值数据的时候，是要在同一门课程比较的<br>用group by无法知道应该谁和谁比较</p>
+<hr>
+<p>正确操作<br>//score a 和score b都是指向score表，数据相同 。不信的话动手实践<br>select * from score a;<br>select * from score b;<br>去看结果相同不？<br>这里用where a.c_no=b.c_no去相同课程一一对应比较//<br>select * from score a where degree&lt;(select avg(degree) from score b where a.c_no=b.c_no);</p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 102  | 3-105 |     81 |<br>| 105  | 3-245 |     75 |<br>| 105  | 6-166 |     79 |<br>| 109  | 3-105 |     76 |<br>| 109  | 3-245 |     68 |<br>| 109  | 6-166 |     81 |<br>+——+——-+——–+</p>
+<h3><span id="-32查询排了课的教师的name和department">-32.查询排了课的教师的name和department</span></h3><p>select name ,department from teacher where no in(select t_no from course);<br>+——–+—————–+<br>| name   | department      |<br>+——–+—————–+<br>| 李诚   | 计算机系        |<br>| 王萍   | 计算机系        |<br>| 刘冰   | 电子工程系      |<br>| 张旭   | 电子工程系      |<br>+——–+—————–+</p>
+<h3><span id="-33查询至少有两名男生的班级号">-33.查询至少有两名男生的班级号</span></h3><p>select class from student where sex=’男’ group by class having count(*)&gt;1;<br>+——-+<br>| class |<br>+——-+<br>| 95033 |<br>| 95031 |<br>+——-+</p>
+<h3><span id="-34查询student表中不姓王的同学记录">-34.查询student表中不姓王的同学记录</span></h3><p>//like ‘…..%’ 模糊查询<br>select * from student where sname not like ‘王%’;<br>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>| 李军      | 104 | 男  | 1976-02-20 | 95033 |<br>| 陆军      | 106 | 男  | 1974-06-03 | 95031 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>| 赵铁柱    | 109 | 男  | 1974-06-03 | 95031 |<br>| 张飞      | 110 | 男  | 1974-06-03 | 95038 |<br>+———–+—–+—–+————+——-+</p>
+<h3><span id="-35查询student表中的每个学生的姓名和年龄">-35.查询student表中的每个学生的姓名和年龄</span></h3><p>–年龄=当前年份-出生年月</p>
+<p>select year(now());<br>+————-+<br>| year(now()) |<br>+————-+<br>|        2021 |<br>+————-+</p>
+<p>select year(birthday) from student;<br>+—————-+<br>| year(birthday) |<br>+—————-+<br>|           1977 |<br>|           1975 |<br>|           1976 |<br>|           1976 |<br>|           1975 |<br>|           1974 |<br>|           1976 |<br>|           1975 |<br>|           1974 |<br>|           1974 |<br>+—————-+</p>
+<p>!!有点高级了</p>
+<p>select sname,year(now())-year(birthday) as ‘年龄’ from student;<br>+———–+——–+<br>| sname     | 年龄   |<br>+———–+——–+<br>| 曾华      |     44 |<br>| 匡明      |     46 |<br>| 王丽      |     45 |<br>| 李军      |     45 |<br>| 王芳      |     46 |<br>| 陆军      |     47 |<br>| 王尼玛    |     45 |<br>| 张全蛋    |     46 |<br>| 赵铁柱    |     47 |<br>| 张飞      |     47 |<br>+———–+——–+</p>
+<h3><span id="36查询student表中最大和最小的birthday日期值">36.查询student表中最大和最小的birthday日期值</span></h3><p>select max(birthday) as ‘最大’,min(birthday) as ‘最小’ from student;<br>+————+————+<br>| 最大       | 最小       |<br>+————+————+<br>| 1977-09-01 | 1974-06-03 |<br>+————+————+</p>
+<h3><span id="37以班号和年龄从大到小的顺序查询student表中的全部记录">37.以班号和年龄从大到小的顺序查询student表中的全部记录</span></h3><p>select * from student order by class desc,birthday asc;<br>这里的asc升序排列，可以省略。<br>生日升序排列相当于年龄降序排列<br>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 张飞      | 110 | 男  | 1974-06-03 | 95038 |<br>| 王丽      | 103 | 女  | 1976-01-23 | 95033 |<br>| 李军      | 104 | 男  | 1976-02-20 | 95033 |<br>| 王尼玛    | 107 | 男  | 1976-02-20 | 95033 |<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 陆军      | 106 | 男  | 1974-06-03 | 95031 |<br>| 赵铁柱    | 109 | 男  | 1974-06-03 | 95031 |<br>| 王芳      | 105 | 女  | 1975-02-10 | 95031 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>+———–+—–+—–+————+——-+</p>
+<h3><span id="-38查询男教师及其所上的课程">-38.查询男教师及其所上的课程</span></h3><p>select * from course where t_no in(select no from teacher where sex=’男’);<br>+——-+————–+——+<br>| no    | name         | t_no |<br>+——-+————–+——+<br>| 3-245 | 操作系统     | 804  |<br>| 6-166 | 数字电路     | 856  |<br>+——-+————–+——+</p>
+<h3><span id="-39查询最高分同学的s_noc_nodegree">-39.查询最高分同学的s_no,c_no,degree</span></h3><p>select * from score where degree=(select max(degree) from score);<br>//这里用的where =<br>但是如果两个同学并列最高分的时候还是用where in 比较严谨<br>//<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>+——+——-+——–+</p>
+<h3><span id="-40查询和李军同性别的所有同学的sname">-40.查询和李军同性别的所有同学的sname</span></h3><p>select sname from student where sex=(select sex from student where sname=’李军’);<br>+———–+<br>| sname     |<br>+———–+<br>| 曾华      |<br>| 匡明      |<br>| 李军      |<br>| 陆军      |<br>| 王尼玛    |<br>| 张全蛋    |<br>| 赵铁柱    |<br>| 张飞      |<br>+———–+</p>
+<h3><span id="-41查询和李军同性别并且同班级的同学sname">-41.查询和李军同性别并且同班级的同学sname</span></h3><p>select sname from student where sex=(select sex from student where sname=’李军’)<br>and<br>class=(select class from student where sname=’李军’);</p>
+<p>+———–+<br>| sname     |<br>+———–+<br>| 曾华      |<br>| 李军      |<br>| 王尼玛    |<br>+———–+</p>
+<h3><span id="-42查询所有选修计算机导论课程的男同学的成绩表">-42.查询所有选修计算机导论课程的男同学的成绩表</span></h3><p>select * from score where c_no=(select no from course where name=’计算机导论’)<br>and<br>s_no in (select no from student where sex=’男’); </p>
+<p>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 101  | 3-105 |     90 |<br>| 102  | 3-105 |     81 |<br>| 104  | 3-105 |     89 |<br>| 109  | 3-105 |     76 |<br>+——+——-+——–+</p>
+<h3><span id="-43定义分数类型">-43.定义分数类型</span></h3><p>假设使用以下命令建立一个grade表<br>create table grade(<br>low int(3),<br>upp int (3),<br>grade char(1)<br>);</p>
+<p>insert into grade values(90,100,’A’);<br>insert into grade values(80,89,’B’);<br>insert into grade values(70,79,’C’);<br>insert into grade values(60,69,’D’);</p>
+<p>select s_no,c_no,grade from score,grade where degree between low and upp;</p>
+<p>+——+——-+——-+<br>| s_no | c_no  | grade |<br>+——+——-+——-+<br>| 101  | 3-105 | A     |<br>| 102  | 3-105 | B     |<br>| 103  | 3-105 | A     |<br>| 103  | 3-245 | B     |<br>| 103  | 6-166 | B     |<br>| 104  | 3-105 | B     |<br>| 105  | 3-105 | B     |<br>| 105  | 3-245 | C     |<br>| 105  | 6-166 | C     |<br>| 109  | 3-105 | C     |<br>| 109  | 3-245 | D     |<br>| 109  | 6-166 | B     |<br>+——+——-+——-+</p>
+<hr>
+<p>例题到此结束<br>之后进入mysql第三部分，就剩下最后十节课啦！</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1015,13 +1026,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/02/07/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98-2/">
+                <a href="/2021/02/01/mysql%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%8F%96%E6%B6%88%E5%AF%86%E7%A0%81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="程序员面试题">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Mysql安装 取消Root密码">
                         
-                        <span class="card-title">程序员面试题</span>
+                        <span class="card-title">Mysql安装 取消Root密码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1032,14 +1043,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
                                 </a>
                             
                             
@@ -1049,8 +1060,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
+                    <a href="/tags/%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">安装问题</span>
                     </a>
                     
                 </div>
@@ -1064,31 +1075,35 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/04/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/">
+                <a href="/2021/01/31/sql/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="博客报错">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="MySQL">
                         
-                        <span class="card-title">博客报错</span>
+                        <span class="card-title">MySQL</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
+
+mysql的学习笔记(持续更新中)mysql##基础操作
+登陆mysqlmysql -uroot-p输入密码
+查看数据库信息的基本指令–显示数据库show databases;–如何在数据库服务器中创建我们的数据库create data
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/blog/" class="post-category">
-                                    blog
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
                                 </a>
                             
                             
@@ -1098,8 +1113,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo-erro/">
-                        <span class="chip bg-color">hexo erro</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
