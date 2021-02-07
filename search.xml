@@ -5,7 +5,7 @@
     <url>/2021/02/05/MySQL%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1296271984&auto=1&height=66"></iframe>
 
-<p><img src="/YXY996/2021/02/05/MySQL%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/0.jpg"></p>
+<p><img src="/images/0.jpg"></p>
 <h2><span id="sql-的四种连接查询">SQL 的四种连接查询</span></h2><p>1.内连接<br>2.外连接<br>  -左连接<br>  -右连接<br>  -完全外连接</p>
 <h2><span id="创建两个表格">创建两个表格</span></h2><h3><span id="peson表格">peson表格</span></h3><p>–person表</p>
 <p>id,name,cardID<br>create table person(<br>id int,<br>name varchar(20),<br>cardID int);</p>
@@ -113,6 +113,18 @@
       </tags>
   </entry>
   <entry>
+    <title>博客报错</title>
+    <url>/2021/02/03/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo erro</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>程序员面试题</title>
     <url>/2021/02/06/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98-2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1491221473&auto=1&height=66"></iframe>
@@ -156,18 +168,6 @@
       </categories>
       <tags>
         <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客报错</title>
-    <url>/2021/02/03/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>hexo erro</tag>
       </tags>
   </entry>
   <entry>
