@@ -54,6 +54,18 @@ int main()&#123;
       </tags>
   </entry>
   <entry>
+    <title>小杨的编程之路</title>
+    <url>/2021/02/01/hello/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1804380596&auto=1&height=66"></iframe><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>冲呀</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mysql安装 取消Root密码</title>
     <url>/2021/02/01/mysql%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%8F%96%E6%B6%88%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="密码忘记-关闭mysql">密码忘记 关闭mysql</span></h2><p>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server<br>第二步：进入mysql安装路径，用系统管理员权限跳过mysql安全认证，命令结果如下图所示。</p>
@@ -118,30 +130,6 @@ int main()&#123;
       </tags>
   </entry>
   <entry>
-    <title>小杨的编程之路</title>
-    <url>/2021/02/01/hello/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1804380596&auto=1&height=66"></iframe><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>冲呀</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客报错</title>
-    <url>/2021/02/04/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>hexo erro</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序员面试题</title>
     <url>/2021/02/07/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98-2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1491221473&auto=1&height=66"></iframe>
@@ -184,6 +172,18 @@ int main()&#123;
       </categories>
       <tags>
         <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客报错</title>
+    <url>/2021/02/04/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo erro</tag>
       </tags>
   </entry>
   <entry>
