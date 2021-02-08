@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-07
+                    2021-02-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    13 分
                 </div>
                 
 
@@ -563,6 +563,71 @@
 <p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.01 sec)</p>
 <p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+</p>
 <p>–事务给我们提供了一个反悔的机会</p>
+<p>begin;<br>–或者<br>start transaction;<br>–都可以帮我们手动开启一个事务</p>
+<h4><span id="手动开启事务1">手动开启事务1</span></h4><p>begin;<br>update user set money =money+100 where name=’a’;<br>update user set money=money-100 where name=’b’;</p>
+<p>mysql&gt; update user set money=money-100 where name=’b’;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0</p>
+<p>mysql&gt; update user set money =money+100 where name=’a’;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0</p>
+<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1200 |<br>|  2 | b    |   800 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
+<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.01 sec)</p>
+<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1100 |<br>|  2 | b    |   900 |<br>+—-+——+——-+</p>
+<p>####手动开启事务2<br>start transaction<br>update user set money =money+100 where name=’a’;<br>update user set money=money-100 where name=’b’;</p>
+<p>与上述同理<br>begin<br>start transaction<br>这两条命令相当于小开关手动开启事务<br>@@autocommit属于总开关</p>
+<h3><span id="事务的四大特性">事务的四大特性</span></h3><p>A 原子性：事务是最小的单位，不可以再分割<br>B 一致性：事务要求，同一事务中的sql语句u，必须保证同时成功或者同时失败<br>C 隔离性：事务1和事务2 之间具有隔离性<br>D 持久性：事务一旦结束（commit，rollback），就不可以返回</p>
+<p>事务开启：<br>1.修改默认提交 set @@autocommit=0;<br>2.begin<br>3.start transaction</p>
+<p>事务手动提交：<br>commit;</p>
+<p>事务手动回滚：<br>rollback;</p>
+<h3><span id="事务的隔离性">事务的隔离性</span></h3><p>1.read uncommitted;—读未提交的<br>2.read committed;—读已经提交的<br>3.repeatable read;—可以重复读<br>4.serializable;—-串行化</p>
+<h4><span id="1-read-uncommitted">1-read uncommitted</span></h4><p>如果存在事务a和事务b<br>a 事务对数据进行操作，在操作过程中，事务没有被提交，但b可以看见a</p>
+<p>bank数据库user表<br>insert into user values(3,’小明’,1000);<br>insert into user values(4,’淘宝店’,1000);</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>+—-+———–+——-+</p>
+<p>–如何查看数据库的隔离级别<br>–系统级别<br> select @@global.transaction_isolation;<br>–会话级别<br>select @@transaction_isolation;</p>
+<p>//查看数据库隔离级别需要退回到最初的databases</p>
+<p>mysql&gt; select @@global.transaction_isolation;<br>+——————————–+<br>| @@global.transaction_isolation |<br>+——————————–+<br>| REPEATABLE-READ                |<br>+——————————–+<br>–如何修改隔离级别<br>set global transaction isolation level read uncommitted;</p>
+<p>mysql&gt; select @@global.transaction_isolation;<br>+——————————–+<br>| @@global.transaction_isolation |<br>+——————————–+<br>| READ-UNCOMMITTED               |<br>+——————————–+</p>
+<p>–转账： 小明在淘宝店买鞋子：800块<br>小明-》成都<br>淘宝点-》广州<br>start transaction;<br>update user set money=money-800 where name=’小明’;<br>update user set money=money+800 where name=’淘宝店’;</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |   200 |<br>|  4 | 淘宝店    |  1800 |<br>+—-+———–+——-+<br>–给淘宝店打电话，说你去查一下是不是到账了<br>–淘宝店在广州查账</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |   200 |<br>|  4 | 淘宝店    |  1800 |<br>+—-+———–+——-+</p>
+<p>–发货<br>–晚上请女朋友吃好吃的（呸！）<br>–1800</p>
+<p>–小明-》成都</p>
+<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>+—-+———–+——-+</p>
+<p>–结帐的时候发现钱不够</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |   200 |<br>|  4 | 淘宝店    |  1800 |<br>+—-+———–+——-+</p>
+<p>–如果两个不同的地方都在进行操作，如果事务a开启以后，他的数据可以被其他事务读取到<br>–这样就会出现“脏读”<br>–脏读：一个事务读到另外一个事务没有提交的数据，就叫做脏读<br>–实际开发是不允许脏读出现的</p>
+<h4><span id="2read-committed-读已经提交的">2.read committed; 读已经提交的</span></h4><p>set global transaction isolation level read committed;</p>
+<p>bank 数据库 user表<br>小张：银行的会计<br>start transaction;<br>select * from user;</p>
+<p>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>+—-+———–+——-+<br>小张出去了。</p>
+<p>小王：<br>start transaction;<br>insert into user values(5,’c’,100);</p>
+<p>–小张回来了<br>select avg(money) from user;</p>
+<p>mysql&gt; select avg(money) from user;<br>+————+<br>| avg(money) |<br>+————+<br>|   820.0000 |<br>+————+</p>
+<p>–money的平均值不是1000，变少了？<br>–虽然我只能读到另一个事务提交的数据，但还是会出现问题，就是<br>–读取同一个表中的数据，发现前后不一致<br>–不可重复读现象：read committed</p>
+<h4><span id="3repeatable-read">3.repeatable read</span></h4><p>可以重复读，数据库默认也是这个<br>set global transaction isolation level repeatable read;</p>
+<p>–在repeatable-read隔离级别下会出现什么问题<br>select * from user;<br>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>+—-+———–+——-+</p>
+<p>–张全蛋-成都</p>
+<p>start transaction;</p>
+<p>–王尼玛-北京</p>
+<p>start transaction;</p>
+<p>–张全蛋-成都<br>insert into user values(6,’d’,1000);</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>+—-+———–+——-+</p>
+<p>–王尼玛-北京<br>insert into user values(6,’d’,1000);</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>+—-+———–+——-+<br>mysql&gt; insert into user values(6,’d’,1000);<br>ERROR 1062 (23000): Duplicate entry ‘6’ for key ‘user.PRIMARY’</p>
+<p>–这种现象叫做幻读<br>–事务a和事务b同时操作一张表，事务a提交的数据，也不能被事务b读到<br>意思就是两人操作同一个表格的时候，操作的数据并不会实时更新，所以王尼玛当时看不到d的数据，<br>如果重新查看可以查看到。在不知道d的数据已经被插入的情况下再次插入d的数据就会出现错误!</p>
+<h4><span id="4serializable-read">4.serializable read</span></h4><p>//<br>这个示例如果想实际操作演示的话，需要同时开启两个终端窗口<br>然后进行视频中的操作<br>//</p>
+<p>串行化<br>set global transaction isolation level serializable;<br>修改成功</p>
+<p>mysql&gt; select @@global.transaction_isolation;<br>+——————————–+<br>| @@global.transaction_isolation |<br>+——————————–+<br>| SERIALIZABLE                   |<br>+——————————–+</p>
+<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>+—-+———–+——-+</p>
+<p>–小张-成都<br>start transaction;</p>
+<p>insert into user values(7,’小赵’,1000);<br>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>|  7 | 小赵      |  1000 |<br>+—-+———–+——-+</p>
+<p>–小王-北京</p>
+<p>–小王查询信息发现小赵的信息已经存在<br>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>|  7 | 小赵      |  1000 |<br>+—-+———–+——-+</p>
+<p>–小张<br>start transaction;<br>insert into user values(8,’小王’,1000);</p>
+<p>–sql语句卡住？<br>这个时候小张进行操作想要输入新的数据发现卡住<br>–当user表被另外一个事务操作的时候，其他事务写操作，是不可以被进行的<br>（银行效率低的原因发现！！）<br>–进入排队状态（串行化），指导小王那边的事务结束之后（commit）之后<br>小张的写入操作才会执行<br>–在没有等待超时的情况下。</p>
+<p>小王：<br>mysql&gt; commit;<br>Query OK, 0 rows affected (0.00 sec)</p>
+<p>小张：<br>Query OK, 1 row affected (25.70 sec)</p>
+<p>mysql&gt;<br>mysql&gt;<br>mysql&gt;<br>mysql&gt;<br>mysql&gt; </p>
+<p>–串行化问题是，性能特差<br>read—committed&gt;read committed&gt;repeatable read&gt;serializable;<br>–隔离级别越高，性能越查<br>mysql语句默认隔离级别是repeatable</p>
+<hr>
+<p>完结散花！！！<br>小希同学加油！<br>正好一周<br>2021.2.7</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1293,7 +1358,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.2k</span>&nbsp;字
+                class="white-color">12.8k</span>&nbsp;字
             
             
             
