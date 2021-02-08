@@ -53,15 +53,27 @@
       </tags>
   </entry>
   <entry>
-    <title>博客报错</title>
-    <url>/2021/02/04/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
+    <title>Sublime中文设置以及g++安装</title>
+    <url>/2021/02/08/sublime%E4%B8%AD%E6%96%87%E8%AE%BE%E7%BD%AE%E4%BB%A5%E5%8F%8Ag-%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="markdown文本编辑器的初期配置">markdown文本编辑器的初期配置</span></h2><p>官网下载，并安装好, 刚安装好的是没有 Package Control 选项</p>
+<p>找到  Tools-&gt;Install Package Control  选项，即可调出 Package Control</p>
+<p>去找“Tools-&gt;Command Palette…”选项，</p>
+<p>输入 ipc ,点击 Install Package Control，即可调出 Package Control</p>
+<p>找到  Preferences-&gt;Package Control</p>
+<p>选项弹出命令行输入框，输入ip，点击“install Package”</p>
+<p>弹出命令行输入框，输入clz，点击“ChineseLocalizations”</p>
+<p>搞定，设置成中文了</p>
+<h2><span id="markdown下配置c编译环境">markdown下配置C++编译环境</span></h2><p>选择工具-&gt;编译系统-&gt;新建编译系统</p>
+<p>将弹出的文本改为以下内容</p>
+<p>{<br>    “encoding”: “utf-8”,<br>    “working_dir”: “$file_path”,<br>    “shell_cmd”: “g++ &quot;$file_name&quot; -o &quot;$file_base_name&quot;“,<br>    “file_regex”: “^(..[^:]<em>):([0-9]+):?([0-9]+)?:? (.</em>)$”,<br>    “selector”: “source.c++”,<br>     “variants”:<br>    [<br>        {<br>        “name”: “Run”,<br>        “shell_cmd”: “g++ ‘$file’ -o ‘$file_base_name’ &amp;&amp; gnome-terminal -x bash -c &quot;‘${file_path}/${file_base_name}’;read -p ‘\nPress any key to continue…’&quot;“<br>        }<br>    ]<br>}</p>
+<p>保存为myC++之后即完成配置。<br>接下来快捷键ctrl+shift+p 输入选择myC++ 编辑文本即可。</p>
+<p>PS：在linux系统下通过<br>sudo apt update<br>sudo apt install build-essential<br>两条代码即可轻松配置g++.</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>blog</category>
+        <category>文本编辑器</category>
       </categories>
       <tags>
-        <tag>hexo erro</tag>
+        <tag>sublime设置</tag>
       </tags>
   </entry>
   <entry>
@@ -107,6 +119,18 @@
       </categories>
       <tags>
         <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客报错</title>
+    <url>/2021/02/04/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>写博客时包含代码 以为不能输入代码<br>报错提示如下：<br>–Context Dump Ends<br>=====\u001b[39m’ } } ‘Something&#39;s wrong. Maybe you can find the solution here: %s’ ‘\u001b[4m<a href="https://hexo.io/docs/troubleshooting.html/u001b[24m&#39;">https://hexo.io/docs/troubleshooting.html\u001b[24m&#39;</a><br>因为我在文章里写了{ { } }<br>hexo 的文章渲染使用的是 Nunjucks ，因为在使用mathjax公式，造成了{ {重叠，而它会在生成文章时将那几个大括号识别成自己的语法，这样就会报错。<br>解决办法：<br> 在括号之间添加空格 文本可识别</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo erro</tag>
       </tags>
   </entry>
   <entry>
