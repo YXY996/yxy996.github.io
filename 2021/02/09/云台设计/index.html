@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL第三部分, 小杨的博客">
+    <meta name="keywords" content="云台设计, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>MySQL第三部分 | 小杨的博客</title>
+    <title>云台设计 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MySQL第三部分</h1>
+                    <h1 class="description center-align post-title">云台设计</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
+                            <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">云台设计</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MySQL/" class="post-category">
-                                MySQL
+                            <a href="/categories/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                控制系统
                             </a>
                         
                     </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-06
+                    2021-02-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-08
+                    2021-02-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    4 分
                 </div>
                 
 
@@ -514,121 +514,53 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1296271984&auto=1&height=66"></iframe>
+                <h2><span id="云台设计构想及编程应用c语言c转换未完成">云台设计构想及编程应用（C语言—–C＋＋转换未完成）</span></h2><p>控制平台设计构想<br>传感器读取初始数据<br>卡尔曼滤波算法获取yaw，roll，pitch的角度<br>将数据转化为电机的目标值<br>    测量值如果和目标值相等<br>        读取磁编码测量其位置值<br>    测量值与目标值不相等<br>        经过位置环，速度环，电流环<br>            改变电机位置</p>
+<p>状态预测：<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)<br>或者<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)+B(k)u(k)</p>
+<p>这里X(k,k-1)是利用k-1时刻预测的当前状态结果<br>X(k-1)是k-1时刻最优值<br>A(k,k-1)是X(k-1)状态下的变换矩阵，它是算法对状态变量进行预测的依据<br>B(k)是作用在控制量上的变换矩阵，在大多数实际情况下并没有控制收益<br>u(k)是当前状态的控制增益，一般没有这个变量，可以设为0</p>
+<p>协方差阵预测：<br>P(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑃(𝑘−1) 𝐴^𝑇 (𝑘,𝑘−1)+𝐵(𝑘,𝑘−1)𝑄(𝑘−1)𝐵^𝑇 (𝑘,𝑘−1)</p>
+<p>P(𝑘,𝑘−1)是k时刻系统协方差矩阵<br>P(k-1)是k-1时刻系统协方差矩阵<br>Q(k-1)是系统过程的协方差矩阵</p>
+<p>滤波增益：<br>根据k时刻的协方差矩阵的预测值计算卡尔曼收益<br>𝐾(𝑘)=(𝑝(𝑘,𝑘−1) 𝐶^𝑇 (𝑘))/((𝐶(𝑘)𝑃(𝑘,𝑘−1) 𝐶^𝑇 (𝑘)+𝑅(𝑘))<br>k(k)是卡尔曼增益，是滤波的中间结果<br>C(k)是对象的预测矩阵<br>R(k)是对象测量噪声的协方差矩阵，是一个数值，作为已知条件输入滤波器。<br>这个值过大过小都会使滤波效果变差，且R(k)取值越小收敛越快,所以可以通过实验手段寻找合适的R(k)值再利用它进行真实的滤波.</p>
+<p>协方差阵估计：<br>目的：为了求k时刻的协方差矩阵（为得到k+1时刻的卡尔曼输出值做准备）<br>𝑃(𝑘)=(1−𝐾(𝑘)𝐶(𝑘))𝑃(𝑘,𝑘−1)<br>当p(k,k-1)为一个一维矩阵的时候,C(k)是1</p>
+<p>状态估计：<br>𝑋(k)=𝑋(𝑘,𝑘−1）+𝐾(𝑘)(𝑌(𝑘)−𝐶(𝑘)𝑋(𝑘,𝑘−1))<br>X(k)是k时刻状态变量的最优估计值<br>Y(K)是对象的测量</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;1. 结构体类型定义
+typedef struct 
+&#123;
+    float LastP;&#x2F;&#x2F;上次估算协方差 初始化值为0.02
+    float Now_P;&#x2F;&#x2F;当前估算协方差 初始化值为0
+    float out;&#x2F;&#x2F;卡尔曼滤波器输出 初始化值为0
+    float Kg;&#x2F;&#x2F;卡尔曼增益 初始化值为0
+    float Q;&#x2F;&#x2F;过程噪声协方差 初始化值为0.001
+    float R;&#x2F;&#x2F;观测噪声协方差 初始化值为0.543
+&#125;KFP；&#x2F;&#x2F;Kalman Filter parameter
 
+&#x2F;&#x2F;2. 以高度为例 定义卡尔曼结构体并初始化参数
+KFP KFP_height&#x3D;&#123;0.02,0,0,0,0.001,0.543&#125;;
 
-<h2><span id="sql-的四种连接查询">SQL 的四种连接查询</span></h2><p>1.内连接<br>2.外连接<br>  -左连接<br>  -右连接<br>  -完全外连接</p>
-<h2><span id="创建两个表格">创建两个表格</span></h2><h3><span id="peson表格">peson表格</span></h3><p>–person表</p>
-<p>id,name,cardID<br>create table person(<br>id int,<br>name varchar(20),<br>cardID int);</p>
-<h3><span id="card表格">card表格</span></h3><p>–card表<br>id ,name<br>create table card(<br>id int,<br>name varchar(20));</p>
-<h2><span id="插入数据">插入数据</span></h2><h3><span id="card数据">card数据</span></h3><p>insert into card values(1,’饭卡’);<br>insert into card values(2,’建行卡’);<br>insert into card values(3,’农行卡’);<br>insert into card values(4,’工商卡’);<br>insert into card values(5,’邮政卡’);</p>
-<h3><span id="person数据">person数据</span></h3><p>insert into person values(1,’张三’,1);<br>insert into person values(2,’李四’,3);<br>insert into person values(3,’王五’,6);</p>
-<h2><span id="连接实战">“连接”实战</span></h2><p>select * from person;<br>+——+——–+——–+<br>| id   | name   | cardID |<br>+——+——–+——–+<br>|    1 | 张三   |      1 |<br>|    2 | 李四   |      3 |<br>|    3 | 王五   |      6 |<br>+——+——–+——–+</p>
-<p>–并没有创建外键，</p>
-<h3><span id="内连接">内连接</span></h3><p>inner join<br>内联查询，就是两张表中的数据通过某个字段相对，查询出相关记录数据<br>– inner join 查询</p>
-<p>select * from person inner join card on person.cardId=card.id;<br>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>+——+——–+——–+——+———–+</p>
-<h3><span id="外连接">外连接</span></h3><h4><span id="1左外连接">1.左外连接</span></h4><p>left join或者left outer join<br>select * from person left join card on person.cardId=card.id;</p>
-<p>左外连接，会把左边表里面的所有数据取出来，而右边表中的数据，如果有相等的，就会显示出来<br>如果没有，就会补NULL</p>
-<p>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>|    3 | 王五   |      6 | NULL | NULL      |<br>+——+——–+——–+——+———–+</p>
-<h4><span id="2右外连接">2.右外连接</span></h4><p>right或者right outer join<br>select * from person right join card on person.cardId=card.id;<br>右外连接，会把右边表里面的所有数据取出来，而左边表中的数据，如果有相等的，就显示出来<br>如果没有，就会补NULL<br>select * from person right outer join card on person.cardId=card.id;</p>
-<p>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>| NULL | NULL   |   NULL |    2 | 建行卡    |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>| NULL | NULL   |   NULL |    4 | 工商卡    |<br>| NULL | NULL   |   NULL |    5 | 邮政卡    |<br>+——+——–+——–+——+———–+</p>
-<h4><span id="2完全外连接">2.完全外连接</span></h4><p>full join或者full outer join<br>select * from person full join card on person.cardId=card.id;</p>
-<p>mysql&gt; select * from person full join card on person.cardId=card.id;<br>ERROR 1054 (42S22): Unknown column ‘person.cardId’ in ‘on clause’</p>
-<p>mysql不支持全外连接，原因不知，下节课再议<br>集合考虑：<br>全外连接=左连接union右连接<br>select * from person left join card on person.cardId=card.id<br>union<br>select * from person right join card on person.cardId=card.id;</p>
-<p>+——+——–+——–+——+———–+<br>| id   | name   | cardID | id   | name      |<br>+——+——–+——–+——+———–+<br>|    1 | 张三   |      1 |    1 | 饭卡      |<br>|    2 | 李四   |      3 |    3 | 农行卡    |<br>|    3 | 王五   |      6 | NULL | NULL      |<br>| NULL | NULL   |   NULL |    2 | 建行卡    |<br>| NULL | NULL   |   NULL |    4 | 工商卡    |<br>| NULL | NULL   |   NULL |    5 | 邮政卡    |<br>+——+——–+——–+——+———–+</p>
-<h2><span id="mysql事务">mysql事务</span></h2><p>mysql中，事务其实是一个最小的不可分割的工作单元。事务能够保证一个业务的完整性<br>比如我们的银行转账：<br>    a-&gt;100<br>    update user set money =money-100 where name=’a’<br>    b-&gt;<br>    update user set money=money+100 where name=’b’<br>–实际的程序中，如果只有一条语句执行成功了，而另外一条没有执行成功？<br>–出现数据前后不一致<br>     update user set money =money-100 where name=’a’<br>     update user set money=money+100 where name=’b’<br>–多条sql语句，可能会有同时成功的要求，要么就同时失败<br>–mysql如何控制事务</p>
-<h3><span id="mysql默认是开启事务的自动提交">mysql默认是开启事务的(自动提交)</span></h3><p>mysql&gt; select @@autocommit;<br>+————–+<br>| @@autocommit |<br>+————–+<br>|            1 |<br>+————–+<br>–默认事务开启的作用是什么？<br>–当我们区执行sql语句的时候，效果就会立即体现出来，且不能回滚<br>create database bank;<br>create table user(<br>id int primary key,<br>name varchar(20),<br>money int);</p>
-<p>insert into user values(1,’a’,1000);</p>
-<p>–事务回滚：撤销sql语句</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>+—-+——+——-+<br>1 row in set (0.00 sec)</p>
-<p>–设置自动提交为false</p>
-<p>set @@autocommit=0</p>
-<p>mysql&gt; select @@autocommit;<br>+————–+<br>| @@autocommit |<br>+————–+<br>|            0 |<br>+————–+</p>
-<p>–上面的操作关闭了mysql的自动提交（commit)<br>insert into user values(2,’b’,1000);</p>
-<p>mysql&gt; insert into user values(2,’b’,1000);<br>Query OK, 1 row affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>+—-+——+——-+<br>1 row in set (0.00 sec)</p>
-<p>–再一次插入数据<br>mysql&gt; insert into user values(2,’b’,1000);<br>Query OK, 1 row affected (0.00 sec)<br>–手动提交数据<br>mysql&gt; commit;<br>Query OK, 0 rows affected (0.01 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+<br>2 rows in set (0.01 sec)<br>–再撤销，是不可以撤销的（持久性）</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
-<p>–自动提交？<br>@@autocommit=1<br>–手动提交？<br>commit;<br>–事务回滚？<br>rollback;<br>–如果说这个时候转账</p>
-<h3><span id="转账实际操作">转账实际操作</span></h3><p>如果要执行成功撤销操作 需要@@autocommit=0</p>
-<p>mysql&gt; set @@autocommit=0;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select @@autocommit;<br>+————–+<br>| @@autocommit |<br>+————–+<br>|            0 |<br>+————–+</p>
-<p>update user set money =money+100 where name=’a’;<br>update user set money=money-100 where name=’b’;</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1100 |<br>|  2 | b    |   900 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.01 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1000 |<br>|  2 | b    |  1000 |<br>+—-+——+——-+</p>
-<p>–事务给我们提供了一个反悔的机会</p>
-<p>begin;<br>–或者<br>start transaction;<br>–都可以帮我们手动开启一个事务</p>
-<h4><span id="手动开启事务1">手动开启事务1</span></h4><p>begin;<br>update user set money =money+100 where name=’a’;<br>update user set money=money-100 where name=’b’;</p>
-<p>mysql&gt; update user set money=money-100 where name=’b’;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0</p>
-<p>mysql&gt; update user set money =money+100 where name=’a’;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1200 |<br>|  2 | b    |   800 |<br>+—-+——+——-+<br>2 rows in set (0.00 sec)</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.01 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+——+——-+<br>| id | name | money |<br>+—-+——+——-+<br>|  1 | a    |  1100 |<br>|  2 | b    |   900 |<br>+—-+——+——-+</p>
-<p>####手动开启事务2<br>start transaction<br>update user set money =money+100 where name=’a’;<br>update user set money=money-100 where name=’b’;</p>
-<p>与上述同理<br>begin<br>start transaction<br>这两条命令相当于小开关手动开启事务<br>@@autocommit属于总开关</p>
-<h3><span id="事务的四大特性">事务的四大特性</span></h3><p>A 原子性：事务是最小的单位，不可以再分割<br>B 一致性：事务要求，同一事务中的sql语句u，必须保证同时成功或者同时失败<br>C 隔离性：事务1和事务2 之间具有隔离性<br>D 持久性：事务一旦结束（commit，rollback），就不可以返回</p>
-<p>事务开启：<br>1.修改默认提交 set @@autocommit=0;<br>2.begin<br>3.start transaction</p>
-<p>事务手动提交：<br>commit;</p>
-<p>事务手动回滚：<br>rollback;</p>
-<h3><span id="事务的隔离性">事务的隔离性</span></h3><p>1.read uncommitted;—读未提交的<br>2.read committed;—读已经提交的<br>3.repeatable read;—可以重复读<br>4.serializable;—-串行化</p>
-<h4><span id="1-read-uncommitted">1-read uncommitted</span></h4><p>如果存在事务a和事务b<br>a 事务对数据进行操作，在操作过程中，事务没有被提交，但b可以看见a</p>
-<p>bank数据库user表<br>insert into user values(3,’小明’,1000);<br>insert into user values(4,’淘宝店’,1000);</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>+—-+———–+——-+</p>
-<p>–如何查看数据库的隔离级别<br>–系统级别<br> select @@global.transaction_isolation;<br>–会话级别<br>select @@transaction_isolation;</p>
-<p>//查看数据库隔离级别需要退回到最初的databases</p>
-<p>mysql&gt; select @@global.transaction_isolation;<br>+——————————–+<br>| @@global.transaction_isolation |<br>+——————————–+<br>| REPEATABLE-READ                |<br>+——————————–+<br>–如何修改隔离级别<br>set global transaction isolation level read uncommitted;</p>
-<p>mysql&gt; select @@global.transaction_isolation;<br>+——————————–+<br>| @@global.transaction_isolation |<br>+——————————–+<br>| READ-UNCOMMITTED               |<br>+——————————–+</p>
-<p>–转账： 小明在淘宝店买鞋子：800块<br>小明-》成都<br>淘宝点-》广州<br>start transaction;<br>update user set money=money-800 where name=’小明’;<br>update user set money=money+800 where name=’淘宝店’;</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |   200 |<br>|  4 | 淘宝店    |  1800 |<br>+—-+———–+——-+<br>–给淘宝店打电话，说你去查一下是不是到账了<br>–淘宝店在广州查账</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |   200 |<br>|  4 | 淘宝店    |  1800 |<br>+—-+———–+——-+</p>
-<p>–发货<br>–晚上请女朋友吃好吃的（呸！）<br>–1800</p>
-<p>–小明-》成都</p>
-<p>mysql&gt; rollback;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>+—-+———–+——-+</p>
-<p>–结帐的时候发现钱不够</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |   200 |<br>|  4 | 淘宝店    |  1800 |<br>+—-+———–+——-+</p>
-<p>–如果两个不同的地方都在进行操作，如果事务a开启以后，他的数据可以被其他事务读取到<br>–这样就会出现“脏读”<br>–脏读：一个事务读到另外一个事务没有提交的数据，就叫做脏读<br>–实际开发是不允许脏读出现的</p>
-<h4><span id="2read-committed-读已经提交的">2.read committed; 读已经提交的</span></h4><p>set global transaction isolation level read committed;</p>
-<p>bank 数据库 user表<br>小张：银行的会计<br>start transaction;<br>select * from user;</p>
-<p>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>+—-+———–+——-+<br>小张出去了。</p>
-<p>小王：<br>start transaction;<br>insert into user values(5,’c’,100);</p>
-<p>–小张回来了<br>select avg(money) from user;</p>
-<p>mysql&gt; select avg(money) from user;<br>+————+<br>| avg(money) |<br>+————+<br>|   820.0000 |<br>+————+</p>
-<p>–money的平均值不是1000，变少了？<br>–虽然我只能读到另一个事务提交的数据，但还是会出现问题，就是<br>–读取同一个表中的数据，发现前后不一致<br>–不可重复读现象：read committed</p>
-<h4><span id="3repeatable-read">3.repeatable read</span></h4><p>可以重复读，数据库默认也是这个<br>set global transaction isolation level repeatable read;</p>
-<p>–在repeatable-read隔离级别下会出现什么问题<br>select * from user;<br>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>+—-+———–+——-+</p>
-<p>–张全蛋-成都</p>
-<p>start transaction;</p>
-<p>–王尼玛-北京</p>
-<p>start transaction;</p>
-<p>–张全蛋-成都<br>insert into user values(6,’d’,1000);</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>+—-+———–+——-+</p>
-<p>–王尼玛-北京<br>insert into user values(6,’d’,1000);</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>+—-+———–+——-+<br>mysql&gt; insert into user values(6,’d’,1000);<br>ERROR 1062 (23000): Duplicate entry ‘6’ for key ‘user.PRIMARY’</p>
-<p>–这种现象叫做幻读<br>–事务a和事务b同时操作一张表，事务a提交的数据，也不能被事务b读到<br>意思就是两人操作同一个表格的时候，操作的数据并不会实时更新，所以王尼玛当时看不到d的数据，<br>如果重新查看可以查看到。在不知道d的数据已经被插入的情况下再次插入d的数据就会出现错误!</p>
-<h4><span id="4serializable-read">4.serializable read</span></h4><p>//<br>这个示例如果想实际操作演示的话，需要同时开启两个终端窗口<br>然后进行视频中的操作<br>//</p>
-<p>串行化<br>set global transaction isolation level serializable;<br>修改成功</p>
-<p>mysql&gt; select @@global.transaction_isolation;<br>+——————————–+<br>| @@global.transaction_isolation |<br>+——————————–+<br>| SERIALIZABLE                   |<br>+——————————–+</p>
-<p>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>+—-+———–+——-+</p>
-<p>–小张-成都<br>start transaction;</p>
-<p>insert into user values(7,’小赵’,1000);<br>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>|  7 | 小赵      |  1000 |<br>+—-+———–+——-+</p>
-<p>–小王-北京</p>
-<p>–小王查询信息发现小赵的信息已经存在<br>mysql&gt; select * from user;<br>+—-+———–+——-+<br>| id | name      | money |<br>+—-+———–+——-+<br>|  1 | a         |  1100 |<br>|  2 | b         |   900 |<br>|  3 | 小明      |  1000 |<br>|  4 | 淘宝店    |  1000 |<br>|  5 | c         |   100 |<br>|  6 | d         |  1000 |<br>|  7 | 小赵      |  1000 |<br>+—-+———–+——-+</p>
-<p>–小张<br>start transaction;<br>insert into user values(8,’小王’,1000);</p>
-<p>–sql语句卡住？<br>这个时候小张进行操作想要输入新的数据发现卡住<br>–当user表被另外一个事务操作的时候，其他事务写操作，是不可以被进行的<br>（银行效率低的原因发现！！）<br>–进入排队状态（串行化），指导小王那边的事务结束之后（commit）之后<br>小张的写入操作才会执行<br>–在没有等待超时的情况下。</p>
-<p>小王：<br>mysql&gt; commit;<br>Query OK, 0 rows affected (0.00 sec)</p>
-<p>小张：<br>Query OK, 1 row affected (25.70 sec)</p>
-<p>mysql&gt;<br>mysql&gt;<br>mysql&gt;<br>mysql&gt;<br>mysql&gt; </p>
-<p>–串行化问题是，性能特差<br>read—committed&gt;read committed&gt;repeatable read&gt;serializable;<br>–隔离级别越高，性能越查<br>mysql语句默认隔离级别是repeatable</p>
-<hr>
-<p>完结散花！！！<br>小希同学加油！<br>正好一周<br>2021.2.7</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+&#x2F;**
+ *卡尔曼滤波器
+ *@param KFP *kfp 卡尔曼结构体参数
+ *   float input 需要滤波的参数的测量值（即传感器的采集值）
+ *@return 滤波后的参数（最优值）
+ *&#x2F;
+ float kalmanFilter(KFP *kfp,float input)
+ &#123;
+     &#x2F;&#x2F;预测协方差方程：k时刻系统估算协方差 &#x3D; k-1时刻的系统协方差 + 过程噪声协方差
+     kfp-&gt;Now_P &#x3D; kfp-&gt;LastP + kfp-&gt;Q;
+     &#x2F;&#x2F;卡尔曼增益方程：卡尔曼增益 &#x3D; k时刻系统估算协方差 &#x2F; （k时刻系统估算协方差 + 观测噪声协方差）
+     kfp-&gt;Kg &#x3D; kfp-&gt;Now_P &#x2F; (kfp-&gt;NOw_P + kfp-&gt;R);
+     &#x2F;&#x2F;更新最优值方程：k时刻状态变量的最优值 &#x3D; 状态变量的预测值 + 卡尔曼增益 * （测量值 - 状态变量的预测值）
+     kfp-&gt;out &#x3D; kfp-&gt;out + kfp-&gt;Kg * (input -kfp-&gt;out);&#x2F;&#x2F;因为这一次的预测值就是上一次的输出值
+     &#x2F;&#x2F;更新协方差方程: 本次的系统协方差付给 kfp-&gt;LastP 威下一次运算准备。
+     kfp-&gt;LastP &#x3D; (1-kfp-&gt;Kg) * kfp-&gt;Now_P;
+     return kfp-&gt;out；
+ &#125;
+
+&#x2F;**
+ *调用卡尔曼滤波器 实践
+ *&#x2F;
+int height;
+int kalman_height&#x3D;0;
+kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -642,8 +574,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
+                                <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">云台设计</span>
                                 </a>
                             
                         </div>
@@ -1076,17 +1008,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/07/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98-2/">
+                <a href="/2021/02/09/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="程序员面试题">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="云台设计">
                         
-                        <span class="card-title">程序员面试题</span>
+                        <span class="card-title">云台设计</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1096,9 +1029,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    控制系统
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">云台设计</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/08/C++%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="C++进阶笔记">
+                        
+                        <span class="card-title">C++进阶笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1114,57 +1097,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/02/04/%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="博客报错">
-                        
-                        <span class="card-title">博客报错</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-04
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/blog/" class="post-category">
-                                    blog
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo-erro/">
-                        <span class="chip bg-color">hexo erro</span>
+                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">C++进阶笔记</span>
                     </a>
                     
                 </div>
