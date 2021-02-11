@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-08
+                    2021-02-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    379
+                    806
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -556,7 +556,52 @@ int main()&#123;
 
 	&#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+<p>例子：指向常量的指针作形参<br>传递地址且不需要主调函数中的数值是无法修改的<br>这个时候把指针定义为常量指针，只为了输出。<br>最小授权原则,对外的访问授权够用就好。</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+const int N&#x3D;6;
+void print(const int *p ,int n);
+int main()&#123;
+	int array[N];
+	for (int i&#x3D;0;i&lt;N;i++)
+		cin&gt;&gt;array[i];
+	print(array,N);
+	return 0;
+&#125;
+void print(const int *p,int n)&#123;
+	cout&lt;&lt;&quot;&#123;&quot;&lt;&lt;*p;
+	for (int i&#x3D;1;i&lt;n;i++)
+		cout&lt;&lt;&quot;,&quot;&lt;&lt;*(p+i);
+	cout&lt;&lt;&quot;&#125;&quot;&lt;&lt;endl;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="指针函数的定义形式">指针函数的定义形式：</span></h2><p>存储类型 数据类型 *函数名 ( )<br>{<br>    //函数体语句<br>}<br>！！不要将非静态局部地址用作函数的返回值<br>错误的例子：<br>在子函数中定义局部变量后将其地址返回给主函数，就是非法地址<br>错误例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">
+int main()&#123;
+	int *function();
+	int *ptr&#x3D;function();
+	*ptr&#x3D;5;&#x2F;&#x2F;危险的访问
+	return 0;
+&#125;
+int *function()&#123;
+	int local&#x3D;0;&#x2F;&#x2F;非静态局部变量作用域和寿命仅限于本函数体内
+	return &amp;local;
+&#125;&#x2F;&#x2F;函数结束运行时，变量local被释放
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>正确例子：<br>动态分配地址，函数有效</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+	int *newintvar();
+	int *intptr&#x3D;newintvar();
+	*intptr&#x3D;5; &#x2F;&#x2F;访问的是合法有效的地址
+	delete intptr;&#x2F;&#x2F;如果忘记在这里释放，会造成内存泄漏
+	return 0;
+
+&#125;
+int *newintvar()&#123;
+	int *p&#x3D;new int();
+	return p;&#x2F;&#x2F;返回的地址指向的是动态分配的空间
+&#125;&#x2F;&#x2F;函数运行结束时，p中的地址仍然有效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -1286,7 +1331,7 @@ int main()&#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.5k</span>&nbsp;字
+                class="white-color">14.9k</span>&nbsp;字
             
             
             
