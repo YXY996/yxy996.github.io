@@ -90,7 +90,170 @@ int main()&#123;
 int *newintvar()&#123;
 	int *p&#x3D;new int();
 	return p;&#x2F;&#x2F;返回的地址指向的是动态分配的空间
-&#125;&#x2F;&#x2F;函数运行结束时，p中的地址仍然有效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+&#125;&#x2F;&#x2F;函数运行结束时，p中的地址仍然有效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="函数指针">函数指针</span></h2><p>定义形式:<br>存储类型 数据类型 （* 函数指针名）（）；<br>含义：<br>函数指针指向的是程序代码存储区。</p>
+<p>函数指针的典型用途–实现函数回调<br>通过函数指针调用的函数<br>    例如将函数的指针作为参数传递给一个函数，使得在处理相似事件的时候可以灵活的使用不同的方法<br>调用者不关心谁是被调用者<br>    需知道存在一个具有特定原型和限制条件的被调用函数</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+int compute(int a,int b,int (*func)(int,int))
+&#123;
+	return func(a,b);
+&#125;
+int max(int a,int b)
+&#123;
+	return ((a&gt;b)?a:b);
+&#125;
+int min(int a,int b)
+&#123;
+	return ((a&lt;b)?a:b);
+&#125;
+int sum(int a,int b)
+&#123;
+	return a+b;
+&#125;
+int main()&#123;
+	int a ,b,res;
+	cout&lt;&lt;&quot;请输入整数a:&quot;;cin&gt;&gt;a;
+	cout&lt;&lt;&quot;请输入整数b:&quot;;cin&gt;&gt;b;
+	res&#x3D;compute(a,b,&amp;max);
+	cout&lt;&lt;&quot;Max of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
+	res&#x3D;compute(a,b,&amp;min);
+	cout&lt;&lt;&quot;Min of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
+	res&#x3D;compute(a,b,&amp;sum);
+	cout&lt;&lt;&quot;Sum of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
+	
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="this指针">this指针</span></h2><p>隐含于类的每一个非静态成员函数中<br>指出成员函数所操作的对象<br>    当通过一个对象调用成员函数时，系统先将该对象的地址赋给this指针，然后调用成员函数，成员函数对对象的数据成员进行操作时，就隐含使用了this指针<br>例如：<br>Point类的getX函数中的语句<br>return x;<br>相当于<br>return this-&gt;x;</p>
+<h2><span id="动态申请内存操作符-new">动态申请内存操作符 new</span></h2><p>new 类型名T（初始化参数列表）<br>功能：<br>在程序执行期间，申请用于存放类型T对象的内存空间<br>并依初值列表赋以初值<br>成功：T类型的指针，指向新分配的内存<br>失败：抛出异常</p>
+<h2><span id="释放内存操作符-delete">释放内存操作符 delete</span></h2><p>功能：释放指针p所指向的内存。<br>p必须是new操作的返回值</p>
+<p>例子：<br>动态创建对象举例</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+	cout&lt;&lt;&quot;Step One:&quot;&lt;&lt;endl;
+	Point *ptr1&#x3D;new Point;&#x2F;&#x2F;调用默认构造函数
+	delete ptr1;&#x2F;&#x2F;删除对象，自动调用析构函数
+	cout&lt;&lt;&quot;Step Two:&quot;&lt;&lt;endl;
+	ptr1&#x3D; new Point(1,2);
+	delete ptr1;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>分配和释放动态数组<br>分配：new 类型名T [数组长度]<br>数组长度可以是任何整数类型表达式，在运行时计算<br>释放：delete []数组名p<br>释放指针p所指向的数组<br>p必须是用new分配得到的数组首地址</p>
+<h2><span id="动态创建多维数组">动态创建多维数组</span></h2><pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+using namespace std;
+int main()&#123;
+	int (*cp)[9][8]&#x3D;new int [7][9][8];
+	for (int i&#x3D;0;i&lt;7;i++)
+		for (int j&#x3D;0;j&lt;9;j++)
+			for(int k&#x3D;0;k&lt;8;k++)
+				*(*(*(cp+i)+j)+k)&#x3D;(i*100+j*10+k);
+	for (int i&#x3D;0;i&lt;7;i++)&#123;	
+		for (int j&#x3D;0;j&lt;9;j++)&#123;
+			for(int k&#x3D;0;k&lt;8;k++)
+				cout&lt;&lt;cp[i][j][k]&lt;&lt;&quot; &quot;;
+			cout&lt;&lt;endl;
+		&#125;
+		cout&lt;&lt;endl;
+	&#125;
+	delete []cp;
+	return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2><span id="将动态数组分装成类">将动态数组分装成类</span></h2><p>更加简洁，便于管理<br>可以在访问数组元素前检查<br>下标是否越界</p>
+<h2><span id="c11的智能指针">C++11的智能指针</span></h2><p>unique_ptr:<br>不允许 多个指针共享资源，可以用标准库中的move函数转移指针<br>shared_ptr:<br>多个指针共享资源<br>weak_ptr:<br>可复制shared_ptr,但其构造或者释放对资源不会产生影响</p>
+<h2><span id="vector">vector</span></h2><p>为什么需要vector<br>封装任何类型的动态数组，自动创建和删除<br>数组下标越界检查<br>vector对象的定义<br>vector&lt;元素类型&gt;数组对象名（数组长度）<br>例子<br>vetor<int>arr[5]<br>对象的使用<br>对数组元素的引用<br>    与普通数组具有相同形式<br>    vector对象名[下标表达式]<br>    vector数组对象名不表示数组首地址<br>获得数组长度<br>    用size函数<br>    vector对象名.size</int></p>
+<p>例子：计算平均值<br>for条件语句还是习惯加花括号<br>否则容易出问题</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+double average(const vector&lt;double&gt;&amp;arr)
+&#123;
+	double sum&#x3D;0;
+	for (unsigned i&#x3D;0;i&lt;arr.size();i++)
+		sum+&#x3D;arr[i];
+		cout&lt;&lt;&quot;sum&#x3D;&quot;&lt;&lt;sum&lt;&lt;endl;
+		cout&lt;&lt;&quot;size&#x3D;&quot;&lt;&lt;arr.size()&lt;&lt;endl;
+	return sum&#x2F;arr.size();
+&#125;
+int main()&#123;
+	unsigned n;
+	cout&lt;&lt;&quot;n&#x3D; &quot;;
+	cin&gt;&gt;n;
+	vector &lt;double&gt;arr(n);
+	cout&lt;&lt;&quot;please input&quot;&lt;&lt;&quot; &quot;&lt;&lt;n&lt;&lt;&quot; &quot;&lt;&lt;&quot;real numbers:&quot;&lt;&lt;endl;
+	for (unsigned i&#x3D;0;i&lt;n;i++)
+		cin&gt;&gt;arr[i];
+		cout&lt;&lt;&quot;Average &#x3D;&quot;&lt;&lt;average(arr)&lt;&lt;endl;
+		return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="浅层复制">浅层复制</span></h2><p>实现对象间数据元素的一一复制</p>
+<h2><span id="深层复制">深层复制</span></h2><p>返回时构造临时对象，动态分配将临时对象返回到主调函数，然后删除临时对象</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+class IntNum&#123;
+public:
+   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
+      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
+   &#125;
+   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
+      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
+   &#125;
+   ~IntNum()&#123;
+      delete xptr;
+      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
+   &#125;
+   int getInt()&#123;
+      return *xptr;
+   &#125;
+private:
+   int *xptr;
+&#125;;
+IntNum getNum()&#123;
+   IntNum a;
+   return a;
+&#125;
+int main()&#123;
+   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
+   return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="移动构造">移动构造</span></h2><p>class_name(class_name)<br>将要返回的局部对象转移到主调函数，省去了构造和删除临时对象的过程</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+class IntNum&#123;
+public:
+   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
+      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
+   &#125;
+   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
+      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
+   &#125;
+   ~IntNum()&#123;
+      delete xptr;
+      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
+   &#125;
+   int getInt()&#123;
+      return *xptr;
+   &#125;
+private:
+   int *xptr;
+&#125;;
+IntNum getNum()&#123;
+   IntNum a;
+   return a;
+&#125;
+int main()&#123;
+   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
+   return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：<br>&amp;&amp;是右值引用<br>函数返回的临时变量是右值</p>
+<p>移动构造优于复制构造，但具体还需要之后作题练习，这里一头雾水</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
       </categories>
@@ -148,30 +311,6 @@ int *newintvar()&#123;
       </categories>
       <tags>
         <tag>安装问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sublime中文设置以及g++安装</title>
-    <url>/2021/02/08/sublime%E4%B8%AD%E6%96%87%E8%AE%BE%E7%BD%AE%E4%BB%A5%E5%8F%8Ag-%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="markdown文本编辑器的初期配置">markdown文本编辑器的初期配置</span></h2><p>官网下载，并安装好, 刚安装好的是没有 Package Control 选项</p>
-<p>找到  Tools-&gt;Install Package Control  选项，即可调出 Package Control</p>
-<p>去找“Tools-&gt;Command Palette…”选项，</p>
-<p>输入 ipc ,点击 Install Package Control，即可调出 Package Control</p>
-<p>找到  Preferences-&gt;Package Control</p>
-<p>选项弹出命令行输入框，输入ip，点击“install Package”</p>
-<p>弹出命令行输入框，输入clz，点击“ChineseLocalizations”</p>
-<p>搞定，设置成中文了</p>
-<h2><span id="markdown下配置c编译环境">markdown下配置C++编译环境</span></h2><p>选择工具-&gt;编译系统-&gt;新建编译系统</p>
-<p>将弹出的文本改为以下内容</p>
-<p>{<br>    “encoding”: “utf-8”,<br>    “working_dir”: “$file_path”,<br>    “shell_cmd”: “g++ &quot;$file_name&quot; -o &quot;$file_base_name&quot;“,<br>    “file_regex”: “^(..[^:]<em>):([0-9]+):?([0-9]+)?:? (.</em>)$”,<br>    “selector”: “source.c++”,<br>     “variants”:<br>    [<br>        {<br>        “name”: “Run”,<br>        “shell_cmd”: “g++ ‘$file’ -o ‘$file_base_name’ &amp;&amp; gnome-terminal -x bash -c &quot;‘${file_path}/${file_base_name}’;read -p ‘\nPress any key to continue…’&quot;“<br>        }<br>    ]<br>}</p>
-<p>保存为myC++之后即完成配置。<br>接下来快捷键ctrl+shift+p 输入选择myC++ 编辑文本即可。</p>
-<p>PS：在linux系统下通过<br>sudo apt update<br>sudo apt install build-essential<br>两条代码即可轻松配置g++.</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>文本编辑器</category>
-      </categories>
-      <tags>
-        <tag>sublime设置</tag>
       </tags>
   </entry>
   <entry>
@@ -241,6 +380,30 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
       </categories>
       <tags>
         <tag>hexo erro</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sublime中文设置以及g++安装</title>
+    <url>/2021/02/08/sublime%E4%B8%AD%E6%96%87%E8%AE%BE%E7%BD%AE%E4%BB%A5%E5%8F%8Ag-%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="markdown文本编辑器的初期配置">markdown文本编辑器的初期配置</span></h2><p>官网下载，并安装好, 刚安装好的是没有 Package Control 选项</p>
+<p>找到  Tools-&gt;Install Package Control  选项，即可调出 Package Control</p>
+<p>去找“Tools-&gt;Command Palette…”选项，</p>
+<p>输入 ipc ,点击 Install Package Control，即可调出 Package Control</p>
+<p>找到  Preferences-&gt;Package Control</p>
+<p>选项弹出命令行输入框，输入ip，点击“install Package”</p>
+<p>弹出命令行输入框，输入clz，点击“ChineseLocalizations”</p>
+<p>搞定，设置成中文了</p>
+<h2><span id="markdown下配置c编译环境">markdown下配置C++编译环境</span></h2><p>选择工具-&gt;编译系统-&gt;新建编译系统</p>
+<p>将弹出的文本改为以下内容</p>
+<p>{<br>    “encoding”: “utf-8”,<br>    “working_dir”: “$file_path”,<br>    “shell_cmd”: “g++ &quot;$file_name&quot; -o &quot;$file_base_name&quot;“,<br>    “file_regex”: “^(..[^:]<em>):([0-9]+):?([0-9]+)?:? (.</em>)$”,<br>    “selector”: “source.c++”,<br>     “variants”:<br>    [<br>        {<br>        “name”: “Run”,<br>        “shell_cmd”: “g++ ‘$file’ -o ‘$file_base_name’ &amp;&amp; gnome-terminal -x bash -c &quot;‘${file_path}/${file_base_name}’;read -p ‘\nPress any key to continue…’&quot;“<br>        }<br>    ]<br>}</p>
+<p>保存为myC++之后即完成配置。<br>接下来快捷键ctrl+shift+p 输入选择myC++ 编辑文本即可。</p>
+<p>PS：在linux系统下通过<br>sudo apt update<br>sudo apt install build-essential<br>两条代码即可轻松配置g++.</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>文本编辑器</category>
+      </categories>
+      <tags>
+        <tag>sublime设置</tag>
       </tags>
   </entry>
   <entry>
