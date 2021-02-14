@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Sublime中文设置以及g++安装, 小杨的博客">
+    <meta name="keywords" content="算法基础, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Sublime中文设置以及g++安装 | 小杨的博客</title>
+    <title>算法基础 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Sublime中文设置以及g++安装</h1>
+                    <h1 class="description center-align post-title">算法基础</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/sublime%E8%AE%BE%E7%BD%AE/">
-                                <span class="chip bg-color">sublime设置</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">算法基础</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="post-category">
-                                文本编辑器
+                            <a href="/categories/C/" class="post-category">
+                                C++
                             </a>
                         
                     </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-08
+                    2021-02-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-08
+                    2021-02-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    252
+                    709
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -514,19 +514,82 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="markdown文本编辑器的初期配置">markdown文本编辑器的初期配置</span></h2><p>官网下载，并安装好, 刚安装好的是没有 Package Control 选项</p>
-<p>找到  Tools-&gt;Install Package Control  选项，即可调出 Package Control</p>
-<p>去找“Tools-&gt;Command Palette…”选项，</p>
-<p>输入 ipc ,点击 Install Package Control，即可调出 Package Control</p>
-<p>找到  Preferences-&gt;Package Control</p>
-<p>选项弹出命令行输入框，输入ip，点击“install Package”</p>
-<p>弹出命令行输入框，输入clz，点击“ChineseLocalizations”</p>
-<p>搞定，设置成中文了</p>
-<h2><span id="markdown下配置c编译环境">markdown下配置C++编译环境</span></h2><p>选择工具-&gt;编译系统-&gt;新建编译系统</p>
-<p>将弹出的文本改为以下内容</p>
-<p>{<br>    “encoding”: “utf-8”,<br>    “working_dir”: “$file_path”,<br>    “shell_cmd”: “g++ &quot;$file_name&quot; -o &quot;$file_base_name&quot;“,<br>    “file_regex”: “^(..[^:]<em>):([0-9]+):?([0-9]+)?:? (.</em>)$”,<br>    “selector”: “source.c++”,<br>     “variants”:<br>    [<br>        {<br>        “name”: “Run”,<br>        “shell_cmd”: “g++ ‘$file’ -o ‘$file_base_name’ &amp;&amp; gnome-terminal -x bash -c &quot;‘${file_path}/${file_base_name}’;read -p ‘\nPress any key to continue…’&quot;“<br>        }<br>    ]<br>}</p>
-<p>保存为myC++之后即完成配置。<br>接下来快捷键ctrl+shift+p 输入选择myC++ 编辑文本即可。</p>
-<p>PS：在linux系统下通过<br>sudo apt update<br>sudo apt install build-essential<br>两条代码即可轻松配置g++.</p>
+                <h2><span id="模板">模板</span></h2><h3><span id="函数模板">函数模板</span></h3><p>语法形式：<br>template&lt;模板参数表&gt;<br>函数定义<br>模板参数表的内容<br>类型参数 class(或typename)标识符<br>常量参数 类型说明符 标识符<br>模板参数 template&lt;参数表&gt;class标识符</p>
+<p>函数模板示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+template &lt;class T&gt;
+void outputArray(const T *array,int count)&#123;
+    for (int i&#x3D;0;i&lt;count;i++)&#123;
+        cout&lt;&lt;array[i]&lt;&lt;&quot; &quot;;
+    &#125;
+    cout&lt;&lt;endl;
+&#125;
+int main()&#123;
+    const int A_COUNT&#x3D;8,B_COUNT&#x3D;8,C_COUNT&#x3D;20;
+    int a[A_COUNT]&#x3D;&#123;1,2,3,4,5,6,7,8&#125;;
+    double b[B_COUNT]&#x3D;&#123;1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8&#125;;
+    char c[C_COUNT]&#x3D;&quot;welcome!&quot;;
+    cout&lt;&lt;&quot;a array contains:&quot;&lt;&lt;endl;
+    outputArray(a,A_COUNT);
+    cout&lt;&lt;&quot;b array contains:&quot;&lt;&lt;endl;
+    outputArray(b,B_COUNT);
+    cout&lt;&lt;&quot;c array contains:&quot;&lt;&lt;endl;
+    outputArray(c,C_COUNT);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="类模板">类模板</span></h3><p>类模板的声明<br>类模板<br>template&lt;模板参数表&gt;<br>class类名<br>{类成员声明}<br>如果需要在类模板以外定义其成员函数，则要采用以下的形式:<br>template&lt;模板参数表&gt;<br>类型名 类名&lt;模板参数标识符列表&gt;：：函数名(参数表)<br>void Store<t>::putElem(const T &amp;x)<br>例子：</t></p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include&lt;cstdlib&gt;
+using namespace std;
+struct Student
+&#123;
+    int id;
+    float gpa;
+&#125;;
+template &lt;class T&gt;
+class Store&#123;
+    &#x2F;&#x2F;类模板实现对任意数据进行存取
+private:
+    T item;&#x2F;&#x2F;用于存放任意类型数据
+    bool haveValue;&#x2F;&#x2F;标记item是否已被存入内容
+public:
+    Store();
+    T &amp;getElem();&#x2F;&#x2F;提取数据函数
+    void putElem(const T &amp;x);&#x2F;&#x2F;存入数据函数
+&#125;;
+template&lt;class T&gt;
+Store&lt;T&gt;::Store():haveValue(false)&#123;&#125;
+template &lt;class T&gt;
+T&amp;Store&lt;T&gt;::getElem()&#123;
+    &#x2F;&#x2F;如果试图提取未初始化的数据，则终止程序
+    if(!haveValue)&#123;
+        cout&lt;&lt;&quot;No item present!&quot;&lt;&lt;endl;
+        exit(1);&#x2F;&#x2F;退出程序返回操作系统
+    &#125;
+    return item;&#x2F;&#x2F;返回item中存放的数据
+&#125;
+template &lt;class T&gt;
+void Store&lt;T&gt;::putElem(const T &amp;x)&#123;
+    haveValue&#x3D;true;
+    item&#x3D;x;
+&#125;
+int main()&#123;
+    Store&lt;int&gt; s1,s2;
+    s1.putElem(3);
+    s2.putElem(-7);
+    cout&lt;&lt;s1.getElem()&lt;&lt;&quot; &quot;&lt;&lt;s2.getElem()&lt;&lt;endl;
+    Student g&#x3D;&#123;1000,23&#125;;
+    Store&lt;Student&gt; s3;
+    s3.putElem(g);
+    cout&lt;&lt;&quot;The Student id is &quot;&lt;&lt;s3.getElem().id&lt;&lt;endl;
+
+    Store&lt;double&gt;d;
+    cout&lt;&lt;&quot;Retrieving object D..&quot;;
+    cout&lt;&lt;d.getElem()&lt;&lt;endl;&#x2F;&#x2F;d未初始化，执行函数D.getElement()时导致程序终止
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="线性群体">线性群体</span></h2><p>线性群体中的元素次序与其逻辑位置关系是对应的。在线性群体中又可以按照访问元素的不同方法分为直接访问，顺序访问和索引访问<br>在这里结合扫直接访问和顺序访问</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -541,8 +604,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/sublime%E8%AE%BE%E7%BD%AE/">
-                                    <span class="chip bg-color">sublime设置</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">算法基础</span>
                                 </a>
                             
                         </div>
@@ -975,66 +1038,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/08/C++%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                <a href="/2021/02/14/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="C++进阶笔记">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="算法基础">
                         
-                        <span class="card-title">C++进阶笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/C/" class="post-category">
-                                    C++
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">C++进阶笔记</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/02/07/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%A2%98-2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="程序员面试题">
-                        
-                        <span class="card-title">程序员面试题</span>
+                        <span class="card-title">算法基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1045,7 +1060,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
                             </span>
                         <span class="publish-author">
                             
@@ -1059,11 +1074,61 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">算法基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/09/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="云台设计">
+                        
+                        <span class="card-title">云台设计</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    控制系统
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">云台设计</span>
                     </a>
                     
                 </div>

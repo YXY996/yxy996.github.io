@@ -764,4 +764,91 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
         <tag>数据库</tag>
       </tags>
   </entry>
+  <entry>
+    <title>算法基础</title>
+    <url>/2021/02/14/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="模板">模板</span></h2><h3><span id="函数模板">函数模板</span></h3><p>语法形式：<br>template&lt;模板参数表&gt;<br>函数定义<br>模板参数表的内容<br>类型参数 class(或typename)标识符<br>常量参数 类型说明符 标识符<br>模板参数 template&lt;参数表&gt;class标识符</p>
+<p>函数模板示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+template &lt;class T&gt;
+void outputArray(const T *array,int count)&#123;
+    for (int i&#x3D;0;i&lt;count;i++)&#123;
+        cout&lt;&lt;array[i]&lt;&lt;&quot; &quot;;
+    &#125;
+    cout&lt;&lt;endl;
+&#125;
+int main()&#123;
+    const int A_COUNT&#x3D;8,B_COUNT&#x3D;8,C_COUNT&#x3D;20;
+    int a[A_COUNT]&#x3D;&#123;1,2,3,4,5,6,7,8&#125;;
+    double b[B_COUNT]&#x3D;&#123;1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8&#125;;
+    char c[C_COUNT]&#x3D;&quot;welcome!&quot;;
+    cout&lt;&lt;&quot;a array contains:&quot;&lt;&lt;endl;
+    outputArray(a,A_COUNT);
+    cout&lt;&lt;&quot;b array contains:&quot;&lt;&lt;endl;
+    outputArray(b,B_COUNT);
+    cout&lt;&lt;&quot;c array contains:&quot;&lt;&lt;endl;
+    outputArray(c,C_COUNT);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="类模板">类模板</span></h3><p>类模板的声明<br>类模板<br>template&lt;模板参数表&gt;<br>class类名<br>{类成员声明}<br>如果需要在类模板以外定义其成员函数，则要采用以下的形式:<br>template&lt;模板参数表&gt;<br>类型名 类名&lt;模板参数标识符列表&gt;：：函数名(参数表)<br>void Store<t>::putElem(const T &amp;x)<br>例子：</t></p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include&lt;cstdlib&gt;
+using namespace std;
+struct Student
+&#123;
+    int id;
+    float gpa;
+&#125;;
+template &lt;class T&gt;
+class Store&#123;
+    &#x2F;&#x2F;类模板实现对任意数据进行存取
+private:
+    T item;&#x2F;&#x2F;用于存放任意类型数据
+    bool haveValue;&#x2F;&#x2F;标记item是否已被存入内容
+public:
+    Store();
+    T &amp;getElem();&#x2F;&#x2F;提取数据函数
+    void putElem(const T &amp;x);&#x2F;&#x2F;存入数据函数
+&#125;;
+template&lt;class T&gt;
+Store&lt;T&gt;::Store():haveValue(false)&#123;&#125;
+template &lt;class T&gt;
+T&amp;Store&lt;T&gt;::getElem()&#123;
+    &#x2F;&#x2F;如果试图提取未初始化的数据，则终止程序
+    if(!haveValue)&#123;
+        cout&lt;&lt;&quot;No item present!&quot;&lt;&lt;endl;
+        exit(1);&#x2F;&#x2F;退出程序返回操作系统
+    &#125;
+    return item;&#x2F;&#x2F;返回item中存放的数据
+&#125;
+template &lt;class T&gt;
+void Store&lt;T&gt;::putElem(const T &amp;x)&#123;
+    haveValue&#x3D;true;
+    item&#x3D;x;
+&#125;
+int main()&#123;
+    Store&lt;int&gt; s1,s2;
+    s1.putElem(3);
+    s2.putElem(-7);
+    cout&lt;&lt;s1.getElem()&lt;&lt;&quot; &quot;&lt;&lt;s2.getElem()&lt;&lt;endl;
+    Student g&#x3D;&#123;1000,23&#125;;
+    Store&lt;Student&gt; s3;
+    s3.putElem(g);
+    cout&lt;&lt;&quot;The Student id is &quot;&lt;&lt;s3.getElem().id&lt;&lt;endl;
+
+    Store&lt;double&gt;d;
+    cout&lt;&lt;&quot;Retrieving object D..&quot;;
+    cout&lt;&lt;d.getElem()&lt;&lt;endl;&#x2F;&#x2F;d未初始化，执行函数D.getElement()时导致程序终止
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="线性群体">线性群体</span></h2><p>线性群体中的元素次序与其逻辑位置关系是对应的。在线性群体中又可以按照访问元素的不同方法分为直接访问，顺序访问和索引访问<br>在这里结合扫直接访问和顺序访问</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>算法基础</tag>
+      </tags>
+  </entry>
 </search>
