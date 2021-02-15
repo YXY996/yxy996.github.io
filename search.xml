@@ -851,4 +851,24 @@ int main()&#123;
         <tag>算法基础</tag>
       </tags>
   </entry>
+  <entry>
+    <title>头文件介绍</title>
+    <url>/2021/02/15/%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>stdio.h就是指“standard input&amp;output”<br>  意思就是说标准输入输出头文件！<br>  所以了，用到标准输入输出函数时，就要调用这个头文件</p>
+<h2><span id="c-头文件">C 头文件</span></h2><p>  include &lt;assert.h&gt;   //设定插入点<br>  include &lt;ctype.h&gt;    //字符处理<br>  include &lt;errno.h&gt;    //定义错误码<br>  include &lt;float.h&gt;    //浮点数处理<br>  include &lt;fstream.h&gt;  //文件输入／输出<br>  include &lt;iomanip.h&gt;  //参数化输入／输出<br>  include &lt;iostream.h&gt; //数据流输入／输出<br>  include &lt;limits.h&gt;   //定义各种数据类型最值常量<br>  include &lt;locale.h&gt;   //定义本地化函数<br>  include &lt;math.h&gt;     //定义数学函数<br>  include &lt;stdio.h&gt;    //定义输入／输出函数<br>  include &lt;stdlib.h&gt;   //定义杂项函数及内存分配函数<br>  #include &lt;string.h&gt;  //字符串处理<br>  include &lt;strstrea.h&gt; //基于数组的输入／输出<br>  include &lt;time.h&gt;     //定义关于时间的函数<br>  #include &lt;wchar.h&gt;   //宽字符处理及输入／输出<br>  include &lt;wctype.h&gt;   //宽字符分类//////</p>
+<h2><span id="标准-c">标准 C++</span></h2><p>  //////////////////////////////////////////<br>  include <algorithm>  //STL 通用算法<br>  include <bitset>     //STL 位集容器<br>  include <cctype>     //定义错误码<br>  #include <cerrno>    //定义错误码<br>  include <clocale>    //定义本地化函数<br>  include <cmath>      //定义数学函数<br>  include <complex>    //复数类<br>  #include <cstdio>    /定义输入／输出函数<br>  #include <cstdlib>   //定义杂项函数及内存分配函数<br>  include <cstring>    //字符串处理<br>  #include <ctime>     //定义关于时间的函数</ctime></cstring></cstdlib></cstdio></complex></cmath></clocale></cerrno></cctype></bitset></algorithm></p>
+<p>  include <deque>      //STL 双端队列容器</deque></p>
+<p>  include <exception>  //异常处理类<br>  include <fstream>    //文件输入／输出</fstream></exception></p>
+<p>  include <functional> //STL 定义运算函数（代替运算符）</functional></p>
+<p>  include <limits>     //定义各种数据类型最值常量</limits></p>
+<p>  #include <list>      //STL 线性列表容器<br>  #include <map>       //STL 映射容器<br>  include <iomanip><br>  #include <ios>       //基本输入／输出支持<br>  #include <iosfwd>    //输入／输出系统使用的前置声明<br>  include <iostream><br>  include <istream>    //基本输入流<br>  include <ostream>    //基本输出流<br>  include <queue>      //STL 队列容器<br>  include <set>        //STL 集合容器<br>  #include <sstream>   //基于字符串的流<br>  include <stack>      //STL 堆栈容器<br>  include <stdexcept>  //标准异常类<br>  include <streambuf>  //底层输入／输出支持<br>  include <string>     //字符串类<br>  include <utility>    //STL 通用模板类<br>  include <vector>     //STL 动态数组容器<br>  include <cwchar><br>  include <cwctype></cwctype></cwchar></vector></utility></string></streambuf></stdexcept></stack></sstream></set></queue></ostream></istream></iostream></iosfwd></ios></iomanip></map></list></p>
+<p>  using namespace std;<br>  ///////////////////////C99 增加<br>  include &lt;complex.h&gt;  //复数处理<br>  include &lt;fenv.h&gt;     //浮点环境s<br>  include &lt;inttypes.h&gt; //整数格式转换<br>  include &lt;stdbool.h&gt;  //布尔环境<br>  include &lt;stdint.h&gt;   //整型环境<br>  include &lt;tgmath.h&gt;   //通用类型数学宏</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>头文件介绍</tag>
+      </tags>
+  </entry>
 </search>
