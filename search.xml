@@ -843,6 +843,10 @@ int main()&#123;
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2><span id="线性群体">线性群体</span></h2><p>线性群体中的元素次序与其逻辑位置关系是对应的。在线性群体中又可以按照访问元素的不同方法分为直接访问，顺序访问和索引访问<br>在这里结合扫直接访问和顺序访问</p>
+<h3><span id="链表类">链表类</span></h3><p>链表是一种动态数据结构，可以用来表示顺序访问的线性群体<br>链表是由系列结点组成的，结点可以在运行时动态生成<br>每一个结点包括数据域和指向链表中下一个结点的指针<br>（即下一个结点的地址).如果链表每个结点中只有一个指向后继结点的指针，则该链表称为单链表</p>
+<h3><span id="栈">栈</span></h3><p>栈空<br>栈满<br>一般状态</p>
+<h4><span id="栈的基本操作">栈的基本操作</span></h4><p>初始化<br>入栈<br>出栈<br>清空栈<br>访问栈顶元素<br>检测栈的状态（满，空）</p>
+<h3><span id="队列">队列</span></h3><p>只能向一端添加元素，从另一端删除元素的线性群体<br>先进先出<br>队列的基本状态<br>队空<br>队满<br>一般状态</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
