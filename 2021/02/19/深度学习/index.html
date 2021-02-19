@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mysql安装 取消Root密码, 小杨的博客">
+    <meta name="keywords" content="深度学习, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mysql安装 取消Root密码 | 小杨的博客</title>
+    <title>深度学习 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mysql安装 取消Root密码</h1>
+                    <h1 class="description center-align post-title">深度学习</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/">
-                                <span class="chip bg-color">安装问题</span>
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MySQL/" class="post-category">
-                                MySQL
+                            <a href="/categories/python/" class="post-category">
+                                python
                             </a>
                         
                     </div>
@@ -466,21 +466,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-01
+                    2021-02-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-04
+                    2021-02-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    428
+                    354
                 </div>
                 
 
@@ -514,35 +514,69 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="密码忘记-关闭mysql">密码忘记 关闭mysql</span></h2><p>第一步：关闭mysql服务器。<br>苹果 –》系统偏好设置 –》 mysql –》Stop Mysql Server<br>第二步：进入mysql安装路径，用系统管理员权限跳过mysql安全认证，命令结果如下图所示。</p>
-<p>1.打开启动台–》其他 –》终端</p>
-<p>2.进入mysql安装路径  cd /usr/local/mysql/bin/</p>
-<p>3.登录管理员权限 sudo su</p>
-<p>4.输入开机密码 <strong>**</strong></p>
-<p>5.输入跳过mysql安全认证的命令  ./mysqld_safe –skip-grant-tables &amp;</p>
-<p>6.在第一步的mysql设置的画面中发现 关闭的mysql server 又重新变成running了</p>
-<p>7.进入mysql 输入命令  ./mysql</p>
-<p>如果显示以下字样，则为登录成功。</p>
-<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
-<p>Your MySQL connection id is 12</p>
-<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
-<p>8.刷新权限 FLUSH PRIVILEGES</p>
-<p>Query OK, 0 rows affected (0.01 sec)</p>
-<h2><span id="强行修改跳过密码">强行修改跳过密码</span></h2><p>忘记密码强行修改一：</p>
-<p>1.停止mysql服务 sudo /usr/local/mysql/support-files/mysql.server stop 输入开机密码</p>
-<p>2.进入安装目录 cd /usr/local/mysql/bin</p>
-<p>3.禁止mysql安全验证  ./mysqld_safe –skip-grant-tables &amp;</p>
-<p>显示如下时，禁止成功</p>
-<p>root@guofei:/usr/local/mysql-5.7.24-macos10.14-x86_64/bin#     2019-02-14T05:18:51.6NZ mysqld_safe Logging to ‘/usr/local/mysql-5.7.24-macos10.14-x86_64/data/guofei.local.err’.</p>
-<p>2019-02-14T05:18:51.6NZ mysqld_safe Starting mysqld daemon with databases from /usr/local/mysql-5.7.24-macos10.14-x86_64/data</p>
-<p>输入./mysql 显示如下时，无安全认证情况下登录成功</p>
-<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
-<p>Your MySQL connection id is 2</p>
-<p>Server version: 5.7.24 MySQL Community Server (GPL)</p>
-<p>4.刷新权限  FLUSH PRIVILEGES;</p>
-<p>5.修改密码 ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘888888’;</p>
-<p>6.退出mysql重新登录 quit</p>
-<p>mysql -u root -p 输入刚刚更新的 888888，登录成功</p>
+                <h2><span id="迷路问题">迷路问题</span></h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token operator">%</span>matplotlib inline<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>gca<span class="token punctuation">(</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token string">'s0'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token string">'s1'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token string">'s2'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token string">'s3'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token string">'s4'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token string">'s5'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token string">'s6'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token string">'s7'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token string">'s8'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">2.3</span><span class="token punctuation">,</span><span class="token string">'Start'</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">0.3</span><span class="token punctuation">,</span><span class="token string">'goal'</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
+
+ax<span class="token punctuation">.</span>set_xlim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_ylim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>tick_params<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token string">'both'</span><span class="token punctuation">,</span>which<span class="token operator">=</span><span class="token string">'both'</span><span class="token punctuation">,</span>bottom<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>top<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>labelbottom<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>right<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>left<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>labelleft<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">)</span>
+
+line<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2.5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>marker<span class="token operator">=</span><span class="token string">"o"</span><span class="token punctuation">,</span>color<span class="token operator">=</span><span class="token string">"g"</span><span class="token punctuation">,</span>markersize<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/image/output_1_0.png" alt="png"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">theta_0 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">simple_convert_into_pi_from_theta</span><span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token punctuation">[</span>m<span class="token punctuation">,</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> theta<span class="token punctuation">.</span>shape
+    pi <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        pi<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token operator">=</span>theta<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token operator">/</span>np<span class="token punctuation">.</span>nansum<span class="token punctuation">(</span>theta<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    pi <span class="token operator">=</span> np<span class="token punctuation">.</span>nan_to_num<span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> pi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pi_0 <span class="token operator">=</span> simple_convert_into_pi_from_theta<span class="token punctuation">(</span>theta_0<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pi_0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<pre><code>array([[0.        , 0.5       , 0.5       , 0.        ],
+       [0.        , 0.5       , 0.        , 0.5       ],
+       [0.        , 0.        , 0.5       , 0.5       ],
+       [0.33333333, 0.33333333, 0.33333333, 0.        ],
+       [0.        , 0.        , 0.5       , 0.5       ],
+       [1.        , 0.        , 0.        , 0.        ],
+       [1.        , 0.        , 0.        , 0.        ],
+       [0.5       , 0.5       , 0.        , 0.        ]])
+</code></pre>
+<pre><code>
+</code></pre>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -557,8 +591,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/">
-                                    <span class="chip bg-color">安装问题</span>
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
                                 </a>
                             
                         </div>
@@ -991,17 +1025,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/01/hello/">
+                <a href="/2021/02/19/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="小杨的编程之路">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="深度学习">
                         
-                        <span class="card-title">小杨的编程之路</span>
+                        <span class="card-title">深度学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1011,9 +1046,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/15/%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="头文件介绍">
+                        
+                        <span class="card-title">头文件介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1029,57 +1114,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%86%B2%E5%91%80/">
-                        <span class="chip bg-color">冲呀</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/02/01/mysql%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="MySQL第二部分">
-                        
-                        <span class="card-title">MySQL第二部分</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/MySQL/" class="post-category">
-                                    MySQL
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D/">
+                        <span class="chip bg-color">头文件介绍</span>
                     </a>
                     
                 </div>
