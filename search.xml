@@ -995,63 +995,6 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
       </tags>
   </entry>
   <entry>
-    <title>云台设计构想及编程应用（未完成）</title>
-    <url>/2021/02/19/%E6%8E%A7%E5%88%B6%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1%E6%9E%84%E6%83%B31/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="云台设计构想及编程应用c语言c转换未完成">云台设计构想及编程应用（C语言—–C＋＋转换未完成）</span></h2><p>控制平台设计构想<br>传感器读取初始数据<br>卡尔曼滤波算法获取yaw，roll，pitch的角度<br>将数据转化为电机的目标值<br>    测量值如果和目标值相等<br>        读取磁编码测量其位置值<br>    测量值与目标值不相等<br>        经过位置环，速度环，电流环<br>            改变电机位置</p>
-<p>状态预测：<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)<br>或者<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)+B(k)u(k)</p>
-<p>这里X(k,k-1)是利用k-1时刻预测的当前状态结果<br>X(k-1)是k-1时刻最优值<br>A(k,k-1)是X(k-1)状态下的变换矩阵，它是算法对状态变量进行预测的依据<br>B(k)是作用在控制量上的变换矩阵，在大多数实际情况下并没有控制收益<br>u(k)是当前状态的控制增益，一般没有这个变量，可以设为0</p>
-<p>协方差阵预测：<br>P(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑃(𝑘−1) 𝐴^𝑇 (𝑘,𝑘−1)+𝐵(𝑘,𝑘−1)𝑄(𝑘−1)𝐵^𝑇 (𝑘,𝑘−1)</p>
-<p>P(𝑘,𝑘−1)是k时刻系统协方差矩阵<br>P(k-1)是k-1时刻系统协方差矩阵<br>Q(k-1)是系统过程的协方差矩阵</p>
-<p>滤波增益：<br>根据k时刻的协方差矩阵的预测值计算卡尔曼收益<br>𝐾(𝑘)=(𝑝(𝑘,𝑘−1) 𝐶^𝑇 (𝑘))/((𝐶(𝑘)𝑃(𝑘,𝑘−1) 𝐶^𝑇 (𝑘)+𝑅(𝑘))<br>k(k)是卡尔曼增益，是滤波的中间结果<br>C(k)是对象的预测矩阵<br>R(k)是对象测量噪声的协方差矩阵，是一个数值，作为已知条件输入滤波器。<br>这个值过大过小都会使滤波效果变差，且R(k)取值越小收敛越快,所以可以通过实验手段寻找合适的R(k)值再利用它进行真实的滤波.</p>
-<p>协方差阵估计：<br>目的：为了求k时刻的协方差矩阵（为得到k+1时刻的卡尔曼输出值做准备）<br>𝑃(𝑘)=(1−𝐾(𝑘)𝐶(𝑘))𝑃(𝑘,𝑘−1)<br>当p(k,k-1)为一个一维矩阵的时候,C(k)是1</p>
-<p>状态估计：<br>𝑋(k)=𝑋(𝑘,𝑘−1）+𝐾(𝑘)(𝑌(𝑘)−𝐶(𝑘)𝑋(𝑘,𝑘−1))<br>X(k)是k时刻状态变量的最优估计值<br>Y(K)是对象的测量</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;1. 结构体类型定义
-typedef struct 
-&#123;
-    float LastP;&#x2F;&#x2F;上次估算协方差 初始化值为0.02
-    float Now_P;&#x2F;&#x2F;当前估算协方差 初始化值为0
-    float out;&#x2F;&#x2F;卡尔曼滤波器输出 初始化值为0
-    float Kg;&#x2F;&#x2F;卡尔曼增益 初始化值为0
-    float Q;&#x2F;&#x2F;过程噪声协方差 初始化值为0.001
-    float R;&#x2F;&#x2F;观测噪声协方差 初始化值为0.543
-&#125;KFP；&#x2F;&#x2F;Kalman Filter parameter
-
-&#x2F;&#x2F;2. 以高度为例 定义卡尔曼结构体并初始化参数
-KFP KFP_height&#x3D;&#123;0.02,0,0,0,0.001,0.543&#125;;
-
-&#x2F;**
- *卡尔曼滤波器
- *@param KFP *kfp 卡尔曼结构体参数
- *   float input 需要滤波的参数的测量值（即传感器的采集值）
- *@return 滤波后的参数（最优值）
- *&#x2F;
- float kalmanFilter(KFP *kfp,float input)
- &#123;
-     &#x2F;&#x2F;预测协方差方程：k时刻系统估算协方差 &#x3D; k-1时刻的系统协方差 + 过程噪声协方差
-     kfp-&gt;Now_P &#x3D; kfp-&gt;LastP + kfp-&gt;Q;
-     &#x2F;&#x2F;卡尔曼增益方程：卡尔曼增益 &#x3D; k时刻系统估算协方差 &#x2F; （k时刻系统估算协方差 + 观测噪声协方差）
-     kfp-&gt;Kg &#x3D; kfp-&gt;Now_P &#x2F; (kfp-&gt;NOw_P + kfp-&gt;R);
-     &#x2F;&#x2F;更新最优值方程：k时刻状态变量的最优值 &#x3D; 状态变量的预测值 + 卡尔曼增益 * （测量值 - 状态变量的预测值）
-     kfp-&gt;out &#x3D; kfp-&gt;out + kfp-&gt;Kg * (input -kfp-&gt;out);&#x2F;&#x2F;因为这一次的预测值就是上一次的输出值
-     &#x2F;&#x2F;更新协方差方程: 本次的系统协方差付给 kfp-&gt;LastP 威下一次运算准备。
-     kfp-&gt;LastP &#x3D; (1-kfp-&gt;Kg) * kfp-&gt;Now_P;
-     return kfp-&gt;out；
- &#125;
-
-&#x2F;**
- *调用卡尔曼滤波器 实践
- *&#x2F;
-int height;
-int kalman_height&#x3D;0;
-kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>控制理论</category>
-      </categories>
-      <tags>
-        <tag>控制理论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>迷路问题方案优化</title>
     <url>/2021/02/21/%E8%BF%B7%E8%B7%AF%E9%97%AE%E9%A2%98%E6%96%B9%E6%A1%88%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>计算每个状态下 执行某一动作的概率<br>将最初的概率表更新<br>直到概率表的变化微乎其微时终止<br>从而得到最优路线</p>
