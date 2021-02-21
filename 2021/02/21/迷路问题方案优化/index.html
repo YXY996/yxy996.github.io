@@ -611,7 +611,12 @@ line<span class="token punctuation">,</span> <span class="token operator">=</spa
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">s_a_history <span class="token operator">=</span> goal_maze_ret_s_a<span class="token punctuation">(</span>pi_0<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s_a_history<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"迷路问题结局需要step："</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s_a_history<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre><code>[[0, 2], [3, 2], [6, 0], [3, 0], [0, 1], [1, 3], [0, 1], [1, 1], [2, 3], [1, 1], [2, 3], [1, 1], [2, 2], [5, 0], [2, 3], [1, 3], [0, 1], [1, 3], [0, 1], [1, 1], [2, 3], [1, 3], [0, 2], [3, 1], [4, 2], [7, 1], [8, nan]]
+<pre><code>[[0, 2], [3, 2], [6, 0], [3, 0], [0, 1], 
+[1, 3], [0, 1], [1, 1], [2, 3], [1, 1], 
+[2, 3], [1, 1], [2, 2], [5, 0], [2, 3], 
+[1, 3], [0, 1], [1, 3], [0, 1], [1, 1], 
+[2, 3], [1, 3], [0, 2], [3, 1], [4, 2], 
+[7, 1], [8, nan]]
 迷路问题结局需要step：26
 </code></pre>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">update_theta</span><span class="token punctuation">(</span>theta<span class="token punctuation">,</span>pi<span class="token punctuation">,</span>s_a_history<span class="token punctuation">)</span><span class="token punctuation">:</span>
