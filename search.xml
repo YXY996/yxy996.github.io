@@ -847,7 +847,59 @@ int main()&#123;
 <h3><span id="栈">栈</span></h3><p>栈空<br>栈满<br>一般状态</p>
 <h4><span id="栈的基本操作">栈的基本操作</span></h4><p>初始化<br>入栈<br>出栈<br>清空栈<br>访问栈顶元素<br>检测栈的状态（满，空）</p>
 <h3><span id="队列">队列</span></h3><p>只能向一端添加元素，从另一端删除元素的线性群体<br>先进先出<br>队列的基本状态<br>队空<br>队满<br>一般状态</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<h2><span id="排序">排序</span></h2><p>数据元素：数据的基本单位。在计算机中通常作为一个整体进行考虑。一个数据元素可由若干数据项组成<br>关键字： 数据元素中某个数据项的值，用它可以标识一个数据元素<br>在排序过程中需要完成两种基本操作：<br>    比较两个数的大小<br>    调整元素在序列中的位置</p>
+<p>内部排序：待排序的数据元素存放在计算机内存中，内存足够容纳所有元素的情况下 内部排序比较。<br>外部排序：数据规模较大的情况分批次比较，需要对外存进行访问的排序过程。</p>
+<h3><span id="选择排序">选择排序</span></h3><p>选择排序的基本思想<br>每次从待排序序列中选择一个关键字最小的元素，<br>（当需要按关键字升序排列时），<br>顺序排在已排序序列的最后，直到全部排完</p>
+<p>简单选择排序函数模板</p>
+<pre class="line-numbers language-none"><code class="language-none">template&lt;class T&gt;
+void myswap(T &amp;x,T &amp;y)&#123;
+    T temp &#x3D;x;
+    x &#x3D; y;
+    y &#x3D;temp;
+&#125;
+template&lt;class T&gt;
+void selectionSort(T a[],int n)&#123;
+    for (int i &#x3D;0;i&lt;n-1;i++)&#123;
+        int leastIndex &#x3D; i;
+        for (int j&#x3D;i+1;j&lt;n;j++)
+            if (a[j]&lt;a[leastIndex])&#123;
+                leastIndex &#x3D; j;
+            &#125;
+        myswap(a[i],a[leastIndex]);
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="交换排序">交换排序</span></h3><p>最简单的交换排序方法–起泡排序</p>
+<pre class="line-numbers language-none"><code class="language-none">template&lt;class T&gt;
+void myswap(T &amp;x,T &amp;y)&#123;
+    T temp &#x3D;x;
+    x &#x3D; y;
+    y &#x3D;temp;
+&#125;
+void bubbleSort(T a[],int n)&#123;
+    int i &#x3D; n-1;
+    while(i&gt;0)&#123;
+        int lastExchangeIndex &#x3D; 0;
+        for (int j &#x3D;0;j&lt;i;j++)
+            if(a[j+1]&lt;a[j])&#123;
+                myswap(a[j],a[j+1]);
+                lastExchangeIndex &#x3D; j;
+            &#125; 
+            i&#x3D; lastExchangeIndex;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="顺序查找">顺序查找</span></h3><p>从序列的首元素开始，逐个元素与代查找的关键字进行比较，直到找到相等的。若整个序列没有与待查找关键字相等的元素，就是查找不成功。</p>
+<pre class="line-numbers language-none"><code class="language-none">template&lt;class T&gt;
+&#x2F;&#x2F;子函数调用时，并没有申请一个空间来存放形参key，也不用将实参的值传给形参key，因此使程序运行更简化。
+int seqSearch(const T list[],int n,const T&amp;key)&#123;
+    for (int i&#x3D; 0;i&lt;n;i++)
+        if(list[i] &#x3D;&#x3D; key)
+            return i;
+    return -1;
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
       </categories>
