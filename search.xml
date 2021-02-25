@@ -1050,6 +1050,8 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
     <title>迷路问题方案优化</title>
     <url>/2021/02/21/%E8%BF%B7%E8%B7%AF%E9%97%AE%E9%A2%98%E6%96%B9%E6%A1%88%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>计算每个状态下 执行某一动作的概率<br>将最初的概率表更新<br>直到概率表的变化微乎其微时终止<br>从而得到最优路线<br>这里介绍以下softmax函数：<br>特征对概率的影响是乘性的<br>假设有一个数组V,Vi表示V中的第i个元素，那么这个元素的softmax数值为：<br>$$<br>S_{i}=\frac{e^{i}}{\sum_{j} e^{j}}<br>$$</p>
+<p>价值迭代（马尔科夫决策过程）</p>
+<p>$\theta_{s_{i}, a_{i}}=\theta_{s_{i}, a_{i}}+\eta \times \Delta \theta_{s_{i}, a_{i}}$<br>$\Delta \theta_{s_{t}, a_{i}}=\left{N\left(s_{i}, a_{j}\right)-p\left(s_{i}, a_{j}\right) N\left(s_{i}, a_{j}\right)\right} / \mathrm{T}$<br>$Q\left(S_{t}, a_{\mathrm{t}}\right)=r_{t+1}+\gamma V\left(S_{t+1}\right)$<br>$Q\left(S_{t}, a_{t}\right) \leftarrow Q\left(S_{t}, a_{t}\right)+\eta\left[\left{r_{t+1}+\gamma\left(Q\left(S_{t+1}, a_{t+1}\right)\right)\right}-Q\left(S_{t}, a_{t}\right)\right]$</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token operator">%</span>matplotlib inline<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -1090,7 +1092,7 @@ line<span class="token punctuation">,</span> <span class="token operator">=</spa
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">softmax_convert_into_pi_from_theta</span><span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    beta <span class="token operator">=</span> <span class="token number">1.0</span>
+    beta <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token comment">#beta为逆温度（日语） beta的数值越小则行动越random随机</span>
     <span class="token punctuation">[</span>m<span class="token punctuation">,</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> theta<span class="token punctuation">.</span>shape
     pi <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
     exp_theta <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>beta  <span class="token operator">*</span> theta<span class="token punctuation">)</span>
@@ -1102,6 +1104,7 @@ line<span class="token punctuation">,</span> <span class="token operator">=</spa
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">pi_0 <span class="token operator">=</span> softmax_convert_into_pi_from_theta<span class="token punctuation">(</span>theta_0<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>pi_0<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>softmax函数计算中 np.nansum()中nan的数值忽略，不放入计算</p>
 <pre><code>[[0.         0.5        0.5        0.        ]
  [0.         0.5        0.         0.5       ]
  [0.         0.         0.5        0.5       ]
@@ -1134,7 +1137,7 @@ line<span class="token punctuation">,</span> <span class="token operator">=</spa
     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token punctuation">[</span>action<span class="token punctuation">,</span>next_s<span class="token punctuation">]</span> <span class="token operator">=</span> get_action_and_next_s<span class="token punctuation">(</span>pi<span class="token punctuation">,</span>s<span class="token punctuation">)</span>
         s_a_history<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> action
-        <span class="token comment"># 现在的状态是s0 假设之前的一步是s(-1)向右移动1</span>
+        <span class="token comment"># 现在的状态是s0 假设之前的一步是s(-1)向右移动1？</span>
         s_a_history<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>next_s<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">if</span> next_s <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
@@ -1163,15 +1166,18 @@ line<span class="token punctuation">,</span> <span class="token operator">=</spa
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>isnan<span class="token punctuation">(</span>theta<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
                 <span class="token comment"># i状态下的操作取出？ 数组SA[]括号里只有一个数字的时候代表行？</span>
+                <span class="token comment"># 列表推导式 [表达式 for 变量 in 列表]</span>
+                <span class="token comment"># [表达式 for 变量 in 列表 if 条件]</span>
                 SA_i <span class="token operator">=</span> <span class="token punctuation">[</span>SA <span class="token keyword">for</span> SA <span class="token keyword">in</span> s_a_history <span class="token keyword">if</span> SA<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> i<span class="token punctuation">]</span>
                 <span class="token comment"># i 状态下的动作j执行次数 是SA 不是SA[0]</span>
                 SA_ij <span class="token operator">=</span> <span class="token punctuation">[</span>SA <span class="token keyword">for</span> SA <span class="token keyword">in</span> s_a_history <span class="token keyword">if</span> SA <span class="token operator">==</span> <span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span>
                 N_i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>SA_i<span class="token punctuation">)</span>
                 N_ij <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>SA_ij<span class="token punctuation">)</span>
                 delta_theta<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>N_ij <span class="token operator">-</span> pi<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">*</span>N_i<span class="token punctuation">)</span><span class="token operator">/</span>T
+
     new_theta <span class="token operator">=</span> theta <span class="token operator">+</span> eta <span class="token operator">*</span> delta_theta
     <span class="token keyword">return</span> new_theta
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">new_theta <span class="token operator">=</span> update_theta<span class="token punctuation">(</span>theta_0<span class="token punctuation">,</span> pi_0<span class="token punctuation">,</span> s_a_history<span class="token punctuation">)</span>
 pi <span class="token operator">=</span> softmax_convert_into_pi_from_theta<span class="token punctuation">(</span>new_theta<span class="token punctuation">)</span>
