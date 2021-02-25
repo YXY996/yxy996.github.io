@@ -480,7 +480,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.6k
                 </div>
                 
 
@@ -516,10 +516,7 @@
             <div id="articleContent">
                 <p>计算每个状态下 执行某一动作的概率<br>将最初的概率表更新<br>直到概率表的变化微乎其微时终止<br>从而得到最优路线<br>这里介绍以下softmax函数：<br>特征对概率的影响是乘性的<br>假设有一个数组V,Vi表示V中的第i个元素，那么这个元素的softmax数值为：<br>$$<br>S_{i}=\frac{e^{i}}{\sum_{j} e^{j}}<br>$$</p>
 <p>价值迭代（马尔科夫决策过程）</p>
-<p>$$<br>\theta_{s_{i}, a_{i}}=\theta_{s_{i}, a_{i}}+\eta \times \Delta \theta_{s_{i}, a_{i}}<br>$$</p>
-<p>$$<br>\Delta \theta_{s_{t}, a_{i}}=\left{N\left(s_{i}, a_{j}\right)-p\left(s_{i}, a_{j}\right) N\left(s_{i}, a_{j}\right)\right} / \mathrm{T}<br>$$</p>
-<p>$$<br>Q\left(S_{t}, a_{\mathrm{t}}\right)=r_{t+1}+\gamma V\left(S_{t+1}\right)<br>$$</p>
-<p>$$<br>Q\left(S_{t}, a_{t}\right) \leftarrow Q\left(S_{t}, a_{t}\right)+\eta\left[\left{r_{t+1}+\gamma\left(Q\left(S_{t+1}, a_{t+1}\right)\right)\right}-Q\left(S_{t}, a_{t}\right)\right]<br>$$</p>
+<p><img src="/image/%E5%85%AC%E5%BC%8F1.png" alt="png"></p>
 <p>Q学习和sarsa学习的区别参考以上公式</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -1447,7 +1444,7 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.9k</span>&nbsp;字
+                class="white-color">23.8k</span>&nbsp;字
             
             
             
