@@ -473,7 +473,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-25
+                    2021-02-26
                 </div>
                 
 
@@ -603,7 +603,7 @@ line<span class="token punctuation">,</span> <span class="token operator">=</spa
     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token punctuation">[</span>action<span class="token punctuation">,</span>next_s<span class="token punctuation">]</span> <span class="token operator">=</span> get_action_and_next_s<span class="token punctuation">(</span>pi<span class="token punctuation">,</span>s<span class="token punctuation">)</span>
         s_a_history<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> action
-        <span class="token comment"># 现在的状态是s0 假设之前的一步是s(-1)向右移动1？</span>
+        <span class="token comment"># [-1]是表示最后一行</span>
         s_a_history<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>next_s<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">if</span> next_s <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
@@ -666,7 +666,7 @@ count <span class="token operator">=</span> <span class="token number">1</span>
     s_a_history <span class="token operator">=</span> goal_maze_ret_s_a<span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
     new_theta <span class="token operator">=</span> update_theta<span class="token punctuation">(</span>theta<span class="token punctuation">,</span>pi<span class="token punctuation">,</span>s_a_history<span class="token punctuation">)</span>
     new_pi <span class="token operator">=</span> softmax_convert_into_pi_from_theta<span class="token punctuation">(</span>new_theta<span class="token punctuation">)</span>
-    <span class="token comment"># 方策 pi的变化输出 np.abs?</span>
+    <span class="token comment"># 方策 pi的变化输出 np.abs 差值的绝对值</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>new_pi <span class="token operator">-</span> pi<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"迷路问题解决需要step:"</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s_a_history<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token comment"># 在这里当方案pi的变化非常小的时候 这里设定为小数点4位后终止</span>
