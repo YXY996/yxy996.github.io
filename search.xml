@@ -1707,4 +1707,27 @@ cartpole_env<span class="token punctuation">.</span>run<span class="token punctu
         <tag>Q学习实例</tag>
       </tags>
   </entry>
+  <entry>
+    <title>泛型程序设计</title>
+    <url>/2021/02/27/%E6%B3%9B%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="泛型程序设计">泛型程序设计</span></h2><p>编写不依赖于具体数据类型的程序<br>将算法从特定的数据结构中抽象出来，成为通用的<br>C++的模板为泛型程序设计奠定了关键的基础</p>
+<h3><span id="概念和模型">概念和模型</span></h3><h4><span id="概念">概念</span></h4><p>概念:<br>用来界定具备一定功能的数据类型。例如：<br>将“可以比大小的所有数据类型（有比较运算符）”这一概念记为Comparable<br>将“具有公有的复制构造函数并可以用”=”赋值的数据类型” 这一概念记为Assignable<br>将“可以比大小，具有公有的复制构造函数并可以用“=”赋值的所有数据类型 这一概念记作Sortable<br>对于两个不同概念的A和B ，如果概念A所需求的所有功能也是概念B所需求的功能，那么<br>就说概念B是概念A的子概念。 例如：<br>Sortable 既是Comparable的子概念 ，也是Assignable的子概念</p>
+<h4><span id="模型">模型</span></h4><p>模型(model)：符合一个概念的数据类型称为该概念的模型，例如：<br>int 型是Comparable概念的模型<br>静态数组类型不是Assignable 概念的模型<br>（无法用 “=” 给整个静态数组赋值</p>
+<h4><span id="用概念作模板参数名">用概念作模板参数名</span></h4><p>为概念赋予一个名称，并使用该名称作为模板参数名<br>例如：<br>表示insertionSort这样一个函数模板的原型：</p>
+<pre class="line-numbers language-none"><code class="language-none">template&lt;class Sortable&gt;
+void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3><span id="stl">STL</span></h3><p>STL 简介<br>标准模板库，定义了一套概念体系，为泛型程序设计提供了逻辑基础<br>STL中的各个类模板，函数模板的参数都使用这个体系中的概念来规定的<br>使用STL的模板时，类型参数既可以是C++标准库中已有的类型，也可以是自定义的类型<br>只要这些类型是所要求概念的模型</p>
+<h4><span id="stl基本组件">STL基本组件</span></h4><p>容器（container)<br>容纳，包含一组元素的对象。<br>基本容器类模板<br>顺序容器<br>array,vector,deque,forward_list,list<br>有序关联容器<br>set,multiset,map,multimap<br>无序关联容器<br>unordered_set,unordered_multiset<br>unordered_map ,unordered_multimap</p>
+<p>容器适配器：<br>stack(栈)<br>queue（队列）<br>priority_queue(优先队列)</p>
+<p>迭代器（iterator)<br>提供了顺序访问容器每一个元素的方法<br>可以使用“++”运算符来获得指向下一个元素的迭代器<br>可以使用“*”运算符防卫迭代器所指向的元素，如果元素类型是类或结构体，还可以使用<br>“-&gt;”运算符直接访问该元素的一个成员<br>有些迭代器还支持通过”–”运算符获得指向上一个元素的迭代器<br>迭代器是泛化的指针： 指针也具有同样的特性，因此指针本身就是一种迭代器<br>使用独立于STL容器的迭代器 ，需要包含头文件”iterator”</p>
+<p>函数对象（function object)<br>一个行为类似函数的对象，对它可以像调用函数一样调用。<br>函数对象是泛化的函数：任何普通的函数和任何重载了“（）”运算符的类的对象都可以作为函数对象使用<br>使用STL的函数对象，需要包含头文件 <functional></functional></p>
+<p>算法(algorithms)<br>可以广泛用于不同的对象和内置的数据类型<br>STL包括了70多个算法<br>例如：排序算法，消除算法，计数算法，比较算法，变换算法，置换算法和容器管理等<br>使用STL的算法，需要包含头文件<algorithm></algorithm></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>STL</tag>
+      </tags>
+  </entry>
 </search>
