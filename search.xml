@@ -899,7 +899,26 @@ int seqSearch(const T list[],int n,const T&amp;key)&#123;
     return -1;
 &#125;
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="二分法查找">二分法查找</span></h3><p>对于已按关键字排序的序列，经过一次比较，可将序列分割成两部分，然后只在有可能包含待查元素的一部分中继续查找，并根据试探结果继续分割，逐步缩小查找范围，直到找到或找不到为止。<br>实现代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">
+template&lt;class T&gt;
+int binSearch(const T list[],int n,const T &amp;key)&#123;
+    int low &#x3D;0;
+    int high &#x3D; n-1;
+    while(low &lt;&#x3D; high)&#123;
+        int mid &#x3D; (low + high)&#x2F;2;
+        if (key &#x3D;&#x3D; list[mid])
+            return mid;
+        else if(key &lt; list)
+            high &#x3D; mid -1
+        else
+            low &#x3D; mid +1
+
+    &#125;
+    return -1;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
       </categories>
@@ -1342,7 +1361,8 @@ pi_0 <span class="token operator">=</span> simple_convert_pi_from_theta<span cla
     <span class="token keyword">if</span> s_next <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
         Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token operator">+</span>eta<span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token operator">-</span>Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
-        Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token operator">+</span>eta<span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token operator">+</span>gamma<span class="token operator">*</span>Q<span class="token punctuation">[</span>s_next<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">-</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token operator">+</span>eta<span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token operator">+</span>gamma<span class="token operator">*</span>np<span class="token punctuation">.</span>nanmax<span class="token punctuation">(</span>Q<span class="token punctuation">[</span>s_next<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token comment">#这里np.nanmaxQ[s_next,:]是取四个行动(0,1,2,3)中Q价值最大动作</span>
     <span class="token keyword">return</span> Q
 
 <span class="token keyword">def</span> <span class="token function">goal_maze_ret_s_a_Q</span><span class="token punctuation">(</span>Q<span class="token punctuation">,</span>epsilon<span class="token punctuation">,</span>eta<span class="token punctuation">,</span>gamma<span class="token punctuation">,</span>pi<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1351,7 +1371,7 @@ pi_0 <span class="token operator">=</span> simple_convert_pi_from_theta<span cla
     s_a_history <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">]</span>
     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         a <span class="token operator">=</span> a_next
-        <span class="token comment"># 将行动代入当前状态</span>
+        <span class="token comment"># 将行动代入当前状态  当前s_a_history只有一个状态行动 代入行动 之后每次都对最后一次的状态进行操作</span>
         s_a_history<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> a
         s_next <span class="token operator">=</span> get_s_next<span class="token punctuation">(</span>s<span class="token punctuation">,</span>a<span class="token punctuation">,</span>Q<span class="token punctuation">,</span>epsilon<span class="token punctuation">,</span>pi<span class="token punctuation">)</span>
         <span class="token comment"># 状态代入 行动不知道np.nan</span>
@@ -1365,7 +1385,6 @@ pi_0 <span class="token operator">=</span> simple_convert_pi_from_theta<span cla
             a_next <span class="token operator">=</span> get_action<span class="token punctuation">(</span>s_next<span class="token punctuation">,</span>Q<span class="token punctuation">,</span>epsilon<span class="token punctuation">,</span>pi<span class="token punctuation">)</span>
 
         <span class="token comment">#价值函数更新</span>
-        <span class="token comment">#检查Sarsa函数不要缺少参数变量</span>
         Q <span class="token operator">=</span> Q_learning<span class="token punctuation">(</span>s<span class="token punctuation">,</span>a<span class="token punctuation">,</span>r<span class="token punctuation">,</span>s_next<span class="token punctuation">,</span>Q<span class="token punctuation">,</span>eta<span class="token punctuation">,</span>gamma<span class="token punctuation">)</span>
         <span class="token keyword">if</span> s_next <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
@@ -1564,22 +1583,12 @@ NUM_EPISODES <span class="token operator">=</span> <span class="token number">10
 
     <span class="token keyword">def</span> <span class="token function">bins</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>clip_min<span class="token punctuation">,</span>clip_max<span class="token punctuation">,</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token comment"># 记得写self 。。。全是泪</span>
-        <span class="token keyword">return</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>clip_min<span class="token punctuation">,</span>clip_max<span class="token punctuation">,</span>num<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># 这里的np.linspace是去生成等间隔数列 </span>
-    <span class="token comment"># 对于index来说通常[-1]指的是最后一个元素 [-1,1]指的是第二个元素到最后一个元素的前一个元素</span>
+        <span class="token keyword">return</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>clip_min<span class="token punctuation">,</span>clip_max<span class="token punctuation">,</span>num<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> 
+        <span class="token comment"># 这里的np.linspace是去生成等间隔数列 </span>
+        <span class="token comment"># 对于index来说通常[-1]指的是最后一个元素 </span>
+        <span class="token comment">#[-1：1]指的是第二个元素到最后一个元素的前一个元素</span>
+        <span class="token comment">#numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None).在指定的间隔内返回均匀间隔的数字。返回num均匀分布的样本，在[start, stop]。</span>
 
-
-
-    <span class="token keyword">def</span> <span class="token function">bins</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> clip_min<span class="token punctuation">,</span> clip_max<span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">'''観測した状態（連続値）を離散値にデジタル変換する閾値を求める'''</span>
-        <span class="token keyword">return</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>clip_min<span class="token punctuation">,</span> clip_max<span class="token punctuation">,</span> num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">def</span> <span class="token function">update_Q_table</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>observation<span class="token punctuation">,</span>action<span class="token punctuation">,</span>reward<span class="token punctuation">,</span>observation_next<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        state <span class="token operator">=</span> self<span class="token punctuation">.</span>digitize_state<span class="token punctuation">(</span>observation<span class="token punctuation">)</span> <span class="token comment">#状态离散化</span>
-        state_next <span class="token operator">=</span> self<span class="token punctuation">.</span>digitize_state<span class="token punctuation">(</span>observation_next<span class="token punctuation">)</span> <span class="token comment">#下一个状态的离散化</span>
-        Max_Q_next <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state_next<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
-        <span class="token comment"># 这里的反斜线是续行符号 当一行不能完整表达时使用</span>
-        self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">,</span>action<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">,</span>action<span class="token punctuation">]</span> <span class="token operator">+</span> \
-            ETA <span class="token operator">*</span> <span class="token punctuation">(</span>reward <span class="token operator">+</span> GAMMA <span class="token operator">*</span> Max_Q_next <span class="token operator">-</span> self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">,</span>action<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">digitize_state</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>observation<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token comment"># 这里起初错erro为 digitize_state() takes 1 positional argument but 2 were given</span>
@@ -1612,7 +1621,7 @@ NUM_EPISODES <span class="token operator">=</span> <span class="token number">10
             action <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             action <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_actions<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> action<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token keyword">return</span> action<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Environment</span> <span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>

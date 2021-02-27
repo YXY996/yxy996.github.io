@@ -480,7 +480,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.5k
                 </div>
                 
 
@@ -603,7 +603,8 @@ pi_0 <span class="token operator">=</span> simple_convert_pi_from_theta<span cla
     <span class="token keyword">if</span> s_next <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
         Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token operator">+</span>eta<span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token operator">-</span>Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
-        Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token operator">+</span>eta<span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token operator">+</span>gamma<span class="token operator">*</span>Q<span class="token punctuation">[</span>s_next<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">-</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token operator">+</span>eta<span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token operator">+</span>gamma<span class="token operator">*</span>np<span class="token punctuation">.</span>nanmax<span class="token punctuation">(</span>Q<span class="token punctuation">[</span>s_next<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> Q<span class="token punctuation">[</span>s<span class="token punctuation">,</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token comment">#这里np.nanmaxQ[s_next,:]是取四个行动(0,1,2,3)中Q价值最大动作</span>
     <span class="token keyword">return</span> Q
 
 <span class="token keyword">def</span> <span class="token function">goal_maze_ret_s_a_Q</span><span class="token punctuation">(</span>Q<span class="token punctuation">,</span>epsilon<span class="token punctuation">,</span>eta<span class="token punctuation">,</span>gamma<span class="token punctuation">,</span>pi<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -612,7 +613,7 @@ pi_0 <span class="token operator">=</span> simple_convert_pi_from_theta<span cla
     s_a_history <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">]</span>
     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         a <span class="token operator">=</span> a_next
-        <span class="token comment"># 将行动代入当前状态</span>
+        <span class="token comment"># 将行动代入当前状态  当前s_a_history只有一个状态行动 代入行动 之后每次都对最后一次的状态进行操作</span>
         s_a_history<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> a
         s_next <span class="token operator">=</span> get_s_next<span class="token punctuation">(</span>s<span class="token punctuation">,</span>a<span class="token punctuation">,</span>Q<span class="token punctuation">,</span>epsilon<span class="token punctuation">,</span>pi<span class="token punctuation">)</span>
         <span class="token comment"># 状态代入 行动不知道np.nan</span>
@@ -626,7 +627,6 @@ pi_0 <span class="token operator">=</span> simple_convert_pi_from_theta<span cla
             a_next <span class="token operator">=</span> get_action<span class="token punctuation">(</span>s_next<span class="token punctuation">,</span>Q<span class="token punctuation">,</span>epsilon<span class="token punctuation">,</span>pi<span class="token punctuation">)</span>
 
         <span class="token comment">#价值函数更新</span>
-        <span class="token comment">#检查Sarsa函数不要缺少参数变量</span>
         Q <span class="token operator">=</span> Q_learning<span class="token punctuation">(</span>s<span class="token punctuation">,</span>a<span class="token punctuation">,</span>r<span class="token punctuation">,</span>s_next<span class="token punctuation">,</span>Q<span class="token punctuation">,</span>eta<span class="token punctuation">,</span>gamma<span class="token punctuation">)</span>
         <span class="token keyword">if</span> s_next <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
@@ -1485,7 +1485,7 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.8k</span>&nbsp;字
+                class="white-color">23.9k</span>&nbsp;字
             
             
             

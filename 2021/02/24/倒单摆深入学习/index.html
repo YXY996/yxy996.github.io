@@ -473,7 +473,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-24
+                    2021-02-26
                 </div>
                 
 
@@ -487,7 +487,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    8 分
                 </div>
                 
 
@@ -573,22 +573,12 @@ NUM_EPISODES <span class="token operator">=</span> <span class="token number">10
 
     <span class="token keyword">def</span> <span class="token function">bins</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>clip_min<span class="token punctuation">,</span>clip_max<span class="token punctuation">,</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token comment"># 记得写self 。。。全是泪</span>
-        <span class="token keyword">return</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>clip_min<span class="token punctuation">,</span>clip_max<span class="token punctuation">,</span>num<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># 这里的np.linspace是去生成等间隔数列 </span>
-    <span class="token comment"># 对于index来说通常[-1]指的是最后一个元素 [-1,1]指的是第二个元素到最后一个元素的前一个元素</span>
+        <span class="token keyword">return</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>clip_min<span class="token punctuation">,</span>clip_max<span class="token punctuation">,</span>num<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> 
+        <span class="token comment"># 这里的np.linspace是去生成等间隔数列 </span>
+        <span class="token comment"># 对于index来说通常[-1]指的是最后一个元素 </span>
+        <span class="token comment">#[-1：1]指的是第二个元素到最后一个元素的前一个元素</span>
+        <span class="token comment">#numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None).在指定的间隔内返回均匀间隔的数字。返回num均匀分布的样本，在[start, stop]。</span>
 
-
-
-    <span class="token keyword">def</span> <span class="token function">bins</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> clip_min<span class="token punctuation">,</span> clip_max<span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">'''観測した状態（連続値）を離散値にデジタル変換する閾値を求める'''</span>
-        <span class="token keyword">return</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>clip_min<span class="token punctuation">,</span> clip_max<span class="token punctuation">,</span> num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">def</span> <span class="token function">update_Q_table</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>observation<span class="token punctuation">,</span>action<span class="token punctuation">,</span>reward<span class="token punctuation">,</span>observation_next<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        state <span class="token operator">=</span> self<span class="token punctuation">.</span>digitize_state<span class="token punctuation">(</span>observation<span class="token punctuation">)</span> <span class="token comment">#状态离散化</span>
-        state_next <span class="token operator">=</span> self<span class="token punctuation">.</span>digitize_state<span class="token punctuation">(</span>observation_next<span class="token punctuation">)</span> <span class="token comment">#下一个状态的离散化</span>
-        Max_Q_next <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state_next<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
-        <span class="token comment"># 这里的反斜线是续行符号 当一行不能完整表达时使用</span>
-        self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">,</span>action<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">,</span>action<span class="token punctuation">]</span> <span class="token operator">+</span> \
-            ETA <span class="token operator">*</span> <span class="token punctuation">(</span>reward <span class="token operator">+</span> GAMMA <span class="token operator">*</span> Max_Q_next <span class="token operator">-</span> self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">,</span>action<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">digitize_state</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>observation<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token comment"># 这里起初错erro为 digitize_state() takes 1 positional argument but 2 were given</span>
@@ -621,7 +611,7 @@ NUM_EPISODES <span class="token operator">=</span> <span class="token number">10
             action <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>self<span class="token punctuation">.</span>q_table<span class="token punctuation">[</span>state<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             action <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_actions<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> action<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token keyword">return</span> action<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Environment</span> <span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1431,7 +1421,7 @@ cartpole_env<span class="token punctuation">.</span>run<span class="token punctu
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.8k</span>&nbsp;字
+                class="white-color">23.9k</span>&nbsp;字
             
             
             
