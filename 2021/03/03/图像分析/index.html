@@ -480,14 +480,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -573,14 +573,7 @@ model<span class="token punctuation">.</span>add_module<span class="token punctu
 model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc3'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 输出标签0-9 共十个分支</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre><code>Sequential(
-  (fc1): Linear(in_features=784, out_features=100, bias=True)
-  (relu1): ReLU()
-  (fc2): Linear(in_features=100, out_features=100, bias=True)
-  (relu2): ReLU()
-  (fc3): Linear(in_features=100, out_features=10, bias=True)
-)
-</code></pre>
+<p>Sequential(<br>(fc1): Linear(in_features=784, out_features=100, bias=True)<br>(relu1): ReLU()<br>(fc2): Linear(in_features=100, out_features=100, bias=True)<br>(relu2): ReLU()<br>(fc3): Linear(in_features=100, out_features=10, bias=True)<br>)</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 误差函数和最优化</span>
 <span class="token keyword">from</span> torch <span class="token keyword">import</span> optim
 <span class="token comment"># 误差函数设定</span>
@@ -614,9 +607,6 @@ optimizer <span class="token operator">=</span> optim<span class="token punctuat
     data_num <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>loader_test<span class="token punctuation">.</span>dataset<span class="token punctuation">)</span> <span class="token comment">#数据的总数</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'\n 实验数据的正确率：&#123;&#125;/&#123;&#125; (&#123;: .0f&#125;%) \n'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>correct<span class="token punctuation">,</span>data_num<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">.</span> <span class="token operator">*</span>correct<span class="token operator">/</span>data_num<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">test<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre><code> 实验数据的正确率：1142/10000 ( 11%) 
-</code></pre>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">test<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 初始不学习进行推导 </span>
 <span class="token comment"># 这个时候的准确率和随机选择的概率接近</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -648,6 +638,24 @@ plt<span class="token punctuation">.</span>imshow<span class="token punctuation"
 这个画像数据的正确标签是 2
 </code></pre>
 <p><img src="/image/output_13_1.png" alt="png"></p>
+<pre class="line-numbers language-none"><code class="language-none">import torch.nn as nn
+import torch.nn.functional as F
+class Net(nn.Module):
+  def __init__(self,n_in,n_mid,n_out):
+    super(Net,self).__init__()
+    self.fc1 &#x3D; nn.Linear(n_in,n_mid)
+    self.fc2 &#x3D; nn.Linear(n_mid,n_mid)
+    self.fc3 &#x3D; nn.Linear(n_mid,n_out)
+
+  def forward(self,x):
+    h1 &#x3D; F.relu(self.fc1(x))
+    h2 &#x3D; F.relu(self.fc2(h1))
+    output &#x3D; self.fc3(h2)
+    return output
+
+model &#x3D; Net(n_in &#x3D; 28*28*1,n_mid &#x3D; 100,n_out &#x3D; 10)
+print(model)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Net(<br>  (fc1): Linear(in_features=784, out_features=100, bias=True)<br>  (fc2): Linear(in_features=100, out_features=100, bias=True)<br>  (fc3): Linear(in_features=100, out_features=10, bias=True)<br>)</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1380,7 +1388,7 @@ plt<span class="token punctuation">.</span>imshow<span class="token punctuation"
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.1k</span>&nbsp;字
+                class="white-color">26.2k</span>&nbsp;字
             
             
             
