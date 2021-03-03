@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="云台设计, 小杨的博客">
+    <meta name="keywords" content="图像分析, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>云台设计 | 小杨的博客</title>
+    <title>图像分析 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">云台设计</h1>
+                    <h1 class="description center-align post-title">图像分析</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
-                                <span class="chip bg-color">云台设计</span>
+                            <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
+                                <span class="chip bg-color">图像分析</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                控制系统
+                            <a href="/categories/python/" class="post-category">
+                                python
                             </a>
                         
                     </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-09
+                    2021-03-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-09
+                    2021-03-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -514,53 +514,141 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="云台设计构想及编程应用c语言c转换未完成">云台设计构想及编程应用（C语言—–C＋＋转换未完成）</span></h2><p>控制平台设计构想<br>传感器读取初始数据<br>卡尔曼滤波算法获取yaw，roll，pitch的角度<br>将数据转化为电机的目标值<br>    测量值如果和目标值相等<br>        读取磁编码测量其位置值<br>    测量值与目标值不相等<br>        经过位置环，速度环，电流环<br>            改变电机位置</p>
-<p>状态预测：<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)<br>或者<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)+B(k)u(k)</p>
-<p>这里X(k,k-1)是利用k-1时刻预测的当前状态结果<br>X(k-1)是k-1时刻最优值<br>A(k,k-1)是X(k-1)状态下的变换矩阵，它是算法对状态变量进行预测的依据<br>B(k)是作用在控制量上的变换矩阵，在大多数实际情况下并没有控制收益<br>u(k)是当前状态的控制增益，一般没有这个变量，可以设为0</p>
-<p>协方差阵预测：<br>P(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑃(𝑘−1) 𝐴^𝑇 (𝑘,𝑘−1)+𝐵(𝑘,𝑘−1)𝑄(𝑘−1)𝐵^𝑇 (𝑘,𝑘−1)</p>
-<p>P(𝑘,𝑘−1)是k时刻系统协方差矩阵<br>P(k-1)是k-1时刻系统协方差矩阵<br>Q(k-1)是系统过程的协方差矩阵</p>
-<p>滤波增益：<br>根据k时刻的协方差矩阵的预测值计算卡尔曼收益<br>𝐾(𝑘)=(𝑝(𝑘,𝑘−1) 𝐶^𝑇 (𝑘))/((𝐶(𝑘)𝑃(𝑘,𝑘−1) 𝐶^𝑇 (𝑘)+𝑅(𝑘))<br>k(k)是卡尔曼增益，是滤波的中间结果<br>C(k)是对象的预测矩阵<br>R(k)是对象测量噪声的协方差矩阵，是一个数值，作为已知条件输入滤波器。<br>这个值过大过小都会使滤波效果变差，且R(k)取值越小收敛越快,所以可以通过实验手段寻找合适的R(k)值再利用它进行真实的滤波.</p>
-<p>协方差阵估计：<br>目的：为了求k时刻的协方差矩阵（为得到k+1时刻的卡尔曼输出值做准备）<br>𝑃(𝑘)=(1−𝐾(𝑘)𝐶(𝑘))𝑃(𝑘,𝑘−1)<br>当p(k,k-1)为一个一维矩阵的时候,C(k)是1</p>
-<p>状态估计：<br>𝑋(k)=𝑋(𝑘,𝑘−1）+𝐾(𝑘)(𝑌(𝑘)−𝐶(𝑘)𝑋(𝑘,𝑘−1))<br>X(k)是k时刻状态变量的最优估计值<br>Y(K)是对象的测量</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;1. 结构体类型定义
-typedef struct 
-&#123;
-    float LastP;&#x2F;&#x2F;上次估算协方差 初始化值为0.02
-    float Now_P;&#x2F;&#x2F;当前估算协方差 初始化值为0
-    float out;&#x2F;&#x2F;卡尔曼滤波器输出 初始化值为0
-    float Kg;&#x2F;&#x2F;卡尔曼增益 初始化值为0
-    float Q;&#x2F;&#x2F;过程噪声协方差 初始化值为0.001
-    float R;&#x2F;&#x2F;观测噪声协方差 初始化值为0.543
-&#125;KFP；&#x2F;&#x2F;Kalman Filter parameter
+                <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>datasets <span class="token keyword">import</span> fetch_openml
+mnist <span class="token operator">=</span> fetch_openml<span class="token punctuation">(</span><span class="token string">'mnist_784'</span><span class="token punctuation">,</span>version <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>data_home <span class="token operator">=</span> <span class="token string">"."</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-&#x2F;&#x2F;2. 以高度为例 定义卡尔曼结构体并初始化参数
-KFP KFP_height&#x3D;&#123;0.02,0,0,0,0.001,0.543&#125;;
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">X <span class="token operator">=</span> mnist<span class="token punctuation">.</span>data<span class="token operator">/</span><span class="token number">255</span>
+y <span class="token operator">=</span> mnist<span class="token punctuation">.</span>target
+<span class="token comment"># 2019年1月31日訂正</span>
+<span class="token comment"># MNISTのデータセットの変更により、ラベルが数値データになっていないので、</span>
+<span class="token comment"># 以下により、NumPyの配列の数値型に変換します</span>
+<span class="token comment">#mnist数据库变更  label没有变成数值 这里通过numpy来变成数值输出</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+y <span class="token operator">=</span> y<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>np<span class="token punctuation">.</span>int32<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-&#x2F;**
- *卡尔曼滤波器
- *@param KFP *kfp 卡尔曼结构体参数
- *   float input 需要滤波的参数的测量值（即传感器的采集值）
- *@return 滤波后的参数（最优值）
- *&#x2F;
- float kalmanFilter(KFP *kfp,float input)
- &#123;
-     &#x2F;&#x2F;预测协方差方程：k时刻系统估算协方差 &#x3D; k-1时刻的系统协方差 + 过程噪声协方差
-     kfp-&gt;Now_P &#x3D; kfp-&gt;LastP + kfp-&gt;Q;
-     &#x2F;&#x2F;卡尔曼增益方程：卡尔曼增益 &#x3D; k时刻系统估算协方差 &#x2F; （k时刻系统估算协方差 + 观测噪声协方差）
-     kfp-&gt;Kg &#x3D; kfp-&gt;Now_P &#x2F; (kfp-&gt;NOw_P + kfp-&gt;R);
-     &#x2F;&#x2F;更新最优值方程：k时刻状态变量的最优值 &#x3D; 状态变量的预测值 + 卡尔曼增益 * （测量值 - 状态变量的预测值）
-     kfp-&gt;out &#x3D; kfp-&gt;out + kfp-&gt;Kg * (input -kfp-&gt;out);&#x2F;&#x2F;因为这一次的预测值就是上一次的输出值
-     &#x2F;&#x2F;更新协方差方程: 本次的系统协方差付给 kfp-&gt;LastP 威下一次运算准备。
-     kfp-&gt;LastP &#x3D; (1-kfp-&gt;Kg) * kfp-&gt;Now_P;
-     return kfp-&gt;out；
- &#125;
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token operator">%</span>matplotlib inline
 
-&#x2F;**
- *调用卡尔曼滤波器 实践
- *&#x2F;
-int height;
-int kalman_height&#x3D;0;
-kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>X<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">'gray'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"この画像データのラベルは&#123;: .0f&#125;です"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>y<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>この画像データのラベルは 5です
+</code></pre>
+<p><img src="/image/output_2_1.png" alt="png"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 制作dataloader</span>
+<span class="token keyword">import</span> torch
+<span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> TensorDataset<span class="token punctuation">,</span>DataLoader
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span>y<span class="token punctuation">,</span>test_size <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">7</span><span class="token punctuation">,</span>random_state <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#将数据转换成pytorch的张量tensor</span>
+<span class="token comment">#在深度学习中，Tensor实际上就是一个多维数组（multidimensional array）其目的是能够创造更高维度的矩阵、向量。</span>
+X_train <span class="token operator">=</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">(</span>X_train<span class="token punctuation">)</span>
+X_test <span class="token operator">=</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+y_train <span class="token operator">=</span> torch<span class="token punctuation">.</span>LongTensor<span class="token punctuation">(</span>y_train<span class="token punctuation">)</span>
+y_test <span class="token operator">=</span> torch<span class="token punctuation">.</span>LongTensor<span class="token punctuation">(</span>y_test<span class="token punctuation">)</span>
+<span class="token comment"># 创建一个数据表dataset 包含数据和标签</span>
+ds_train <span class="token operator">=</span> TensorDataset<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
+ds_test <span class="token operator">=</span> TensorDataset<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># BATCH_SIZE:即一次训练所抓取的数据样本数量；</span>
+<span class="token comment"># BATCH_SIZE的大小影响训练速度和模型优化。同时按照以上代码可知，其大小同样影响每一epoch训练模型次数。</span>
+<span class="token comment"># shuffle（中文意思：洗牌，混乱）。shuffle在机器学习与深度学习中代表的意思是，将训练模型的数据集进行打乱的操作。</span>
+<span class="token comment"># 原始的数据，在样本均衡的情况下可能是按照某种顺序进行排列，如前半部分为某一类别的数据，后半部分为另一类别的数据。</span>
+<span class="token comment"># 但经过打乱之后数据的排列就会拥有一定的随机性，在顺序读取的时候下一次得到的样本为任何一类型的数据的可能性相同。</span>
+<span class="token comment"># shuffle 可以防止过拟合</span>
+loader_train <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span>ds_train<span class="token punctuation">,</span>batch_size <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">,</span>shuffle <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+loader_test <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span>ds_test<span class="token punctuation">,</span>batch_size <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">,</span>shuffle <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#Keras</span>
+<span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
+model <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 构建神经网络fc1,fc2,fc3三层</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc1'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">28</span><span class="token operator">*</span><span class="token number">28</span><span class="token operator">*</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#输入784 输出100</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'relu1'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 输出的100个 通过ReLU转换 负数转换为0 正数原值输出</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc2'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'relu2'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc3'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 输出标签0-9 共十个分支</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Sequential(
+  (fc1): Linear(in_features=784, out_features=100, bias=True)
+  (relu1): ReLU()
+  (fc2): Linear(in_features=100, out_features=100, bias=True)
+  (relu2): ReLU()
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 误差函数和最优化</span>
+<span class="token keyword">from</span> torch <span class="token keyword">import</span> optim
+<span class="token comment"># 误差函数设定</span>
+loss_fn <span class="token operator">=</span> nn<span class="token punctuation">.</span>CrossEntropyLoss<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 权重学习的最优化选择</span>
+optimizer <span class="token operator">=</span> optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>lr <span class="token operator">=</span> <span class="token number">0.01</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>adams 算法<br>Adam(Adaptive Moment Estimation)本质上是带有动量项的RMSprop，它利用梯度的一阶矩估计和二阶矩估计动态调整每个参数的学习率。<br>它的优点主要在于经过偏置校正后，每一次迭代学习率都有个确定范围，使得参数比较平稳。其公式如下：</p>
+<p><img src="/image/adam.png"></p>
+<p>其中，前两个公式分别是对梯度的一阶矩估计和二阶矩估计，可以看作是对期望E|gt|，E|gt^2|的估计;<br>公式3，4是对一阶二阶矩估计的校正，这样可以近似为对期望的无偏估计。可以看出，直接对梯度的矩估计对内存没有额外的要求，而且可以根据梯度进行动态调整。最后一项前面部分是对学习率n形成的一个动态约束，而且有明确的范围。</p>
+<p>params(iterable)：可用于迭代优化的参数或者定义参数组的dicts。<br>lr (float, optional) ：学习率(默认: 1e-3)<br>betas (Tuple[float, float], optional)：用于计算梯度的平均和平方的系数(默认: (0.9, 0.999))<br>eps (float, optional)：为了提高数值稳定性而添加到分母的一个项(默认: 1e-8)<br>weight_decay (float, optional)：权重衰减(如L2惩罚)(默认: 0)</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">train</span><span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> data<span class="token punctuation">,</span>targets <span class="token keyword">in</span> loader_train<span class="token punctuation">:</span>
+        optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#计算后归零</span>
+        outputs <span class="token operator">=</span> model<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment"># 输入data 求输出</span>
+        loss <span class="token operator">=</span> loss_fn<span class="token punctuation">(</span>outputs<span class="token punctuation">,</span>targets<span class="token punctuation">)</span> <span class="token comment"># 计算输出和训练数据正确值的误差</span>
+        loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"epoch&#123;&#125;:终止\n"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#推理模式</span>
+    correct <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment">#?推导不需要微分？</span>
+        <span class="token keyword">for</span> data <span class="token punctuation">,</span>targets <span class="token keyword">in</span> loader_test<span class="token punctuation">:</span>
+            outputs <span class="token operator">=</span> model<span class="token punctuation">(</span>data<span class="token punctuation">)</span> 
+            _<span class="token punctuation">,</span>predicted <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>outputs<span class="token punctuation">.</span>data<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#计算概率最高的标签</span>
+            <span class="token comment"># 注意运算符的全角半角</span>
+            correct <span class="token operator">+=</span> predicted<span class="token punctuation">.</span>eq<span class="token punctuation">(</span>targets<span class="token punctuation">.</span>data<span class="token punctuation">.</span>view_as<span class="token punctuation">(</span>predicted<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">#如果和正确值一致，计数加一 </span>
+    data_num <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>loader_test<span class="token punctuation">.</span>dataset<span class="token punctuation">)</span> <span class="token comment">#数据的总数</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'\n 实验数据的正确率：&#123;&#125;/&#123;&#125; (&#123;: .0f&#125;%) \n'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>correct<span class="token punctuation">,</span>data_num<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">.</span> <span class="token operator">*</span>correct<span class="token operator">/</span>data_num<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code> 实验数据的正确率：1142/10000 ( 11%) 
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 初始不学习进行推导 </span>
+<span class="token comment"># 这个时候的准确率和随机选择的概率接近</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code> 实验数据的正确率：1142/10000 ( 11%) 
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    train<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span>
+
+test<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>epoch0:终止
+
+epoch1:终止
+
+epoch2:终止
+
+
+ 实验数据的正确率：9565/10000 ( 96%) 
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">index <span class="token operator">=</span> <span class="token number">2018</span>
+model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+data <span class="token operator">=</span> X_test<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+output <span class="token operator">=</span> model<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+_<span class="token punctuation">,</span>predicted <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>data<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"预测结果是&#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>predicted<span class="token punctuation">)</span><span class="token punctuation">)</span>
+X_test_show <span class="token operator">=</span> <span class="token punctuation">(</span>X_test<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>X_test_show<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">,</span><span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">,</span>cmap <span class="token operator">=</span> <span class="token string">'gray'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"这个画像数据的正确标签是&#123;: .0f&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>y_test<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>预测结果是2
+这个画像数据的正确标签是 2
+</code></pre>
+<p><img src="/image/output_13_1.png" alt="png"></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -574,8 +662,8 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
-                                    <span class="chip bg-color">云台设计</span>
+                                <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
+                                    <span class="chip bg-color">图像分析</span>
                                 </a>
                             
                         </div>
@@ -1008,17 +1096,18 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/14/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/03/03/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="算法基础">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="图像分析">
                         
-                        <span class="card-title">算法基础</span>
+                        <span class="card-title">图像分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1028,26 +1117,27 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">算法基础</span>
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">图像分析</span>
                     </a>
                     
                 </div>
@@ -1061,13 +1151,13 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/08/C++%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                <a href="/2021/02/27/%E6%B3%9B%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="C++进阶笔记">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="泛型程序设计">
                         
-                        <span class="card-title">C++进阶笔记</span>
+                        <span class="card-title">泛型程序设计</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1078,7 +1168,7 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-27
                             </span>
                         <span class="publish-author">
                             
@@ -1095,8 +1185,8 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">C++进阶笔记</span>
+                    <a href="/tags/STL/">
+                        <span class="chip bg-color">STL</span>
                     </a>
                     
                 </div>

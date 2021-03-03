@@ -1730,4 +1730,149 @@ void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbe
         <tag>STL</tag>
       </tags>
   </entry>
+  <entry>
+    <title>图像分析</title>
+    <url>/2021/03/03/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>datasets <span class="token keyword">import</span> fetch_openml
+mnist <span class="token operator">=</span> fetch_openml<span class="token punctuation">(</span><span class="token string">'mnist_784'</span><span class="token punctuation">,</span>version <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>data_home <span class="token operator">=</span> <span class="token string">"."</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">X <span class="token operator">=</span> mnist<span class="token punctuation">.</span>data<span class="token operator">/</span><span class="token number">255</span>
+y <span class="token operator">=</span> mnist<span class="token punctuation">.</span>target
+<span class="token comment"># 2019年1月31日訂正</span>
+<span class="token comment"># MNISTのデータセットの変更により、ラベルが数値データになっていないので、</span>
+<span class="token comment"># 以下により、NumPyの配列の数値型に変換します</span>
+<span class="token comment">#mnist数据库变更  label没有变成数值 这里通过numpy来变成数值输出</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+y <span class="token operator">=</span> y<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>np<span class="token punctuation">.</span>int32<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token operator">%</span>matplotlib inline
+
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>X<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">'gray'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"この画像データのラベルは&#123;: .0f&#125;です"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>y<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>この画像データのラベルは 5です
+</code></pre>
+<p><img src="/image/output_2_1.png" alt="png"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 制作dataloader</span>
+<span class="token keyword">import</span> torch
+<span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> TensorDataset<span class="token punctuation">,</span>DataLoader
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span>y<span class="token punctuation">,</span>test_size <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">7</span><span class="token punctuation">,</span>random_state <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#将数据转换成pytorch的张量tensor</span>
+<span class="token comment">#在深度学习中，Tensor实际上就是一个多维数组（multidimensional array）其目的是能够创造更高维度的矩阵、向量。</span>
+X_train <span class="token operator">=</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">(</span>X_train<span class="token punctuation">)</span>
+X_test <span class="token operator">=</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+y_train <span class="token operator">=</span> torch<span class="token punctuation">.</span>LongTensor<span class="token punctuation">(</span>y_train<span class="token punctuation">)</span>
+y_test <span class="token operator">=</span> torch<span class="token punctuation">.</span>LongTensor<span class="token punctuation">(</span>y_test<span class="token punctuation">)</span>
+<span class="token comment"># 创建一个数据表dataset 包含数据和标签</span>
+ds_train <span class="token operator">=</span> TensorDataset<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
+ds_test <span class="token operator">=</span> TensorDataset<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># BATCH_SIZE:即一次训练所抓取的数据样本数量；</span>
+<span class="token comment"># BATCH_SIZE的大小影响训练速度和模型优化。同时按照以上代码可知，其大小同样影响每一epoch训练模型次数。</span>
+<span class="token comment"># shuffle（中文意思：洗牌，混乱）。shuffle在机器学习与深度学习中代表的意思是，将训练模型的数据集进行打乱的操作。</span>
+<span class="token comment"># 原始的数据，在样本均衡的情况下可能是按照某种顺序进行排列，如前半部分为某一类别的数据，后半部分为另一类别的数据。</span>
+<span class="token comment"># 但经过打乱之后数据的排列就会拥有一定的随机性，在顺序读取的时候下一次得到的样本为任何一类型的数据的可能性相同。</span>
+<span class="token comment"># shuffle 可以防止过拟合</span>
+loader_train <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span>ds_train<span class="token punctuation">,</span>batch_size <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">,</span>shuffle <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+loader_test <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span>ds_test<span class="token punctuation">,</span>batch_size <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">,</span>shuffle <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#Keras</span>
+<span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
+model <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 构建神经网络fc1,fc2,fc3三层</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc1'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">28</span><span class="token operator">*</span><span class="token number">28</span><span class="token operator">*</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#输入784 输出100</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'relu1'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 输出的100个 通过ReLU转换 负数转换为0 正数原值输出</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc2'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'relu2'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc3'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 输出标签0-9 共十个分支</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Sequential(
+  (fc1): Linear(in_features=784, out_features=100, bias=True)
+  (relu1): ReLU()
+  (fc2): Linear(in_features=100, out_features=100, bias=True)
+  (relu2): ReLU()
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 误差函数和最优化</span>
+<span class="token keyword">from</span> torch <span class="token keyword">import</span> optim
+<span class="token comment"># 误差函数设定</span>
+loss_fn <span class="token operator">=</span> nn<span class="token punctuation">.</span>CrossEntropyLoss<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 权重学习的最优化选择</span>
+optimizer <span class="token operator">=</span> optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>lr <span class="token operator">=</span> <span class="token number">0.01</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>adams 算法<br>Adam(Adaptive Moment Estimation)本质上是带有动量项的RMSprop，它利用梯度的一阶矩估计和二阶矩估计动态调整每个参数的学习率。<br>它的优点主要在于经过偏置校正后，每一次迭代学习率都有个确定范围，使得参数比较平稳。其公式如下：</p>
+<p><img src="/image/adam.png"></p>
+<p>其中，前两个公式分别是对梯度的一阶矩估计和二阶矩估计，可以看作是对期望E|gt|，E|gt^2|的估计;<br>公式3，4是对一阶二阶矩估计的校正，这样可以近似为对期望的无偏估计。可以看出，直接对梯度的矩估计对内存没有额外的要求，而且可以根据梯度进行动态调整。最后一项前面部分是对学习率n形成的一个动态约束，而且有明确的范围。</p>
+<p>params(iterable)：可用于迭代优化的参数或者定义参数组的dicts。<br>lr (float, optional) ：学习率(默认: 1e-3)<br>betas (Tuple[float, float], optional)：用于计算梯度的平均和平方的系数(默认: (0.9, 0.999))<br>eps (float, optional)：为了提高数值稳定性而添加到分母的一个项(默认: 1e-8)<br>weight_decay (float, optional)：权重衰减(如L2惩罚)(默认: 0)</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">train</span><span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> data<span class="token punctuation">,</span>targets <span class="token keyword">in</span> loader_train<span class="token punctuation">:</span>
+        optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#计算后归零</span>
+        outputs <span class="token operator">=</span> model<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment"># 输入data 求输出</span>
+        loss <span class="token operator">=</span> loss_fn<span class="token punctuation">(</span>outputs<span class="token punctuation">,</span>targets<span class="token punctuation">)</span> <span class="token comment"># 计算输出和训练数据正确值的误差</span>
+        loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"epoch&#123;&#125;:终止\n"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#推理模式</span>
+    correct <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment">#?推导不需要微分？</span>
+        <span class="token keyword">for</span> data <span class="token punctuation">,</span>targets <span class="token keyword">in</span> loader_test<span class="token punctuation">:</span>
+            outputs <span class="token operator">=</span> model<span class="token punctuation">(</span>data<span class="token punctuation">)</span> 
+            _<span class="token punctuation">,</span>predicted <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>outputs<span class="token punctuation">.</span>data<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#计算概率最高的标签</span>
+            <span class="token comment"># 注意运算符的全角半角</span>
+            correct <span class="token operator">+=</span> predicted<span class="token punctuation">.</span>eq<span class="token punctuation">(</span>targets<span class="token punctuation">.</span>data<span class="token punctuation">.</span>view_as<span class="token punctuation">(</span>predicted<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">#如果和正确值一致，计数加一 </span>
+    data_num <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>loader_test<span class="token punctuation">.</span>dataset<span class="token punctuation">)</span> <span class="token comment">#数据的总数</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'\n 实验数据的正确率：&#123;&#125;/&#123;&#125; (&#123;: .0f&#125;%) \n'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>correct<span class="token punctuation">,</span>data_num<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">.</span> <span class="token operator">*</span>correct<span class="token operator">/</span>data_num<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code> 实验数据的正确率：1142/10000 ( 11%) 
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 初始不学习进行推导 </span>
+<span class="token comment"># 这个时候的准确率和随机选择的概率接近</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code> 实验数据的正确率：1142/10000 ( 11%) 
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    train<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span>
+
+test<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>epoch0:终止
+
+epoch1:终止
+
+epoch2:终止
+
+
+ 实验数据的正确率：9565/10000 ( 96%) 
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">index <span class="token operator">=</span> <span class="token number">2018</span>
+model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+data <span class="token operator">=</span> X_test<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+output <span class="token operator">=</span> model<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+_<span class="token punctuation">,</span>predicted <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>data<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"预测结果是&#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>predicted<span class="token punctuation">)</span><span class="token punctuation">)</span>
+X_test_show <span class="token operator">=</span> <span class="token punctuation">(</span>X_test<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>X_test_show<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">,</span><span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">,</span>cmap <span class="token operator">=</span> <span class="token string">'gray'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"这个画像数据的正确标签是&#123;: .0f&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>y_test<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>预测结果是2
+这个画像数据的正确标签是 2
+</code></pre>
+<p><img src="/image/output_13_1.png" alt="png"></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>图像分析</tag>
+      </tags>
+  </entry>
 </search>
