@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/STL/">
-                                <span class="chip bg-color">STL</span>
+                            <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">C++进阶笔记</span>
                             </a>
                         
                     </div>
@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-27
+                    2021-03-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    875
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -526,6 +526,33 @@ void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbe
 <p>迭代器（iterator)<br>提供了顺序访问容器每一个元素的方法<br>可以使用“++”运算符来获得指向下一个元素的迭代器<br>可以使用“*”运算符防卫迭代器所指向的元素，如果元素类型是类或结构体，还可以使用<br>“-&gt;”运算符直接访问该元素的一个成员<br>有些迭代器还支持通过”–”运算符获得指向上一个元素的迭代器<br>迭代器是泛化的指针： 指针也具有同样的特性，因此指针本身就是一种迭代器<br>使用独立于STL容器的迭代器 ，需要包含头文件”iterator”</p>
 <p>函数对象（function object)<br>一个行为类似函数的对象，对它可以像调用函数一样调用。<br>函数对象是泛化的函数：任何普通的函数和任何重载了“（）”运算符的类的对象都可以作为函数对象使用<br>使用STL的函数对象，需要包含头文件 “functional”</p>
 <p>算法(algorithms)<br>可以广泛用于不同的对象和内置的数据类型<br>STL包括了70多个算法<br>例如：排序算法，消除算法，计数算法，比较算法，变换算法，置换算法和容器管理等<br>使用STL的算法，需要包含头文件“algorithm”</p>
+<h5><span id="顺序容器">顺序容器</span></h5><h5><span id="向量">向量</span></h5><p>特点：<br>一个可以扩展的动态数组<br>随机访问，在尾部插入或删除元素快<br>在中间或头部插入或删除元素慢</p>
+<p>向量的容量：<br>容量（capacity）：世纪分配空间的大小<br>s.capacity() ：返回当前容量<br>s.reserve(n) : 若容量小于n，则对s进行扩展，使其容量至少为n</p>
+<h5><span id="双端队列deque">双端队列(deque)</span></h5><p>在两端插入或删除元素快<br>在中间插入或删除元素慢<br>随机访问较快，但比向量容器慢</p>
+<p>奇偶排序例题：<br>先按照从大到小顺序输出奇数，再按照从小到达顺序输出偶数<br>特点：先插入两端元素，速度较快</p>
+<pre class="line-numbers language-none"><code class="language-none">int main()&#123;
+    istream_iterator&lt;int&gt;i1(cin),i2; &#x2F;&#x2F;建立一对输入流迭代器
+    vector &lt;int&gt; s1(i1,i2); &#x2F;&#x2F;通过输入流迭代器从标准输入流中输入数据
+    sort(s1.begin(),s1.end()); &#x2F;&#x2F;将输入的整数排序
+    deque &lt;int&gt; s2; &#x2F;&#x2F;双端队列
+    for (vector &lt;int&gt;::iterator iter &#x3D; s1.begin();iter!&#x3D;s1.end();++iter)&#123;
+        if (*iter%2 &#x3D;&#x3D;0)
+            s2.push_back(*iter); &#x2F;&#x2F;偶数放到s2尾部
+        else
+            s2.push_front(*iter); &#x2F;&#x2F;奇数放到s2首部
+    &#125;
+    copy(s2.begin(),s2.end(),ostream_iterator&lt;int&gt;(cout,&quot; &quot;)); &#x2F;&#x2F;将s2的结果输出
+    cout&lt;&lt;endl;
+    return 0
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5><span id="列表">列表</span></h5><p>特点：<br>在任意位置插入和删除都很快<br>不支持随机访问<br>接合操作（splice）操作<br>s1.splice(p,s2,q1,q2):将s2中[q1,q2)移动到s1中p所指向元素之前</p>
+<h5><span id="单向链表forward_list">单向链表（forward_list)</span></h5><p>单向链表每个结点只有指向下个结点的指针，没有简单的方法来获取一个结点的前驱；<br>未定义insert,emplace,erase操作，而定义了insert_after,emplace_after,erase_after操作，其参数与list的insert,emplace,erase相同，但并不是插入或删除迭代器p1所指的元素，而是对p1所指元素之后的结点进行操作<br>不支持size操作</p>
+<h5><span id="数组array">数组(array)</span></h5><p>array是对内置数组的封装，提供了更安全，更方便的使用数组的方式<br>array的对象的大小是固定的，定义时除了需要指定元素类型，还需要指定容器大小<br>不能动态地改变容器大小</p>
+<h5><span id="顺序容器的比较">顺序容器的比较</span></h5><p>STL所提供的顺序容器各有利弊，需要根据自己的需求选择容器<br>若执行大量的随机访问操作，而且当扩展容器时只需要向容器尾部加入新的元素，就应当选择向量容器vector</p>
+<p>如果需要少量的随机访问操作，需要在容器两端插入或删除元素，则应选择双端队列deque</p>
+<p>如果不需要对容器进行随机访问，但是需要在中间位置插入或删除元素，就应当选择列表容器list或forward_list</p>
+<p>如果需要数组，array相对于内置数组而言，是一种更安全，更容易使用的数组类型</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -540,8 +567,8 @@ void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbe
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/STL/">
-                                    <span class="chip bg-color">STL</span>
+                                <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">C++进阶笔记</span>
                                 </a>
                             
                         </div>
@@ -1256,7 +1283,7 @@ void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbe
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.2k</span>&nbsp;字
+                class="white-color">26.9k</span>&nbsp;字
             
             
             

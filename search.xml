@@ -1,267 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C++进阶笔记</title>
-    <url>/2021/02/08/C++%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="定义指向数组元素的指针">定义指向数组元素的指针</span></h2><p>定义与赋值<br>int a[10],*pa;<br>pa=&amp;a[0];或者pa=a;<br>等效的形式</p>
-<ul>
-<li>pa就是a[0],* (pa+1)就是a[1]….* (pa+i)就是a[i]<br>！！！重点！！！<br>a[i],* (pa+i),* (a+i),pa(i)都是等效的</li>
-</ul>
-<h2><span id="指针数组数组的元素是指针类型">指针数组：数组的元素是指针类型</span></h2><p>Point * pa[2];<br>是由pa[0],pa[1]两个指针组成的</p>
-<p>实例</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	int line1[]&#x3D;&#123;1,0,0&#125;
-	int line2[]&#x3D;&#123;0,1,0&#125;
-	int line3[]&#x3D;&#123;0,0,1&#125;
-	&#x2F;&#x2F;定义整型指针数组并初始化
-	int * pline[3]&#x3D;&#123;line1,line2,line3&#125;;
-	&#x2F;&#x2F;输出
-	cout&lt;&lt;&quot;Matrix test:&quot;&lt;&lt;endl;
-	for (int i&#x3D;0;i&lt;3;i++)&#123;
-		for (int j&#x3D;0;j&lt;3;j++)&#123;
-			cout&lt;&lt;pline[i][j]&lt;&lt;&quot; &quot;;
-		&#125;
-		cout&lt;&lt;endl;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/image/1.png"><br>为什么需要用指针作参数？<br>需要数据双向传递时（引用也可以达到此效果）<br>需要传递一组数据，只传首地址运行效率比较高</p>
-<p>例子：读入三个浮点数，将整数部分和小数部分分开输出</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-using namespace std;
-void splitFloat(float x,int *intPart,float *fracpart)&#123;
-	*intPart&#x3D;static_cast&lt;int&gt;(x);
-	*fracpart&#x3D;x-*intPart;
-&#125;
-int main()&#123;
-	cout&lt;&lt;&quot;Enter 3 float point numbers:&quot;&lt;&lt;endl;
-	for (int i&#x3D;0;i&lt;3;i++)&#123;
-		float x,f;
-		int n;
-		cin&gt;&gt;x;
-		splitFloat(x,&amp;n,&amp;f);&#x2F;&#x2F;变量地址作实参
-		cout&lt;&lt;&quot;Integer Part&#x3D;&quot;&lt;&lt;n&lt;&lt;&quot;fracpart&#x3D;&quot;&lt;&lt;f&lt;&lt;endl;
-
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例子：指向常量的指针作形参<br>传递地址且不需要主调函数中的数值是无法修改的<br>这个时候把指针定义为常量指针，只为了输出。<br>最小授权原则,对外的访问授权够用就好。</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-const int N&#x3D;6;
-void print(const int *p ,int n);
-int main()&#123;
-	int array[N];
-	for (int i&#x3D;0;i&lt;N;i++)
-		cin&gt;&gt;array[i];
-	print(array,N);
-	return 0;
-&#125;
-void print(const int *p,int n)&#123;
-	cout&lt;&lt;&quot;&#123;&quot;&lt;&lt;*p;
-	for (int i&#x3D;1;i&lt;n;i++)
-		cout&lt;&lt;&quot;,&quot;&lt;&lt;*(p+i);
-	cout&lt;&lt;&quot;&#125;&quot;&lt;&lt;endl;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="指针函数的定义形式">指针函数的定义形式：</span></h2><p>存储类型 数据类型 *函数名 ( )<br>{<br>    //函数体语句<br>}<br>！！不要将非静态局部地址用作函数的返回值<br>错误的例子：<br>在子函数中定义局部变量后将其地址返回给主函数，就是非法地址<br>错误例子：</p>
-<pre class="line-numbers language-none"><code class="language-none">
-int main()&#123;
-	int *function();
-	int *ptr&#x3D;function();
-	*ptr&#x3D;5;&#x2F;&#x2F;危险的访问
-	return 0;
-&#125;
-int *function()&#123;
-	int local&#x3D;0;&#x2F;&#x2F;非静态局部变量作用域和寿命仅限于本函数体内
-	return &amp;local;
-&#125;&#x2F;&#x2F;函数结束运行时，变量local被释放
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>正确例子：<br>动态分配地址，函数有效</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	int *newintvar();
-	int *intptr&#x3D;newintvar();
-	*intptr&#x3D;5; &#x2F;&#x2F;访问的是合法有效的地址
-	delete intptr;&#x2F;&#x2F;如果忘记在这里释放，会造成内存泄漏
-	return 0;
-
-&#125;
-int *newintvar()&#123;
-	int *p&#x3D;new int();
-	return p;&#x2F;&#x2F;返回的地址指向的是动态分配的空间
-&#125;&#x2F;&#x2F;函数运行结束时，p中的地址仍然有效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="函数指针">函数指针</span></h2><p>定义形式:<br>存储类型 数据类型 （* 函数指针名）（）；<br>含义：<br>函数指针指向的是程序代码存储区。</p>
-<p>函数指针的典型用途–实现函数回调<br>通过函数指针调用的函数<br>    例如将函数的指针作为参数传递给一个函数，使得在处理相似事件的时候可以灵活的使用不同的方法<br>调用者不关心谁是被调用者<br>    需知道存在一个具有特定原型和限制条件的被调用函数</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-int compute(int a,int b,int (*func)(int,int))
-&#123;
-	return func(a,b);
-&#125;
-int max(int a,int b)
-&#123;
-	return ((a&gt;b)?a:b);
-&#125;
-int min(int a,int b)
-&#123;
-	return ((a&lt;b)?a:b);
-&#125;
-int sum(int a,int b)
-&#123;
-	return a+b;
-&#125;
-int main()&#123;
-	int a ,b,res;
-	cout&lt;&lt;&quot;请输入整数a:&quot;;cin&gt;&gt;a;
-	cout&lt;&lt;&quot;请输入整数b:&quot;;cin&gt;&gt;b;
-	res&#x3D;compute(a,b,&amp;max);
-	cout&lt;&lt;&quot;Max of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
-	res&#x3D;compute(a,b,&amp;min);
-	cout&lt;&lt;&quot;Min of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
-	res&#x3D;compute(a,b,&amp;sum);
-	cout&lt;&lt;&quot;Sum of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
-	
-
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="this指针">this指针</span></h2><p>隐含于类的每一个非静态成员函数中<br>指出成员函数所操作的对象<br>    当通过一个对象调用成员函数时，系统先将该对象的地址赋给this指针，然后调用成员函数，成员函数对对象的数据成员进行操作时，就隐含使用了this指针<br>例如：<br>Point类的getX函数中的语句<br>return x;<br>相当于<br>return this-&gt;x;</p>
-<h2><span id="动态申请内存操作符-new">动态申请内存操作符 new</span></h2><p>new 类型名T（初始化参数列表）<br>功能：<br>在程序执行期间，申请用于存放类型T对象的内存空间<br>并依初值列表赋以初值<br>成功：T类型的指针，指向新分配的内存<br>失败：抛出异常</p>
-<h2><span id="释放内存操作符-delete">释放内存操作符 delete</span></h2><p>功能：释放指针p所指向的内存。<br>p必须是new操作的返回值</p>
-<p>例子：<br>动态创建对象举例</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	cout&lt;&lt;&quot;Step One:&quot;&lt;&lt;endl;
-	Point *ptr1&#x3D;new Point;&#x2F;&#x2F;调用默认构造函数
-	delete ptr1;&#x2F;&#x2F;删除对象，自动调用析构函数
-	cout&lt;&lt;&quot;Step Two:&quot;&lt;&lt;endl;
-	ptr1&#x3D; new Point(1,2);
-	delete ptr1;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>分配和释放动态数组<br>分配：new 类型名T [数组长度]<br>数组长度可以是任何整数类型表达式，在运行时计算<br>释放：delete []数组名p<br>释放指针p所指向的数组<br>p必须是用new分配得到的数组首地址</p>
-<h2><span id="动态创建多维数组">动态创建多维数组</span></h2><pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	int (*cp)[9][8]&#x3D;new int [7][9][8];
-	for (int i&#x3D;0;i&lt;7;i++)
-		for (int j&#x3D;0;j&lt;9;j++)
-			for(int k&#x3D;0;k&lt;8;k++)
-				*(*(*(cp+i)+j)+k)&#x3D;(i*100+j*10+k);
-	for (int i&#x3D;0;i&lt;7;i++)&#123;	
-		for (int j&#x3D;0;j&lt;9;j++)&#123;
-			for(int k&#x3D;0;k&lt;8;k++)
-				cout&lt;&lt;cp[i][j][k]&lt;&lt;&quot; &quot;;
-			cout&lt;&lt;endl;
-		&#125;
-		cout&lt;&lt;endl;
-	&#125;
-	delete []cp;
-	return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2><span id="将动态数组分装成类">将动态数组分装成类</span></h2><p>更加简洁，便于管理<br>可以在访问数组元素前检查<br>下标是否越界</p>
-<h2><span id="c11的智能指针">C++11的智能指针</span></h2><p>unique_ptr:<br>不允许 多个指针共享资源，可以用标准库中的move函数转移指针<br>shared_ptr:<br>多个指针共享资源<br>weak_ptr:<br>可复制shared_ptr,但其构造或者释放对资源不会产生影响</p>
-<h2><span id="vector">vector</span></h2><p>为什么需要vector<br>封装任何类型的动态数组，自动创建和删除<br>数组下标越界检查<br>vector对象的定义<br>vector&lt;元素类型&gt;数组对象名（数组长度）<br>例子<br>vetor<int>arr[5]<br>对象的使用<br>对数组元素的引用<br>    与普通数组具有相同形式<br>    vector对象名[下标表达式]<br>    vector数组对象名不表示数组首地址<br>获得数组长度<br>    用size函数<br>    vector对象名.size</int></p>
-<p>例子：计算平均值<br>for条件语句还是习惯加花括号<br>否则容易出问题</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-#include &lt;vector&gt;
-
-using namespace std;
-double average(const vector&lt;double&gt;&amp;arr)
-&#123;
-	double sum&#x3D;0;
-	for (unsigned i&#x3D;0;i&lt;arr.size();i++)
-		sum+&#x3D;arr[i];
-		cout&lt;&lt;&quot;sum&#x3D;&quot;&lt;&lt;sum&lt;&lt;endl;
-		cout&lt;&lt;&quot;size&#x3D;&quot;&lt;&lt;arr.size()&lt;&lt;endl;
-	return sum&#x2F;arr.size();
-&#125;
-int main()&#123;
-	unsigned n;
-	cout&lt;&lt;&quot;n&#x3D; &quot;;
-	cin&gt;&gt;n;
-	vector &lt;double&gt;arr(n);
-	cout&lt;&lt;&quot;please input&quot;&lt;&lt;&quot; &quot;&lt;&lt;n&lt;&lt;&quot; &quot;&lt;&lt;&quot;real numbers:&quot;&lt;&lt;endl;
-	for (unsigned i&#x3D;0;i&lt;n;i++)
-		cin&gt;&gt;arr[i];
-		cout&lt;&lt;&quot;Average &#x3D;&quot;&lt;&lt;average(arr)&lt;&lt;endl;
-		return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="浅层复制">浅层复制</span></h2><p>实现对象间数据元素的一一复制</p>
-<h2><span id="深层复制">深层复制</span></h2><p>返回时构造临时对象，动态分配将临时对象返回到主调函数，然后删除临时对象</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-class IntNum&#123;
-public:
-   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
-      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
-   &#125;
-   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
-      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
-   &#125;
-   ~IntNum()&#123;
-      delete xptr;
-      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
-   &#125;
-   int getInt()&#123;
-      return *xptr;
-   &#125;
-private:
-   int *xptr;
-&#125;;
-IntNum getNum()&#123;
-   IntNum a;
-   return a;
-&#125;
-int main()&#123;
-   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
-   return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="移动构造">移动构造</span></h2><p>class_name(class_name)<br>将要返回的局部对象转移到主调函数，省去了构造和删除临时对象的过程</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-class IntNum&#123;
-public:
-   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
-      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
-   &#125;
-   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
-      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
-   &#125;
-   ~IntNum()&#123;
-      delete xptr;
-      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
-   &#125;
-   int getInt()&#123;
-      return *xptr;
-   &#125;
-private:
-   int *xptr;
-&#125;;
-IntNum getNum()&#123;
-   IntNum a;
-   return a;
-&#125;
-int main()&#123;
-   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
-   return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注意：<br>&amp;&amp;是右值引用<br>函数返回的临时变量是右值</p>
-<p>移动构造优于复制构造，但具体还需要之后作题练习，这里一头雾水</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++进阶笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>小杨的编程之路</title>
     <url>/2021/02/01/hello/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p><a href="/download/%E9%AB%98%E6%80%A7%E8%83%BDMySQL%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89.pdf">mysql第三版</a></p>
@@ -1722,12 +1461,39 @@ void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbe
 <p>迭代器（iterator)<br>提供了顺序访问容器每一个元素的方法<br>可以使用“++”运算符来获得指向下一个元素的迭代器<br>可以使用“*”运算符防卫迭代器所指向的元素，如果元素类型是类或结构体，还可以使用<br>“-&gt;”运算符直接访问该元素的一个成员<br>有些迭代器还支持通过”–”运算符获得指向上一个元素的迭代器<br>迭代器是泛化的指针： 指针也具有同样的特性，因此指针本身就是一种迭代器<br>使用独立于STL容器的迭代器 ，需要包含头文件”iterator”</p>
 <p>函数对象（function object)<br>一个行为类似函数的对象，对它可以像调用函数一样调用。<br>函数对象是泛化的函数：任何普通的函数和任何重载了“（）”运算符的类的对象都可以作为函数对象使用<br>使用STL的函数对象，需要包含头文件 “functional”</p>
 <p>算法(algorithms)<br>可以广泛用于不同的对象和内置的数据类型<br>STL包括了70多个算法<br>例如：排序算法，消除算法，计数算法，比较算法，变换算法，置换算法和容器管理等<br>使用STL的算法，需要包含头文件“algorithm”</p>
+<h5><span id="顺序容器">顺序容器</span></h5><h5><span id="向量">向量</span></h5><p>特点：<br>一个可以扩展的动态数组<br>随机访问，在尾部插入或删除元素快<br>在中间或头部插入或删除元素慢</p>
+<p>向量的容量：<br>容量（capacity）：世纪分配空间的大小<br>s.capacity() ：返回当前容量<br>s.reserve(n) : 若容量小于n，则对s进行扩展，使其容量至少为n</p>
+<h5><span id="双端队列deque">双端队列(deque)</span></h5><p>在两端插入或删除元素快<br>在中间插入或删除元素慢<br>随机访问较快，但比向量容器慢</p>
+<p>奇偶排序例题：<br>先按照从大到小顺序输出奇数，再按照从小到达顺序输出偶数<br>特点：先插入两端元素，速度较快</p>
+<pre class="line-numbers language-none"><code class="language-none">int main()&#123;
+    istream_iterator&lt;int&gt;i1(cin),i2; &#x2F;&#x2F;建立一对输入流迭代器
+    vector &lt;int&gt; s1(i1,i2); &#x2F;&#x2F;通过输入流迭代器从标准输入流中输入数据
+    sort(s1.begin(),s1.end()); &#x2F;&#x2F;将输入的整数排序
+    deque &lt;int&gt; s2; &#x2F;&#x2F;双端队列
+    for (vector &lt;int&gt;::iterator iter &#x3D; s1.begin();iter!&#x3D;s1.end();++iter)&#123;
+        if (*iter%2 &#x3D;&#x3D;0)
+            s2.push_back(*iter); &#x2F;&#x2F;偶数放到s2尾部
+        else
+            s2.push_front(*iter); &#x2F;&#x2F;奇数放到s2首部
+    &#125;
+    copy(s2.begin(),s2.end(),ostream_iterator&lt;int&gt;(cout,&quot; &quot;)); &#x2F;&#x2F;将s2的结果输出
+    cout&lt;&lt;endl;
+    return 0
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5><span id="列表">列表</span></h5><p>特点：<br>在任意位置插入和删除都很快<br>不支持随机访问<br>接合操作（splice）操作<br>s1.splice(p,s2,q1,q2):将s2中[q1,q2)移动到s1中p所指向元素之前</p>
+<h5><span id="单向链表forward_list">单向链表（forward_list)</span></h5><p>单向链表每个结点只有指向下个结点的指针，没有简单的方法来获取一个结点的前驱；<br>未定义insert,emplace,erase操作，而定义了insert_after,emplace_after,erase_after操作，其参数与list的insert,emplace,erase相同，但并不是插入或删除迭代器p1所指的元素，而是对p1所指元素之后的结点进行操作<br>不支持size操作</p>
+<h5><span id="数组array">数组(array)</span></h5><p>array是对内置数组的封装，提供了更安全，更方便的使用数组的方式<br>array的对象的大小是固定的，定义时除了需要指定元素类型，还需要指定容器大小<br>不能动态地改变容器大小</p>
+<h5><span id="顺序容器的比较">顺序容器的比较</span></h5><p>STL所提供的顺序容器各有利弊，需要根据自己的需求选择容器<br>若执行大量的随机访问操作，而且当扩展容器时只需要向容器尾部加入新的元素，就应当选择向量容器vector</p>
+<p>如果需要少量的随机访问操作，需要在容器两端插入或删除元素，则应选择双端队列deque</p>
+<p>如果不需要对容器进行随机访问，但是需要在中间位置插入或删除元素，就应当选择列表容器list或forward_list</p>
+<p>如果需要数组，array相对于内置数组而言，是一种更安全，更容易使用的数组类型</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
       </categories>
       <tags>
-        <tag>STL</tag>
+        <tag>C++进阶笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1881,6 +1647,267 @@ print(model)<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
       </categories>
       <tags>
         <tag>图像分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>指针与数组</title>
+    <url>/2021/02/08/%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="定义指向数组元素的指针">定义指向数组元素的指针</span></h2><p>定义与赋值<br>int a[10],*pa;<br>pa=&amp;a[0];或者pa=a;<br>等效的形式</p>
+<ul>
+<li>pa就是a[0],* (pa+1)就是a[1]….* (pa+i)就是a[i]<br>！！！重点！！！<br>a[i],* (pa+i),* (a+i),pa(i)都是等效的</li>
+</ul>
+<h2><span id="指针数组数组的元素是指针类型">指针数组：数组的元素是指针类型</span></h2><p>Point * pa[2];<br>是由pa[0],pa[1]两个指针组成的</p>
+<p>实例</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+using namespace std;
+int main()&#123;
+	int line1[]&#x3D;&#123;1,0,0&#125;
+	int line2[]&#x3D;&#123;0,1,0&#125;
+	int line3[]&#x3D;&#123;0,0,1&#125;
+	&#x2F;&#x2F;定义整型指针数组并初始化
+	int * pline[3]&#x3D;&#123;line1,line2,line3&#125;;
+	&#x2F;&#x2F;输出
+	cout&lt;&lt;&quot;Matrix test:&quot;&lt;&lt;endl;
+	for (int i&#x3D;0;i&lt;3;i++)&#123;
+		for (int j&#x3D;0;j&lt;3;j++)&#123;
+			cout&lt;&lt;pline[i][j]&lt;&lt;&quot; &quot;;
+		&#125;
+		cout&lt;&lt;endl;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/image/1.png"><br>为什么需要用指针作参数？<br>需要数据双向传递时（引用也可以达到此效果）<br>需要传递一组数据，只传首地址运行效率比较高</p>
+<p>例子：读入三个浮点数，将整数部分和小数部分分开输出</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+using namespace std;
+void splitFloat(float x,int *intPart,float *fracpart)&#123;
+	*intPart&#x3D;static_cast&lt;int&gt;(x);
+	*fracpart&#x3D;x-*intPart;
+&#125;
+int main()&#123;
+	cout&lt;&lt;&quot;Enter 3 float point numbers:&quot;&lt;&lt;endl;
+	for (int i&#x3D;0;i&lt;3;i++)&#123;
+		float x,f;
+		int n;
+		cin&gt;&gt;x;
+		splitFloat(x,&amp;n,&amp;f);&#x2F;&#x2F;变量地址作实参
+		cout&lt;&lt;&quot;Integer Part&#x3D;&quot;&lt;&lt;n&lt;&lt;&quot;fracpart&#x3D;&quot;&lt;&lt;f&lt;&lt;endl;
+
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例子：指向常量的指针作形参<br>传递地址且不需要主调函数中的数值是无法修改的<br>这个时候把指针定义为常量指针，只为了输出。<br>最小授权原则,对外的访问授权够用就好。</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+const int N&#x3D;6;
+void print(const int *p ,int n);
+int main()&#123;
+	int array[N];
+	for (int i&#x3D;0;i&lt;N;i++)
+		cin&gt;&gt;array[i];
+	print(array,N);
+	return 0;
+&#125;
+void print(const int *p,int n)&#123;
+	cout&lt;&lt;&quot;&#123;&quot;&lt;&lt;*p;
+	for (int i&#x3D;1;i&lt;n;i++)
+		cout&lt;&lt;&quot;,&quot;&lt;&lt;*(p+i);
+	cout&lt;&lt;&quot;&#125;&quot;&lt;&lt;endl;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="指针函数的定义形式">指针函数的定义形式：</span></h2><p>存储类型 数据类型 *函数名 ( )<br>{<br>    //函数体语句<br>}<br>！！不要将非静态局部地址用作函数的返回值<br>错误的例子：<br>在子函数中定义局部变量后将其地址返回给主函数，就是非法地址<br>错误例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">
+int main()&#123;
+	int *function();
+	int *ptr&#x3D;function();
+	*ptr&#x3D;5;&#x2F;&#x2F;危险的访问
+	return 0;
+&#125;
+int *function()&#123;
+	int local&#x3D;0;&#x2F;&#x2F;非静态局部变量作用域和寿命仅限于本函数体内
+	return &amp;local;
+&#125;&#x2F;&#x2F;函数结束运行时，变量local被释放
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>正确例子：<br>动态分配地址，函数有效</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+	int *newintvar();
+	int *intptr&#x3D;newintvar();
+	*intptr&#x3D;5; &#x2F;&#x2F;访问的是合法有效的地址
+	delete intptr;&#x2F;&#x2F;如果忘记在这里释放，会造成内存泄漏
+	return 0;
+
+&#125;
+int *newintvar()&#123;
+	int *p&#x3D;new int();
+	return p;&#x2F;&#x2F;返回的地址指向的是动态分配的空间
+&#125;&#x2F;&#x2F;函数运行结束时，p中的地址仍然有效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="函数指针">函数指针</span></h2><p>定义形式:<br>存储类型 数据类型 （* 函数指针名）（）；<br>含义：<br>函数指针指向的是程序代码存储区。</p>
+<p>函数指针的典型用途–实现函数回调<br>通过函数指针调用的函数<br>    例如将函数的指针作为参数传递给一个函数，使得在处理相似事件的时候可以灵活的使用不同的方法<br>调用者不关心谁是被调用者<br>    需知道存在一个具有特定原型和限制条件的被调用函数</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+int compute(int a,int b,int (*func)(int,int))
+&#123;
+	return func(a,b);
+&#125;
+int max(int a,int b)
+&#123;
+	return ((a&gt;b)?a:b);
+&#125;
+int min(int a,int b)
+&#123;
+	return ((a&lt;b)?a:b);
+&#125;
+int sum(int a,int b)
+&#123;
+	return a+b;
+&#125;
+int main()&#123;
+	int a ,b,res;
+	cout&lt;&lt;&quot;请输入整数a:&quot;;cin&gt;&gt;a;
+	cout&lt;&lt;&quot;请输入整数b:&quot;;cin&gt;&gt;b;
+	res&#x3D;compute(a,b,&amp;max);
+	cout&lt;&lt;&quot;Max of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
+	res&#x3D;compute(a,b,&amp;min);
+	cout&lt;&lt;&quot;Min of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
+	res&#x3D;compute(a,b,&amp;sum);
+	cout&lt;&lt;&quot;Sum of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
+	
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="this指针">this指针</span></h2><p>隐含于类的每一个非静态成员函数中<br>指出成员函数所操作的对象<br>    当通过一个对象调用成员函数时，系统先将该对象的地址赋给this指针，然后调用成员函数，成员函数对对象的数据成员进行操作时，就隐含使用了this指针<br>例如：<br>Point类的getX函数中的语句<br>return x;<br>相当于<br>return this-&gt;x;</p>
+<h2><span id="动态申请内存操作符-new">动态申请内存操作符 new</span></h2><p>new 类型名T（初始化参数列表）<br>功能：<br>在程序执行期间，申请用于存放类型T对象的内存空间<br>并依初值列表赋以初值<br>成功：T类型的指针，指向新分配的内存<br>失败：抛出异常</p>
+<h2><span id="释放内存操作符-delete">释放内存操作符 delete</span></h2><p>功能：释放指针p所指向的内存。<br>p必须是new操作的返回值</p>
+<p>例子：<br>动态创建对象举例</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+	cout&lt;&lt;&quot;Step One:&quot;&lt;&lt;endl;
+	Point *ptr1&#x3D;new Point;&#x2F;&#x2F;调用默认构造函数
+	delete ptr1;&#x2F;&#x2F;删除对象，自动调用析构函数
+	cout&lt;&lt;&quot;Step Two:&quot;&lt;&lt;endl;
+	ptr1&#x3D; new Point(1,2);
+	delete ptr1;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>分配和释放动态数组<br>分配：new 类型名T [数组长度]<br>数组长度可以是任何整数类型表达式，在运行时计算<br>释放：delete []数组名p<br>释放指针p所指向的数组<br>p必须是用new分配得到的数组首地址</p>
+<h2><span id="动态创建多维数组">动态创建多维数组</span></h2><pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+using namespace std;
+int main()&#123;
+	int (*cp)[9][8]&#x3D;new int [7][9][8];
+	for (int i&#x3D;0;i&lt;7;i++)
+		for (int j&#x3D;0;j&lt;9;j++)
+			for(int k&#x3D;0;k&lt;8;k++)
+				*(*(*(cp+i)+j)+k)&#x3D;(i*100+j*10+k);
+	for (int i&#x3D;0;i&lt;7;i++)&#123;	
+		for (int j&#x3D;0;j&lt;9;j++)&#123;
+			for(int k&#x3D;0;k&lt;8;k++)
+				cout&lt;&lt;cp[i][j][k]&lt;&lt;&quot; &quot;;
+			cout&lt;&lt;endl;
+		&#125;
+		cout&lt;&lt;endl;
+	&#125;
+	delete []cp;
+	return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2><span id="将动态数组分装成类">将动态数组分装成类</span></h2><p>更加简洁，便于管理<br>可以在访问数组元素前检查<br>下标是否越界</p>
+<h2><span id="c11的智能指针">C++11的智能指针</span></h2><p>unique_ptr:<br>不允许 多个指针共享资源，可以用标准库中的move函数转移指针<br>shared_ptr:<br>多个指针共享资源<br>weak_ptr:<br>可复制shared_ptr,但其构造或者释放对资源不会产生影响</p>
+<h2><span id="vector">vector</span></h2><p>为什么需要vector<br>封装任何类型的动态数组，自动创建和删除<br>数组下标越界检查<br>vector对象的定义<br>vector&lt;元素类型&gt;数组对象名（数组长度）<br>例子<br>vetor<int>arr[5]<br>对象的使用<br>对数组元素的引用<br>    与普通数组具有相同形式<br>    vector对象名[下标表达式]<br>    vector数组对象名不表示数组首地址<br>获得数组长度<br>    用size函数<br>    vector对象名.size</int></p>
+<p>例子：计算平均值<br>for条件语句还是习惯加花括号<br>否则容易出问题</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+double average(const vector&lt;double&gt;&amp;arr)
+&#123;
+	double sum&#x3D;0;
+	for (unsigned i&#x3D;0;i&lt;arr.size();i++)
+		sum+&#x3D;arr[i];
+		cout&lt;&lt;&quot;sum&#x3D;&quot;&lt;&lt;sum&lt;&lt;endl;
+		cout&lt;&lt;&quot;size&#x3D;&quot;&lt;&lt;arr.size()&lt;&lt;endl;
+	return sum&#x2F;arr.size();
+&#125;
+int main()&#123;
+	unsigned n;
+	cout&lt;&lt;&quot;n&#x3D; &quot;;
+	cin&gt;&gt;n;
+	vector &lt;double&gt;arr(n);
+	cout&lt;&lt;&quot;please input&quot;&lt;&lt;&quot; &quot;&lt;&lt;n&lt;&lt;&quot; &quot;&lt;&lt;&quot;real numbers:&quot;&lt;&lt;endl;
+	for (unsigned i&#x3D;0;i&lt;n;i++)
+		cin&gt;&gt;arr[i];
+		cout&lt;&lt;&quot;Average &#x3D;&quot;&lt;&lt;average(arr)&lt;&lt;endl;
+		return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="浅层复制">浅层复制</span></h2><p>实现对象间数据元素的一一复制</p>
+<h2><span id="深层复制">深层复制</span></h2><p>返回时构造临时对象，动态分配将临时对象返回到主调函数，然后删除临时对象</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+class IntNum&#123;
+public:
+   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
+      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
+   &#125;
+   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
+      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
+   &#125;
+   ~IntNum()&#123;
+      delete xptr;
+      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
+   &#125;
+   int getInt()&#123;
+      return *xptr;
+   &#125;
+private:
+   int *xptr;
+&#125;;
+IntNum getNum()&#123;
+   IntNum a;
+   return a;
+&#125;
+int main()&#123;
+   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
+   return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="移动构造">移动构造</span></h2><p>class_name(class_name)<br>将要返回的局部对象转移到主调函数，省去了构造和删除临时对象的过程</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+class IntNum&#123;
+public:
+   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
+      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
+   &#125;
+   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
+      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
+   &#125;
+   ~IntNum()&#123;
+      delete xptr;
+      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
+   &#125;
+   int getInt()&#123;
+      return *xptr;
+   &#125;
+private:
+   int *xptr;
+&#125;;
+IntNum getNum()&#123;
+   IntNum a;
+   return a;
+&#125;
+int main()&#123;
+   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
+   return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：<br>&amp;&amp;是右值引用<br>函数返回的临时变量是右值</p>
+<p>移动构造优于复制构造，但具体还需要之后作题练习，这里一头雾水</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++进阶笔记</tag>
       </tags>
   </entry>
 </search>
