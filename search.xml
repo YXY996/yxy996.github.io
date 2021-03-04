@@ -1488,6 +1488,119 @@ void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbe
 <p>如果需要少量的随机访问操作，需要在容器两端插入或删除元素，则应选择双端队列deque</p>
 <p>如果不需要对容器进行随机访问，但是需要在中间位置插入或删除元素，就应当选择列表容器list或forward_list</p>
 <p>如果需要数组，array相对于内置数组而言，是一种更安全，更容易使用的数组类型</p>
+<h5><span id="顺序容器的插入迭代器">顺序容器的插入迭代器</span></h5><p>用于向容器头部，尾部，中间的指定位置插入元素的迭代器<br>包括前插迭代器(front_inserter),后插迭代器(back_inserter),和任意位置插入迭代器(inserter)</p>
+<p>例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">list &lt;int&gt; s;
+back_inserter iter(s);
+*(iter++) &#x3D;5； #通过iter把5插入s尾】<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5><span id="顺序容器的适配器">顺序容器的适配器</span></h5><p>以顺序容器为基础构建一些常用数据结构，是对顺序容器的封装<br>栈: 最先压入的元素最后被弹出<br>队列：最先压入的元素最先被弹出<br>优先级队列：最”大”的元素最先被弹出</p>
+<h5><span id="栈和队列模板">栈和队列模板</span></h5><p>栈模板</p>
+<pre class="line-numbers language-none"><code class="language-none">template&lt;class T,class Sequence &#x3D; deque&lt;T&gt; &gt;class stack;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>队列模板</p>
+<pre class="line-numbers language-none"><code class="language-none">template&lt;class T,class FrontInsertionSequence &#x3D; deque&lt;T&gt; &gt;class queue;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>栈可以用任何一种顺序容器作为基础容器，而队列只允许用前插顺序容器（双端队列或列表）</p>
+<h5><span id="栈和队列共同支持的操作">栈和队列共同支持的操作</span></h5><p>s1 op s2 ，op： ==，！=，&lt;,&lt;=,&gt;,&gt;=<br>它会对两个容器适配器之间的元素按字典序进行比较</p>
+<p>s.size() 返回s的元素个数<br>s.empty() 返回s是否为空<br>s.push(t) 将元素t压入到s中<br>s.pop() 将一个元素从s中弹出 ，对于栈来说，每次弹出的是最后被压入的元素，而对于队列来说，每次被弹出的是最先被压入的元素<br>不支持迭代器，因为它们不允许对任意元素进行访问</p>
+<h5><span id="栈和队列不同的操作">栈和队列不同的操作</span></h5><p>栈的操作<br>s.top() 返回栈顶元素的引用<br>队列操作<br>s.front() 获得队头元素的引用<br>s.back()  获得队尾元素的引用</p>
+<p>利用栈反向输出单词<br>示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include&lt;iterator&gt;
+#include&lt;stack&gt;
+using namespace std;
+int main ()&#123;
+    stack &lt;char&gt; s;
+    string str;
+    cin &gt;&gt; str; &#x2F;&#x2F;从键盘输入一个字符串
+    &#x2F;&#x2F; 将字符串的每个元素顺序压入栈中
+    for (string::iterator iter &#x3D; str.begin();iter!&#x3D;str.end();++iter)
+        s.push(*iter);
+    &#x2F;&#x2F; 将栈中的元素弹出
+    while(!s.empty())&#123;
+        cout&lt;&lt;s.top();
+        s.pop();
+    &#125;
+    cout&lt;&lt;endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果演示：<br>congratulations<br>snoitalutargnoc</p>
+<h5><span id="优先级队列">优先级队列</span></h5><p>优先级队列也像栈队列一样支持元素的压入和弹出，但元素弹出的顺序与元素的大小有关，每次弹出的总是容器中最”最大”的一个元素。</p>
+<pre class="line-numbers language-none"><code class="language-none">template &lt;class T,class Sequence &#x3D; vector&lt;T&gt; &gt;class priority_queue;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>优先级队列的基础容器必须是支持随机访问的顺序容器<br>支持栈和队列的size,empty,push,pop几个成员函数，用法与栈和队列相同<br>优先级队列并不支持比较操作<br>与栈类似，优先级队列提供一个top函数，可以获得下一个即将被弹出元素（即最”大”的元素）的引用</p>
+<p>例10-8 细胞分裂模拟<br>模拟一种细胞在诞生（即上次分裂）后会在500到20000秒内分裂成两个细胞，每个细胞又按照同样的规律继续分裂</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;10_8.cpp
+#include &lt;queue&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt; &#x2F;&#x2F;随机函数
+#include &lt;ctime&gt;　&#x2F;&#x2F;获得当地时间
+using namespace std;
+
+const int SPLIT_TIME_MIN &#x3D; 500;      &#x2F;&#x2F;细胞分裂最短时间
+const int SPLIT_TIME_MAX &#x3D; 2000;    &#x2F;&#x2F;细胞分裂最长时间
+
+class Cell; 
+priority_queue&lt;Cell&gt; cellQueue;
+
+
+class Cell &#123;    &#x2F;&#x2F;细胞类
+private:
+    static int count;   &#x2F;&#x2F;细胞总数
+    int id;             &#x2F;&#x2F;细胞编号
+    int time;           &#x2F;&#x2F;细胞分裂时间
+public:
+    Cell(int birth) : id(count++) &#123; 
+        &#x2F;*产生一定范围随机数的通用表示公式
+        要取得 [a,b) 的随机整数，使用 (rand() % (b-a))+ a;
+
+        要取得 [a,b] 的随机整数，使用 (rand() % (b-a+1))+ a;
+
+        要取得 (a,b] 的随机整数，使用 (rand() % (b-a))+ a + 1;
+
+        通用公式: a + rand() % n；其中的 a 是起始值，n 是整数的范围。
+
+        要取得 a 到 b 之间的随机整数，另一种表示：a + (int)b * rand() &#x2F; (RAND_MAX + 1)
+        *&#x2F;
+        time &#x3D; birth + (rand() % (SPLIT_TIME_MAX - SPLIT_TIME_MIN)) + SPLIT_TIME_MIN; &#x2F;&#x2F;分裂时间在最短时间与最长时间之间
+    &#125;
+    int getId() const &#123; return id; &#125;            &#x2F;&#x2F;得到细胞编号
+    int getSplitTime() const &#123; return time; &#125;   &#x2F;&#x2F;得到细胞分裂时间
+    bool operator &lt; (const Cell&amp; s) const &#123; return time &gt; s.time; &#125; &#x2F;&#x2F;重载运算符 
+
+    &#x2F;&#x2F;细胞分裂
+    void split() const &#123;    
+        Cell child1(time), child2(time);     &#x2F;&#x2F;建立两个子细胞
+        cout &lt;&lt; time &lt;&lt; &quot;s: Cell #&quot; &lt;&lt; id &lt;&lt; &quot; splits to #&quot; 
+            &lt;&lt; child1.getId() &lt;&lt; &quot; and #&quot; &lt;&lt; child2.getId() &lt;&lt; endl;
+        cellQueue.push(child1); &#x2F;&#x2F;将第一个子细胞压入优先级队列
+        cellQueue.push(child2); &#x2F;&#x2F;将第二个子细胞压入优先级队列
+    &#125;
+&#125;;
+int Cell::count &#x3D; 0;
+
+int main() &#123;
+    srand(static_cast&lt;unsigned&gt;(time(0)));
+    &#x2F;*使用当前时钟作为随机数种子
+    rand() 产生的随机数在每次运行的时候都是与上一次相同的。若要不同, 用函数 srand() 初始化它。
+    可以利用 srand((unsigned int)(time(NULL)) 的方法，产生不同的随机数种子，因为每一次运行程序的时间是不同的。
+    *&#x2F;
+    &#x2F;&#x2F;强制转换运算符 static_cast&lt;type&gt; (expr): static_cast 运算符执行非动态转换，没有运行时类检查来保证转换的安全性。例如，它可以用来把一个基类指针转换为派生类指针
+    int t;  
+    cout &lt;&lt; &quot;Simulation time: &quot;;
+    cin &gt;&gt; t; &#x2F;&#x2F;模拟时间长度
+    cellQueue.push(Cell(0));    
+    while (cellQueue.top().getSplitTime() &lt;&#x3D; t) &#x2F;&#x2F;如果最先要弹出的细胞分裂时间在观察时间内 
+    &#123;
+        cellQueue.top().split();    &#x2F;&#x2F;模拟下一次细胞的分裂
+        cellQueue.pop();            &#x2F;&#x2F;将刚刚分裂的细胞弹出
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：<br>Simulation time: 5000<br>1042s: Cell #0 splits to #1 and #2<br>2336s: Cell #2 splits to #3 and #4<br>2673s: Cell #1 splits to #5 and #6<br>3004s: Cell #4 splits to #7 and #8<br>3329s: Cell #3 splits to #9 and #10<br>3647s: Cell #7 splits to #11 and #12<br>3979s: Cell #9 splits to #13 and #14<br>4190s: Cell #6 splits to #15 and #16<br>4265s: Cell #8 splits to #17 and #18<br>4305s: Cell #5 splits to #19 and #20<br>4613s: Cell #10 splits to #21 and #22<br>4782s: Cell #11 splits to #23 and #24<br>4810s: Cell #14 splits to #25 and #26</p>
+<h4><span id="关联容器">关联容器</span></h4><p>关联容器的特点和接口<br>    每个关联容器都有一个键<br>    可以根据键高效的查找元素<br>接口<br>    插入：insert<br>    删除：erase<br>    查找：find<br>    定界：lower_bound ,upper_bound,equal_range<br>    计数：count</p>
+<p>单重关联容器（set,map)<br>    键值是唯一的，一个键值只能对应一个元素<br>多重关联容器（multiset,multimap)<br>    键值是不唯一的，一个键值可以对应多个元素<br>简单关联容器（set,multiset)<br>    容器只有一个类型参数，如set<k>,multiset<k>，表示键类型<br>    容器的元素就是键本身<br>二元关联容器（map,multimap)<br>    容器有两个类型参数，如map&lt;K,V&gt;,multimap&lt;K,V&gt;<br>    分别表示键和附加数据类型<br>    容器的元素类型是pair&lt;K,V&gt;,即由键类型和元素类型复合而成的二元组</k></k></p>
+<h5><span id="集合set">集合(set)</span></h5><p>集合用来存储一组无重复的元素。由于集合的元素本身是有序的，可以高效的查找指定元素，也可以方便的得到指定大小范围的元素在容器中所处的区间</p>
+<p>例题：<br>输入一串实数，将重复的去掉，取最大和最小值的中值，分别输出小于等于此中值和大于等于此中值的实数</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
