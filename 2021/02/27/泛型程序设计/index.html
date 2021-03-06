@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-04
+                    2021-03-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    19 分
                 </div>
                 
 
@@ -666,6 +666,132 @@ int main() &#123;
 <p>单重关联容器（set,map)<br>    键值是唯一的，一个键值只能对应一个元素<br>多重关联容器（multiset,multimap)<br>    键值是不唯一的，一个键值可以对应多个元素<br>简单关联容器（set,multiset)<br>    容器只有一个类型参数，如set<k>,multiset<k>，表示键类型<br>    容器的元素就是键本身<br>二元关联容器（map,multimap)<br>    容器有两个类型参数，如map&lt;K,V&gt;,multimap&lt;K,V&gt;<br>    分别表示键和附加数据类型<br>    容器的元素类型是pair&lt;K,V&gt;,即由键类型和元素类型复合而成的二元组</k></k></p>
 <h5><span id="集合set">集合(set)</span></h5><p>集合用来存储一组无重复的元素。由于集合的元素本身是有序的，可以高效的查找指定元素，也可以方便的得到指定大小范围的元素在容器中所处的区间</p>
 <p>例题：<br>输入一串实数，将重复的去掉，取最大和最小值的中值，分别输出小于等于此中值和大于等于此中值的实数</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;10_9.cpp
+#include &lt;set&gt;
+#include &lt;iterator&gt;
+#include &lt;utility&gt;
+&#x2F;*
+头文件：#include &lt;utility&gt;
+类
+pair
+函数
+forward 保留引用类型（或者lvalue或rvalue) 参数从被遮掩完美转发。
+get 获取从元素的函数pair对象。
+make_pair 用于构造类型的对象的模板 helper 函数pair，其中的组件类型基于作为参数传递的数据类型。
+move 返回传入参数作为rvalue的引用。
+swap 交换两个 pair 对象的元素。
+运算符
+*&#x2F;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() &#123;
+    set&lt;double&gt; s;
+    while (true) &#123;
+        double v;
+        cin &gt;&gt; v;
+        if (v &#x3D;&#x3D; 0) break;  &#x2F;&#x2F;输入0终止
+        &#x2F;*
+        
+        类模板：template&lt;class T1,class T2&gt; struct pair
+
+        参数：T1是第一个值的数据类型，T2是第二个值的数据类型。
+
+        功能：pair将一对值(T1和T2)组合成一个值，
+
+        这一对值可以具有不同的数据类型（T1和T2），
+
+        两个值可以分别用pair的两个公有函数first和second访问。
+        *&#x2F;
+        &#x2F;&#x2F;尝试将v插入
+        pair&lt;set&lt;double&gt;::iterator, bool&gt; r &#x3D; s.insert(v);  
+
+        if (!r.second)      &#x2F;&#x2F;如果v存在，输出提示信息
+            cout &lt;&lt; v &lt;&lt; &quot; is duplicated&quot; &lt;&lt; endl;
+    &#125;
+    set&lt;double&gt;::iterator iter1 &#x3D; s.begin();    &#x2F;&#x2F;得到第一个元素的迭代器
+    set&lt;double&gt;::iterator iter2 &#x3D; s.end();      &#x2F;&#x2F;得到末尾的迭代器
+    double medium &#x3D; (*iter1 + *(--iter2)) &#x2F; 2;  &#x2F;&#x2F;因为末尾的指针指向的是尾元素结束的下一个位置，所以--
+    &#x2F;&#x2F;输出小于或者等于中值的元素
+    cout &lt;&lt; &quot;&lt;&#x3D; medium: &quot;;
+    copy(s.begin(), s.upper_bound(medium), ostream_iterator&lt;double&gt;(cout, &quot; &quot;));
+    cout &lt;&lt; endl;
+    &#x2F;&#x2F;输出大于或等于中值的元素
+    cout &lt;&lt; &quot;&gt;&#x3D; medium: &quot;;
+    copy(s.lower_bound(medium), s.end(), ostream_iterator&lt;double&gt;(cout, &quot; &quot;));
+    cout &lt;&lt; endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5><span id="映射map">映射（map）</span></h5><p>映射与集合同属于单重关联容器，他们的主要区别在于，集合的元素类型是键本身，而映射的元素类型是由键和附加数据所构成的二元组。<br>在集合中按照键查找一个元素时，一般只是用来确定这个元素是否存在，而在映射中按照键查找一个元素时，除了能确定它的存在性外，还可以得到相应的附加数据。</p>
+<p>例题：<br>有五门课程，每门都有相应学分，从中选择三门，输出学分总和</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include&lt;map&gt;
+#include&lt;string&gt;
+#include&lt;utility&gt;
+using namespace std;
+int main()&#123;
+    map&lt;string,int&gt;courses;
+    &#x2F;&#x2F;将课程信息插入courses映射中
+    courses.insert(make_pair(&quot;CSAPP&quot;,3));
+    courses.insert(make_pair(&quot;C++&quot;,2));
+    courses.insert(make_pair(&quot;CSARCH&quot;,4));
+    courses.insert(make_pair(&quot;COMPLIER&quot;,4));
+    courses.insert(make_pair(&quot;OS&quot;,5));
+    int n &#x3D; 3;
+    int sum &#x3D; 0;
+    while(n&gt;0)&#123;
+        string name; &#x2F;&#x2F;输入课程名称
+        cin&gt;&gt;name;
+        map&lt;string,int&gt;::iterator iter &#x3D; courses.find(name);&#x2F;&#x2F;查找课程
+        if (iter &#x3D;&#x3D;course.end())   &#x2F;&#x2F;判断是否会找到 这里是未找到
+        &#123;
+            cout&lt;&lt;name&lt;&lt;&quot;is not available&quot;&lt;&lt;endl;
+        &#125;
+        else&#123;
+            sum +&#x3D; iter-&gt;second; &#x2F;&#x2F;累加学分
+            courses.erase(iter); &#x2F;&#x2F;将刚选过的课程从映射中删除
+            n--;
+        &#125;
+
+        &#125;
+
+    cout&lt;&lt;&quot;Total credit:&quot;&lt;&lt;sum&lt;&lt;endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果：<br>CSAPP<br>CSAPP<br>CSAPPis not available  因为每执行某个对象的操作后就将次对象从映射中删除 所以找不到<br>COMPLIER<br>CSARCH<br>Total credit:11</p>
+<p>例题：统计一句话中每个字母出现的次数</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;cctype&gt;
+&#x2F;*
+cctype头文件用于字符检测
+
+isalpha&#x2F;&#x2F;判断字符串是否为大小写字母
+isupper&#x2F;&#x2F;判断字符串是否为大写字母
+islower&#x2F;&#x2F;判断字符串是否为小写字母
+tolower&#x2F;&#x2F;把大写字母转化为小写
+toupper&#x2F;&#x2F;把小写字母转化为大写
+*&#x2F;
+using namespace std;
+int main()&#123;
+    map &lt;char,int&gt; s;
+    char c;
+    do&#123;
+        cin&gt;&gt;c;
+        if (isalpha(c))&#123; &#x2F;&#x2F;判断是否为字母
+            c &#x3D; tolower(c); &#x2F;&#x2F;将字母转换为小写
+            s[c]++; &#x2F;&#x2F;将该字母的出现频率+1
+        &#125;
+    &#125;
+    while(c!&#x3D;&#39;.&#39;); &#x2F;&#x2F;碰到&quot;.&quot;则结束输入
+    &#x2F;&#x2F;则输出每个字母出现次数
+    for(map&lt;char,int&gt;::iterator iter &#x3D; s.begin();iter!&#x3D; s.end();++iter)
+        cout&lt;&lt;iter-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;iter-&gt;second&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1396,7 +1522,7 @@ int main() &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.8k</span>&nbsp;字
+                class="white-color">29.9k</span>&nbsp;字
             
             
             
