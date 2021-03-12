@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深度学习, 小杨的博客">
+    <meta name="keywords" content="Birthday, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深度学习 | 小杨的博客</title>
+    <title>Birthday | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深度学习</h1>
+                    <h1 class="description center-align post-title">Birthday</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">深度学习</span>
+                            <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                                <span class="chip bg-color">随笔</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                随笔
                             </a>
                         
                     </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-19
+                    2021-03-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-21
+                    2021-03-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    522
+                    103
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -514,114 +514,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="迷路问题">迷路问题</span></h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token operator">%</span>matplotlib inline<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>gca<span class="token punctuation">(</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">,</span>linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token string">'s0'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token string">'s1'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token string">'s2'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token string">'s3'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token string">'s4'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token string">'s5'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token string">'s6'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token string">'s7'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token string">'s8'</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">2.3</span><span class="token punctuation">,</span><span class="token string">'Start'</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">0.3</span><span class="token punctuation">,</span><span class="token string">'goal'</span><span class="token punctuation">,</span>ha <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">)</span>
-
-ax<span class="token punctuation">.</span>set_xlim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-ax<span class="token punctuation">.</span>set_ylim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>tick_params<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token string">'both'</span><span class="token punctuation">,</span>which<span class="token operator">=</span><span class="token string">'both'</span><span class="token punctuation">,</span>bottom<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>top<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>labelbottom<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>right<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>left<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">,</span>labelleft<span class="token operator">=</span><span class="token string">'off'</span><span class="token punctuation">)</span>
-
-line<span class="token punctuation">,</span> <span class="token operator">=</span> ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2.5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>marker<span class="token operator">=</span><span class="token string">"o"</span><span class="token punctuation">,</span>color<span class="token operator">=</span><span class="token string">"g"</span><span class="token punctuation">,</span>markersize<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="/image/output_1_0.png" alt="png"></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">theta_0 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">[</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span>np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">simple_convert_into_pi_from_theta</span><span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token punctuation">[</span>m<span class="token punctuation">,</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> theta<span class="token punctuation">.</span>shape
-    pi <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        pi<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token operator">=</span>theta<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token operator">/</span>np<span class="token punctuation">.</span>nansum<span class="token punctuation">(</span>theta<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    pi <span class="token operator">=</span> np<span class="token punctuation">.</span>nan_to_num<span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> pi
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pi_0 <span class="token operator">=</span> simple_convert_into_pi_from_theta<span class="token punctuation">(</span>theta_0<span class="token punctuation">)</span>
-pi_0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
-<pre><code>[[0.         0.5        0.5        0.        ]
- [0.         0.5        0.         0.5       ]
- [0.         0.         0.5        0.5       ]
- [0.33333333 0.33333333 0.33333333 0.        ]
- [0.         0.         0.5        0.5       ]
- [1.         0.         0.         0.        ]
- [1.         0.         0.         0.        ]
- [0.5        0.5        0.         0.        ]]
-</code></pre>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_next_s</span><span class="token punctuation">(</span>pi<span class="token punctuation">,</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    direction <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"up"</span><span class="token punctuation">,</span><span class="token string">"right"</span><span class="token punctuation">,</span><span class="token string">"down"</span><span class="token punctuation">,</span><span class="token string">"left"</span><span class="token punctuation">]</span>
-    next_direction <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>direction<span class="token punctuation">,</span>p <span class="token operator">=</span> pi<span class="token punctuation">[</span>s<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> next_direction <span class="token operator">==</span> <span class="token string">"up"</span><span class="token punctuation">:</span>
-        s_next <span class="token operator">=</span> s<span class="token operator">-</span><span class="token number">3</span>
-    <span class="token keyword">elif</span> next_direction <span class="token operator">==</span> <span class="token string">"right"</span><span class="token punctuation">:</span>
-        s_next <span class="token operator">=</span> s<span class="token operator">+</span><span class="token number">1</span>
-    <span class="token keyword">elif</span> next_direction <span class="token operator">==</span> <span class="token string">"down"</span><span class="token punctuation">:</span>
-        s_next <span class="token operator">=</span> s<span class="token operator">+</span><span class="token number">3</span>
-    <span class="token keyword">elif</span> next_direction <span class="token operator">==</span> <span class="token string">"left"</span><span class="token punctuation">:</span>
-        s_next <span class="token operator">=</span> s<span class="token operator">-</span><span class="token number">1</span>
-    <span class="token keyword">return</span> s_next
-<span class="token keyword">def</span> <span class="token function">goal_maze</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> <span class="token number">0</span>
-    state_history <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        next_s <span class="token operator">=</span> get_next_s<span class="token punctuation">(</span>pi<span class="token punctuation">,</span>s<span class="token punctuation">)</span>
-        state_history<span class="token punctuation">.</span>append<span class="token punctuation">(</span>next_s<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> next_s <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
-            <span class="token keyword">break</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            s <span class="token operator">=</span> next_s
-    <span class="token keyword">return</span> state_history  
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">state_history <span class="token operator">=</span> goal_maze<span class="token punctuation">(</span>pi_0<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>state_history<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"迷路问题解决step："</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>state_history<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre><code>[0, 3, 0, 1, 2, 1, 2, 5, 2, 1, 0, 3, 4, 7, 8]
-迷路问题解决step：14
-</code></pre>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> animation
-<span class="token keyword">from</span> IPython<span class="token punctuation">.</span>display <span class="token keyword">import</span> HTML  
-<span class="token comment"># IPython这是是大写</span>
-<span class="token keyword">def</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    line<span class="token punctuation">.</span>set_data<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>line<span class="token punctuation">,</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">animate</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    state <span class="token operator">=</span> state_history<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token operator">%</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">0.5</span><span class="token punctuation">)</span>
-    y <span class="token operator">=</span> <span class="token number">2.5</span> <span class="token operator">-</span> <span class="token builtin">int</span><span class="token punctuation">(</span>state<span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span>
-    line<span class="token punctuation">.</span>set_data<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>line<span class="token punctuation">,</span><span class="token punctuation">)</span>
-anim <span class="token operator">=</span> animation<span class="token punctuation">.</span>FuncAnimation<span class="token punctuation">(</span>fig<span class="token punctuation">,</span>animate<span class="token punctuation">,</span>init_func <span class="token operator">=</span> init<span class="token punctuation">,</span>frames <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>state_history<span class="token punctuation">)</span><span class="token punctuation">,</span>interval <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">,</span>repeat <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span>
-HTML<span class="token punctuation">(</span>anim<span class="token punctuation">.</span>to_jshtml<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="/image/11.gif" alt="gif"></p>
+                <p>小鸡长大了就变成了鹅，<br>鹅长大了，就变成了羊，<br>羊再长大了，就变成了牛，<br>等牛长大了，我就成为了独当一面的人了。。</p>
+<p>开始怀念18岁以前的日子，无知，幼稚，冲动，但爱的人，在乎的人却是触手可及。<br>如今，感叹爱我的人一点点变老，愿时间走的慢一些，愿家人健康。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -636,8 +530,8 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">深度学习</span>
+                                <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                                    <span class="chip bg-color">随笔</span>
                                 </a>
                             
                         </div>
@@ -1070,17 +964,18 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/21/%E8%BF%B7%E8%B7%AF%E9%97%AE%E9%A2%98%E6%96%B9%E6%A1%88%E4%BC%98%E5%8C%96/">
+                <a href="/2021/03/12/birthday/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="迷路问题方案优化">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Birthday">
                         
-                        <span class="card-title">迷路问题方案优化</span>
+                        <span class="card-title">Birthday</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1090,9 +985,59 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-21
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                        <span class="chip bg-color">随笔</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/03/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="图像分析">
+                        
+                        <span class="card-title">图像分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1108,57 +1053,8 @@ HTML<span class="token punctuation">(</span>anim<span class="token punctuation">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/02/15/%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="头文件介绍">
-                        
-                        <span class="card-title">头文件介绍</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/C/" class="post-category">
-                                    C++
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D/">
-                        <span class="chip bg-color">头文件介绍</span>
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">图像分析</span>
                     </a>
                     
                 </div>
