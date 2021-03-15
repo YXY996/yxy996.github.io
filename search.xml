@@ -2191,4 +2191,167 @@ print(output)<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
         <tag>算法公式</tag>
       </tags>
   </entry>
+  <entry>
+    <title>算法面试</title>
+    <url>/2021/03/15/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>算法</p>
+<h2><span id="什么是大o">什么是大O</span></h2><p>n表示数据规模<br>O(f(n))表示运行算法所需要执行的指令数，和f(n)成正比<br>二分查找法O(logn)       所需执行指令数：a<em>logn<br>寻找数组中的最大/最小值  所需执行指令数：b</em>n<br>归并排序算法O(nlogn)    所需指令数：c<em>nlogn<br>选择排序法O(n^2)        所需指令数：d</em>n^2</p>
+<p>算法A： O(n)         所需指令数：10000<em>n<br>算法B： O(n^2)         所需指令数: 10</em>n^2</p>
+<p>在学术界，严格来讲，O(f(n))表示算法执行的上界<br>归并排序算法的时间复杂度是O(nlogn)的，同时也是O(n^2)</p>
+<p>在业界，我们使用O来表示算法执行的最低上界<br>对邻接表实现的图进行遍历：<br>时间复杂度： O(V+E)<br>！在这里V是图中顶点个数，E是图中边的个数 V和E没有关系 不能替换<br>插入排序算法 O(n^2)               快速排序算法O(nlogn)<br>最差情况：   O(n^2)              最差情况O(n^2)<br>最好情况：   O(n)                最好情况：O(nlogn)<br>平均情况：   O(n^2)              平均情况：O(nlogn)</p>
+<h3><span id="例题1">例题1</span></h3><p>一个时间复杂度的问题<br>有一个字符串数组，将数组中的每一个字符串按照字母序进行排序；之后再将整个字符串数组按照字典序排序。整个操作的时间复杂度？<br>假设最长的字符串长度为s；数组中有n个字符串<br>对每个字符串排序：O(slogs)<br>将数组中的每一个字符串按照字母序: O(n<em>slog(s)+)<br>将整个字符串数组按照字典序排序： O(s</em>nlog(n))<br> O(n<em>slog(s)) + O(s</em>nlog(n)) = O(n<em>slog(s)+s</em>nlog(n))</p>
+<h2><span id="数据规模的概念">数据规模的概念</span></h2><p>如果想要在1s内解决问题：<br>O(n^2)的算法可以处理大约10^4级别的数据<br>O(n)的算法可以处理大约10^8级别的数据<br>O(nlogn)的算法可以处理大约10^7级别的数据</p>
+<h2><span id="空间复杂度">空间复杂度</span></h2><p>多开一个辅助的数组： O(n)<br>多开一个辅助的二维数组： O(n^2)<br>多开常数空间： O(1)<br>递归调用是有空间代价的</p>
+<h2><span id="复杂度">复杂度</span></h2><p>O(1)</p>
+<pre class="line-numbers language-none"><code class="language-none">void swapTwoInts(int &amp;a,int &amp;b)&#123;
+    int temp &#x3D; a;
+    a &#x3D; b;
+    b &#x3D; temp
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>O(n)</p>
+<pre class="line-numbers language-none"><code class="language-none">int sum(int n)&#123;
+    int ret &#x3D; 0;
+    for(int i &#x3D; 0;i&lt;&#x3D;n;i++)
+        ret +&#x3D;i;
+    return ret;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>O(n)</p>
+<pre class="line-numbers language-none"><code class="language-none">void reverse(string &amp;s)&#123;
+    int n &#x3D; s.size();
+    for(int i &#x3D; 0;i&lt;n&#x2F;2;i++)
+        swap(s[i],s[n-1-i]);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>1/2* n次swap操作： O(n)</p>
+<p>O(n^2)</p>
+<pre class="line-numbers language-none"><code class="language-none">void  selectionSort(int arr[],int n)&#123;
+    for (int i &#x3D;0;i&lt;n;i++)&#123;
+        int minIndex &#x3D; i;
+        for (int j &#x3D;i+1;j&lt;n;k++)
+            if (arr[j] &lt;arr[minIndex])
+                minIndex &#x3D; j;
+        swap(arr[i],arr[minIndex])
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>(n-1)+(n-2)+…+0<br>1/2* n^2 -1/2* n =O(n^2)</p>
+<p>O(n^2)?</p>
+<pre class="line-numbers language-none"><code class="language-none">void printInformation(int n)&#123;
+    for(int i &#x3D;1;i&lt;&#x3D;n;i++)
+        for(int j &#x3D;1;j&lt;&#x3D;30;j++)
+            cout&lt;&lt;&quot;class&quot;&lt;&lt;i&lt;&lt;&quot;-&quot;&lt;&lt;&quot;NO.&quot;&lt;&lt;j&lt;&lt;endl;
+        return;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>30n次基本操作：O(n)</p>
+<p>O(logn)</p>
+<pre class="line-numbers language-none"><code class="language-none">int binarySearch(int arr[],int n;int target)&#123;
+    int l &#x3D;0,r &#x3D; n-1;
+    while(l&lt;&#x3D;r)&#123;
+        int mid &#x3D; l+(r-l)&#x2F;2;
+        if(arr[mid] &#x3D;&#x3D; target)
+            return mid;
+        if(arr[mid] &gt; target)
+            r &#x3D; mid - 1;
+        else 
+            l &#x3D; mid + 1;
+    &#125;
+    return -1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>n<br>n/2<br>n/4<br>.<br>.<br>.<br>1<br>n经过几次除以2操作后，等于1<br>log2 n = O(logn)</p>
+<p>O(logn)</p>
+<pre class="line-numbers language-none"><code class="language-none">string inToString(int sum)&#123;
+    string s &#x3D; &quot; &quot;;
+    while(num)&#123;
+        s +&#x3D; &#39;0&#39;+num%10; &#x2F;&#x2F;int类型变成char类型，就需要加上一个’0’了
+        num &#x2F;&#x3D;10;
+        &#125;
+        reverse(s);
+        return s;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>n经过几次除以10操作后，等于0<br>?num为负数的情况下？</p>
+<p>O(n^2)</p>
+<pre class="line-numbers language-none"><code class="language-none">void hello(int n)&#123;
+    for(int sz &#x3D; 1;sz &lt; n;sz +&#x3D; sz)
+        for(int i &#x3D;1;i&lt;n;i++)
+            cout&lt;&lt;&quot;Hello,Algorithm&quot;&lt;&lt;endl;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>第一层循环中 ，实际上sz每次增加为2* sz<br>换种理解方式第一层循环执行的次数 = n经过几次除以2之后等于1<br>所以执行数为O(logn)<br>总执行数为O(nlogn)</p>
+<p>O(sqrt(n))<br>判断一个数是否为素数</p>
+<pre class="line-numbers language-none"><code class="language-none">bool isPrime(int n)&#123;
+    for(int x &#x3D;2;x*x&lt;&#x3D;n;x++)
+        if(n%x &#x3D;&#x3D; 0)
+            return false;
+        return true;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="递归算法的复杂度分析">递归算法的复杂度分析</span></h3><pre class="line-numbers language-none"><code class="language-none">double pow(double x,int n)&#123;
+    assert(n &gt;&#x3D;0 );
+    if (n &#x3D;&#x3D; 0)
+        return 1.0;
+    double t &#x3D; pow(x,n&#x2F;2);
+    if(n%2) &#x2F;&#x2F;判断是否能被2整除
+        return x*t*t;
+    return t*t;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果一个一个相乘计算，时间复杂度为O(n)<br>这里通过递归调用 降低了时间复杂度<br>递归深度： logn<br>时间复杂度: O(logn)</p>
+<h4><span id="递归中进行多次递归调用">递归中进行多次递归调用</span></h4><pre class="line-numbers language-none"><code class="language-none">int f(int n)&#123;
+    assert(n&gt;&#x3D;0);
+    if(n&#x3D;&#x3D;0)
+        return 1;
+    return f(n-1)+f(n-1);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>多次递归调用，实际上是算树的有多少节点<br>时间复杂度O(2^n)<br>指数级算法计算效果非常差</p>
+<p>主定理？</p>
+<h3><span id="均摊复杂度分析-amortized-time">均摊复杂度分析 Amortized Time</span></h3><p>动态数组(vector)</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+template&lt;typename T&gt;
+class Myvector&#123;
+private:
+    T *data;
+    int capacity;
+    int size;
+
+    void resize(int newCapacity)&#123;
+        T *newData &#x3D; new T[newCapacity];
+        for(int i &#x3D;0;i&lt;size;i++)
+            newData[i] &#x3D; data[i];
+        delete[]data;
+        data &#x3D; newData;
+        capacity &#x3D; newCapacity;
+    &#125;
+public:
+    Myvector()&#123;
+        data &#x3D; new T[10];
+        capacity &#x3D; 10;
+        size &#x3D; 0;
+    &#125;
+    ~Myvector()&#123;
+        delete[] data;
+    &#125;
+    &#x2F;&#x2F;average : O(1)
+    void push_back(T e)&#123;
+        if(size&#x3D;&#x3D;capacity)
+            resize(2*capacity);
+        data[size++] &#x3D; e;
+    &#125;
+    &#x2F;&#x2F;O(1)
+    T pop_back()&#123;
+        assert(size&gt;0);
+        T ret &#x3D; data[size-1];
+        size--; &#x2F;&#x2F;没有真正的把最后一个元素删除，而是把整个元素放在合法范围外
+        if(size &#x3D;&#x3D; capacity&#x2F;4)  &#x2F;&#x2F;这里在某一临界值，程序处于连续增大内存空间与删除内存空间的操作，所以为了避免时间复杂度的震荡，在这里把临界值改为1&#x2F;4 capacity
+            resize (capacity&#x2F;2);
+
+        return ret;
+    &#125;
+
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>动态数组<br>动态栈<br>动态队列</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>算法基础</tag>
+      </tags>
+  </entry>
 </search>
