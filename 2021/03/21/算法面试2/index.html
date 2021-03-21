@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="云台设计, 小杨的博客">
+    <meta name="keywords" content="算法基础2, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>云台设计 | 小杨的博客</title>
+    <title>算法基础2 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">云台设计</h1>
+                    <h1 class="description center-align post-title">算法基础2</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
-                                <span class="chip bg-color">云台设计</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">算法面试</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                控制系统
+                            <a href="/categories/C/" class="post-category">
+                                C++
                             </a>
                         
                     </div>
@@ -466,21 +466,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-09
+                    2021-03-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-09
+                    2021-03-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    806
                 </div>
                 
 
@@ -514,53 +514,98 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="云台设计构想及编程应用c语言c转换未完成">云台设计构想及编程应用（C语言—–C＋＋转换未完成）</span></h2><p>控制平台设计构想<br>传感器读取初始数据<br>卡尔曼滤波算法获取yaw，roll，pitch的角度<br>将数据转化为电机的目标值<br>    测量值如果和目标值相等<br>        读取磁编码测量其位置值<br>    测量值与目标值不相等<br>        经过位置环，速度环，电流环<br>            改变电机位置</p>
-<p>状态预测：<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)<br>或者<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)+B(k)u(k)</p>
-<p>这里X(k,k-1)是利用k-1时刻预测的当前状态结果<br>X(k-1)是k-1时刻最优值<br>A(k,k-1)是X(k-1)状态下的变换矩阵，它是算法对状态变量进行预测的依据<br>B(k)是作用在控制量上的变换矩阵，在大多数实际情况下并没有控制收益<br>u(k)是当前状态的控制增益，一般没有这个变量，可以设为0</p>
-<p>协方差阵预测：<br>P(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑃(𝑘−1) 𝐴^𝑇 (𝑘,𝑘−1)+𝐵(𝑘,𝑘−1)𝑄(𝑘−1)𝐵^𝑇 (𝑘,𝑘−1)</p>
-<p>P(𝑘,𝑘−1)是k时刻系统协方差矩阵<br>P(k-1)是k-1时刻系统协方差矩阵<br>Q(k-1)是系统过程的协方差矩阵</p>
-<p>滤波增益：<br>根据k时刻的协方差矩阵的预测值计算卡尔曼收益<br>𝐾(𝑘)=(𝑝(𝑘,𝑘−1) 𝐶^𝑇 (𝑘))/((𝐶(𝑘)𝑃(𝑘,𝑘−1) 𝐶^𝑇 (𝑘)+𝑅(𝑘))<br>k(k)是卡尔曼增益，是滤波的中间结果<br>C(k)是对象的预测矩阵<br>R(k)是对象测量噪声的协方差矩阵，是一个数值，作为已知条件输入滤波器。<br>这个值过大过小都会使滤波效果变差，且R(k)取值越小收敛越快,所以可以通过实验手段寻找合适的R(k)值再利用它进行真实的滤波.</p>
-<p>协方差阵估计：<br>目的：为了求k时刻的协方差矩阵（为得到k+1时刻的卡尔曼输出值做准备）<br>𝑃(𝑘)=(1−𝐾(𝑘)𝐶(𝑘))𝑃(𝑘,𝑘−1)<br>当p(k,k-1)为一个一维矩阵的时候,C(k)是1</p>
-<p>状态估计：<br>𝑋(k)=𝑋(𝑘,𝑘−1）+𝐾(𝑘)(𝑌(𝑘)−𝐶(𝑘)𝑋(𝑘,𝑘−1))<br>X(k)是k时刻状态变量的最优估计值<br>Y(K)是对象的测量</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;1. 结构体类型定义
-typedef struct 
-&#123;
-    float LastP;&#x2F;&#x2F;上次估算协方差 初始化值为0.02
-    float Now_P;&#x2F;&#x2F;当前估算协方差 初始化值为0
-    float out;&#x2F;&#x2F;卡尔曼滤波器输出 初始化值为0
-    float Kg;&#x2F;&#x2F;卡尔曼增益 初始化值为0
-    float Q;&#x2F;&#x2F;过程噪声协方差 初始化值为0.001
-    float R;&#x2F;&#x2F;观测噪声协方差 初始化值为0.543
-&#125;KFP；&#x2F;&#x2F;Kalman Filter parameter
+                <p>算法2</p>
+<h2><span id="查找问题">查找问题</span></h2><p>查找有无<br>-元素”a”是否存在？set 集合<br>查找对应关系(键值对应)<br>-元素”a”出现了几次？map 字典</p>
+<p>set和map<br>通常语言的标准库都内置set和map<br>-容器类<br>-屏蔽实现细节<br>-了解语言中标准库常见容器类的使用</p>
+<p>常见操作<br>-insert<br>-find<br>-erase<br>-change(map)</p>
+<p>例题349:<br>给定两个数组nums，求两个数组的公共元素<br>-如nums1=[1,2,2,1],nums=[2，2]<br>-结果为[2]<br>-结果中每个元素只能出现一次<br>-出现的顺序可以是任意的</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;set&gt;
+using namespace std;
+class Solution&#123;
+public:
+    vector&lt;int&gt;intersection(vector&lt;int&gt;&amp;nums1,vector&lt;int&gt;&amp;nums2)&#123;
+        for(int i &#x3D;0;i&lt;nums1.size();i++)
+            record.insert(nums[i])
+        set&lt;int&gt;resultSet
+        for(int i &#x3D;0;i&lt;nums2.size();i++)
+            if(record.find(nums2[i]) !&#x3D; record.end())
+            &#x2F;&#x2F;find查找元素，如果查找到record.end()为止发现元素，则存在。
+            &#x2F;&#x2F;如果&#x3D;record.end()说明没有找到。说明nums2[i]存在
+                resultSet.insert(nums2[i])
+        vector&lt;int&gt;resultVector;
+        for(set&lt;int&gt;::iterator iter &#x3D; resultSet.begin();iter!&#x3D;resultSet.end();iter++)
+            resultVector.push_back(* iter);
+        return resultVector;
 
-&#x2F;&#x2F;2. 以高度为例 定义卡尔曼结构体并初始化参数
-KFP KFP_height&#x3D;&#123;0.02,0,0,0,0.001,0.543&#125;;
+    &#125;
+&#125;;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以使用容器类的构造方法</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;set&gt;
+using namespace std;
+class Solution&#123;
+public:
+    vector&lt;int&gt;intersection(vector&lt;int&gt;&amp;nums1,vector&lt;int&gt;&amp;nums2)&#123;
+        set&lt;int&gt; record(nums1.begin(),nums1.end()); &#x2F;&#x2F;简化
+        set&lt;int&gt;resultSet;
+        for(int i &#x3D;0;i&lt;nums2.size();i++)
+            if(record.find(nums2[i]) !&#x3D; record.end())
+            &#x2F;&#x2F;find查找元素，如果查找到record.end()为止发现元素，则存在。
+            &#x2F;&#x2F;如果&#x3D;record.end()说明没有找到。说明nums2[i]存在
+                resultSet.insert(nums2[i])
+        return vector&lt;int&gt;(resultSet.begin(),resultSet.end());&#x2F;&#x2F;简化
 
-&#x2F;**
- *卡尔曼滤波器
- *@param KFP *kfp 卡尔曼结构体参数
- *   float input 需要滤波的参数的测量值（即传感器的采集值）
- *@return 滤波后的参数（最优值）
- *&#x2F;
- float kalmanFilter(KFP *kfp,float input)
- &#123;
-     &#x2F;&#x2F;预测协方差方程：k时刻系统估算协方差 &#x3D; k-1时刻的系统协方差 + 过程噪声协方差
-     kfp-&gt;Now_P &#x3D; kfp-&gt;LastP + kfp-&gt;Q;
-     &#x2F;&#x2F;卡尔曼增益方程：卡尔曼增益 &#x3D; k时刻系统估算协方差 &#x2F; （k时刻系统估算协方差 + 观测噪声协方差）
-     kfp-&gt;Kg &#x3D; kfp-&gt;Now_P &#x2F; (kfp-&gt;NOw_P + kfp-&gt;R);
-     &#x2F;&#x2F;更新最优值方程：k时刻状态变量的最优值 &#x3D; 状态变量的预测值 + 卡尔曼增益 * （测量值 - 状态变量的预测值）
-     kfp-&gt;out &#x3D; kfp-&gt;out + kfp-&gt;Kg * (input -kfp-&gt;out);&#x2F;&#x2F;因为这一次的预测值就是上一次的输出值
-     &#x2F;&#x2F;更新协方差方程: 本次的系统协方差付给 kfp-&gt;LastP 威下一次运算准备。
-     kfp-&gt;LastP &#x3D; (1-kfp-&gt;Kg) * kfp-&gt;Now_P;
-     return kfp-&gt;out；
- &#125;
-
-&#x2F;**
- *调用卡尔曼滤波器 实践
- *&#x2F;
-int height;
-int kalman_height&#x3D;0;
-kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+    &#125;
+&#125;;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题350：<br>给定两个数组nums,求两个数组的交集<br>如nums1=[1,2,2,1],nums2=[2,2]<br>结果为[2,2]<br>出现的顺序可以是任意的</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    vector&lt;int&gt;intersection(vector&lt;int&gt;&amp;nums1,vector&lt;int&gt;&amp;nums2)&#123;
+        map&lt;int,int&gt;record;
+        for(int i &#x3D;0;i&lt;nums1.size();i++)
+            record[nums1[i]]++; &#x2F;&#x2F;记录频次
+        vector&lt;int&gt;resultVector;
+        for(int i &#x3D;0;i&lt;nums2.size();i++)
+            if(record[nums2[i]]&gt;0)&#123;
+                resultVector.push_back(nums2[i]);
+                    &#x2F;&#x2F;nums2[i]);&#x2F;&#x2F;如果发现在nums2中某以元素的频次也大于0，则记录下来
+                    record[nums2[i]--];
+            &#125;
+        return resultVector;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>C++中map的默认值为0<br>换种写法风格</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    vector&lt;int&gt;intersection(vector&lt;int&gt;&amp;nums1,vector&lt;int&gt;&amp;nums2)&#123;
+        map&lt;int,int&gt;record;
+        for(int i &#x3D;0;i&lt;nums1.size();i++)
+            if(record.find(nums1[i])&#x3D;&#x3D; record.end())
+                record.insert(make_pair(nums1[i],1));&#x2F;&#x2F;初始键值为1
+            record[nums1[i]]++; &#x2F;&#x2F;如果存在某一元素则记录频次
+        vector&lt;int&gt;resultVector;
+        for(int i &#x3D;0;i&lt;nums2.size();i++)
+            if(record.find(nums2[i])!&#x3D;record.end()&amp;&amp;record[nums2[i]]&gt;0)&#123;
+                resultVector.push_back(nums2[i]);
+                    &#x2F;&#x2F;nums2[i]);&#x2F;&#x2F;如果发现在nums2中某以元素的频次也大于0，则记录下来
+                    record[nums2[i]--];
+                    if(record[nums2[i]]&#x3D;&#x3D;0)
+                        record.erase(nums2[i]);&#x2F;&#x2F;每求一次交集将这个元素抹去
+            &#125;
+        return resultVector;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对于两个问题，如果数组有序？</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -574,8 +619,8 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
-                                    <span class="chip bg-color">云台设计</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">算法面试</span>
                                 </a>
                             
                         </div>
@@ -1008,17 +1053,18 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/14/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/03/21/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%952/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="算法基础1">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="算法基础2">
                         
-                        <span class="card-title">算法基础1</span>
+                        <span class="card-title">算法基础2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1028,9 +1074,9 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1043,11 +1089,12 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">算法基础</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">算法面试</span>
                     </a>
                     
                 </div>
@@ -1061,13 +1108,13 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/08/%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/">
+                <a href="/2021/03/15/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="指针与数组">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="算法面试1">
                         
-                        <span class="card-title">指针与数组</span>
+                        <span class="card-title">算法面试1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1078,7 +1125,7 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
                             </span>
                         <span class="publish-author">
                             
@@ -1095,8 +1142,8 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">C++进阶笔记</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">算法面试</span>
                     </a>
                     
                 </div>

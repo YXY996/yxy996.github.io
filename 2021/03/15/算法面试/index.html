@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法面试, 小杨的博客">
+    <meta name="keywords" content="算法面试1, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法面试 | 小杨的博客</title>
+    <title>算法面试1 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法面试</h1>
+                    <h1 class="description center-align post-title">算法面试1</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
-                                <span class="chip bg-color">算法基础</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">算法面试</span>
                             </a>
                         
                     </div>
@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-03-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    18 分
                 </div>
                 
 
@@ -666,6 +666,230 @@ public:
 &#125;;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>动态数组<br>动态栈<br>动态队列</p>
+<h2><span id="数组算法问题">数组算法问题</span></h2><p>如何写出正确的程序<br>明确变量的含义<br>循环不变量<br>小数据量调试<br>大数据量调试</p>
+<h3><span id="二分查找法">二分查找法</span></h3><p>对于有序数列，才能使用二分查找法（排序的作用）</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+#include&lt;cassert&gt;
+#include&lt;ctime&gt;
+using namespace std;
+template&lt;typename T&gt;
+int binarySearch(T arr[],int n,T target)&#123;
+    int l &#x3D; 0,r &#x3D; n-1; &#x2F;&#x2F;在[l,r]范围 里寻找target
+    while(l&lt;&#x3D;r)&#123; &#x2F;&#x2F;当l&#x3D;&#x3D;r时，区间[l.....r]依然是有效的
+    int mid &#x3D; (l+r)&#x2F;2; &#x2F;&#x2F;为了防止整型溢出 mid &#x3D; l + (r-l)&#x2F;2
+    if (arr[mid] &#x3D;&#x3D; target)
+        return mid;
+    if(target&gt;arr[mid])
+        l &#x3D; mid +1; &#x2F;&#x2F;target在[mid+1...r]中
+    else 
+        r &#x3D; mid -1;&#x2F;&#x2F;targer在[l...mid-1]中
+    &#125;
+
+    return -1;
+
+&#125;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="真实面试问题">真实面试问题</span></h2><h3><span id="问题283">问题283：</span></h3><p>给定一个数组nums,写一个函数，将数组中的所有的0挪到数组的末尾，而维持其他所有非0元素的相对位置。<br>举例：<br>nums = [0,1,0,3,12]，函数运行后的结果为[1,3,12,0,0]</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    &#x2F;&#x2F;时间复杂度：O(n)
+    &#x2F;&#x2F;空间复杂度：O(n)
+    void moveZeroes(vector &lt;int&gt;&amp; nums)&#123;
+        vector &lt;int&gt; nonZeroElements; 
+        for(i &#x3D;0;i&lt;nums.size();i++)
+            if(nums[i])  &#x2F;&#x2F;判断数组是否非0
+                nonZeroElements.push_back(num[i]);&#x2F;&#x2F;pushback压入非零数组
+        for(int i &#x3D;0;i&lt;nonZeroElements.size();i++) &#x2F;&#x2F;遍历一边非零数组 将其再赋值给原数组
+            num[i] &#x3D; nonZeroElements[i];
+        for(int i &#x3D; nonZeroElements.size();i&lt;num.size();i++) &#x2F;&#x2F;在数组后面空余位置补充0
+            num[i] &#x3D; 0;
+    &#125;
+&#125;
+int main()&#123;
+    int arr[0,1,0,3,12];
+    vector&lt;int&gt; vec(arr,arr+sizeof(arr)&#x2F;sizeof(int));
+    Solution().moveZeroes(vec);
+    for(int i&#x3D;0;i&lt;vec.size();i++)
+        cout&lt;&lt;vec[i]&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>优化:不用辅助空间</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    &#x2F;&#x2F;时间复杂度：O(n)
+    &#x2F;&#x2F;空间复杂度 :O(1)
+    void moveZeroes(vector &lt;int&gt;&amp; nums)&#123;
+        int k &#x3D;0; &#x2F;&#x2F;索引k  nums中,[0,k)的元素均为非0元素
+        &#x2F;&#x2F;遍历到第i个元素后，保证[0...i]中所有非0元素
+        &#x2F;&#x2F;都按照顺序排列在[0..k]中
+        for(i &#x3D;0;i&lt;nums.size();i++)
+            if(nums[i])  &#x2F;&#x2F;判断数组是否非0
+                nums[k++] &#x3D; nums[i];
+        for(int i &#x3D;0;i&lt;num.size();i++) 
+            num[i] &#x3D; 0;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>继续优化：<br>交换排序比一个个赋值香</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    &#x2F;&#x2F;时间复杂度：O(n)
+    &#x2F;&#x2F;空间复杂度 :O(1)
+    void moveZeroes(vector &lt;int&gt;&amp; nums)&#123;
+        int k &#x3D;0; &#x2F;&#x2F;索引k  nums中,[0,k)的元素均为非0元素
+        &#x2F;&#x2F;遍历到第i个元素后，保证[0...i]中所有非0元素
+        &#x2F;&#x2F;都按照顺序排列在[0..k]中
+        &#x2F;&#x2F;同时[k...i]为0
+
+        for(i &#x3D;0;i&lt;nums.size();i++)
+            if(nums[i])  &#x2F;&#x2F;判断数组是否非0
+                swap(nums[k++],nums[i]);
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我TM再优化:<br>当元素都为0的时候交换消耗时间<br>再增加一个条件语句</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    &#x2F;&#x2F;时间复杂度：O(n)
+    &#x2F;&#x2F;空间复杂度 :O(1)
+    void moveZeroes(vector &lt;int&gt;&amp; nums)&#123;
+        int k &#x3D;0; &#x2F;&#x2F;索引k  nums中,[0,k)的元素均为非0元素
+        &#x2F;&#x2F;遍历到第i个元素后，保证[0...i]中所有非0元素
+        &#x2F;&#x2F;都按照顺序排列在[0..k]中
+        &#x2F;&#x2F;同时[k...i]为0
+
+        for(i &#x3D;0;i&lt;nums.size();i++)
+            if(nums[i])  &#x2F;&#x2F;判断数组是否非0
+                if(i!&#x3D;k)
+                    swap(nums[k++],nums[i]);
+                else &#x2F;&#x2F;i&#x3D;&#x3D;k
+                    k++;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Remove Element<br>问题27：<br>给定一个数组nums和一个数值val,将数组中所有等于val的元素删除，并返回剩余的元素个数<br>如何定义删除？从数组中删除？还是放在数组末尾？<br>剩余元素的排列是否要保证原有的相对顺序？<br>是否有空间复杂度的要求？</p>
+<p>问题26：<br>给定一个有序数组，对数组中的元素去重，使得原数组的每个元素只有一个，并返回去重后数组的长度值</p>
+<p>问题80：<br>给定一个有序数组，对数组中的元素去重，使得原数组的每个元素最多保留两个。返回去重后的长度值<br>如nums = [1,1,1,2,2,3]<br>结果返回应为5，返回的元素1,1,2,2,3</p>
+<h3><span id="基础算法思路的应用">基础算法思路的应用</span></h3><p>问题75：<br>给定一个有n个元素的数组，数组中元素的取值只有0，1，2三种可能，为这个数组排序<br>-可以使用任意一种排序算法<br>-没有使用上题目中给出的特殊条件</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include&lt;cassert&gt;
+#include&lt;vector&gt;
+using namespace std;
+class Solution&#123;
+public:
+    void SortColors(vector &lt;int&gt; &amp;nums)&#123;
+        int count[3] &#x3D; &#123;0&#125;; &#x2F;&#x2F;存放0，1，2的频率
+        for (int i &#x3D; 0; i &lt; nums.size();i++)
+            assert(num[i] &gt;&#x3D; 0 &amp;&amp; num[i] &lt;&#x3D; 2);
+            count[nums[i]]++; &#x2F;&#x2F;计算频率 
+    &#125;
+    int index &#x3D; 0;
+    for (int i &#x3D; 0;i&lt;count[0],i++)
+        nums[index++] &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; count[1];i++)
+        nums[index++] &#x3D; 1;
+    for (int i &#x3D; 0; i &lt; count[2];i++)
+        nums[i] &#x3D; 2;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>前者多次遍历数组，进行优化</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+    &#x2F;&#x2F;时间复杂度O(n)
+    &#x2F;&#x2F;空间复杂度O(1)
+    &#x2F;&#x2F;只遍历一遍
+public:
+    void  SortColors(vector &lt;int&gt; &amp;nums)&#123;
+        int zero &#x3D; -1;&#x2F;&#x2F;nums[0...zero] &#x3D;&#x3D; 0 前后闭区间，这样当zero等于-1的时候区间无效不会算为0
+        int two &#x3D; nums.size() &#x2F;&#x2F;nums[two...n-1] &#x3D;&#x3D; 2
+                  for (int i &#x3D; 0; i &lt; two;) &#123;
+                    if (nums[i] &#x3D;&#x3D; 1)
+                        i++;
+                    else if (nums[i] &#x3D;&#x3D; 2)
+                        swap(nums[i], nums[--two]);
+                    else if(nums[i]&#x3D;&#x3D;0)
+                        zero++;
+                        swap(nums[zero], nums[i]);&#x2F;&#x2F;swap(nums[++zero],nums[i++])简写
+                        i++;
+    &#125;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>问题88：<br>给定两个有序整型数组nums1,nums2,将nums2的元素归并到nums1</p>
+<p>问题215:<br>在一个整数序列中寻找第k大的元素<br>-如给定数组[3,2,1,5,6,4],k=2,结果为5<br>利用快排partition,将pivot放置在了其正确的位置上的性质</p>
+<p>问题167:<br>给定一个有序整型数组和一个整数target，在其中寻找两个元素，使其和为target,返回这两个数的索引。<br>如numbers = [2,7,11,15],target = 9;<br>返回数字2，7的索引1，2 （索引从1开始计算）<br>-如果没有解的情况下？<br>-如果有多个解的情况？返回任意解</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+
+public:
+    vector &lt;int&gt; twoSum(vector &amp;numbers,int target)&#123;
+        int l &#x3D;0;,r&#x3D;number.size()-1;
+        while(l&lt;r)&#123;
+            if(numbers[r]&#x3D;&#x3D;target)&#123;
+                int res[2] &#x3D; &#123;l +1 ,r+ 1&#125;;
+                return vector&lt;int&gt; (res,res+2);
+
+            &#125;
+            else if(numbers[l]+numbers[r]&lt;target)
+                l++;
+            else
+                r--;
+    &#125;
+    throw invalid_argument(&quot;The input has no solution.&quot;)
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>问题125：<br>给定一个字符串，只看其中的数字和字母，忽略大小写，判断这个字符串是否为回文串？<br>-空字符串如何看<br>-字符的定义<br>-大小写问题</p>
+<p>问题344：<br>给定一个字符串，返回这个字符串的倒序字符串<br>如hello，返回olleh<br>类似：翻转一个数组</p>
+<p>问题345:<br>给定一个字符串，将该字符串中的元音字母翻转<br>如hello，返回holle<br>原因不包含y</p>
+<p>问题11：<br>给出一个非负整数数组a1…an;每一个整数表示一个竖立在坐标轴x位置的一堵高度为ai的墙，选择两堵墙，和x轴构成的容器容纳最多的水</p>
+<p>问题：209<br>双索引技术 Facebook<br>给定一个数组和一个数字s，找到数组中最短的一个连续子数组，使得连续子数组的数字和sum&gt;=s,返回这个最短的连续子数组的长度值</p>
+<ul>
+<li>如 给定数组[2,3,1,2,4,3]，s=7</li>
+<li>答案为[4,3] 返回2<br>什么叫子数组<br>子数组可以不连续，此题中强调连续子数组<br>如果没有解怎么办 返回0？<br>暴力解：遍历所有的连续子数组[i…j]<br>计算其和sum 验证sum&gt;=s<br>时间复杂度为O(n^3)<br>优化暴力解 O(n^2)？</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+    &#x2F;&#x2F;时间复杂度O(n)
+    &#x2F;&#x2F;空间复杂度O(1)
+public:
+    int minSubArrayLen(int s,vector&lt;int&gt; &amp;nums)&#123;
+        int l &#x3D;0,r&#x3D;-1; &#x2F;&#x2F;这里的关键是设置滑动窗口，初始范围为nums[l,r] r&#x3D;-1初始值无效
+        int sum &#x3D; 0;
+        int res &#x3D; nums.size()+1;
+        while(l&lt;nums.size())&#123;
+            if(r+1&lt;nums.size()&amp;&amp;sum&lt;s)&#123;
+                r++;
+                sum+&#x3D;nums[r];
+            else
+                sum-&#x3D;nums[l++];
+            if(sum&#x3D;&#x3D;s)
+                res &#x3D; min(res,l-r+1);&#x2F;&#x2F;闭区间
+            &#125;
+        if(res &#x3D; nums.size()+1) &#x2F;&#x2F;当遍历一遍之后没有解，则返回0
+            return 0;
+        return res;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题3：<br>在一个字符串中寻找没有重复字母的最长子串<br>如“abcccaa” abc<br>字符集，只有字母？数字+字母？ASCII？<br>大小写是否敏感？</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution()&#123;
+public:
+    int lengthOfLongestSubstring(string s)&#123;
+        int freq[256] &#x3D; &#123;0&#125;;
+        int l &#x3D;0,r&#x3D;-1; &#x2F;&#x2F;滑动窗口为s[l...r]
+        int res &#x3D; 0;
+        while(l&lt;s.size())&#123;
+            if (r+1&lt;s.size()&amp;&amp;freq[s[r+1]] &#x3D;&#x3D; 0)
+                freq[s[++r]]++；
+            else
+                freq[s[l++]]--;&#x2F;&#x2F;如果重复了，这里将频率-1，左边界右移
+            res &#x3D; max(res,r-l+1);
+        &#125;
+        return res;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题438：<br>给定一个字符串s和一个非空字符串p,找出p中所有是s的anagrams字符串的子串，返回这些字串的起始索引。<br>如s=”cbaebabacd” p=”abc” 索引[0,6]<br>字符集范围？英文小写字母<br>返回解的顺序？任意</p>
+<p>例题 76:<br>给定一个字符串S和T，在S中寻找最短的子串，包含T中的所有字符<br>如S=”ADOBECODEBANC” T=”ABC”<br>结果为”BANC”</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -680,8 +904,8 @@ public:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
-                                    <span class="chip bg-color">算法基础</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">算法面试</span>
                                 </a>
                             
                         </div>
@@ -1114,18 +1338,17 @@ public:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/15/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                <a href="/2021/03/21/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%952/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="算法面试">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="算法基础2">
                         
-                        <span class="card-title">算法面试</span>
+                        <span class="card-title">算法基础2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1135,9 +1358,9 @@ public:
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-21
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1150,12 +1373,11 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">算法基础</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">算法面试</span>
                     </a>
                     
                 </div>
@@ -1398,7 +1620,7 @@ public:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">31.8k</span>&nbsp;字
+                class="white-color">35.1k</span>&nbsp;字
             
             
             
