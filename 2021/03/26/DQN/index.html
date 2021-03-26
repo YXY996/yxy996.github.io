@@ -480,7 +480,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.7k
                 </div>
                 
 
@@ -783,136 +783,137 @@ CAPACITY <span class="token operator">=</span> <span class="token number">10000<
 )
 </code></pre>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">cartpole_env<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre><code>0 Episode: Finished after 10 steps: 10次试行的平均step数 = 1.0
-1 Episode: Finished after 13 steps: 10次试行的平均step数 = 2.3
-2 Episode: Finished after 9 steps: 10次试行的平均step数 = 3.2
-3 Episode: Finished after 10 steps: 10次试行的平均step数 = 4.2
-4 Episode: Finished after 9 steps: 10次试行的平均step数 = 5.1
-5 Episode: Finished after 9 steps: 10次试行的平均step数 = 6.0
-6 Episode: Finished after 10 steps: 10次试行的平均step数 = 7.0
-7 Episode: Finished after 9 steps: 10次试行的平均step数 = 7.9
-8 Episode: Finished after 9 steps: 10次试行的平均step数 = 8.8
-9 Episode: Finished after 10 steps: 10次试行的平均step数 = 9.8
-10 Episode: Finished after 12 steps: 10次试行的平均step数 = 10.0
-11 Episode: Finished after 11 steps: 10次试行的平均step数 = 9.8
-12 Episode: Finished after 13 steps: 10次试行的平均step数 = 10.2
-13 Episode: Finished after 10 steps: 10次试行的平均step数 = 10.2
-14 Episode: Finished after 10 steps: 10次试行的平均step数 = 10.3
-15 Episode: Finished after 10 steps: 10次试行的平均step数 = 10.4
-16 Episode: Finished after 15 steps: 10次试行的平均step数 = 10.9
-17 Episode: Finished after 16 steps: 10次试行的平均step数 = 11.6
-18 Episode: Finished after 22 steps: 10次试行的平均step数 = 12.9
-19 Episode: Finished after 21 steps: 10次试行的平均step数 = 14.0
+<pre class="line-numbers language-none"><code class="language-none">0 Episode: Finished after 10 steps: 10次试行的平均step数 &#x3D; 1.0
+1 Episode: Finished after 13 steps: 10次试行的平均step数 &#x3D; 2.3
+2 Episode: Finished after 9 steps: 10次试行的平均step数 &#x3D; 3.2
+3 Episode: Finished after 10 steps: 10次试行的平均step数 &#x3D; 4.2
+4 Episode: Finished after 9 steps: 10次试行的平均step数 &#x3D; 5.1
+5 Episode: Finished after 9 steps: 10次试行的平均step数 &#x3D; 6.0
+6 Episode: Finished after 10 steps: 10次试行的平均step数 &#x3D; 7.0
+7 Episode: Finished after 9 steps: 10次试行的平均step数 &#x3D; 7.9
+8 Episode: Finished after 9 steps: 10次试行的平均step数 &#x3D; 8.8
+9 Episode: Finished after 10 steps: 10次试行的平均step数 &#x3D; 9.8
+10 Episode: Finished after 12 steps: 10次试行的平均step数 &#x3D; 10.0
+11 Episode: Finished after 11 steps: 10次试行的平均step数 &#x3D; 9.8
+12 Episode: Finished after 13 steps: 10次试行的平均step数 &#x3D; 10.2
+13 Episode: Finished after 10 steps: 10次试行的平均step数 &#x3D; 10.2
+14 Episode: Finished after 10 steps: 10次试行的平均step数 &#x3D; 10.3
+15 Episode: Finished after 10 steps: 10次试行的平均step数 &#x3D; 10.4
+16 Episode: Finished after 15 steps: 10次试行的平均step数 &#x3D; 10.9
+17 Episode: Finished after 16 steps: 10次试行的平均step数 &#x3D; 11.6
+18 Episode: Finished after 22 steps: 10次试行的平均step数 &#x3D; 12.9
+19 Episode: Finished after 21 steps: 10次试行的平均step数 &#x3D; 14.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-&lt;ipython-input-6-55bc7a6f3a6f&gt;:43: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead. (Triggered internally at  ..\aten\src\ATen/native/IndexingUtils.h:30.)
+<pre><code>&lt;ipython-input-6-55bc7a6f3a6f&gt;:43: UserWarning: indexing with dtype torch.uint8 is now deprecated, 
+please use a dtype torch.bool instead. 
+(Triggered internally at  ..\aten\src\ATen/native/IndexingUtils.h:30.)
   next_state_values[non_final_mask] = self.model(non_final_next_states).max(1)[0].detach() #？
-
-
-20 Episode: Finished after 23 steps: 10次试行的平均step数 = 15.1
-21 Episode: Finished after 36 steps: 10次试行的平均step数 = 17.6
-22 Episode: Finished after 28 steps: 10次试行的平均step数 = 19.1
-23 Episode: Finished after 35 steps: 10次试行的平均step数 = 21.6
-24 Episode: Finished after 23 steps: 10次试行的平均step数 = 22.9
-25 Episode: Finished after 39 steps: 10次试行的平均step数 = 25.8
-26 Episode: Finished after 29 steps: 10次试行的平均step数 = 27.2
-27 Episode: Finished after 29 steps: 10次试行的平均step数 = 28.5
-28 Episode: Finished after 24 steps: 10次试行的平均step数 = 28.7
-29 Episode: Finished after 80 steps: 10次试行的平均step数 = 34.6
-30 Episode: Finished after 26 steps: 10次试行的平均step数 = 34.9
-31 Episode: Finished after 25 steps: 10次试行的平均step数 = 33.8
-32 Episode: Finished after 32 steps: 10次试行的平均step数 = 34.2
-33 Episode: Finished after 25 steps: 10次试行的平均step数 = 33.2
-34 Episode: Finished after 31 steps: 10次试行的平均step数 = 34.0
-35 Episode: Finished after 34 steps: 10次试行的平均step数 = 33.5
-36 Episode: Finished after 45 steps: 10次试行的平均step数 = 35.1
-37 Episode: Finished after 40 steps: 10次试行的平均step数 = 36.2
-38 Episode: Finished after 50 steps: 10次试行的平均step数 = 38.8
-39 Episode: Finished after 11 steps: 10次试行的平均step数 = 31.9
-40 Episode: Finished after 56 steps: 10次试行的平均step数 = 34.9
-41 Episode: Finished after 23 steps: 10次试行的平均step数 = 34.7
-42 Episode: Finished after 16 steps: 10次试行的平均step数 = 33.1
-43 Episode: Finished after 19 steps: 10次试行的平均step数 = 32.5
-44 Episode: Finished after 12 steps: 10次试行的平均step数 = 30.6
-45 Episode: Finished after 29 steps: 10次试行的平均step数 = 30.1
-46 Episode: Finished after 13 steps: 10次试行的平均step数 = 26.9
-47 Episode: Finished after 20 steps: 10次试行的平均step数 = 24.9
-48 Episode: Finished after 14 steps: 10次试行的平均step数 = 21.3
-49 Episode: Finished after 14 steps: 10次试行的平均step数 = 21.6
-50 Episode: Finished after 11 steps: 10次试行的平均step数 = 17.1
-51 Episode: Finished after 13 steps: 10次试行的平均step数 = 16.1
-52 Episode: Finished after 14 steps: 10次试行的平均step数 = 15.9
-53 Episode: Finished after 31 steps: 10次试行的平均step数 = 17.1
-54 Episode: Finished after 19 steps: 10次试行的平均step数 = 17.8
-55 Episode: Finished after 29 steps: 10次试行的平均step数 = 17.8
-56 Episode: Finished after 33 steps: 10次试行的平均step数 = 19.8
-57 Episode: Finished after 58 steps: 10次试行的平均step数 = 23.6
-58 Episode: Finished after 40 steps: 10次试行的平均step数 = 26.2
-59 Episode: Finished after 38 steps: 10次试行的平均step数 = 28.6
-60 Episode: Finished after 36 steps: 10次试行的平均step数 = 31.1
-61 Episode: Finished after 47 steps: 10次试行的平均step数 = 34.5
-62 Episode: Finished after 52 steps: 10次试行的平均step数 = 38.3
-63 Episode: Finished after 36 steps: 10次试行的平均step数 = 38.8
-64 Episode: Finished after 31 steps: 10次试行的平均step数 = 40.0
-65 Episode: Finished after 76 steps: 10次试行的平均step数 = 44.7
-66 Episode: Finished after 40 steps: 10次试行的平均step数 = 45.4
-67 Episode: Finished after 24 steps: 10次试行的平均step数 = 42.0
-68 Episode: Finished after 51 steps: 10次试行的平均step数 = 43.1
-69 Episode: Finished after 53 steps: 10次试行的平均step数 = 44.6
-70 Episode: Finished after 34 steps: 10次试行的平均step数 = 44.4
-71 Episode: Finished after 31 steps: 10次试行的平均step数 = 42.8
-72 Episode: Finished after 34 steps: 10次试行的平均step数 = 41.0
-73 Episode: Finished after 51 steps: 10次试行的平均step数 = 42.5
-74 Episode: Finished after 46 steps: 10次试行的平均step数 = 44.0
-75 Episode: Finished after 42 steps: 10次试行的平均step数 = 40.6
-76 Episode: Finished after 50 steps: 10次试行的平均step数 = 41.6
-77 Episode: Finished after 32 steps: 10次试行的平均step数 = 42.4
-78 Episode: Finished after 37 steps: 10次试行的平均step数 = 41.0
-79 Episode: Finished after 45 steps: 10次试行的平均step数 = 40.2
-80 Episode: Finished after 67 steps: 10次试行的平均step数 = 43.5
-81 Episode: Finished after 41 steps: 10次试行的平均step数 = 44.5
-82 Episode: Finished after 57 steps: 10次试行的平均step数 = 46.8
-83 Episode: Finished after 77 steps: 10次试行的平均step数 = 49.4
-84 Episode: Finished after 39 steps: 10次试行的平均step数 = 48.7
-85 Episode: Finished after 51 steps: 10次试行的平均step数 = 49.6
-86 Episode: Finished after 61 steps: 10次试行的平均step数 = 50.7
-87 Episode: Finished after 81 steps: 10次试行的平均step数 = 55.6
-88 Episode: Finished after 63 steps: 10次试行的平均step数 = 58.2
-89 Episode: Finished after 84 steps: 10次试行的平均step数 = 62.1
-90 Episode: Finished after 200 steps: 10次试行的平均step数 = 75.4
-91 Episode: Finished after 58 steps: 10次试行的平均step数 = 77.1
-92 Episode: Finished after 57 steps: 10次试行的平均step数 = 77.1
-93 Episode: Finished after 53 steps: 10次试行的平均step数 = 74.7
-94 Episode: Finished after 109 steps: 10次试行的平均step数 = 81.7
-95 Episode: Finished after 82 steps: 10次试行的平均step数 = 84.8
-96 Episode: Finished after 61 steps: 10次试行的平均step数 = 84.8
-97 Episode: Finished after 50 steps: 10次试行的平均step数 = 81.7
-98 Episode: Finished after 156 steps: 10次试行的平均step数 = 91.0
-99 Episode: Finished after 162 steps: 10次试行的平均step数 = 98.8
-100 Episode: Finished after 200 steps: 10次试行的平均step数 = 98.8
-101 Episode: Finished after 92 steps: 10次试行的平均step数 = 102.2
-102 Episode: Finished after 90 steps: 10次试行的平均step数 = 105.5
-103 Episode: Finished after 130 steps: 10次试行的平均step数 = 113.2
-104 Episode: Finished after 147 steps: 10次试行的平均step数 = 117.0
-105 Episode: Finished after 119 steps: 10次试行的平均step数 = 120.7
-106 Episode: Finished after 186 steps: 10次试行的平均step数 = 133.2
-107 Episode: Finished after 200 steps: 10次试行的平均step数 = 148.2
-108 Episode: Finished after 110 steps: 10次试行的平均step数 = 143.6
-109 Episode: Finished after 111 steps: 10次试行的平均step数 = 138.5
-110 Episode: Finished after 159 steps: 10次试行的平均step数 = 134.4
-111 Episode: Finished after 200 steps: 10次试行的平均step数 = 145.2
-112 Episode: Finished after 200 steps: 10次试行的平均step数 = 156.2
-113 Episode: Finished after 200 steps: 10次试行的平均step数 = 163.2
-114 Episode: Finished after 200 steps: 10次试行的平均step数 = 168.5
-115 Episode: Finished after 200 steps: 10次试行的平均step数 = 176.6
-116 Episode: Finished after 200 steps: 10次试行的平均step数 = 178.0
-117 Episode: Finished after 200 steps: 10次试行的平均step数 = 178.0
-118 Episode: Finished after 200 steps: 10次试行的平均step数 = 187.0
-119 Episode: Finished after 200 steps: 10次试行的平均step数 = 195.9
-120 Episode: Finished after 200 steps: 10次试行的平均step数 = 200.0
-连续成功10次
-121 Episode: Finished after 200 steps: 10次试行的平均step数 = 200.0
 </code></pre>
+<pre class="line-numbers language-none"><code class="language-none">20 Episode: Finished after 23 steps: 10次试行的平均step数 &#x3D; 15.1
+21 Episode: Finished after 36 steps: 10次试行的平均step数 &#x3D; 17.6
+22 Episode: Finished after 28 steps: 10次试行的平均step数 &#x3D; 19.1
+23 Episode: Finished after 35 steps: 10次试行的平均step数 &#x3D; 21.6
+24 Episode: Finished after 23 steps: 10次试行的平均step数 &#x3D; 22.9
+25 Episode: Finished after 39 steps: 10次试行的平均step数 &#x3D; 25.8
+26 Episode: Finished after 29 steps: 10次试行的平均step数 &#x3D; 27.2
+27 Episode: Finished after 29 steps: 10次试行的平均step数 &#x3D; 28.5
+28 Episode: Finished after 24 steps: 10次试行的平均step数 &#x3D; 28.7
+29 Episode: Finished after 80 steps: 10次试行的平均step数 &#x3D; 34.6
+30 Episode: Finished after 26 steps: 10次试行的平均step数 &#x3D; 34.9
+31 Episode: Finished after 25 steps: 10次试行的平均step数 &#x3D; 33.8
+32 Episode: Finished after 32 steps: 10次试行的平均step数 &#x3D; 34.2
+33 Episode: Finished after 25 steps: 10次试行的平均step数 &#x3D; 33.2
+34 Episode: Finished after 31 steps: 10次试行的平均step数 &#x3D; 34.0
+35 Episode: Finished after 34 steps: 10次试行的平均step数 &#x3D; 33.5
+36 Episode: Finished after 45 steps: 10次试行的平均step数 &#x3D; 35.1
+37 Episode: Finished after 40 steps: 10次试行的平均step数 &#x3D; 36.2
+38 Episode: Finished after 50 steps: 10次试行的平均step数 &#x3D; 38.8
+39 Episode: Finished after 11 steps: 10次试行的平均step数 &#x3D; 31.9
+40 Episode: Finished after 56 steps: 10次试行的平均step数 &#x3D; 34.9
+41 Episode: Finished after 23 steps: 10次试行的平均step数 &#x3D; 34.7
+42 Episode: Finished after 16 steps: 10次试行的平均step数 &#x3D; 33.1
+43 Episode: Finished after 19 steps: 10次试行的平均step数 &#x3D; 32.5
+44 Episode: Finished after 12 steps: 10次试行的平均step数 &#x3D; 30.6
+45 Episode: Finished after 29 steps: 10次试行的平均step数 &#x3D; 30.1
+46 Episode: Finished after 13 steps: 10次试行的平均step数 &#x3D; 26.9
+47 Episode: Finished after 20 steps: 10次试行的平均step数 &#x3D; 24.9
+48 Episode: Finished after 14 steps: 10次试行的平均step数 &#x3D; 21.3
+49 Episode: Finished after 14 steps: 10次试行的平均step数 &#x3D; 21.6
+50 Episode: Finished after 11 steps: 10次试行的平均step数 &#x3D; 17.1
+51 Episode: Finished after 13 steps: 10次试行的平均step数 &#x3D; 16.1
+52 Episode: Finished after 14 steps: 10次试行的平均step数 &#x3D; 15.9
+53 Episode: Finished after 31 steps: 10次试行的平均step数 &#x3D; 17.1
+54 Episode: Finished after 19 steps: 10次试行的平均step数 &#x3D; 17.8
+55 Episode: Finished after 29 steps: 10次试行的平均step数 &#x3D; 17.8
+56 Episode: Finished after 33 steps: 10次试行的平均step数 &#x3D; 19.8
+57 Episode: Finished after 58 steps: 10次试行的平均step数 &#x3D; 23.6
+58 Episode: Finished after 40 steps: 10次试行的平均step数 &#x3D; 26.2
+59 Episode: Finished after 38 steps: 10次试行的平均step数 &#x3D; 28.6
+60 Episode: Finished after 36 steps: 10次试行的平均step数 &#x3D; 31.1
+61 Episode: Finished after 47 steps: 10次试行的平均step数 &#x3D; 34.5
+62 Episode: Finished after 52 steps: 10次试行的平均step数 &#x3D; 38.3
+63 Episode: Finished after 36 steps: 10次试行的平均step数 &#x3D; 38.8
+64 Episode: Finished after 31 steps: 10次试行的平均step数 &#x3D; 40.0
+65 Episode: Finished after 76 steps: 10次试行的平均step数 &#x3D; 44.7
+66 Episode: Finished after 40 steps: 10次试行的平均step数 &#x3D; 45.4
+67 Episode: Finished after 24 steps: 10次试行的平均step数 &#x3D; 42.0
+68 Episode: Finished after 51 steps: 10次试行的平均step数 &#x3D; 43.1
+69 Episode: Finished after 53 steps: 10次试行的平均step数 &#x3D; 44.6
+70 Episode: Finished after 34 steps: 10次试行的平均step数 &#x3D; 44.4
+71 Episode: Finished after 31 steps: 10次试行的平均step数 &#x3D; 42.8
+72 Episode: Finished after 34 steps: 10次试行的平均step数 &#x3D; 41.0
+73 Episode: Finished after 51 steps: 10次试行的平均step数 &#x3D; 42.5
+74 Episode: Finished after 46 steps: 10次试行的平均step数 &#x3D; 44.0
+75 Episode: Finished after 42 steps: 10次试行的平均step数 &#x3D; 40.6
+76 Episode: Finished after 50 steps: 10次试行的平均step数 &#x3D; 41.6
+77 Episode: Finished after 32 steps: 10次试行的平均step数 &#x3D; 42.4
+78 Episode: Finished after 37 steps: 10次试行的平均step数 &#x3D; 41.0
+79 Episode: Finished after 45 steps: 10次试行的平均step数 &#x3D; 40.2
+80 Episode: Finished after 67 steps: 10次试行的平均step数 &#x3D; 43.5
+81 Episode: Finished after 41 steps: 10次试行的平均step数 &#x3D; 44.5
+82 Episode: Finished after 57 steps: 10次试行的平均step数 &#x3D; 46.8
+83 Episode: Finished after 77 steps: 10次试行的平均step数 &#x3D; 49.4
+84 Episode: Finished after 39 steps: 10次试行的平均step数 &#x3D; 48.7
+85 Episode: Finished after 51 steps: 10次试行的平均step数 &#x3D; 49.6
+86 Episode: Finished after 61 steps: 10次试行的平均step数 &#x3D; 50.7
+87 Episode: Finished after 81 steps: 10次试行的平均step数 &#x3D; 55.6
+88 Episode: Finished after 63 steps: 10次试行的平均step数 &#x3D; 58.2
+89 Episode: Finished after 84 steps: 10次试行的平均step数 &#x3D; 62.1
+90 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 75.4
+91 Episode: Finished after 58 steps: 10次试行的平均step数 &#x3D; 77.1
+92 Episode: Finished after 57 steps: 10次试行的平均step数 &#x3D; 77.1
+93 Episode: Finished after 53 steps: 10次试行的平均step数 &#x3D; 74.7
+94 Episode: Finished after 109 steps: 10次试行的平均step数 &#x3D; 81.7
+95 Episode: Finished after 82 steps: 10次试行的平均step数 &#x3D; 84.8
+96 Episode: Finished after 61 steps: 10次试行的平均step数 &#x3D; 84.8
+97 Episode: Finished after 50 steps: 10次试行的平均step数 &#x3D; 81.7
+98 Episode: Finished after 156 steps: 10次试行的平均step数 &#x3D; 91.0
+99 Episode: Finished after 162 steps: 10次试行的平均step数 &#x3D; 98.8
+100 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 98.8
+101 Episode: Finished after 92 steps: 10次试行的平均step数 &#x3D; 102.2
+102 Episode: Finished after 90 steps: 10次试行的平均step数 &#x3D; 105.5
+103 Episode: Finished after 130 steps: 10次试行的平均step数 &#x3D; 113.2
+104 Episode: Finished after 147 steps: 10次试行的平均step数 &#x3D; 117.0
+105 Episode: Finished after 119 steps: 10次试行的平均step数 &#x3D; 120.7
+106 Episode: Finished after 186 steps: 10次试行的平均step数 &#x3D; 133.2
+107 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 148.2
+108 Episode: Finished after 110 steps: 10次试行的平均step数 &#x3D; 143.6
+109 Episode: Finished after 111 steps: 10次试行的平均step数 &#x3D; 138.5
+110 Episode: Finished after 159 steps: 10次试行的平均step数 &#x3D; 134.4
+111 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 145.2
+112 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 156.2
+113 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 163.2
+114 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 168.5
+115 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 176.6
+116 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 178.0
+117 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 178.0
+118 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 187.0
+119 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 195.9
+120 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 200.0
+连续成功10次
+121 Episode: Finished after 200 steps: 10次试行的平均step数 &#x3D; 200.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 <p><img src="/YXY996/2021/03/26/DQN/output_9_3.png" alt="png"></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
@@ -1646,7 +1647,7 @@ CAPACITY <span class="token operator">=</span> <span class="token number">10000<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.7k</span>&nbsp;字
+                class="white-color">38.8k</span>&nbsp;字
             
             
             
