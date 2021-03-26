@@ -2680,4 +2680,415 @@ int main()&#123;
         <tag>数据库</tag>
       </tags>
   </entry>
+  <entry>
+    <title>DQN</title>
+    <url>/2021/03/26/DQN/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token operator">%</span>matplotlib inline
+<span class="token keyword">import</span> gym
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> JSAnimation<span class="token punctuation">.</span>IPython_display <span class="token keyword">import</span> display_animation
+<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> animation
+<span class="token keyword">from</span> IPython<span class="token punctuation">.</span>display <span class="token keyword">import</span> display
+
+<span class="token keyword">def</span> <span class="token function">display_frames_as_gif</span><span class="token punctuation">(</span>frames<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize <span class="token operator">=</span> <span class="token punctuation">(</span>frames<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">72.0</span><span class="token punctuation">,</span>frames<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">72.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>dpi <span class="token operator">=</span> <span class="token number">72</span><span class="token punctuation">)</span>
+    patch <span class="token operator">=</span> plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>frames<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>axis<span class="token punctuation">(</span><span class="token string">'off'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">animate</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    patch<span class="token punctuation">.</span>set_data<span class="token punctuation">(</span>frame<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    anmi <span class="token operator">=</span> animation<span class="token punctuation">.</span>FuncAnimation<span class="token punctuation">(</span>plt<span class="token punctuation">.</span>gcf<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>animate<span class="token punctuation">,</span>frames <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>frames<span class="token punctuation">)</span><span class="token punctuation">,</span>interval <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">)</span>
+    anim<span class="token punctuation">.</span>save <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'movie_cartpole_DQN.mp4'</span><span class="token punctuation">)</span>
+    display<span class="token punctuation">(</span>display_animation<span class="token punctuation">(</span>anmi<span class="token punctuation">,</span>default_mode <span class="token operator">=</span> <span class="token string">'loop'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> namedtuple
+Tr <span class="token operator">=</span> namedtuple<span class="token punctuation">(</span><span class="token string">'tr'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'name_a'</span><span class="token punctuation">,</span><span class="token string">'value_b'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Tr_object <span class="token operator">=</span> Tr<span class="token punctuation">(</span><span class="token string">'名称'</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>Tr_object<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>Tr_object<span class="token punctuation">.</span>value_b<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>tr(name_a=&#39;名称&#39;, value_b=100)
+100
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># namedtupleを生成</span>
+<span class="token keyword">from</span> collections <span class="token keyword">import</span> namedtuple
+Transition <span class="token operator">=</span> namedtuple<span class="token punctuation">(</span>
+    <span class="token string">'Transition'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'state'</span><span class="token punctuation">,</span> <span class="token string">'action'</span><span class="token punctuation">,</span> <span class="token string">'next_state'</span><span class="token punctuation">,</span> <span class="token string">'reward'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+ENV <span class="token operator">=</span> <span class="token string">'CartPole-v0'</span>
+GAMMA <span class="token operator">=</span> <span class="token number">0.99</span>
+MAX_STEPS <span class="token operator">=</span> <span class="token number">200</span>
+NUM_EPISODES <span class="token operator">=</span> <span class="token number">500</span>
+
+<span class="token comment"># 保存经验的内存定义</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ReplayMemory</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>CAPACITY<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>capacity <span class="token operator">=</span> CAPACITY
+        self<span class="token punctuation">.</span>memory <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">#保存经验的变量</span>
+        self<span class="token punctuation">.</span>index <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment">#保存的index展示变量</span>
+    <span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">,</span>action<span class="token punctuation">,</span>state_next<span class="token punctuation">,</span>reward<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>memory<span class="token punctuation">)</span> <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>capacity<span class="token punctuation">:</span>    <span class="token comment">#确保内存没有超过容量</span>
+            self<span class="token punctuation">.</span>memory<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>memory<span class="token punctuation">[</span>self<span class="token punctuation">.</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> Transition<span class="token punctuation">(</span>state<span class="token punctuation">,</span>action<span class="token punctuation">,</span>state_next<span class="token punctuation">,</span>reward<span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>index <span class="token operator">=</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span> self<span class="token punctuation">.</span>capacity  <span class="token comment">#这里index的值向后移动一位 +1</span>
+    <span class="token keyword">def</span> <span class="token function">sample</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>batch_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>self<span class="token punctuation">.</span>memory<span class="token punctuation">,</span>batch_size<span class="token punctuation">)</span> <span class="token comment">#随机取出一定数量的数据</span>
+    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>memory<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> random 
+<span class="token keyword">import</span> torch
+<span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
+<span class="token keyword">from</span> torch <span class="token keyword">import</span> optim
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F
+
+BATCH_SIZE <span class="token operator">=</span> <span class="token number">32</span>
+CAPACITY <span class="token operator">=</span> <span class="token number">10000</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Brain</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>num_states<span class="token punctuation">,</span>num_actions<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>num_actions <span class="token operator">=</span> num_actions <span class="token comment">#取得cartpole的行动</span>
+
+        self<span class="token punctuation">.</span>memory <span class="token operator">=</span> ReplayMemory<span class="token punctuation">(</span>CAPACITY<span class="token punctuation">)</span> 
+        <span class="token comment"># 构建神经网络</span>
+        self<span class="token punctuation">.</span>model <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc1'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>num_states<span class="token punctuation">,</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#nn.Linear ?</span>
+        self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'relu1'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc2'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'relu2'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">'fc3'</span><span class="token punctuation">,</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span>num_actions<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>model<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>optimizer <span class="token operator">=</span> optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>lr <span class="token operator">=</span> <span class="token number">0.0001</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">replay</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>memory<span class="token punctuation">)</span> <span class="token operator">&lt;</span> BATCH_SIZE<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> 
+
+        transitions <span class="token operator">=</span> self<span class="token punctuation">.</span>memory<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>BATCH_SIZE<span class="token punctuation">)</span>
+
+        batch <span class="token operator">=</span> Transition<span class="token punctuation">(</span><span class="token operator">*</span><span class="token builtin">zip</span><span class="token punctuation">(</span><span class="token operator">*</span>transitions<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#?</span>
+        <span class="token comment">#C=torch.cat((A,B),0)就表示按维数0（行）拼接A和B，也就是竖着拼接，A上B下。此时需要注意：列数必须一致，即维数1数值要相同，这里都是3列，方能列对齐。拼接后的C的第0维是两个维数0数值和，即2+4=6.</span>
+        <span class="token comment">#C=torch.cat((A,B),1)就表示按维数1（列）拼接A和B，也就是横着拼接，A左B右。此时需要注意：行数必须一致，即维数0数值要相同，这里都是2行，方能行对齐。拼接后的C的第1维是两个维数1数值和，即3+4=7.</span>
+        state_batch <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>state<span class="token punctuation">)</span>
+        action_batch <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>action<span class="token punctuation">)</span>
+        reward_batch <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>reward<span class="token punctuation">)</span>
+        non_final_next_states <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">[</span>s <span class="token keyword">for</span> s <span class="token keyword">in</span> batch<span class="token punctuation">.</span>next_state <span class="token keyword">if</span> s <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#推理模式</span>
+        state_action_values <span class="token operator">=</span> self<span class="token punctuation">.</span>model<span class="token punctuation">(</span>state_batch<span class="token punctuation">)</span><span class="token punctuation">.</span>gather<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>action_batch<span class="token punctuation">)</span>
+        <span class="token comment"># 检查next_state 是否存在</span>
+        non_final_mask <span class="token operator">=</span> torch<span class="token punctuation">.</span>ByteTensor<span class="token punctuation">(</span><span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> s<span class="token punctuation">:</span> s <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">,</span>batch<span class="token punctuation">.</span>next_state<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        next_state_values <span class="token operator">=</span> torch<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>BATCH_SIZE<span class="token punctuation">)</span>
+        <span class="token comment">#torch.tensor.detach()用法介绍：</span>
+        <span class="token comment">#返回一个新的从当前图中分离的Variable。</span>
+        <span class="token comment">#返回的 Variable 不会梯度更新。</span>
+        <span class="token comment">#被detach 的Variable volatile=True， detach出来的volatile也为True。</span>
+        <span class="token comment">#返回的Variable和被detach的Variable指向同一个tensor。</span>
+        next_state_values<span class="token punctuation">[</span>non_final_mask<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>model<span class="token punctuation">(</span>non_final_next_states<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>detach<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#？</span>
+        <span class="token comment"># Q学习</span>
+        expected_state_action_values <span class="token operator">=</span> reward_batch <span class="token operator">+</span> GAMMA<span class="token operator">*</span>next_state_values
+        self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">#损失函数计算</span>
+        
+        <span class="token comment">#返回一个新的张量，对输入的指定位置插入维度 1</span>
+
+        <span class="token comment">#注意： 返回张量与输入张量共享内存，所以改变其中一个的内容会改变另一个。</span>
+
+        <span class="token comment">#如果dim为负，则将会被转化dim+input.dim()+1dim+input.dim()+1</span>
+        
+        <span class="token comment">#tensor (Tensor) – 输入张量</span>
+        <span class="token comment">#dim (int) – 插入维度的索引（从0开始）</span>
+        <span class="token comment">#out (Tensor, optional) – 结果张量</span>
+
+        <span class="token comment">#import torch</span>
+        <span class="token comment">#x = torch.ones(4)</span>
+        <span class="token comment">#print(x)</span>
+        <span class="token comment">#print(x.size())</span>
+
+        <span class="token comment">#y = torch.unsqueeze(x, 0)</span>
+        <span class="token comment">#print(y)</span>
+        <span class="token comment">#print(y.size())</span>
+        <span class="token comment">#z = torch.unsqueeze(x, 1)</span>
+        <span class="token comment">#print(z)</span>
+        <span class="token comment">#print(z.size())</span>
+        <span class="token comment">#插入维度之前：</span>
+        <span class="token comment">#[ 1, 1, 1, 1 ]</span>
+
+        <span class="token comment">#在第0维插入一个维度，使其变成（1，4），即在最外层插入一个中括号即可：</span>
+
+        <span class="token comment">#[ [ 1, 1, 1, 1 ] ]</span>
+
+        <span class="token comment">#在第1维插入一个维度，使其变成（4，1）</span>
+
+        <span class="token comment">#[ [1], [1], [1], [1] ]</span>
+        loss <span class="token operator">=</span> F<span class="token punctuation">.</span>smooth_l1_loss<span class="token punctuation">(</span>state_action_values<span class="token punctuation">,</span>expected_state_action_values<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">#[minibatch*1]</span>
+
+        <span class="token comment">#更新結合パラメータ</span>
+        self<span class="token punctuation">.</span>optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"># 重置梯度</span>
+        loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#反向传播计算</span>
+        self<span class="token punctuation">.</span>optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#更新parameter</span>
+
+    <span class="token keyword">def</span> <span class="token function">decide_action</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">,</span>episode<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        epsilon <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token punctuation">(</span>episode <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> epsilon <span class="token operator">&lt;=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>uniform<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                action <span class="token operator">=</span> self<span class="token punctuation">.</span>model<span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+                <span class="token comment">#torch.max()[0]， 只返回最大值的每个数</span>
+                <span class="token comment">#troch.max()[1]， 只返回最大值的每个索引</span>
+                <span class="token comment">#torch.max()[1].data 只返回variable中的数据部分（去掉Variable containing:）</span>
+                <span class="token comment">#torch.max()[1].data.numpy() 把数据转化成numpy ndarry</span>
+                <span class="token comment">#torch.max()[1].data.numpy().squeeze() 把数据条目中维度为1 的删除掉</span>
+
+                <span class="token comment">#view(1,1)</span>
+                <span class="token comment">#在函数的参数中经常可以看到-1例如x.view(-1, 4)</span>
+                <span class="token comment">#这里-1表示一个不确定的数，就是你如果不确定你想要reshape成几行，但是你很肯定要reshape成4列，那不确定的地方就可以写成-1</span>
+                <span class="token comment">#例如一个长度的16向量x，</span>
+                <span class="token comment">#x.view(-1, 4)等价于x.view(4, 4)</span>
+                <span class="token comment">#x.view(-1, 2)等价于x.view(8，2)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            action <span class="token operator">=</span> torch<span class="token punctuation">.</span>LongTensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_actions<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> action<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Agent</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>num_states<span class="token punctuation">,</span>num_actions<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>brain <span class="token operator">=</span> Brain<span class="token punctuation">(</span>num_states<span class="token punctuation">,</span>num_actions<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">update_q_function</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>brain<span class="token punctuation">.</span>replay<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#这里Brain()赋值给self.brain，所以可以调用replay()?</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_action</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">,</span>episode<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        action <span class="token operator">=</span> self<span class="token punctuation">.</span>brain<span class="token punctuation">.</span>decide_action<span class="token punctuation">(</span>state<span class="token punctuation">,</span>episode<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> action
+    <span class="token keyword">def</span> <span class="token function">memorize</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">,</span>action<span class="token punctuation">,</span>state_next<span class="token punctuation">,</span>reward<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>brain<span class="token punctuation">.</span>memory<span class="token punctuation">.</span>push<span class="token punctuation">(</span>state<span class="token punctuation">,</span>action<span class="token punctuation">,</span>state_next<span class="token punctuation">,</span>reward<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Environment</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>env <span class="token operator">=</span> gym<span class="token punctuation">.</span>make<span class="token punctuation">(</span>ENV<span class="token punctuation">)</span>
+        <span class="token comment">#初始化设定状态和行动的个数</span>
+        num_states <span class="token operator">=</span> self<span class="token punctuation">.</span>env<span class="token punctuation">.</span>observation_space<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> 
+        num_actions <span class="token operator">=</span> self<span class="token punctuation">.</span>env<span class="token punctuation">.</span>action_space<span class="token punctuation">.</span>n
+        <span class="token comment">#生成环境内行动的Agent</span>
+        self<span class="token punctuation">.</span>agent <span class="token operator">=</span> Agent<span class="token punctuation">(</span>num_states<span class="token punctuation">,</span>num_actions<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        episode_10_list <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+        complete_episodes <span class="token operator">=</span> <span class="token number">0</span>
+        episode_final <span class="token operator">=</span> <span class="token boolean">False</span>
+        frames <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> episode <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>NUM_EPISODES<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            observation <span class="token operator">=</span> self<span class="token punctuation">.</span>env<span class="token punctuation">.</span>reset<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#环境初始化</span>
+            state <span class="token operator">=</span> observation <span class="token comment">#初始化的环境直接当作状态s使用</span>
+            <span class="token comment">#起初state是numpy类型 这里通过torch.from_numpy().type转换成向量型</span>
+            state <span class="token operator">=</span> torch<span class="token punctuation">.</span>from_numpy<span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">type</span><span class="token punctuation">(</span>
+                torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">)</span>
+            <span class="token comment">#print(state)</span>
+            <span class="token comment">#FloatTensorof size 4 ->1*4？</span>
+            state <span class="token operator">=</span> torch<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span>state<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(state)</span>
+
+            <span class="token keyword">for</span> step <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>MAX_STEPS<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> episode_final <span class="token keyword">is</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+                    frames<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>env<span class="token punctuation">.</span>render<span class="token punctuation">(</span>mode <span class="token operator">=</span> <span class="token string">'rgb_array'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token comment"># 这步所求的action预测 是在agent中进行</span>
+                action <span class="token operator">=</span> self<span class="token punctuation">.</span>agent<span class="token punctuation">.</span>get_action<span class="token punctuation">(</span>state<span class="token punctuation">,</span>episode<span class="token punctuation">)</span>
+                <span class="token comment">#这里不使用reward和info所以 _</span>
+                observation_next<span class="token punctuation">,</span>_<span class="token punctuation">,</span>done<span class="token punctuation">,</span>_ <span class="token operator">=</span> self<span class="token punctuation">.</span>env<span class="token punctuation">.</span>step<span class="token punctuation">(</span>action<span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#env源代码？</span>
+                <span class="token keyword">if</span> done<span class="token punctuation">:</span>
+                    state_next <span class="token operator">=</span> <span class="token boolean">None</span>
+                    episode_10_list <span class="token operator">=</span> np<span class="token punctuation">.</span>hstack<span class="token punctuation">(</span><span class="token punctuation">(</span>episode_10_list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span>step<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#?这里是寻找</span>
+                    <span class="token comment">#沿着水平方向将数组堆叠起来</span>
+                    <span class="token comment">#arr1 = np.array([[1, 2], [3, 4], [5, 6]])</span>
+                    <span class="token comment">#arr2 = np.array([[7, 8], [9, 0], [0, 1]])</span>
+                    <span class="token comment">#[[1 2 7 8]</span>
+                     <span class="token comment">#[3 4 9 0]</span>
+                     <span class="token comment">#[5 6 0 1]]</span>
+
+                    <span class="token keyword">if</span> step <span class="token operator">&lt;</span> <span class="token number">195</span><span class="token punctuation">:</span>
+                        reward <span class="token operator">=</span> torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
+                        complete_episodes <span class="token operator">=</span> <span class="token number">0</span>
+                    <span class="token keyword">else</span><span class="token punctuation">:</span>
+                        reward <span class="token operator">=</span> torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1.0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                        complete_episodes <span class="token operator">=</span> complete_episodes <span class="token operator">+</span><span class="token number">1</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    reward <span class="token operator">=</span> torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    state_next <span class="token operator">=</span>observation_next
+                    state_next <span class="token operator">=</span> torch<span class="token punctuation">.</span>from_numpy<span class="token punctuation">(</span>state_next<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">type</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">)</span>
+                    state_next <span class="token operator">=</span> torch<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span>state_next<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+                <span class="token comment">#给内存增加经验</span>
+                self<span class="token punctuation">.</span>agent<span class="token punctuation">.</span>memorize<span class="token punctuation">(</span>state<span class="token punctuation">,</span>action<span class="token punctuation">,</span>state_next<span class="token punctuation">,</span>reward<span class="token punctuation">)</span>
+                <span class="token comment">#通过replay()更新Q函数</span>
+                self<span class="token punctuation">.</span>agent<span class="token punctuation">.</span>update_q_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                state <span class="token operator">=</span> state_next
+                <span class="token keyword">if</span> done<span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d Episode: Finished after %d steps: 10次试行的平均step数 = %.1lf'</span> <span class="token operator">%</span><span class="token punctuation">(</span>episode<span class="token punctuation">,</span>step<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>episode_10_list<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span>
+            <span class="token keyword">if</span> episode_final <span class="token keyword">is</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+                display_frames_as_gif<span class="token punctuation">(</span>frames<span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">if</span> complete_episodes <span class="token operator">>=</span> <span class="token number">10</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'连续成功10次'</span><span class="token punctuation">)</span>
+                episode_final <span class="token operator">=</span> <span class="token boolean">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">cartpole_env <span class="token operator">=</span> Environment<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>Sequential(
+  (fc1): Linear(in_features=4, out_features=32, bias=True)
+  (relu1): ReLU()
+  (fc2): Linear(in_features=32, out_features=32, bias=True)
+  (relu2): ReLU()
+  (fc3): Linear(in_features=32, out_features=2, bias=True)
+)
+</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">cartpole_env<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>0 Episode: Finished after 10 steps: 10次试行的平均step数 = 1.0
+1 Episode: Finished after 13 steps: 10次试行的平均step数 = 2.3
+2 Episode: Finished after 9 steps: 10次试行的平均step数 = 3.2
+3 Episode: Finished after 10 steps: 10次试行的平均step数 = 4.2
+4 Episode: Finished after 9 steps: 10次试行的平均step数 = 5.1
+5 Episode: Finished after 9 steps: 10次试行的平均step数 = 6.0
+6 Episode: Finished after 10 steps: 10次试行的平均step数 = 7.0
+7 Episode: Finished after 9 steps: 10次试行的平均step数 = 7.9
+8 Episode: Finished after 9 steps: 10次试行的平均step数 = 8.8
+9 Episode: Finished after 10 steps: 10次试行的平均step数 = 9.8
+10 Episode: Finished after 12 steps: 10次试行的平均step数 = 10.0
+11 Episode: Finished after 11 steps: 10次试行的平均step数 = 9.8
+12 Episode: Finished after 13 steps: 10次试行的平均step数 = 10.2
+13 Episode: Finished after 10 steps: 10次试行的平均step数 = 10.2
+14 Episode: Finished after 10 steps: 10次试行的平均step数 = 10.3
+15 Episode: Finished after 10 steps: 10次试行的平均step数 = 10.4
+16 Episode: Finished after 15 steps: 10次试行的平均step数 = 10.9
+17 Episode: Finished after 16 steps: 10次试行的平均step数 = 11.6
+18 Episode: Finished after 22 steps: 10次试行的平均step数 = 12.9
+19 Episode: Finished after 21 steps: 10次试行的平均step数 = 14.0
+
+
+&lt;ipython-input-6-55bc7a6f3a6f&gt;:43: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead. (Triggered internally at  ..\aten\src\ATen/native/IndexingUtils.h:30.)
+  next_state_values[non_final_mask] = self.model(non_final_next_states).max(1)[0].detach() #？
+
+
+20 Episode: Finished after 23 steps: 10次试行的平均step数 = 15.1
+21 Episode: Finished after 36 steps: 10次试行的平均step数 = 17.6
+22 Episode: Finished after 28 steps: 10次试行的平均step数 = 19.1
+23 Episode: Finished after 35 steps: 10次试行的平均step数 = 21.6
+24 Episode: Finished after 23 steps: 10次试行的平均step数 = 22.9
+25 Episode: Finished after 39 steps: 10次试行的平均step数 = 25.8
+26 Episode: Finished after 29 steps: 10次试行的平均step数 = 27.2
+27 Episode: Finished after 29 steps: 10次试行的平均step数 = 28.5
+28 Episode: Finished after 24 steps: 10次试行的平均step数 = 28.7
+29 Episode: Finished after 80 steps: 10次试行的平均step数 = 34.6
+30 Episode: Finished after 26 steps: 10次试行的平均step数 = 34.9
+31 Episode: Finished after 25 steps: 10次试行的平均step数 = 33.8
+32 Episode: Finished after 32 steps: 10次试行的平均step数 = 34.2
+33 Episode: Finished after 25 steps: 10次试行的平均step数 = 33.2
+34 Episode: Finished after 31 steps: 10次试行的平均step数 = 34.0
+35 Episode: Finished after 34 steps: 10次试行的平均step数 = 33.5
+36 Episode: Finished after 45 steps: 10次试行的平均step数 = 35.1
+37 Episode: Finished after 40 steps: 10次试行的平均step数 = 36.2
+38 Episode: Finished after 50 steps: 10次试行的平均step数 = 38.8
+39 Episode: Finished after 11 steps: 10次试行的平均step数 = 31.9
+40 Episode: Finished after 56 steps: 10次试行的平均step数 = 34.9
+41 Episode: Finished after 23 steps: 10次试行的平均step数 = 34.7
+42 Episode: Finished after 16 steps: 10次试行的平均step数 = 33.1
+43 Episode: Finished after 19 steps: 10次试行的平均step数 = 32.5
+44 Episode: Finished after 12 steps: 10次试行的平均step数 = 30.6
+45 Episode: Finished after 29 steps: 10次试行的平均step数 = 30.1
+46 Episode: Finished after 13 steps: 10次试行的平均step数 = 26.9
+47 Episode: Finished after 20 steps: 10次试行的平均step数 = 24.9
+48 Episode: Finished after 14 steps: 10次试行的平均step数 = 21.3
+49 Episode: Finished after 14 steps: 10次试行的平均step数 = 21.6
+50 Episode: Finished after 11 steps: 10次试行的平均step数 = 17.1
+51 Episode: Finished after 13 steps: 10次试行的平均step数 = 16.1
+52 Episode: Finished after 14 steps: 10次试行的平均step数 = 15.9
+53 Episode: Finished after 31 steps: 10次试行的平均step数 = 17.1
+54 Episode: Finished after 19 steps: 10次试行的平均step数 = 17.8
+55 Episode: Finished after 29 steps: 10次试行的平均step数 = 17.8
+56 Episode: Finished after 33 steps: 10次试行的平均step数 = 19.8
+57 Episode: Finished after 58 steps: 10次试行的平均step数 = 23.6
+58 Episode: Finished after 40 steps: 10次试行的平均step数 = 26.2
+59 Episode: Finished after 38 steps: 10次试行的平均step数 = 28.6
+60 Episode: Finished after 36 steps: 10次试行的平均step数 = 31.1
+61 Episode: Finished after 47 steps: 10次试行的平均step数 = 34.5
+62 Episode: Finished after 52 steps: 10次试行的平均step数 = 38.3
+63 Episode: Finished after 36 steps: 10次试行的平均step数 = 38.8
+64 Episode: Finished after 31 steps: 10次试行的平均step数 = 40.0
+65 Episode: Finished after 76 steps: 10次试行的平均step数 = 44.7
+66 Episode: Finished after 40 steps: 10次试行的平均step数 = 45.4
+67 Episode: Finished after 24 steps: 10次试行的平均step数 = 42.0
+68 Episode: Finished after 51 steps: 10次试行的平均step数 = 43.1
+69 Episode: Finished after 53 steps: 10次试行的平均step数 = 44.6
+70 Episode: Finished after 34 steps: 10次试行的平均step数 = 44.4
+71 Episode: Finished after 31 steps: 10次试行的平均step数 = 42.8
+72 Episode: Finished after 34 steps: 10次试行的平均step数 = 41.0
+73 Episode: Finished after 51 steps: 10次试行的平均step数 = 42.5
+74 Episode: Finished after 46 steps: 10次试行的平均step数 = 44.0
+75 Episode: Finished after 42 steps: 10次试行的平均step数 = 40.6
+76 Episode: Finished after 50 steps: 10次试行的平均step数 = 41.6
+77 Episode: Finished after 32 steps: 10次试行的平均step数 = 42.4
+78 Episode: Finished after 37 steps: 10次试行的平均step数 = 41.0
+79 Episode: Finished after 45 steps: 10次试行的平均step数 = 40.2
+80 Episode: Finished after 67 steps: 10次试行的平均step数 = 43.5
+81 Episode: Finished after 41 steps: 10次试行的平均step数 = 44.5
+82 Episode: Finished after 57 steps: 10次试行的平均step数 = 46.8
+83 Episode: Finished after 77 steps: 10次试行的平均step数 = 49.4
+84 Episode: Finished after 39 steps: 10次试行的平均step数 = 48.7
+85 Episode: Finished after 51 steps: 10次试行的平均step数 = 49.6
+86 Episode: Finished after 61 steps: 10次试行的平均step数 = 50.7
+87 Episode: Finished after 81 steps: 10次试行的平均step数 = 55.6
+88 Episode: Finished after 63 steps: 10次试行的平均step数 = 58.2
+89 Episode: Finished after 84 steps: 10次试行的平均step数 = 62.1
+90 Episode: Finished after 200 steps: 10次试行的平均step数 = 75.4
+91 Episode: Finished after 58 steps: 10次试行的平均step数 = 77.1
+92 Episode: Finished after 57 steps: 10次试行的平均step数 = 77.1
+93 Episode: Finished after 53 steps: 10次试行的平均step数 = 74.7
+94 Episode: Finished after 109 steps: 10次试行的平均step数 = 81.7
+95 Episode: Finished after 82 steps: 10次试行的平均step数 = 84.8
+96 Episode: Finished after 61 steps: 10次试行的平均step数 = 84.8
+97 Episode: Finished after 50 steps: 10次试行的平均step数 = 81.7
+98 Episode: Finished after 156 steps: 10次试行的平均step数 = 91.0
+99 Episode: Finished after 162 steps: 10次试行的平均step数 = 98.8
+100 Episode: Finished after 200 steps: 10次试行的平均step数 = 98.8
+101 Episode: Finished after 92 steps: 10次试行的平均step数 = 102.2
+102 Episode: Finished after 90 steps: 10次试行的平均step数 = 105.5
+103 Episode: Finished after 130 steps: 10次试行的平均step数 = 113.2
+104 Episode: Finished after 147 steps: 10次试行的平均step数 = 117.0
+105 Episode: Finished after 119 steps: 10次试行的平均step数 = 120.7
+106 Episode: Finished after 186 steps: 10次试行的平均step数 = 133.2
+107 Episode: Finished after 200 steps: 10次试行的平均step数 = 148.2
+108 Episode: Finished after 110 steps: 10次试行的平均step数 = 143.6
+109 Episode: Finished after 111 steps: 10次试行的平均step数 = 138.5
+110 Episode: Finished after 159 steps: 10次试行的平均step数 = 134.4
+111 Episode: Finished after 200 steps: 10次试行的平均step数 = 145.2
+112 Episode: Finished after 200 steps: 10次试行的平均step数 = 156.2
+113 Episode: Finished after 200 steps: 10次试行的平均step数 = 163.2
+114 Episode: Finished after 200 steps: 10次试行的平均step数 = 168.5
+115 Episode: Finished after 200 steps: 10次试行的平均step数 = 176.6
+116 Episode: Finished after 200 steps: 10次试行的平均step数 = 178.0
+117 Episode: Finished after 200 steps: 10次试行的平均step数 = 178.0
+118 Episode: Finished after 200 steps: 10次试行的平均step数 = 187.0
+119 Episode: Finished after 200 steps: 10次试行的平均step数 = 195.9
+120 Episode: Finished after 200 steps: 10次试行的平均step数 = 200.0
+连续成功10次
+121 Episode: Finished after 200 steps: 10次试行的平均step数 = 200.0
+</code></pre>
+<p><img src="/YXY996/2021/03/26/DQN/output_9_3.png" alt="png"></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
 </search>
