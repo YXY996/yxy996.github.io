@@ -3179,84 +3179,35 @@ class Student():
 
     return loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在optimizer的step函数的内部，只使用gradients来更新参数，根本不使用参数本身的值（除了weight decay，但我们将在外围处理）。然后我们可以在optimizer处理之前，简单地执行权重衰减。在计算梯度之后仍然必须进行相同操作（否则会影响gradients值），所以在训练循环中，你必须找到这个位置。</p>
-<pre class="line-numbers language-none"><code class="language-none">loss.backward()
-
-Do the weight decay here!
-
-optimizer.step()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>当然，optimizer应该设置为wd = 0，否则它会进行L2正则化，这正是我们现在不想要的。现在，在那个位置，我们必须循环所有参数，并做weight decay更新。你的参数应该都在optimizer的字典param_groups中，因此循环看起来像这样：</p>
-<pre><code>loss.backward()
-
-for group in optimizer.param_groups():
-
-for param in group[&#39;params&#39;]:
-
-param.data = param.data.add(-wd * group[&#39;lr&#39;], param.data)
-
-optimizer.step()
-
-## 闭包函数
-闭包函数：
-如果一个函数定义在另一个函数的作用域内，并且引用了外层函数的变量，则该函数称为闭包。闭包是Python所支持的一种特性，它让在非global scope定义的函数可以引用其外围空间中的变量，这些外围空间中被引用的变量叫做这个函数的环境变量。环境变量和这个非全局函数一起构成了闭包。
-
-def line_conf(a, b):
+<p>loss.backward()</p>
+<p>Do the weight decay here!</p>
+<p>optimizer.step()</p>
+<p>当然，optimizer应该设置为wd = 0，否则它会进行L2正则化，这正是我们现在不想要的。<br>现在，在那个位置，我们必须循环所有参数，并做weight decay更新。你的参数应该都在optimizer的字典param_groups中，因此循环看起来像这样：</p>
+<p>loss.backward()</p>
+<p>for group in optimizer.param_groups():</p>
+<p>for param in group[‘params’]:</p>
+<p>param.data = param.data.add(-wd * group[‘lr’], param.data)</p>
+<p>optimizer.step()</p>
+<h2><span id="闭包函数">闭包函数</span></h2><p>闭包函数：<br>如果一个函数定义在另一个函数的作用域内，并且引用了外层函数的变量，则该函数称为闭包。闭包是Python所支持的一种特性，它让在非global scope定义的函数可以引用其外围空间中的变量，这些外围空间中被引用的变量叫做这个函数的环境变量。环境变量和这个非全局函数一起构成了闭包。</p>
+<pre class="line-numbers language-none"><code class="language-none">def line_conf(a, b):
     def line(x):
         return a * x + b
-    return line
-
-嵌套函数line中的代码访问了a和b变量，line本身函数体内并不存在这两个变量，所以会逐级向外查找，往上走一层就找到了来自主函数line_conf传递的a, b。若往外直至全局作用域都查找不到的话代码会抛异常。
-
-line_A = line_conf(2, 1) #y=2x+b
-line_B = line_conf(3, 2) #y=3x+2
-
-打印x对应y的值
-print(line_A(1)) #3
-print(line_B(1)) #5
-
-内包的语法为
-
-def 父函数(参数):             #这里的参数外部传递给子函数作其函数参数
+    return line<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>嵌套函数line中的代码访问了a和b变量，line本身函数体内并不存在这两个变量，<br>所以会逐级向外查找，往上走一层就找到了来自主函数line_conf传递的a, b。若往外直至全局作用域都查找不到的话代码会抛异常。</p>
+<p>line_A = line_conf(2, 1) #y=2x+b<br>line_B = line_conf(3, 2) #y=3x+2</p>
+<p>打印x对应y的值<br>print(line_A(1)) #3<br>print(line_B(1)) #5</p>
+<p>内包的语法为</p>
+<pre class="line-numbers language-none"><code class="language-none">def 父函数(参数):       #这里的参数外部传递给子函数作其函数参数
     def 子函数（参数）：  #这里的参数为外部传递给子函数作其自变量额值
         fuction
-    return  子函数值
-
-调用语法：
-
-变量=父函数（赋给子函数的参数）
-result=变量（子函数自变量的值）
-result的值为子函数的计算值
-
-！！当闭包执行完后，仍然能够保持住当前的运行环境。
-这里每次经过权重更新后得到的新的参数
-
-
-## zip的使用方法 
-zip 方法在 Python 2 和 Python 3 中的不同：在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。
-zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。
-这里* 单独就可以看作一个解压的步骤，将列表中的元素提出
-zip按照对应关系一一打包
-
-## mask 
-这里的non_final_mask是判断下一步状态是否存在的索引
-state_batch 是四个元素
-action_batch 是一个元素
-决定每一步的动作时
-如果时根据Q价值最大选择
-则：
-action的决定取决于decide_action，每走一步更新一下决定下一步的action，并且记录下来形成action_batch?
-否则：
-随机选择
-no_final_mask中元素为0时，则next_state_values不存在 
-self.model(state_batch)最后经过神经网络输出的是两个结果，分别对应向左和向右移动的Q值
-
-## expected_state_value
-相当于qtable
-loss损失函数去计算state_value和expected_state_value的差值 
-
-## greedy方法
-
-未完结待更新
-</code></pre>
+    return  子函数值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>调用语法：</p>
+<p>变量=父函数（赋给子函数的参数）<br>result=变量（子函数自变量的值）<br>result的值为子函数的计算值</p>
+<p>！！当闭包执行完后，仍然能够保持住当前的运行环境。<br>这里每次经过权重更新后得到的新的参数</p>
+<h2><span id="zip的使用方法">zip的使用方法</span></h2><p>zip 方法在 Python 2 和 Python 3 中的不同：在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。<br>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。<br>这里* 单独就可以看作一个解压的步骤，将列表中的元素提出<br>zip按照对应关系一一打包</p>
+<h2><span id="mask">mask</span></h2><p>这里的non_final_mask是判断下一步状态是否存在的索引<br>state_batch 是四个元素<br>action_batch 是一个元素<br>决定每一步的动作时<br>如果时根据Q价值最大选择<br>则：<br>action的决定取决于decide_action，每走一步更新一下决定下一步的action，并且记录下来形成action_batch?<br>否则：<br>随机选择<br>no_final_mask中元素为0时，则next_state_values不存在<br>self.model(state_batch)最后经过神经网络输出的是两个结果，分别对应向左和向右移动的Q值</p>
+<h2><span id="expected_state_value">expected_state_value</span></h2><p>相当于qtable<br>loss损失函数去计算state_value和expected_state_value的差值 </p>
+<h2><span id="greedy方法">greedy方法</span></h2><p>未完结待更新</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>python</category>
