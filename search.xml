@@ -3092,4 +3092,178 @@ please use a dtype torch.bool instead.
         <tag>深度学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>深层学习疑难知识点</title>
+    <url>/2021/03/30/%E6%B7%B1%E5%B1%82%E5%AD%A6%E4%B9%A0%E7%96%91%E9%9A%BE%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>有关深层学习的疑难知识点</p>
+<h2><span id="self含义">self含义</span></h2><p><strong>init</strong> 方法的第一个参数永远是 self ，表示创建的实例本身，因此，在 <strong>init</strong> 方法的内部，就可以把各种属性绑定到 self，因为 self 就指向创建的实例本身。<br>使用了 <strong>init</strong> 方法，在创建实例的时候就不能传入空的参数了，必须传入与 <strong>init</strong> 方法匹配的参数，<br>但是 self 不需要传，python解释器会自己把实例变量传进去。自动调用构造函数。</p>
+<pre class="line-numbers language-none"><code class="language-none">
+class Student():
+    name &#x3D; &#39;&#39;
+    age &#x3D; 0
+    def __init__(self,age,num):
+        #   它是构造函数
+        print(&#39;student&#39;)
+    #行为     与   特征
+    def do_homework(self):
+        print(&#39;homework&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Student::student1<br>st2<br>student1 = Student()<br>student1.<strong>init</strong>()</p>
+<p>##()的意义<br>类有一个名为 <strong>init</strong>() 的特殊方法（构造方法），该方法在类实例化时会自动调用，像下面这样：</p>
+<p>def <strong>init</strong>(self):<br>    self.data = []</p>
+<p>类定义了 <strong>init</strong>() 方法，类的实例化操作会自动调用 <strong>init</strong>() 方法。<br>如下实例化类 MyClass，对应的 <strong>init</strong>() 方法就会被调用:<br>x = MyClass()<br>self代表类的实例，而非类</p>
+<p>类是创建实例的模板，而实例则是一个一个具体的对象，各个实例拥有的数据都互相独立，互不影响； 方法就是与实例绑定的函数，和普通函数不同，方法可以直接访问实例的数据； 通过在实例上调用方法，我们就直接操作了对象内部的数据，但无需知道方法内部的实现细节。</p>
+<p>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。</p>
+<p>##optimizer理解</p>
+<p>step这个函数使用的是参数空间(param_groups)中的grad,也就是当前参数空间对应的梯度，这也就解释了为什么optimzier使用之前需要zero清零一下，因为如果不清零，那么使用的这个grad就得同上一个mini-batch有关，这不是我们需要的结果。再回过头来看，我们知道optimizer更新参数空间需要基于反向梯度，因此，当调用optimizer.step()的时候应当是loss.backward()的时候</p>
+<pre class="line-numbers language-none"><code class="language-none">def step(self, closure&#x3D;None):
+    &quot;&quot;&quot;Performs a single optimization step.
+
+    Arguments:
+        closure (callable, optional): A closure that reevaluates the model
+            and returns the loss.
+    &quot;&quot;&quot;
+    loss &#x3D; None
+    if closure is not None:
+        loss &#x3D; closure()
+
+    for group in self.param_groups:
+        for p in group[&#39;params&#39;]:
+            if p.grad is None:
+                continue
+            grad &#x3D; p.grad.data  #.data——获得该节点的值，即Tensor类型的值
+                                #.grad——获得该节点处的梯度信息
+            if grad.is_sparse:
+                raise RuntimeError(&#39;Adam does not support sparse gradients, &#39;
+                                    &#39;please consider SparseAdam instead&#39;)
+            amsgrad &#x3D; group[&#39;amsgrad&#39;]
+
+            state &#x3D; self.state[p]
+
+            # State initialization
+            if len(state) &#x3D;&#x3D; 0:
+                state[&#39;step&#39;] &#x3D; 0
+                # Exponential moving average of gradient values
+                state[&#39;exp_avg&#39;] &#x3D; torch.zeros_like(p.data)
+                # Exponential moving average of squared gradient values
+                state[&#39;exp_avg_sq&#39;] &#x3D; torch.zeros_like(p.data)
+                if amsgrad:
+                    # Maintains max of all exp. moving avg. of sq. grad. values
+                    state[&#39;max_exp_avg_sq&#39;] &#x3D; torch.zeros_like(p.data)
+
+            exp_avg, exp_avg_sq &#x3D; state[&#39;exp_avg&#39;], state[&#39;exp_avg_sq&#39;]
+            if amsgrad:
+                max_exp_avg_sq &#x3D; state[&#39;max_exp_avg_sq&#39;]
+            beta1, beta2 &#x3D; group[&#39;betas&#39;]
+
+            state[&#39;step&#39;] +&#x3D; 1
+            bias_correction1 &#x3D; 1 - beta1 ** state[&#39;step&#39;]
+            bias_correction2 &#x3D; 1 - beta2 ** state[&#39;step&#39;]
+
+            if group[&#39;weight_decay&#39;] !&#x3D; 0:
+                grad.add_(group[&#39;weight_decay&#39;], p.data)
+
+            # Decay the first and second moment running average coefficient
+            exp_avg.mul_(beta1).add_(1 - beta1, grad)
+            exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+            if amsgrad:
+                # Maintains the maximum of all 2nd moment running avg. till now
+                torch.max(max_exp_avg_sq, exp_avg_sq, out&#x3D;max_exp_avg_sq)
+                # Use the max. for normalizing running avg. of gradient
+                denom &#x3D; (max_exp_avg_sq.sqrt() &#x2F; math.sqrt(bias_correction2)).add_(group[&#39;eps&#39;])
+            else:
+                denom &#x3D; (exp_avg_sq.sqrt() &#x2F; math.sqrt(bias_correction2)).add_(group[&#39;eps&#39;])
+
+            step_size &#x3D; group[&#39;lr&#39;] &#x2F; bias_correction1
+
+            p.data.addcdiv_(-step_size, exp_avg, denom)
+
+    return loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在optimizer的step函数的内部，只使用gradients来更新参数，根本不使用参数本身的值（除了weight decay，但我们将在外围处理）。然后我们可以在optimizer处理之前，简单地执行权重衰减。在计算梯度之后仍然必须进行相同操作（否则会影响gradients值），所以在训练循环中，你必须找到这个位置。</p>
+<pre class="line-numbers language-none"><code class="language-none">loss.backward()
+
+#Do the weight decay here!
+
+optimizer.step()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，optimizer应该设置为wd = 0，否则它会进行L2正则化，这正是我们现在不想要的。现在，在那个位置，我们必须循环所有参数，并做weight decay更新。你的参数应该都在optimizer的字典param_groups中，因此循环看起来像这样：</p>
+<pre><code>loss.backward()
+
+for group in optimizer.param_groups():
+
+for param in group[&#39;params&#39;]:
+
+param.data = param.data.add(-wd * group[&#39;lr&#39;], param.data)
+
+optimizer.step()
+
+##闭包函数
+闭包函数：
+如果一个函数定义在另一个函数的作用域内，并且引用了外层函数的变量，则该函数称为闭包。闭包是Python所支持的一种特性，它让在非global scope定义的函数可以引用其外围空间中的变量，这些外围空间中被引用的变量叫做这个函数的环境变量。环境变量和这个非全局函数一起构成了闭包。
+
+def line_conf(a, b):
+    def line(x):
+        return a * x + b
+    return line
+
+嵌套函数line中的代码访问了a和b变量，line本身函数体内并不存在这两个变量，所以会逐级向外查找，往上走一层就找到了来自主函数line_conf传递的a, b。若往外直至全局作用域都查找不到的话代码会抛异常。
+
+line_A = line_conf(2, 1) #y=2x+b
+line_B = line_conf(3, 2) #y=3x+2
+
+打印x对应y的值
+print(line_A(1)) #3
+print(line_B(1)) #5
+
+内包的语法为
+
+def 父函数(参数):             #这里的参数外部传递给子函数作其函数参数
+    def 子函数（参数）：  #这里的参数为外部传递给子函数作其自变量额值
+        fuction
+    return  子函数值
+
+调用语法：
+
+变量=父函数（赋给子函数的参数）
+result=变量（子函数自变量的值）
+result的值为子函数的计算值
+
+！！当闭包执行完后，仍然能够保持住当前的运行环境。
+这里每次经过权重更新后得到的新的参数
+
+
+##zip的使用方法 
+zip 方法在 Python 2 和 Python 3 中的不同：在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。
+zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。
+这里* 单独就可以看作一个解压的步骤，将列表中的元素提出
+zip按照对应关系一一打包
+
+##mask 
+这里的non_final_mask是判断下一步状态是否存在的索引
+state_batch 是四个元素
+action_batch 是一个元素
+决定每一步的动作时
+如果时根据Q价值最大选择
+则：
+action的决定取决于decide_action，每走一步更新一下决定下一步的action，并且记录下来形成action_batch?
+否则：
+随机选择
+no_final_mask中元素为0时，则next_state_values不存在 
+self.model(state_batch)最后经过神经网络输出的是两个结果，分别对应向左和向右移动的Q值
+
+##expected_state_value
+相当于qtable
+loss损失函数去计算state_value和expected_state_value的差值 
+
+##greedy方法
+
+未完结待更新
+</code></pre>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
 </search>

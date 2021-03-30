@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="指针与数组, 小杨的博客">
+    <meta name="keywords" content="深层学习疑难知识点, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>指针与数组 | 小杨的博客</title>
+    <title>深层学习疑难知识点 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">指针与数组</h1>
+                    <h1 class="description center-align post-title">深层学习疑难知识点</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">C++进阶笔记</span>
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category">
-                                C++
+                            <a href="/categories/python/" class="post-category">
+                                python
                             </a>
                         
                     </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-08
+                    2021-03-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-04
+                    2021-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    7 分
                 </div>
                 
 
@@ -514,256 +514,169 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="定义指向数组元素的指针">定义指向数组元素的指针</span></h2><p>定义与赋值<br>int a[10],*pa;<br>pa=&amp;a[0];或者pa=a;<br>等效的形式</p>
-<ul>
-<li>pa就是a[0],* (pa+1)就是a[1]….* (pa+i)就是a[i]<br>！！！重点！！！<br>a[i],* (pa+i),* (a+i),pa(i)都是等效的</li>
-</ul>
-<h2><span id="指针数组数组的元素是指针类型">指针数组：数组的元素是指针类型</span></h2><p>Point * pa[2];<br>是由pa[0],pa[1]两个指针组成的</p>
-<p>实例</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	int line1[]&#x3D;&#123;1,0,0&#125;
-	int line2[]&#x3D;&#123;0,1,0&#125;
-	int line3[]&#x3D;&#123;0,0,1&#125;
-	&#x2F;&#x2F;定义整型指针数组并初始化
-	int * pline[3]&#x3D;&#123;line1,line2,line3&#125;;
-	&#x2F;&#x2F;输出
-	cout&lt;&lt;&quot;Matrix test:&quot;&lt;&lt;endl;
-	for (int i&#x3D;0;i&lt;3;i++)&#123;
-		for (int j&#x3D;0;j&lt;3;j++)&#123;
-			cout&lt;&lt;pline[i][j]&lt;&lt;&quot; &quot;;
-		&#125;
-		cout&lt;&lt;endl;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/image/1.png"><br>为什么需要用指针作参数？<br>需要数据双向传递时（引用也可以达到此效果）<br>需要传递一组数据，只传首地址运行效率比较高</p>
-<p>例子：读入三个浮点数，将整数部分和小数部分分开输出</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-using namespace std;
-void splitFloat(float x,int *intPart,float *fracpart)&#123;
-	*intPart&#x3D;static_cast&lt;int&gt;(x);
-	*fracpart&#x3D;x-*intPart;
-&#125;
-int main()&#123;
-	cout&lt;&lt;&quot;Enter 3 float point numbers:&quot;&lt;&lt;endl;
-	for (int i&#x3D;0;i&lt;3;i++)&#123;
-		float x,f;
-		int n;
-		cin&gt;&gt;x;
-		splitFloat(x,&amp;n,&amp;f);&#x2F;&#x2F;变量地址作实参
-		cout&lt;&lt;&quot;Integer Part&#x3D;&quot;&lt;&lt;n&lt;&lt;&quot;fracpart&#x3D;&quot;&lt;&lt;f&lt;&lt;endl;
-
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例子：指向常量的指针作形参<br>传递地址且不需要主调函数中的数值是无法修改的<br>这个时候把指针定义为常量指针，只为了输出。<br>最小授权原则,对外的访问授权够用就好。</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-const int N&#x3D;6;
-void print(const int *p ,int n);
-int main()&#123;
-	int array[N];
-	for (int i&#x3D;0;i&lt;N;i++)
-		cin&gt;&gt;array[i];
-	print(array,N);
-	return 0;
-&#125;
-void print(const int *p,int n)&#123;
-	cout&lt;&lt;&quot;&#123;&quot;&lt;&lt;*p;
-	for (int i&#x3D;1;i&lt;n;i++)
-		cout&lt;&lt;&quot;,&quot;&lt;&lt;*(p+i);
-	cout&lt;&lt;&quot;&#125;&quot;&lt;&lt;endl;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="指针函数的定义形式">指针函数的定义形式：</span></h2><p>存储类型 数据类型 *函数名 ( )<br>{<br>    //函数体语句<br>}<br>！！不要将非静态局部地址用作函数的返回值<br>错误的例子：<br>在子函数中定义局部变量后将其地址返回给主函数，就是非法地址<br>错误例子：</p>
+                <p>有关深层学习的疑难知识点</p>
+<h2><span id="self含义">self含义</span></h2><p><strong>init</strong> 方法的第一个参数永远是 self ，表示创建的实例本身，因此，在 <strong>init</strong> 方法的内部，就可以把各种属性绑定到 self，因为 self 就指向创建的实例本身。<br>使用了 <strong>init</strong> 方法，在创建实例的时候就不能传入空的参数了，必须传入与 <strong>init</strong> 方法匹配的参数，<br>但是 self 不需要传，python解释器会自己把实例变量传进去。自动调用构造函数。</p>
 <pre class="line-numbers language-none"><code class="language-none">
-int main()&#123;
-	int *function();
-	int *ptr&#x3D;function();
-	*ptr&#x3D;5;&#x2F;&#x2F;危险的访问
-	return 0;
-&#125;
-int *function()&#123;
-	int local&#x3D;0;&#x2F;&#x2F;非静态局部变量作用域和寿命仅限于本函数体内
-	return &amp;local;
-&#125;&#x2F;&#x2F;函数结束运行时，变量local被释放
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>正确例子：<br>动态分配地址，函数有效</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	int *newintvar();
-	int *intptr&#x3D;newintvar();
-	*intptr&#x3D;5; &#x2F;&#x2F;访问的是合法有效的地址
-	delete intptr;&#x2F;&#x2F;如果忘记在这里释放，会造成内存泄漏
-	return 0;
+class Student():
+    name &#x3D; &#39;&#39;
+    age &#x3D; 0
+    def __init__(self,age,num):
+        #   它是构造函数
+        print(&#39;student&#39;)
+    #行为     与   特征
+    def do_homework(self):
+        print(&#39;homework&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Student::student1<br>st2<br>student1 = Student()<br>student1.<strong>init</strong>()</p>
+<p>##()的意义<br>类有一个名为 <strong>init</strong>() 的特殊方法（构造方法），该方法在类实例化时会自动调用，像下面这样：</p>
+<p>def <strong>init</strong>(self):<br>    self.data = []</p>
+<p>类定义了 <strong>init</strong>() 方法，类的实例化操作会自动调用 <strong>init</strong>() 方法。<br>如下实例化类 MyClass，对应的 <strong>init</strong>() 方法就会被调用:<br>x = MyClass()<br>self代表类的实例，而非类</p>
+<p>类是创建实例的模板，而实例则是一个一个具体的对象，各个实例拥有的数据都互相独立，互不影响； 方法就是与实例绑定的函数，和普通函数不同，方法可以直接访问实例的数据； 通过在实例上调用方法，我们就直接操作了对象内部的数据，但无需知道方法内部的实现细节。</p>
+<p>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。</p>
+<p>##optimizer理解</p>
+<p>step这个函数使用的是参数空间(param_groups)中的grad,也就是当前参数空间对应的梯度，这也就解释了为什么optimzier使用之前需要zero清零一下，因为如果不清零，那么使用的这个grad就得同上一个mini-batch有关，这不是我们需要的结果。再回过头来看，我们知道optimizer更新参数空间需要基于反向梯度，因此，当调用optimizer.step()的时候应当是loss.backward()的时候</p>
+<pre class="line-numbers language-none"><code class="language-none">def step(self, closure&#x3D;None):
+    &quot;&quot;&quot;Performs a single optimization step.
 
-&#125;
-int *newintvar()&#123;
-	int *p&#x3D;new int();
-	return p;&#x2F;&#x2F;返回的地址指向的是动态分配的空间
-&#125;&#x2F;&#x2F;函数运行结束时，p中的地址仍然有效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="函数指针">函数指针</span></h2><p>定义形式:<br>存储类型 数据类型 （* 函数指针名）（）；<br>含义：<br>函数指针指向的是程序代码存储区。</p>
-<p>函数指针的典型用途–实现函数回调<br>通过函数指针调用的函数<br>    例如将函数的指针作为参数传递给一个函数，使得在处理相似事件的时候可以灵活的使用不同的方法<br>调用者不关心谁是被调用者<br>    需知道存在一个具有特定原型和限制条件的被调用函数</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-int compute(int a,int b,int (*func)(int,int))
-&#123;
-	return func(a,b);
-&#125;
-int max(int a,int b)
-&#123;
-	return ((a&gt;b)?a:b);
-&#125;
-int min(int a,int b)
-&#123;
-	return ((a&lt;b)?a:b);
-&#125;
-int sum(int a,int b)
-&#123;
-	return a+b;
-&#125;
-int main()&#123;
-	int a ,b,res;
-	cout&lt;&lt;&quot;请输入整数a:&quot;;cin&gt;&gt;a;
-	cout&lt;&lt;&quot;请输入整数b:&quot;;cin&gt;&gt;b;
-	res&#x3D;compute(a,b,&amp;max);
-	cout&lt;&lt;&quot;Max of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
-	res&#x3D;compute(a,b,&amp;min);
-	cout&lt;&lt;&quot;Min of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
-	res&#x3D;compute(a,b,&amp;sum);
-	cout&lt;&lt;&quot;Sum of &quot;&lt;&lt;a&lt;&lt;&quot;and&quot;&lt;&lt;b&lt;&lt;&quot; is&quot;&lt;&lt;res&lt;&lt;endl;
-	
+    Arguments:
+        closure (callable, optional): A closure that reevaluates the model
+            and returns the loss.
+    &quot;&quot;&quot;
+    loss &#x3D; None
+    if closure is not None:
+        loss &#x3D; closure()
 
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="this指针">this指针</span></h2><p>隐含于类的每一个非静态成员函数中<br>指出成员函数所操作的对象<br>    当通过一个对象调用成员函数时，系统先将该对象的地址赋给this指针，然后调用成员函数，成员函数对对象的数据成员进行操作时，就隐含使用了this指针<br>例如：<br>Point类的getX函数中的语句<br>return x;<br>相当于<br>return this-&gt;x;</p>
-<h2><span id="动态申请内存操作符-new">动态申请内存操作符 new</span></h2><p>new 类型名T（初始化参数列表）<br>功能：<br>在程序执行期间，申请用于存放类型T对象的内存空间<br>并依初值列表赋以初值<br>成功：T类型的指针，指向新分配的内存<br>失败：抛出异常</p>
-<h2><span id="释放内存操作符-delete">释放内存操作符 delete</span></h2><p>功能：释放指针p所指向的内存。<br>p必须是new操作的返回值</p>
-<p>例子：<br>动态创建对象举例</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	cout&lt;&lt;&quot;Step One:&quot;&lt;&lt;endl;
-	Point *ptr1&#x3D;new Point;&#x2F;&#x2F;调用默认构造函数
-	delete ptr1;&#x2F;&#x2F;删除对象，自动调用析构函数
-	cout&lt;&lt;&quot;Step Two:&quot;&lt;&lt;endl;
-	ptr1&#x3D; new Point(1,2);
-	delete ptr1;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>分配和释放动态数组<br>分配：new 类型名T [数组长度]<br>数组长度可以是任何整数类型表达式，在运行时计算<br>释放：delete []数组名p<br>释放指针p所指向的数组<br>p必须是用new分配得到的数组首地址</p>
-<h2><span id="动态创建多维数组">动态创建多维数组</span></h2><pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-	int (*cp)[9][8]&#x3D;new int [7][9][8];
-	for (int i&#x3D;0;i&lt;7;i++)
-		for (int j&#x3D;0;j&lt;9;j++)
-			for(int k&#x3D;0;k&lt;8;k++)
-				*(*(*(cp+i)+j)+k)&#x3D;(i*100+j*10+k);
-	for (int i&#x3D;0;i&lt;7;i++)&#123;	
-		for (int j&#x3D;0;j&lt;9;j++)&#123;
-			for(int k&#x3D;0;k&lt;8;k++)
-				cout&lt;&lt;cp[i][j][k]&lt;&lt;&quot; &quot;;
-			cout&lt;&lt;endl;
-		&#125;
-		cout&lt;&lt;endl;
-	&#125;
-	delete []cp;
-	return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    for group in self.param_groups:
+        for p in group[&#39;params&#39;]:
+            if p.grad is None:
+                continue
+            grad &#x3D; p.grad.data  #.data——获得该节点的值，即Tensor类型的值
+                                #.grad——获得该节点处的梯度信息
+            if grad.is_sparse:
+                raise RuntimeError(&#39;Adam does not support sparse gradients, &#39;
+                                    &#39;please consider SparseAdam instead&#39;)
+            amsgrad &#x3D; group[&#39;amsgrad&#39;]
 
-<h2><span id="将动态数组分装成类">将动态数组分装成类</span></h2><p>更加简洁，便于管理<br>可以在访问数组元素前检查<br>下标是否越界</p>
-<h2><span id="c11的智能指针">C++11的智能指针</span></h2><p>unique_ptr:<br>不允许 多个指针共享资源，可以用标准库中的move函数转移指针<br>shared_ptr:<br>多个指针共享资源<br>weak_ptr:<br>可复制shared_ptr,但其构造或者释放对资源不会产生影响</p>
-<h2><span id="vector">vector</span></h2><p>为什么需要vector<br>封装任何类型的动态数组，自动创建和删除<br>数组下标越界检查<br>vector对象的定义<br>vector&lt;元素类型&gt;数组对象名（数组长度）<br>例子<br>vetor<int>arr[5]<br>对象的使用<br>对数组元素的引用<br>    与普通数组具有相同形式<br>    vector对象名[下标表达式]<br>    vector数组对象名不表示数组首地址<br>获得数组长度<br>    用size函数<br>    vector对象名.size</int></p>
-<p>例子：计算平均值<br>for条件语句还是习惯加花括号<br>否则容易出问题</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-#include &lt;vector&gt;
+            state &#x3D; self.state[p]
 
-using namespace std;
-double average(const vector&lt;double&gt;&amp;arr)
-&#123;
-	double sum&#x3D;0;
-	for (unsigned i&#x3D;0;i&lt;arr.size();i++)
-		sum+&#x3D;arr[i];
-		cout&lt;&lt;&quot;sum&#x3D;&quot;&lt;&lt;sum&lt;&lt;endl;
-		cout&lt;&lt;&quot;size&#x3D;&quot;&lt;&lt;arr.size()&lt;&lt;endl;
-	return sum&#x2F;arr.size();
-&#125;
-int main()&#123;
-	unsigned n;
-	cout&lt;&lt;&quot;n&#x3D; &quot;;
-	cin&gt;&gt;n;
-	vector &lt;double&gt;arr(n);
-	cout&lt;&lt;&quot;please input&quot;&lt;&lt;&quot; &quot;&lt;&lt;n&lt;&lt;&quot; &quot;&lt;&lt;&quot;real numbers:&quot;&lt;&lt;endl;
-	for (unsigned i&#x3D;0;i&lt;n;i++)
-		cin&gt;&gt;arr[i];
-		cout&lt;&lt;&quot;Average &#x3D;&quot;&lt;&lt;average(arr)&lt;&lt;endl;
-		return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="浅层复制">浅层复制</span></h2><p>实现对象间数据元素的一一复制</p>
-<h2><span id="深层复制">深层复制</span></h2><p>返回时构造临时对象，动态分配将临时对象返回到主调函数，然后删除临时对象</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-class IntNum&#123;
-public:
-   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
-      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
-   &#125;
-   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
-      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
-   &#125;
-   ~IntNum()&#123;
-      delete xptr;
-      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
-   &#125;
-   int getInt()&#123;
-      return *xptr;
-   &#125;
-private:
-   int *xptr;
-&#125;;
-IntNum getNum()&#123;
-   IntNum a;
-   return a;
-&#125;
-int main()&#123;
-   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
-   return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2><span id="移动构造">移动构造</span></h2><p>class_name(class_name)<br>将要返回的局部对象转移到主调函数，省去了构造和删除临时对象的过程</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-class IntNum&#123;
-public:
-   IntNum(int x&#x3D;0):xptr(new int (x))&#123;
-      cout&lt;&lt;&quot;Calling constructor...&quot;&lt;&lt;endl;
-   &#125;
-   IntNum(const IntNum &amp;n):xptr(new int(*n.xptr))&#123;
-      cout&lt;&lt;&quot;Calling copy constructor..&quot;&lt;&lt;endl;
-   &#125;
-   ~IntNum()&#123;
-      delete xptr;
-      cout&lt;&lt;&quot;Destructing..&quot;&lt;&lt;endl;
-   &#125;
-   int getInt()&#123;
-      return *xptr;
-   &#125;
-private:
-   int *xptr;
-&#125;;
-IntNum getNum()&#123;
-   IntNum a;
-   return a;
-&#125;
-int main()&#123;
-   cout&lt;&lt;getNum().getInt()&lt;&lt;endl;
-   return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注意：<br>&amp;&amp;是右值引用<br>函数返回的临时变量是右值</p>
-<p>移动构造优于复制构造，但具体还需要之后作题练习，这里一头雾水</p>
+            # State initialization
+            if len(state) &#x3D;&#x3D; 0:
+                state[&#39;step&#39;] &#x3D; 0
+                # Exponential moving average of gradient values
+                state[&#39;exp_avg&#39;] &#x3D; torch.zeros_like(p.data)
+                # Exponential moving average of squared gradient values
+                state[&#39;exp_avg_sq&#39;] &#x3D; torch.zeros_like(p.data)
+                if amsgrad:
+                    # Maintains max of all exp. moving avg. of sq. grad. values
+                    state[&#39;max_exp_avg_sq&#39;] &#x3D; torch.zeros_like(p.data)
+
+            exp_avg, exp_avg_sq &#x3D; state[&#39;exp_avg&#39;], state[&#39;exp_avg_sq&#39;]
+            if amsgrad:
+                max_exp_avg_sq &#x3D; state[&#39;max_exp_avg_sq&#39;]
+            beta1, beta2 &#x3D; group[&#39;betas&#39;]
+
+            state[&#39;step&#39;] +&#x3D; 1
+            bias_correction1 &#x3D; 1 - beta1 ** state[&#39;step&#39;]
+            bias_correction2 &#x3D; 1 - beta2 ** state[&#39;step&#39;]
+
+            if group[&#39;weight_decay&#39;] !&#x3D; 0:
+                grad.add_(group[&#39;weight_decay&#39;], p.data)
+
+            # Decay the first and second moment running average coefficient
+            exp_avg.mul_(beta1).add_(1 - beta1, grad)
+            exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+            if amsgrad:
+                # Maintains the maximum of all 2nd moment running avg. till now
+                torch.max(max_exp_avg_sq, exp_avg_sq, out&#x3D;max_exp_avg_sq)
+                # Use the max. for normalizing running avg. of gradient
+                denom &#x3D; (max_exp_avg_sq.sqrt() &#x2F; math.sqrt(bias_correction2)).add_(group[&#39;eps&#39;])
+            else:
+                denom &#x3D; (exp_avg_sq.sqrt() &#x2F; math.sqrt(bias_correction2)).add_(group[&#39;eps&#39;])
+
+            step_size &#x3D; group[&#39;lr&#39;] &#x2F; bias_correction1
+
+            p.data.addcdiv_(-step_size, exp_avg, denom)
+
+    return loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在optimizer的step函数的内部，只使用gradients来更新参数，根本不使用参数本身的值（除了weight decay，但我们将在外围处理）。然后我们可以在optimizer处理之前，简单地执行权重衰减。在计算梯度之后仍然必须进行相同操作（否则会影响gradients值），所以在训练循环中，你必须找到这个位置。</p>
+<pre class="line-numbers language-none"><code class="language-none">loss.backward()
+
+#Do the weight decay here!
+
+optimizer.step()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，optimizer应该设置为wd = 0，否则它会进行L2正则化，这正是我们现在不想要的。现在，在那个位置，我们必须循环所有参数，并做weight decay更新。你的参数应该都在optimizer的字典param_groups中，因此循环看起来像这样：</p>
+<pre><code>loss.backward()
+
+for group in optimizer.param_groups():
+
+for param in group[&#39;params&#39;]:
+
+param.data = param.data.add(-wd * group[&#39;lr&#39;], param.data)
+
+optimizer.step()
+
+##闭包函数
+闭包函数：
+如果一个函数定义在另一个函数的作用域内，并且引用了外层函数的变量，则该函数称为闭包。闭包是Python所支持的一种特性，它让在非global scope定义的函数可以引用其外围空间中的变量，这些外围空间中被引用的变量叫做这个函数的环境变量。环境变量和这个非全局函数一起构成了闭包。
+
+def line_conf(a, b):
+    def line(x):
+        return a * x + b
+    return line
+
+嵌套函数line中的代码访问了a和b变量，line本身函数体内并不存在这两个变量，所以会逐级向外查找，往上走一层就找到了来自主函数line_conf传递的a, b。若往外直至全局作用域都查找不到的话代码会抛异常。
+
+line_A = line_conf(2, 1) #y=2x+b
+line_B = line_conf(3, 2) #y=3x+2
+
+打印x对应y的值
+print(line_A(1)) #3
+print(line_B(1)) #5
+
+内包的语法为
+
+def 父函数(参数):             #这里的参数外部传递给子函数作其函数参数
+    def 子函数（参数）：  #这里的参数为外部传递给子函数作其自变量额值
+        fuction
+    return  子函数值
+
+调用语法：
+
+变量=父函数（赋给子函数的参数）
+result=变量（子函数自变量的值）
+result的值为子函数的计算值
+
+！！当闭包执行完后，仍然能够保持住当前的运行环境。
+这里每次经过权重更新后得到的新的参数
+
+
+##zip的使用方法 
+zip 方法在 Python 2 和 Python 3 中的不同：在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。
+zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。
+这里* 单独就可以看作一个解压的步骤，将列表中的元素提出
+zip按照对应关系一一打包
+
+##mask 
+这里的non_final_mask是判断下一步状态是否存在的索引
+state_batch 是四个元素
+action_batch 是一个元素
+决定每一步的动作时
+如果时根据Q价值最大选择
+则：
+action的决定取决于decide_action，每走一步更新一下决定下一步的action，并且记录下来形成action_batch?
+否则：
+随机选择
+no_final_mask中元素为0时，则next_state_values不存在 
+self.model(state_batch)最后经过神经网络输出的是两个结果，分别对应向左和向右移动的Q值
+
+##expected_state_value
+相当于qtable
+loss损失函数去计算state_value和expected_state_value的差值 
+
+##greedy方法
+
+未完结待更新
+</code></pre>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -778,8 +691,8 @@ int main()&#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">C++进阶笔记</span>
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
                                 </a>
                             
                         </div>
@@ -1212,17 +1125,18 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/09/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
+                <a href="/2021/03/30/%E6%B7%B1%E5%B1%82%E5%AD%A6%E4%B9%A0%E7%96%91%E9%9A%BE%E7%9F%A5%E8%AF%86%E7%82%B9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="云台设计">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="深层学习疑难知识点">
                         
-                        <span class="card-title">云台设计</span>
+                        <span class="card-title">深层学习疑难知识点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1232,26 +1146,27 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    控制系统
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
-                        <span class="chip bg-color">云台设计</span>
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
                     </a>
                     
                 </div>
@@ -1265,13 +1180,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/08/sublime%E4%B8%AD%E6%96%87%E8%AE%BE%E7%BD%AE%E4%BB%A5%E5%8F%8Ag-%E5%AE%89%E8%A3%85/">
+                <a href="/2021/03/26/DQN/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Sublime中文设置以及g++安装">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="DQN">
                         
-                        <span class="card-title">Sublime中文设置以及g++安装</span>
+                        <span class="card-title">DQN</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1282,14 +1197,14 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="post-category">
-                                    文本编辑器
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
@@ -1299,8 +1214,8 @@ int main()&#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sublime%E8%AE%BE%E7%BD%AE/">
-                        <span class="chip bg-color">sublime设置</span>
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
                     </a>
                     
                 </div>
