@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-04
+                    2021-04-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    18 分
                 </div>
                 
 
@@ -743,6 +743,218 @@ public:
         return res;
     &#125;
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>例题103<br>对一个二叉树进行层序遍历，按照“之”字型的顺序返回所有节点</p>
+<p>例题199<br>想象你站在一棵二叉树的右侧，返回你能看见的节点</p>
+<h3><span id="bfs和图的最短路径">BFS和图的最短路径</span></h3><p>例题279<br>给出一个正整数n，寻找最少的完全平方数，使得他们的和为n</p>
+<p>完全平方数：1，4，9，16<br>12=4+4+4<br>13=4+9<br>-不可能没有解，因为存在1<br>12=9+1+1+1<br>12=4+4+4</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    int numSquares(int n)&#123;
+        assert(n&gt;0);
+        queue&lt;pair&lt;int,int&gt;&gt; q;
+        q.push(make_pair(n,0)); &#x2F;&#x2F;初始化
+
+        while(!q.empty())&#123;
+            int num &#x3D; q.front().first;
+            int step &#x3D; q.front().second;
+            q.pop();
+            if(num &#x3D;&#x3D; 0)
+                return step;
+            for(int i &#x3D;1;num-i*i&gt;&#x3D;0;i++) 
+            &#x2F;&#x2F;某一个数可以从多种途径获得，造成冗余
+            &#x2F;&#x2F;因为这是一个图而不是树
+                q.push(make_pair(num-i*i,step+1));
+        &#125;
+        throw invalid_argument(&quot;No Solution.&quot;);
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="bfs广度优先搜索">BFS广度优先搜索</span></h2><p>讲解：<br>深度优先搜索要尽可能的远离起始点，而广度优先搜索则要尽可能的靠近起始点，<br>它首先访问起始顶点的所有邻接点，然后再访问较远的区域，这种搜索不能用栈实现，<br>而是用队列实现。</p>
+<p>规则1：访问下一个未访问的邻接点（如果存在），这个顶点必须是当前顶点的邻接点，<br>标记它，并把它插入到队列中。</p>
+<p>规则2：如果已经没有未访问的邻接点而不能执行规则 1 时，那么从队列列头取出一个顶点（如果存在），并使其成为当前顶点。</p>
+<p>规则3：如果因为队列为空而不能执行规则 2，则搜索结束。<br>上述代码在实现过程中数值num-i* i的数值可能存在多种途径获得<br>通过画图可以加深理解</p>
+<p>算法优化，解决冗杂问题。<br>这个问题的重点在于<br>队列实现BFS(广度优先搜索)<br>在入队过程中，只有未被访问过的数值可以入队，防止重复入队<br>这里最短路径的获取：<br>在队列中，如果某一个路径优先使num-i* i的值达到0，则该数字0优先入队，在取出的时候，返回该数字对应的step值</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    int numSquares(int n)&#123;
+        assert(n&gt;0);
+        queue&lt;pair&lt;int,int&gt;&gt; q;
+        q.push(make_pair(n,0)); &#x2F;&#x2F;初始化
+        vector&lt;bool&gt; visited(n+1,false); &#x2F;&#x2F;初始的n+1个元素均没有被访问
+        visited[n] &#x3D; true;  &#x2F;&#x2F;最初压入的n存在了，所以这里将其设为true，说明被访问过
+
+        while(!q.empty())&#123;
+            int num &#x3D; q.front().first;
+            int step &#x3D; q.front().second;
+            q.pop();
+            for(int i &#x3D;1; ;i++) &#123;
+                int a &#x3D; num - i*i;
+                if(a&lt;0)
+                    break;
+                if(a &#x3D;&#x3D; 0)
+                    return step+1;
+                if(!visited[a])   &#x2F;&#x2F;如果该数字没有被访问过
+                &#123;
+                    q.push(make_pair(a,step+1)); &#x2F;&#x2F;将这个数字压入
+                    visited[a] &#x3D; true; &#x2F;&#x2F;这个数已经存在一个父节点，被访问过了，所以为true
+                &#125;
+            &#125;
+        &#125;
+        throw invalid_argument(&quot;No Solution.&quot;);
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题127：word ladder<br>例题126： word ladder 2</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &quot;time_interval.h&quot;
+int main() &#123;
+    std::vector&lt;std::string&gt; v;
+    int count &#x3D; 10000000;
+    v.reserve(count);       &#x2F;&#x2F;预分配十万大小，排除掉分配内存的时间
+
+    &#123;
+        TIME_INTERVAL_SCOPE(&quot;push_back string:&quot;);
+        for (int i &#x3D; 0; i &lt; count; i++)
+        &#123;
+            std::string temp(&quot;ceshi&quot;);
+            v.push_back(temp);&#x2F;&#x2F; push_back(const string&amp;)，参数是左值引用
+        &#125;
+    &#125;
+
+    v.clear();
+    &#123;
+        TIME_INTERVAL_SCOPE(&quot;push_back move(string):&quot;);
+        for (int i &#x3D; 0; i &lt; count; i++)
+        &#123;
+            std::string temp(&quot;ceshi&quot;);
+            v.push_back(std::move(temp));&#x2F;&#x2F; push_back(string &amp;&amp;), 参数是右值引用
+        &#125;
+    &#125;
+
+    v.clear();
+    &#123;
+        TIME_INTERVAL_SCOPE(&quot;push_back(string):&quot;);
+        for (int i &#x3D; 0; i &lt; count; i++)
+        &#123;
+            v.push_back(std::string(&quot;ceshi&quot;));&#x2F;&#x2F; push_back(string &amp;&amp;), 参数是右值引用
+        &#125;
+    &#125;
+
+    v.clear();
+    &#123;
+        TIME_INTERVAL_SCOPE(&quot;push_back(c string):&quot;);
+        for (int i &#x3D; 0; i &lt; count; i++)
+        &#123;
+            v.push_back(&quot;ceshi&quot;);&#x2F;&#x2F; push_back(string &amp;&amp;), 参数是右值引用
+        &#125;
+    &#125;
+
+    v.clear();
+    &#123;
+        TIME_INTERVAL_SCOPE(&quot;emplace_back(c string):&quot;);
+        for (int i &#x3D; 0; i &lt; count; i++)
+        &#123;
+            v.emplace_back(&quot;ceshi&quot;);&#x2F;&#x2F; 只有一次构造函数，不调用拷贝构造函数，速度最快
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>第1中方法耗时最长，原因显而易见，将调用左值引用的push_back，且将会调用一次string的拷贝构造函数，比较耗时，这里的string还算很短的，如果很长的话，差异会更大<br>第2、3、4中方法耗时基本一样，参数为右值，将调用右值引用的push_back，故调用string的移动构造函数，移动构造函数耗时比拷贝构造函数少，因为不需要重新分配内存空间。<br>第5中方法耗时最少，因为emplace_back只调用构造函数，没有移动构造函数，也没有拷贝构造函数。</p>
+<h2><span id="优先队列">优先队列</span></h2><p>优先队列的底层实现：堆<br>学习使用语言中的优先级队列容器</p>
+<p>C++：priority_queue</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+#include&lt;queue&gt;
+#include&lt;ctime&gt;
+#include&lt;functional&gt;
+using namespace std;
+bool myCmp(int a,int b)&#123;
+    return a%10&lt;b%10;
+&#125;
+int main()&#123;
+    srand(time(NULL)); &#x2F;&#x2F;随机种子
+    &#x2F;&#x2F;默认情况下，最大堆
+    priority_queue&lt;int&gt;pq;
+    for(int i &#x3D; 0;i&lt;10;i++)&#123;
+        int num &#x3D; rand()%100 ;&#x2F;&#x2F;0-100中随机选取一个数
+        pq.push(num);
+        cout&lt;&lt;&quot;insert&quot;&lt;&lt;num&lt;&lt;&quot; in priority queue.&quot;&lt;&lt;endl;
+    &#125;
+    while(!pq.empty())&#123;
+        cout&lt;&lt;pq.top()&lt;&lt;&quot; &quot;;
+        pq.pop();
+
+    &#125;
+    cout&lt;&lt;endl&lt;&lt;endl;
+    &#x2F;&#x2F;底层是最小堆
+    priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt;&gt;pq2; 
+    &#x2F;&#x2F;底层为vector 最小堆greater&lt;int&gt;
+    for(int i &#x3D; 0;i&lt;10;i++)&#123;
+
+        int num &#x3D; rand()%100 ;&#x2F;&#x2F;0-100中随机选取一个数
+        pq2.push(num);
+        cout&lt;&lt;&quot;insert&quot;&lt;&lt;num&lt;&lt;&quot; in priority queue.&quot;&lt;&lt;endl;
+    &#125;
+    while(!pq2.empty())&#123;
+        cout&lt;&lt;pq2.top()&lt;&lt;&quot; &quot;;
+        pq2.pop();
+
+    &#125;
+    cout&lt;&lt;endl&lt;&lt;endl;
+    &#x2F;&#x2F;使用自定义comparator的priority queue
+    priority_queue&lt;int,vector&lt;int&gt;,function&lt;bool(int,int)&gt;&gt;pq3(myCmp);
+    for(int i &#x3D; 0;i&lt;10;i++)&#123;
+        int num &#x3D; rand()%100 ;&#x2F;&#x2F;0-100中随机选取一个数
+        pq3.push(num);
+        cout&lt;&lt;&quot;insert&quot;&lt;&lt;num&lt;&lt;&quot; in priority queue.&quot;&lt;&lt;endl;
+    &#125;
+    while(!pq3.empty())&#123;
+        cout&lt;&lt;pq3.top()&lt;&lt;&quot; &quot;;
+        pq3.pop();
+
+    &#125;
+    cout&lt;&lt;endl&lt;&lt;endl;
+    return 0;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果：<br>insert20 in priority queue.<br>insert63 in priority queue.<br>insert74 in priority queue.<br>insert20 in priority queue.<br>insert41 in priority queue.<br>insert38 in priority queue.<br>insert26 in priority queue.<br>insert95 in priority queue.<br>insert87 in priority queue.<br>insert19 in priority queue.<br>95 87 74 63 41 38 26 20 20 19 </p>
+<p>insert57 in priority queue.<br>insert41 in priority queue.<br>insert58 in priority queue.<br>insert34 in priority queue.<br>insert79 in priority queue.<br>insert80 in priority queue.<br>insert97 in priority queue.<br>insert85 in priority queue.<br>insert69 in priority queue.<br>insert25 in priority queue.<br>25 34 41 57 58 69 79 80 85 97 </p>
+<p>这个是return a%10&lt; b% 10<br>insert57 in priority queue.<br>insert28 in priority queue.<br>insert31 in priority queue.<br>insert20 in priority queue.<br>insert18 in priority queue.<br>insert77 in priority queue.<br>insert34 in priority queue.<br>insert81 in priority queue.<br>insert4 in priority queue.<br>insert59 in priority queue.<br>59 28 18 77 57 34 4 31 81 20 </p>
+<p>如果是return  a% 10 &gt;b % 10<br>则按照从小到大进行排列<br>程序正常返回需要return 0<br>所以对于bool型而言，子函数需要返回0 也就是false。<br>return a&gt;b，就需要让b&gt;a.<br>例题 347：<br>给定一个非空数组，返回前k个出现频率最高的元素<br>如给定[1,1,1,2,2,3] k = 2<br>返回[1,2]<br>注意k的合法性问题</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    vector&lt;int&gt;topKFrequent(vector&lt;int&gt; &amp;nums,int k)&#123;
+        assert(k&gt;0);
+        &#x2F;&#x2F;先设定哈统计每个元素出现的频率
+        unordered_map&lt;int,int&gt;freq;
+
+        for(int i &#x3D; 0;i&lt;nums.size();i++)
+            freq[numsi]]++;
+        assert(k&lt;&#x3D;freq.size());
+        &#x2F;&#x2F;扫描freq,维护当前出现频率最高的k个元素
+        &#x2F;&#x2F;在优先队列中，按照频率排序，所以数据对时（频率，元素）的形式
+        priority_queue&lt; pair&lt;int,int&gt; ,vector&lt;pair&lt;int,int&gt;&gt; ,greater&lt;pair&lt;int,int&gt;&gt; &gt;pq;
+        for(unordered_map&lt;int,int&gt;::iterator iter &#x3D; freq.begin();iter!&#x3D;freq.end();iter++)&#123;
+            if(pq.size() &#x3D;&#x3D; k)&#123;
+                if(iter-&gt;second &gt;pq.top().first) &#x2F;&#x2F;优先队列按照（频率，元素）存储
+                &#x2F;&#x2F;相同元素频率相同，不进行以下操作，去掉重复元素
+                &#123;
+                pq.pop(); &#x2F;&#x2F;弹出队列首元素，并将iter迭代器所对应元素压入
+                pq.push_back(make_pair(iter-&gt;second,iter-&gt;first));
+                &#125;
+            &#125;
+            else
+                pq.push_back(make_pair(iter-&gt;second,iter-&gt;first));
+        &#125;
+        &#x2F;&#x2F;这里为了输出最后结果还需要定义一个数组res
+        vector&lt;int&gt;res;
+        while(!pq.empty())&#123;
+            res.push_back(pq.top().second); &#x2F;&#x2F;优先队列的第二列是元素本身
+            pq.pop();
+        &#125;
+        return res;
+&#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>例题23：<br>有k个有序数组，将他们归并为一个有序数组</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1473,7 +1685,7 @@ public:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">146.2k</span>&nbsp;字
+                class="white-color">150.8k</span>&nbsp;字
             
             
             
