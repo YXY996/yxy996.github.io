@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-30
+                    2021-04-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    19 分
                 </div>
                 
 
@@ -514,8 +514,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>有关深层学习的疑难知识点</p>
-<h2><span id="self含义">self含义</span></h2><p><strong>init</strong> 方法的第一个参数永远是 self ，表示创建的实例本身，因此，在 <strong>init</strong> 方法的内部，就可以把各种属性绑定到 self，因为 self 就指向创建的实例本身。<br>使用了 <strong>init</strong> 方法，在创建实例的时候就不能传入空的参数了，必须传入与 <strong>init</strong> 方法匹配的参数，<br>但是 self 不需要传，python解释器会自己把实例变量传进去。自动调用构造函数。</p>
+                <p>有关深层学习的疑难知识点<br>self含义<br><strong>init</strong> 方法的第一个参数永远是 self ，表示创建的实例本身，因此，在 <strong>init</strong> 方法的内部，就可以把各种属性绑定到 self，因为 self 就指向创建的实例本身。<br>使用了 <strong>init</strong> 方法，在创建实例的时候就不能传入空的参数了，必须传入与 <strong>init</strong> 方法匹配的参数，<br>但是 self 不需要传，python解释器会自己把实例变量传进去。自动调用构造函数。</p>
 <pre class="line-numbers language-none"><code class="language-none">
 class Student():
     name &#x3D; &#39;&#39;
@@ -527,13 +526,14 @@ class Student():
     def do_homework(self):
         print(&#39;homework&#39;)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Student::student1<br>st2<br>student1 = Student()<br>student1.<strong>init</strong>()</p>
-<h2><span id="的意义">()的意义</span></h2><p>类有一个名为 <strong>init</strong>() 的特殊方法（构造方法），该方法在类实例化时会自动调用，像下面这样：</p>
+<p>student1 = Student()<br>student1.<strong>init</strong>()</p>
+<p>()的意义<br>类有一个名为 <strong>init</strong>() 的特殊方法（构造方法），该方法在类实例化时会自动调用，像下面这样：</p>
 <p>def <strong>init</strong>(self):<br>    self.data = []</p>
 <p>类定义了 <strong>init</strong>() 方法，类的实例化操作会自动调用 <strong>init</strong>() 方法。<br>如下实例化类 MyClass，对应的 <strong>init</strong>() 方法就会被调用:<br>x = MyClass()<br>self代表类的实例，而非类</p>
 <p>类是创建实例的模板，而实例则是一个一个具体的对象，各个实例拥有的数据都互相独立，互不影响； 方法就是与实例绑定的函数，和普通函数不同，方法可以直接访问实例的数据； 通过在实例上调用方法，我们就直接操作了对象内部的数据，但无需知道方法内部的实现细节。</p>
 <p>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。</p>
-<h2><span id="optimizer理解">optimizer理解</span></h2><p>step这个函数使用的是参数空间(param_groups)中的grad,也就是当前参数空间对应的梯度，这也就解释了为什么optimzier使用之前需要zero清零一下，因为如果不清零，那么使用的这个grad就得同上一个mini-batch有关，这不是我们需要的结果。再回过头来看，我们知道optimizer更新参数空间需要基于反向梯度，因此，当调用optimizer.step()的时候应当是loss.backward()的时候</p>
+<p>optimizer理解</p>
+<p>step这个函数使用的是参数空间(param_groups)中的grad,也就是当前参数空间对应的梯度，这也就解释了为什么optimzier使用之前需要zero清零一下，因为如果不清零，那么使用的这个grad就得同上一个mini-batch有关，这不是我们需要的结果。再回过头来看，我们知道optimizer更新参数空间需要基于反向梯度，因此，当调用optimizer.step()的时候应当是loss.backward()的时候</p>
 <pre class="line-numbers language-none"><code class="language-none">def step(self, closure&#x3D;None):
     &quot;&quot;&quot;Performs a single optimization step.
 
@@ -598,35 +598,132 @@ class Student():
 
     return loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在optimizer的step函数的内部，只使用gradients来更新参数，根本不使用参数本身的值（除了weight decay，但我们将在外围处理）。然后我们可以在optimizer处理之前，简单地执行权重衰减。在计算梯度之后仍然必须进行相同操作（否则会影响gradients值），所以在训练循环中，你必须找到这个位置。</p>
-<p>loss.backward()</p>
-<p>Do the weight decay here!</p>
-<p>optimizer.step()</p>
-<p>当然，optimizer应该设置为wd = 0，否则它会进行L2正则化，这正是我们现在不想要的。<br>现在，在那个位置，我们必须循环所有参数，并做weight decay更新。你的参数应该都在optimizer的字典param_groups中，因此循环看起来像这样：</p>
-<p>loss.backward()</p>
-<p>for group in optimizer.param_groups():</p>
-<p>for param in group[‘params’]:</p>
-<p>param.data = param.data.add(-wd * group[‘lr’], param.data)</p>
-<p>optimizer.step()</p>
-<h2><span id="闭包函数">闭包函数</span></h2><p>闭包函数：<br>如果一个函数定义在另一个函数的作用域内，并且引用了外层函数的变量，则该函数称为闭包。闭包是Python所支持的一种特性，它让在非global scope定义的函数可以引用其外围空间中的变量，这些外围空间中被引用的变量叫做这个函数的环境变量。环境变量和这个非全局函数一起构成了闭包。</p>
+<pre class="line-numbers language-none"><code class="language-none">loss.backward()
+
+#Do the weight decay here!
+
+optimizer.step()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，optimizer应该设置为wd = 0，否则它会进行L2正则化，这正是我们现在不想要的。现在，在那个位置，我们必须循环所有参数，并做weight decay更新。你的参数应该都在optimizer的字典param_groups中，因此循环看起来像这样：</p>
+<pre class="line-numbers language-none"><code class="language-none">loss.backward()
+
+for group in optimizer.param_groups():
+
+for param in group[&#39;params&#39;]:
+
+param.data &#x3D; param.data.add(-wd * group[&#39;lr&#39;], param.data)
+
+optimizer.step()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>闭包函数<br>闭包函数：<br>如果一个函数定义在另一个函数的作用域内，并且引用了外层函数的变量，则该函数称为闭包。闭包是Python所支持的一种特性，它让在非global scope定义的函数可以引用其外围空间中的变量，这些外围空间中被引用的变量叫做这个函数的环境变量。环境变量和这个非全局函数一起构成了闭包。</p>
 <pre class="line-numbers language-none"><code class="language-none">def line_conf(a, b):
     def line(x):
         return a * x + b
     return line<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>嵌套函数line中的代码访问了a和b变量，line本身函数体内并不存在这两个变量，<br>所以会逐级向外查找，往上走一层就找到了来自主函数line_conf传递的a, b。若往外直至全局作用域都查找不到的话代码会抛异常。</p>
-<p>line_A = line_conf(2, 1) #y=2x+b<br>line_B = line_conf(3, 2) #y=3x+2</p>
+<p>嵌套函数line中的代码访问了a和b变量，line本身函数体内并不存在这两个变量，所以会逐级向外查找，往上走一层就找到了来自主函数line_conf传递的a, b。若往外直至全局作用域都查找不到的话代码会抛异常。</p>
+<pre class="line-numbers language-none"><code class="language-none">line_A &#x3D; line_conf(2, 1) #y&#x3D;2x+b
+line_B &#x3D; line_conf(3, 2) #y&#x3D;3x+2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>打印x对应y的值<br>print(line_A(1)) #3<br>print(line_B(1)) #5</p>
 <p>内包的语法为</p>
-<pre class="line-numbers language-none"><code class="language-none">def 父函数(参数):       #这里的参数外部传递给子函数作其函数参数
+<pre class="line-numbers language-none"><code class="language-none">def 父函数(参数):             #这里的参数外部传递给子函数作其函数参数
     def 子函数（参数）：  #这里的参数为外部传递给子函数作其自变量额值
         fuction
     return  子函数值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>调用语法：</p>
 <p>变量=父函数（赋给子函数的参数）<br>result=变量（子函数自变量的值）<br>result的值为子函数的计算值</p>
 <p>！！当闭包执行完后，仍然能够保持住当前的运行环境。<br>这里每次经过权重更新后得到的新的参数</p>
-<h2><span id="zip的使用方法">zip的使用方法</span></h2><p>zip 方法在 Python 2 和 Python 3 中的不同：在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。<br>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。<br>这里* 单独就可以看作一个解压的步骤，将列表中的元素提出<br>zip按照对应关系一一打包</p>
-<h2><span id="mask">mask</span></h2><p>这里的non_final_mask是判断下一步状态是否存在的索引<br>state_batch 是四个元素<br>action_batch 是一个元素<br>决定每一步的动作时<br>如果时根据Q价值最大选择<br>则：<br>action的决定取决于decide_action，每走一步更新一下决定下一步的action，并且记录下来形成action_batch?<br>否则：<br>随机选择<br>no_final_mask中元素为0时，则next_state_values不存在<br>self.model(state_batch)最后经过神经网络输出的是两个结果，分别对应向左和向右移动的Q值</p>
-<h2><span id="expected_state_value">expected_state_value</span></h2><p>相当于qtable<br>loss损失函数去计算state_value和expected_state_value的差值 </p>
-<h2><span id="greedy方法">greedy方法</span></h2><p>未完结待更新</p>
+<p>zip的使用方法<br>zip 方法在 Python 2 和 Python 3 中的不同：在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。<br>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。<br>这里* 单独就可以看作一个解压的步骤，将列表中的元素提出<br>zip按照对应关系一一打包</p>
+<p>mask<br>这里的non_final_mask是判断下一步状态是否存在的索引<br>state_batch 是四个元素<br>action_batch 是一个元素<br>决定每一步的动作时<br>如果时根据Q价值最大选择<br>则：<br>action的决定取决于decide_action，每走一步更新一下决定下一步的action，并且记录下来形成action_batch?<br>否则：<br>随机选择<br>no_final_mask中元素为0时，则next_state_values不存在<br>self.model(state_batch)最后经过神经网络输出的是两个结果，分别对应向左和向右移动的Q值</p>
+<p>gather函数<br>c = a.gather(0, b) # dim=0    索引b按照矩阵a的每一列去寻找<br>d = a.gather(1, b) # dim=1      索引b按照矩阵a的每一行去寻找</p>
+<p>expected_state_value<br>相当于qtable<br>loss损失函数去计算state_value和expected_state_value的差值 </p>
+<p>super() 函数是用于调用父类(超类)的一个方法。</p>
+<p>super() 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO）、重复调用（钻石继承）等种种问题。<br>super(type[, object-or-type])<br>type – 类<br>object-or-type – 类，一般是 self</p>
+<pre class="line-numbers language-none"><code class="language-none">class A:
+     def add(self, x):
+         y &#x3D; x+1
+         print(y)
+class B(A):
+    def add(self, x):
+        super().add(x)
+b &#x3D; B()
+b.add(2)  # 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>np.squeeze（）函数用法：</p>
+<p>np.squeeze（）函数可以删除数组形状中的单维度条目，即把shape中为1的维度去掉，但是对非单维的维度不起作用。<br>作用：从数组的形状中删除单维度条目，即把shape中为1的维度去掉<br>场景：在机器学习和深度学习中，通常算法的结果是可以表示向量的数组（即包含两对或以上的方括号形式[[]]），如果直接利用这个数组进行画图可能显示界面为空（见后面的示例）。我们可以利用squeeze（）函数将表示向量的数组转换为秩为1的数组，这样利用matplotlib库函数画图时，就可以正常的显示结果了。</p>
+<p>greedy方法</p>
+<p>最简单的exploration方法就是epsilon-greedy，即设置一个探索率epsilon来平衡两者的关系——在大部分时间里采用现阶段最优策略，在少部分时间里实现探索。<br>什么是贪婪算法? 简单说,就是,任何时候的决策,都是选择当前观察的最优解,而没有整体长远的规划.<br>贪婪算法的优点是容易理解,简单快速.但缺点是,得到的往往是局部最优解,而不是全局最优.</p>
+<p>贪婪算法是如何在“exploit”和“explore”之间实现权衡，以尽可能实现最大化收益的呢？ 首先，从算法的名称我们知道，这是一种贪婪的算法。<br>纯粹贪婪的算法，放到这种多臂老虎机的场景来看就是每次都选择当前那个最好的臂摇，即使从长远来看可能非常不好。那么，ϵϵ-贪婪算法和贪婪算法的区别在哪呢？<br>就像它的名字所展示的那样，区别仅仅就在这个ϵ。这个ϵ代表执行执行“探索”的概率。比如设置ϵ=0.1，那么就表示有10%的概率会进行“探索”操作，<br>而90%会进行“利用”操作，也就是摇当前最好的臂。如果以摇老虎机臂的过程，用次数来算的话，也就是，每10次操作，仅有1次操作去进行探索——尝试其他的臂。</p>
+<p>若当前随机产生的0-1的浮点数大于当前的贪婪参数epsilon，则随机决策产生动作。反之则由训练网络net产生Q值并选择最大Q值的动作。</p>
+<p>1、ϵ设置的越高，收敛到最佳收益的速度越快。这个很好理解。随机探索的概率越大，越能更快的探索到最好的臂。<br>2、在0.1-0.5，ϵ设置的越低，最终的平均收益越高。这个也是比较好理解的。每次都很大概率的随机探索，就会存在很多利用效果不好的臂的情况。</p>
+<p>一个状态的Q值 = （当前状态进行某一个动作a进行到下一个状态的价值 + 时间折扣 * 采取某一行动a到下一个状态的Q值）<br>state_action_value<br>expected_state_action_value</p>
+<p>state_action_value<br>从当前状态s实际执行动作a走到下一步s+1 所获得推测eval Q值</p>
+<p>若当前状态s所对应的下一个状态s+1存在 </p>
+<p>nn.Linear<br>linear 的初始化部分代码<br>y=Ax+b<br>y = xA^T +b</p>
+<pre class="line-numbers language-none"><code class="language-none">class Linear(Module):
+    ...
+    __constants__ &#x3D; [&#39;bias&#39;]
+    
+    def __init__(self, in_features, out_features, bias&#x3D;True):
+        super(Linear, self).__init__()
+        self.in_features &#x3D; in_features
+        self.out_features &#x3D; out_features
+        self.weight &#x3D; Parameter(torch.Tensor(out_features, in_features))
+        if bias:
+            self.bias &#x3D; Parameter(torch.Tensor(out_features))
+        else:
+            self.register_parameter(&#39;bias&#39;, None)
+        self.reset_parameters()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例</p>
+<pre class="line-numbers language-none"><code class="language-none">import torch
+nn1 &#x3D; torch.nn.Linear(100, 50)
+input1 &#x3D; torch.randn(140, 100)
+output1 &#x3D; nn1(input1)
+output1.size()
+torch.Size([140, 50])
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里weight = [out_features,in_features]<br>A 是weight<br>具体计算为[140,100] × [50,100]的转置 + bias = [140,100] × [100,50] + bias 最后得到的维度为[140,50]。<br>至于对于bias和weight的初始化，根据网上所讲的是来有关维度值的均匀分布</p>
+<p>forward<br>我们在定义自已的网络的时候，需要继承nn.Module类，并重新实现构造函数__init__和forward这两个方法。但有一些注意技巧：</p>
+<p>（1）一般把网络中具有可学习参数的层（如全连接层、卷积层等）放在构造函数<strong>init</strong>()中，当然我也可以把不具有参数的层也放在里面；</p>
+<p>（2）一般把不具有可学习参数的层(如ReLU、dropout、BatchNormanation层)可放在构造函数中，也可不放在构造函数中，如果不放在构造函数__init__里面，则在forward方法里面可以使用nn.functional来代替</p>
+<p>（3）forward方法是必须要重写的，它是实现模型的功能，实现各个层之间的连接关系的核心。</p>
+<p>拿线性变化举例，其中的权重需要不停的更新，这就是需要维持的状态，<br>而以激活函数来说，一般来说都是可以直接使用的，<br>只要给定相应的输入，那么使用后就有确定的输出。</p>
+<h2><span id="linear的计算方式">linear的计算方式，</span></h2><p>就是权重矩阵W乘以输入矩阵X，然后加上偏置项b，即Wx+b。</p>
+<h2><span id="fc1x的调用流程">fc1(x)的调用流程</span></h2><p>Python中可以在一个类中定义__call__方法来让一个类的实例对象直接调用这个函数。也就是说比如我下面这段程序：</p>
+<p>class A():<br>def <strong>init</strong>(self, n):<br>self.n = n</p>
+<p>def <strong>call</strong>(self, x):<br>return self.n + x</p>
+<p>调用A(3)(5)的结果就是8。由于nn.Linear是module是子类，然后module又定义了__call__方法来隐式的调用了forward，所以fc1(x)实质上就等价于fc1.forward(x)。</p>
+<p>nn.module<br>输出权重和bias的方法</p>
+<pre class="line-numbers language-none"><code class="language-none">print(&quot;self.fc1.weight&quot;)
+print(self.fc1.weight.t(),self.fc1.bias)
+print(&quot;self.fc2.weight&quot;)
+print(self.fc2.weight,self.fc1.bias)
+print(&quot;self.fc3.weight&quot;)
+print(self.fc3.weight,self.fc1.bias)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2><span id="权重更新">权重更新</span></h2><p>每个episode之间权重参数相互关联<br>main_q_main_network和target_q_network在初始化的时候权重参数不同<br>每进行两次episode试错后，将main_q_network的参数传递给target网络</p>
+<p>DQN</p>
+<p>DDQN的逻辑<br>从理论上说，这种方法不能完全减少overestimate，只能减少一部分。但经过数值实验，人们发现上述的改变对于overestimate的减少还是非常可观的。由于其与一般DQN（fixed Q-target）相比几乎没有产生新的成本，所以DDQN也成为了目前DQN训练的必备技术之一。</p>
+<h2><span id="bellman-equation">bellman equation</span></h2><p>贝尔曼方程：当前状态的价值和下一步的价值及当前的奖励<br>价值函数分解为当前奖励（离开当前状态的即时价值）和下一步的价值两部分<br>当前状态的价值函数  =<br>当前状态根据策略（概率）进行下一步动作时所获得的价值<br>+<br>根据某一策略（概率）达到下一个状态，下一个状态的价值函数 * discount</p>
+<p>我们如何知道它后继状态的value funciton为0.8，10。其实这些值一开始可以任意初始化，<br>后面可以学习更新，就类似于神经网络的权值参数，一开始任意初始化，后面通过loss反向更新一样。<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35261164">https://zhuanlan.zhihu.com/p/35261164</a><br>即 [Vπ(s)] 为 [Qπ(s,a)] 在策略 [π(a|s)] 下的和 (所有动作下的期望价值)<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/59122948">https://www.zhihu.com/question/59122948</a></p>
+<p>神经网络<br>线性方程：f = Wx<br>非线性方程：f = W2xmax(0,W1x)<br>这里的max相当于一个激活函数</p>
+<h2><span id="激活函数">激活函数</span></h2><h2><span id="sigmoid">sigmoid</span></h2><p>某些数据是线性不可分的，所以需要激活函数去非线性分割数据<br>在每一层输出的时候都需要激活函数，去达到非线性表达<br>问题：<br>看梯度变化，求导<br>当存在多层隐藏层的神经网络，会达到梯度消失<br>w1   w2    w3     w4   loss<br>0.01 0.1   0.3    0.5</p>
+<h2><span id="relu">RELU</span></h2><p>ReLU处理了它的sigmoid、tanh中常见的梯度消失问题，<br>同时也是计算梯度最快的激励函数。</p>
+<p>所以目前sigmoid不用，开始使用RELU<br>tanh</p>
+<h2><span id="过拟合">过拟合</span></h2><p>正则化项在神经网络中的重要作用<br>L2正则化惩罚项    λW^2<br>实际预测过程中泛化越强越好<br>越多的神经元，越能够表达复杂的模型</p>
+<h2><span id="初始化">初始化</span></h2><p>权重初始化为随机初始化<br>bias初始化可为0，可为1</p>
+<p>##dropout<br>全连接操作<br>dropout随机选择<br>保留率60%<br>去掉40%<br>迭代的时候，去随机选择<br>去降低过拟合的风险</p>
+<h2><span id="bacthsize">bacthsize</span></h2><p>每次取样品的大小<br>数值越大越好，<br>性能好的话64,128.<br>一般的16，32.<br>取决于计算机的性能。显存大小。</p>
+<h2><span id="学习率">学习率</span></h2><p>学习率设置过高可能导致在用梯度损失更新梯度后获得的是极小值，而不是最小值</p>
+<h2><span id="卷积神经网络">卷积神经网络</span></h2><p>卷积神经网络的组成<br>输入层<br>卷积层<br>激活函数<br>池化层<br>全连接层</p>
+<h3><span id="卷积层">卷积层</span></h3><p>filter帮助进行信息的提取<br>将输入划分成一个个小区域，提取每一个区域获得一个数值。<br>经过卷积层之后获得特征图。<br>32* 32 * 3 image<br>5* 5* 3 filter<br>提取的数据X和filter对应的W 做内积操作 +bias<br>卷积之后都需要采取激活函数，进行非线性转化</p>
+<h3><span id="stride-滑动">stride 滑动</span></h3><p>stride的数值越大，会获得较小的特征图。<br>为了获得更多的特征，需要让stride值变小。为了效率不能取太小。</p>
+<h3><span id="padding">padding</span></h3><p>防止边缘数据提取次数过少</p>
+<p>在原始的输入像5* 5 * 3四周加了两圈0 变成7 * 7 * 3<br>输入 = 7 * 7<br>Filter = 3* 3<br>Pad = 1<br>Output = ？</p>
+<p>height out = height in - height kernel +2* padding / stride  +1<br>width out = width in - width kernel +2* padding / stride  +1</p>
+<h3><span id="池化层pooling-layer">池化层pooling layer</span></h3><p>对于特征图进行的操作<br>压缩特征图<br>对于filter size内的特征数据进行下面两种操作<br>mean<br>max<br>-2+0.8* 4.3 +0</p>
+<h3><span id="神经元死亡bias的更新">神经元死亡bias的更新</span></h3><p>神经元在训练过程中的“死亡”，通常是学习率过大造成的。</p>
+<p>这个神经元已经经过若干次迭代，其参数 (w⃗ ,b) 已经迭代得趋于稳定。<br>现在，神经元接收到了一个异常输入 x⃗ 。比方说，它的某一维特征 xi 与对应的权重 wi 的乘积 wixi 非常大。<br>一般来说，这意味着 xi 的绝对值非常大。于是，ReLU 的输入就会很大，对应 ReLU 的输出 y 也就会很大。好了，假设这个 ReLU 神经元期望的输出（ground truth）是 y^，这个时候损失就会很大——损失一般是 |y−y^| 的增函数，记为 f(|y−y^|)。<br>解答：<br>这里当输入一个异常x，会导致输出远远大于期望y值，在反向传播过程中，会因为此次异常数据X，而降低权重w，<br>但更新权重的时候根据学习率部分更新。bias的系数为1.b的变化直接映射到loss的变化。当异常数据导致relu的输出足够大的时候，<br>bias会变成一个负数。</p>
+<h3><span id="duelingwork">duelingwork</span></h3><p>Dueling的这种结构的优势在于学习效率，Value[V(s)]的更新将会触及到所有的动作跟着<br>value[V(s)]一起更新，如果是Q的话，你只能更新当前状态下的状态-动作值函数。</p>
+<h3><span id="td-error">TD-error</span></h3><p>常将 rt+γ⋅Qπ(st+1,at+1) 的值记作 yt 。<br>因为 yt 中包含了真实的奖励值 rt ，所以认为 yt 比 Qπ(st,at) 更准确。<br>将 yt 命名为 TD target，而将 yt−Qπ(st,at) 的值命名为 TD error。<br>TD error 的绝对值越小，就表明模型预测误差越小，预测的结果越准确。所以，在确定好 TD error 的计算方式后，可以通过 梯度下降 方法来更新模型的参数，降低 TD error 。<br>时序差分学习的目的是让模型预测出的 Qπ(st,at) 值不断的接近TD target 。</p>
+<h2><span id="梯度裁剪">梯度裁剪</span></h2><p>torch.nn.utils.clip_grad_norm_(parameters, max_norm, norm_type=2)<br>parameters (Iterable[Tensor] 或 Tensor) —— 一个由张量或单个张量组成的可迭代对象（模型参数），将梯度归一化（原文： an iterable of Tensors or a single Tensor that will have gradients normalized）<br>max_norm (float or int) – 梯度的最大范数（原文：max norm of the gradients）<br>norm_type (float or int) – 所使用的范数类型。默认为L2范数，可以是无穷大范数（‘inf’）（原文：type of the used p-norm. Can be for infinity norm.‘inf’）</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1357,7 +1454,7 @@ class Student():
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">150.8k</span>&nbsp;字
+                class="white-color">158.7k</span>&nbsp;字
             
             
             
