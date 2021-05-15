@@ -8304,8 +8304,7 @@ endlocal
 )
 exit
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>新建txt文档，将上述代码输入，然后更改后缀名为bat</p>
-<p>双击bat文件即可。</p>
+<h2><span id="新建txt文档将上述代码输入然后更改后缀名为bat">新建txt文档，将上述代码输入，然后更改后缀名为bat</span></h2><p>双击bat文件即可。</p>
 <p>注意事项：<br>注意：<br>需要将该执行bat文件放入想要修改的文件所在的文件夹内<br>bat操作只对与bat在同一个文件夹中的文件起作用，针对全部文件类型</p>
 <p>首先输入原文件中想要替换的部分文件名称<br>例子：<br>文件夹内存在文件<br>“张三的作业.txt”<br>这里输入 张三</p>
 <p>再输入想要替换成的文件名称（如果输入为空，直接敲打回车，则删除之前选择的部分文件名）</p>
