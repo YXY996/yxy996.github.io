@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法面试7-动态规划, 小杨的博客">
+    <meta name="keywords" content="Bat文件批量操作, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法面试7-动态规划 | 小杨的博客</title>
+    <title>Bat文件批量操作 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法面试7-动态规划</h1>
+                    <h1 class="description center-align post-title">Bat文件批量操作</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
-                                <span class="chip bg-color">算法面试</span>
+                            <a href="/tags/bat/">
+                                <span class="chip bg-color">bat</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category">
-                                C++
+                            <a href="/categories/%E5%B0%8F%E6%9D%A8%E5%87%BA%E5%93%81%E7%A5%9E%E5%99%A8/" class="post-category">
+                                小杨出品神器
                             </a>
                         
                     </div>
@@ -466,7 +466,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-27
+                    2021-05-15
                 </div>
                 
 
@@ -480,14 +480,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    552
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    2 分
                 </div>
                 
 
@@ -514,313 +514,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="动态规划">动态规划</span></h2><h3><span id="记忆化搜索">记忆化搜索</span></h3><p>斐波那契数列<br>自上而下的解决问题</p>
-<pre class="line-numbers language-none"><code class="language-none">vector&lt;int&gt; memo;
-int fib(int n)&#123;
-    if(n &#x3D;&#x3D; 0)
-        return 0;
-    if(n &#x3D;&#x3D; 1)
-        return 1;
-    if(memo[n] &#x3D;&#x3D; -1)&#123;
-        &#x2F;&#x2F;这里设定如果memo[n]所对应的fib()没有计算过则为-1
-        memo[n]&#x3D; fib(n-1)+fib(n-2);
-    return memo[n];
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3><span id="动态规划">动态规划</span></h3><p>自下而上的解决问题</p>
-<pre class="line-numbers language-none"><code class="language-none">int fib(int n)&#123;
-    vector&lt;int&gt; memo(n+1,-1);
-    memo[0] &#x3D; 0;
-    memo[1] &#x3D; 1;
-    if(int i &#x3D;0;i&lt;&#x3D;n;i++)
-        memo[i] &#x3D; memo[i-1]+memo[i-2];
-        &#x2F;&#x2F;自下而上的计算方式自动避免了重叠子问题
-    return memo[n];
-    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例题70<br>以下代码，多次重叠，时间超时</p>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-private:
-    int calcWays(int n)&#123;
-        if(n &#x3D;&#x3D; 0||n&#x3D;&#x3D;1)
-            return 1;
-        return calcWays(n-1)+calcWays(n-2);
-    &#125;
-public:
-    int climbStairs(int n)&#123;
-        return calcWays(n);
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>改进，记忆化搜索</p>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-private:
-    vector&lt;int&gt; memo;
-    int calcWays(int n)&#123;
-        if(n &#x3D;&#x3D; 0||n&#x3D;&#x3D;1)
-            return 1;
-        if(memo[n] &#x3D;&#x3D; -1)
-            memo[n] &#x3D;  calcWays(n-1)+calcWays(n-2);
-        return memo[n];
-    &#125;
-public:
-    int climbStairs(int n)&#123;
-        memo &#x3D; vector&lt;int&gt;(n+1,-1);
-        return calcWays(n);
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>动态规划</p>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-public:
-    int climbStairs(int n)&#123;
-        vector&lt;int&gt; memo(n+1,-1);
-        memo[0] &#x3D; 1;
-        memo[1] &#x3D; 1;
-        &#x2F;&#x2F;从索引2开始。自下而上动态规划。
-        for(int i &#x3D; 2;i&lt;&#x3D;n;i++)
-            memo[i] &#x3D; memo[i-1]+memo[i-2];
-
-        return memo[n];
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例题120<br>例题64<br>例题343<br>最优子结构<br>通过求子问题的最优解，可以获得原问题的最优解</p>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-private:
-    vector&lt;int&gt; memo;
-    int max3(int a,int b,int c)&#123;
-        return max(a,max(b,c));
-    &#125;
-    &#x2F;&#x2F;将n进行分割（至少分割两部分），可以获得的最大乘积
-    int breakInteger(int n)&#123;
-        if(n&#x3D;&#x3D;1)
-            return 1;
-        if(memo[n]!&#x3D; -1)
-            return memo[n];
-        int res &#x3D; -1;
-
-        for(int i &#x3D;1;i&lt;&#x3D;n-1;i++)
-        &#x2F;&#x2F;i + (n-i) 分割至少为两部分
-            res &#x3D; max3(res,i*(n-i),i* breakInteger(n-i));
-            &#x2F;&#x2F;这里因为i * breakInteger(n-i)不包括i * (n-i),所以三者比较
-        memo[n] &#x3D; res;
-        return res;
-
-
-    &#125;
-public:
-    int integerBreak(int n)&#123;
-        memo &#x3D; vector&lt;int&gt;(n+1,-1);
-        return breakInteger(n);
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-private:
-    int max3(int a,int b,int c)&#123;
-        return max(a,max(b,c));
-    &#125;
-public:
-    int integerBreak(int n)&#123;
-        assert(n&gt;&#x3D;2);
-        vector&lt;int&gt; memo(n+1,-1);
-        memo[1] &#x3D; 1;
-        for(int i &#x3D;2;i&lt;&#x3D;n;i++)
-            &#x2F;&#x2F;求解memo[i]
-            for(int j &#x3D; 1;j&lt;&#x3D;i-1;j++)
-            &#x2F;&#x2F;将i进行分割 j+(i-j)
-                memo[i] &#x3D; max3(memo[i],j* (i-j),j*memo[i-j]);
-        return memo[n];
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例题279<br>例题91<br>例题62<br>例题63</p>
-<p>例题198 House robber</p>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-private:
-    &#x2F;&#x2F;记忆化搜索
-    vector&lt;int&gt; memo;
-    int tryRob(vector&lt;int&gt; &amp;nums,int index)&#123;
-        if(index&gt;&#x3D;nums.size())
-            return 0;
-        if(memo[index] !&#x3D; -1)
-            return memo[index];
-        int res &#x3D; 0;
-        for(int i &#x3D; index;i&lt;nums.size();i++)
-            res &#x3D; max(res,nums[i] + tryRob(nums,i+2));
-        memo[index] &#x3D; res;
-        return res;
-    &#125;
-public:
-    int rob(vector&lt;int&gt; &amp;nums)&#123;
-        memo &#x3D; vector&lt;int&gt; (nums.size(),-1);
-        return tryRob(nums,0);
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-public:
-    int rob(vector&lt;int&gt; &amp;nums)&#123;
-        int n &#x3D;nums.size();
-        if(n &#x3D;&#x3D; 0)
-            return 0;
-        vector&lt;int&gt; memo (n,-1);
-        &#x2F;&#x2F;memo[i]表示考虑抢劫nums[i..n-1]所能获得的最大收益
-        memo[n-1] &#x3D; nums[n-1]
-        for(int i &#x3D; n-2;i&gt;&#x3D;0;i--)
-            &#x2F;&#x2F;memo[i]
-            for(int j &#x3D; i;j&lt;n;j++)
-                memo[i] &#x3D; max(memo[i],nums[j] + (j+2&lt;n ?  memo[j+2] : 0));
-        return memo[0];
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例题213 House Robber II</p>
-<p>例题337 House Robber III</p>
-<p>例题309</p>
-<h3><span id="背包问题">背包问题</span></h3><p>有一个背包，容量为C。现有n种不同的物品，编号为0…n-1,其中每一件物品重量为w(i),价值为v(i).使得不超过背包容量的基础上，总价值最大</p>
-<p>暴力解法O((2^n) * n)</p>
-<p>贪心算法？优先放入平均价值最高的物品？<br>F(n,C) 考虑将n个物品放进容量为C的背包，使得价值最大<br>F(i,C) = F(i-1,c)                  –&gt; max<br>       = v(i) + F(i-1,c-w(i))</p>
-<p>F(i,c) = max(F(i-1,c),v(i) + F(i-1,c-w(i)))</p>
-<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
-private:    
-    vector&lt;vector&lt;int&gt;&gt; memo;
-
-    &#x2F;&#x2F;用[0...index]的物品，填充容积为c的背包的最大价值
-    int bestValue(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int index,int C)&#123;
-        if(index &lt; 0 || c&lt;&#x3D; 0)
-            return 0;
-        if(memo[index][c] !&#x3D; -1)
-            return memo[index][c];
-        int res &#x3D; bestValue(w,v,index-1,c); &#x2F;&#x2F;res为不选择index的策略
-        if(c &gt; &#x3D; w[index])
-            res &#x3D; max(res,v[index] + bestValue(w,v,index-1,c-w[index]));
-            &#x2F;&#x2F;选择index的策略
-        memo[index][c] &#x3D; res;
-        return res;
-
-
-    &#125;
-public:
-    int knapsack01(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int C)&#123;
-        int n &#x3D; w.size();
-        memo &#x3D; vector&lt;vector&lt;int&gt;&gt;(n,vector&lt;int&gt;(C+1,-1))
-        return bestValue(w,v,n-1,C); 
-        &#x2F;&#x2F;设定约束条件
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>动态规划</p>
-<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
-public:
-    int knapsack01(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int C)&#123;
-        assert(w.size() &#x3D;&#x3D; v.size() );
-        int n &#x3D; w.size();
-        if(n &#x3D;&#x3D; 0 || C &#x3D; 0) 
-            return 0;
-        vector&lt;vector&lt;int&gt;&gt; memo (2,vector&lt;int&gt;(C+1,-1));
-
-        for(int j &#x3D; 0;j&lt; &#x3D; C;j++)
-        &#x2F;&#x2F;物品  的背包容量
-            memo[0][j] &#x3D; (j&gt; &#x3D; w[0] ? v[0] : 0)；
-        for(int i &#x3D;1;i&lt;n;i++)
-            for(int j &#x3D;0;j&lt;&#x3D;C;j++ )&#123;
-                memo[i%2][j] &#x3D; memo[(i-1)%2][j]; &#x2F;&#x2F;第一种策略[i]物品不放入 跳到[i-1]物品
-                if(j &gt;&#x3D; w[i] ) &#x2F;&#x2F;如果对于第[i]个物品来说 容量j &gt;w[i]
-
-                &#x2F;&#x2F;重点max中的第一个memo[i][j]为上一步赋值的memo[i-1][j]
-                
-                    memo[i%2][j] &#x3D; max(memo[i%2][j],v[i] + memo[(i-1)%2][j-w[i]]);
-            &#125;
-        return memo [(n-1)%2][C];
-        &#x2F;&#x2F;设定约束条件
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>优化</p>
-<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
-public:
-    int knapsack01(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int C)&#123;
-        assert(w.size() &#x3D;&#x3D; v.size() );
-        int n &#x3D; w.size();
-        if(n &#x3D;&#x3D; 0 || C &#x3D; 0) 
-            return 0;
-        &lt;vector&lt;int&gt; memo (C+1,-1));
-
-        for(int j &#x3D; 0;j&lt; &#x3D; C;j++)
-            for(int j &#x3D; C;j&gt;&#x3D;w[i];j-- )&#123;
-                &#x2F;&#x2F;当背包剩余容量j&lt;w[i]时终止，否则依次放入物品，max选取最优策略
-                &#x2F;&#x2F;放入当前物品或者跳过当前物品
-                    memo[j] &#x3D; max(memo[j],v[i] + memo[j-w[i]]);
-            &#125;
-        return memo [C];
-        &#x2F;&#x2F;设定约束条件
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例题416 Partition equal subset sum</p>
-<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
-private:
-    &#x2F;&#x2F;memo[i][c]表示使用索引[0....i]的这些元素，是否可以完全填充一个容量为c的背包
-    &#x2F;&#x2F;-1表示未计算 0表示不能被填充 1表示可以填充
-    vector&lt;vector&lt;int&gt;&gt; memo;
-    &#x2F;&#x2F; 使用nums[0..index]是否可以完全填充容量为sum的背包
-    bool tryPartition(const vector&lt;int&gt; nums,int index,int sum)&#123;
-        if(sum &#x3D;&#x3D; 0)
-            return true;
-        if(sum &lt; 0 || index &lt; 0)
-            return false;
-        if(memo[index][sum] !&#x3D; -1)
-            return memo[index][sum] &#x3D;&#x3D; 1;
-        memo[index][sum] &#x3D; tryPartition(nums,index-1,sum) ||
-            tryPartition(nums,index-1,sum-nums[index]) ?1 :0;
-        return memo[index][sum] &#x3D;&#x3D;1;
-    &#125;
-public:
-    bool canPartition(vector&lt;int&gt; nums)&#123;
-        int sum &#x3D; 0;
-        for(int i &#x3D; 0;i&lt;nums.size(),i++)&#123;
-            assert(nums[i] &gt; 0);
-            sum +&#x3D; nums[i];
-        &#125;
-        if(sum%2 !&#x3D; 0)
-            return false;
-        memo &#x3D; vector&lt;vector&lt;int&gt;&gt; (nums.size(),vector&lt;int&gt;(sum&#x2F;2 +1,-1));
-        return tryPartition(nums,nums.size()-1,sum&#x2F;2 );
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>动态规划 背包问题</p>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-public:
-    bool canPartition(vector&lt;int&gt; &amp; nums)&#123;
-        int sum &#x3D; 0;
-        for(int i &#x3D; 0;i&lt;nums.size();i++)&#123;
-            assert(nums[i] &gt; 0);
-            sum +&#x3D; nums[i];
-        &#125;
-        if(sum%2)
-            return false;
-        int n &#x3D; nums.size();
-        int C &#x3D; sum&#x2F;2;
-        vector&lt;bool&gt; memo (C+1,false);
-        for(int i &#x3D; 0;i&lt;&#x3D; C;i++)
-            memo[i] &#x3D; (nums[0] &#x3D;&#x3D; i);
-        for(int i &#x3D;1;i&lt;n;i++)
-            for(int j &#x3D; C;j&gt;&#x3D;nums[i];j--)
-                memo[j]  &#x3D; memo[j] || memo[j-nums[i]];
-        return memo[C];
-        &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例题322 Coin change<br>例题377 Combination Sum IV<br>例题474 Ones and zeroes<br>例题139 Word Break<br>例题494 target sum</p>
-<p>例题300 最长上升子序列</p>
-<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
-public:
-    int lengthOfLIS(vector&lt;int&gt; &amp; nums)&#123;
-        if(nums.size() &#x3D;&#x3D; 0)
-            return 0;
-        vecotr&lt;int&gt; memo(nums.size(),1);
-        for(int i &#x3D; 1; i &lt; nums.size();i++)
-            for(int j &#x3D; 0; j&lt;i;j++)
-                if(nums[j] &lt; nums [i])
-                    memo[i] &#x3D; max(memo[i],1+memo[j]);
-        &#x2F;&#x2F; 将以i结尾的memo[i]的最大值都计算出来
-        int res &#x3D; 1;
-        for(int i &#x3D; 0,i&lt;nums.size();i++)
-            res &#x3D; max(res,memo[i]);
-        return res;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例题376</p>
-<h2><span id="更多关于动态规划">更多关于动态规划</span></h2><h3><span id="最长公共子序列-lcs">最长公共子序列 （LCS)</span></h3><h3><span id="dijkstra-单源最短路径算法">dijkstra 单源最短路径算法</span></h3><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+                <h2><span id="批量操作">批量操作</span></h2><h3><span id="批量替换文件名称的部分名称">批量替换文件名称的部分名称</span></h3><pre class="line-numbers language-none"><code class="language-none">@echo off
+set &#x2F;p str1&#x3D; 请输入要替换的文件(文件夹)名字符串（可替换空格）：
+set &#x2F;p str2&#x3D; 请输入替换后的文件(文件夹)名字符串（若删除直接回车）：
+echo.
+echo 正在操作中，请稍候……
+for &#x2F;f &quot;delims&#x3D;&quot; %%a in (&#39;dir &#x2F;s &#x2F;b ^|sort &#x2F;+65535&#39;) do (
+if &quot;%%~nxa&quot; neq &quot;%~nx0&quot; (
+set &quot;file&#x3D;%%a&quot;
+set &quot;name&#x3D;%%~na&quot;
+set &quot;extension&#x3D;%%~xa&quot;
+call set &quot;name&#x3D;%%name:%str1%&#x3D;%str2%%%&quot;
+setlocal enabledelayedexpansion
+ren &quot;!file!&quot; &quot;!name!!extension!&quot; 2&gt;nul
+endlocal
+)
+)
+exit
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>新建txt文档，将上述代码输入，然后更改后缀名为bat</p>
+<p>双击bat文件即可。</p>
+<p>注意事项：<br>注意：<br>需要将该执行bat文件放入想要修改的文件所在的文件夹内<br>bat操作只对与bat在同一个文件夹中的文件起作用，针对全部文件类型</p>
+<p>首先输入原文件中想要替换的部分文件名称<br>例子：<br>文件夹内存在文件<br>“张三的作业.txt”<br>这里输入 张三</p>
+<p>再输入想要替换成的文件名称（如果输入为空，直接敲打回车，则删除之前选择的部分文件名）</p>
+<p>如果输入 李四<br>则文件改为 “李四的作业.txt”</p>
+<p>如果不输入直接回车<br>则文件名变为 “的作业.txt”</p>
+<h3><span id="批量生成某一类型的文件">批量生成某一类型的文件</span></h3><pre class="line-numbers language-none"><code class="language-none">@echo off
+set &#x2F;p w&#x3D;请输入要生成文件的格式(即扩展名并以回车结束)：
+set &#x2F;p name&#x3D;请输入要生成文件的格式(即扩展名并以回车结束)：
+set a&#x3D;0
+:loop
+set &#x2F;a a+&#x3D;1
+type nul&gt;%name%%a%.%w%
+if %a% &#x3D;&#x3D; 20 goto end
+goto loop
+:end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述同理。</p>
+<p>注意事项：</p>
+<p>首先输入要生成的文件类型的后缀名称（类似txt,docx,csv)<br>再输入文件名称<br>a为生成相同文件名的序列</p>
+<pre class="line-numbers language-none"><code class="language-none">set &#x2F;a a+&#x3D;1 将结尾的数字1改变递增
+ 0 1 2 3 4
+set &#x2F;a a+&#x3D;2
+ 0 2 4 6 8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">if %a% &#x3D;&#x3D; 20 goto end<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里是创建文件个数，这里设置为20个。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -834,8 +572,8 @@ public:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
-                                    <span class="chip bg-color">算法面试</span>
+                                <a href="/tags/bat/">
+                                    <span class="chip bg-color">bat</span>
                                 </a>
                             
                         </div>
@@ -1268,17 +1006,18 @@ public:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/04/27/C-%E7%AE%80%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9/">
+                <a href="/2021/05/15/%E5%B0%8F%E6%9D%A8%E5%87%BA%E5%93%81%E7%A5%9E%E5%99%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="C++简要知识点">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Bat文件批量操作">
                         
-                        <span class="card-title">C++简要知识点</span>
+                        <span class="card-title">Bat文件批量操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1288,26 +1027,27 @@ public:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/%E5%B0%8F%E6%9D%A8%E5%87%BA%E5%93%81%E7%A5%9E%E5%99%A8/" class="post-category">
+                                    小杨出品神器
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">C++进阶笔记</span>
+                    <a href="/tags/bat/">
+                        <span class="chip bg-color">bat</span>
                     </a>
                     
                 </div>
@@ -1321,13 +1061,13 @@ public:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/27/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E9%80%92%E5%BD%92/">
+                <a href="/2021/05/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="算法面试5-二叉树和递归">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="算法面试8-贪心算法">
                         
-                        <span class="card-title">算法面试5-二叉树和递归</span>
+                        <span class="card-title">算法面试8-贪心算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1338,7 +1078,7 @@ public:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-15
                             </span>
                         <span class="publish-author">
                             

@@ -7796,8 +7796,198 @@ public:
         return memo[n];
     &#125;
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>未完待续。。</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<p>例题279<br>例题91<br>例题62<br>例题63</p>
+<p>例题198 House robber</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+private:
+    &#x2F;&#x2F;记忆化搜索
+    vector&lt;int&gt; memo;
+    int tryRob(vector&lt;int&gt; &amp;nums,int index)&#123;
+        if(index&gt;&#x3D;nums.size())
+            return 0;
+        if(memo[index] !&#x3D; -1)
+            return memo[index];
+        int res &#x3D; 0;
+        for(int i &#x3D; index;i&lt;nums.size();i++)
+            res &#x3D; max(res,nums[i] + tryRob(nums,i+2));
+        memo[index] &#x3D; res;
+        return res;
+    &#125;
+public:
+    int rob(vector&lt;int&gt; &amp;nums)&#123;
+        memo &#x3D; vector&lt;int&gt; (nums.size(),-1);
+        return tryRob(nums,0);
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    int rob(vector&lt;int&gt; &amp;nums)&#123;
+        int n &#x3D;nums.size();
+        if(n &#x3D;&#x3D; 0)
+            return 0;
+        vector&lt;int&gt; memo (n,-1);
+        &#x2F;&#x2F;memo[i]表示考虑抢劫nums[i..n-1]所能获得的最大收益
+        memo[n-1] &#x3D; nums[n-1]
+        for(int i &#x3D; n-2;i&gt;&#x3D;0;i--)
+            &#x2F;&#x2F;memo[i]
+            for(int j &#x3D; i;j&lt;n;j++)
+                memo[i] &#x3D; max(memo[i],nums[j] + (j+2&lt;n ?  memo[j+2] : 0));
+        return memo[0];
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题213 House Robber II</p>
+<p>例题337 House Robber III</p>
+<p>例题309</p>
+<h3><span id="背包问题">背包问题</span></h3><p>有一个背包，容量为C。现有n种不同的物品，编号为0…n-1,其中每一件物品重量为w(i),价值为v(i).使得不超过背包容量的基础上，总价值最大</p>
+<p>暴力解法O((2^n) * n)</p>
+<p>贪心算法？优先放入平均价值最高的物品？<br>F(n,C) 考虑将n个物品放进容量为C的背包，使得价值最大<br>F(i,C) = F(i-1,c)                  –&gt; max<br>       = v(i) + F(i-1,c-w(i))</p>
+<p>F(i,c) = max(F(i-1,c),v(i) + F(i-1,c-w(i)))</p>
+<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
+private:    
+    vector&lt;vector&lt;int&gt;&gt; memo;
+
+    &#x2F;&#x2F;用[0...index]的物品，填充容积为c的背包的最大价值
+    int bestValue(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int index,int C)&#123;
+        if(index &lt; 0 || c&lt;&#x3D; 0)
+            return 0;
+        if(memo[index][c] !&#x3D; -1)
+            return memo[index][c];
+        int res &#x3D; bestValue(w,v,index-1,c); &#x2F;&#x2F;res为不选择index的策略
+        if(c &gt; &#x3D; w[index])
+            res &#x3D; max(res,v[index] + bestValue(w,v,index-1,c-w[index]));
+            &#x2F;&#x2F;选择index的策略
+        memo[index][c] &#x3D; res;
+        return res;
+
+
+    &#125;
+public:
+    int knapsack01(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int C)&#123;
+        int n &#x3D; w.size();
+        memo &#x3D; vector&lt;vector&lt;int&gt;&gt;(n,vector&lt;int&gt;(C+1,-1))
+        return bestValue(w,v,n-1,C); 
+        &#x2F;&#x2F;设定约束条件
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>动态规划</p>
+<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
+public:
+    int knapsack01(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int C)&#123;
+        assert(w.size() &#x3D;&#x3D; v.size() );
+        int n &#x3D; w.size();
+        if(n &#x3D;&#x3D; 0 || C &#x3D; 0) 
+            return 0;
+        vector&lt;vector&lt;int&gt;&gt; memo (2,vector&lt;int&gt;(C+1,-1));
+
+        for(int j &#x3D; 0;j&lt; &#x3D; C;j++)
+        &#x2F;&#x2F;物品  的背包容量
+            memo[0][j] &#x3D; (j&gt; &#x3D; w[0] ? v[0] : 0)；
+        for(int i &#x3D;1;i&lt;n;i++)
+            for(int j &#x3D;0;j&lt;&#x3D;C;j++ )&#123;
+                memo[i%2][j] &#x3D; memo[(i-1)%2][j]; &#x2F;&#x2F;第一种策略[i]物品不放入 跳到[i-1]物品
+                if(j &gt;&#x3D; w[i] ) &#x2F;&#x2F;如果对于第[i]个物品来说 容量j &gt;w[i]
+
+                &#x2F;&#x2F;重点max中的第一个memo[i][j]为上一步赋值的memo[i-1][j]
+                
+                    memo[i%2][j] &#x3D; max(memo[i%2][j],v[i] + memo[(i-1)%2][j-w[i]]);
+            &#125;
+        return memo [(n-1)%2][C];
+        &#x2F;&#x2F;设定约束条件
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>优化</p>
+<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
+public:
+    int knapsack01(const vector&lt;int&gt; &amp;w,const vector&lt;int&gt; &amp;v,int C)&#123;
+        assert(w.size() &#x3D;&#x3D; v.size() );
+        int n &#x3D; w.size();
+        if(n &#x3D;&#x3D; 0 || C &#x3D; 0) 
+            return 0;
+        &lt;vector&lt;int&gt; memo (C+1,-1));
+
+        for(int j &#x3D; 0;j&lt; &#x3D; C;j++)
+            for(int j &#x3D; C;j&gt;&#x3D;w[i];j-- )&#123;
+                &#x2F;&#x2F;当背包剩余容量j&lt;w[i]时终止，否则依次放入物品，max选取最优策略
+                &#x2F;&#x2F;放入当前物品或者跳过当前物品
+                    memo[j] &#x3D; max(memo[j],v[i] + memo[j-w[i]]);
+            &#125;
+        return memo [C];
+        &#x2F;&#x2F;设定约束条件
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题416 Partition equal subset sum</p>
+<pre class="line-numbers language-none"><code class="language-none">class Knapsack01&#123;
+private:
+    &#x2F;&#x2F;memo[i][c]表示使用索引[0....i]的这些元素，是否可以完全填充一个容量为c的背包
+    &#x2F;&#x2F;-1表示未计算 0表示不能被填充 1表示可以填充
+    vector&lt;vector&lt;int&gt;&gt; memo;
+    &#x2F;&#x2F; 使用nums[0..index]是否可以完全填充容量为sum的背包
+    bool tryPartition(const vector&lt;int&gt; nums,int index,int sum)&#123;
+        if(sum &#x3D;&#x3D; 0)
+            return true;
+        if(sum &lt; 0 || index &lt; 0)
+            return false;
+        if(memo[index][sum] !&#x3D; -1)
+            return memo[index][sum] &#x3D;&#x3D; 1;
+        memo[index][sum] &#x3D; tryPartition(nums,index-1,sum) ||
+            tryPartition(nums,index-1,sum-nums[index]) ?1 :0;
+        return memo[index][sum] &#x3D;&#x3D;1;
+    &#125;
+public:
+    bool canPartition(vector&lt;int&gt; nums)&#123;
+        int sum &#x3D; 0;
+        for(int i &#x3D; 0;i&lt;nums.size(),i++)&#123;
+            assert(nums[i] &gt; 0);
+            sum +&#x3D; nums[i];
+        &#125;
+        if(sum%2 !&#x3D; 0)
+            return false;
+        memo &#x3D; vector&lt;vector&lt;int&gt;&gt; (nums.size(),vector&lt;int&gt;(sum&#x2F;2 +1,-1));
+        return tryPartition(nums,nums.size()-1,sum&#x2F;2 );
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>动态规划 背包问题</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    bool canPartition(vector&lt;int&gt; &amp; nums)&#123;
+        int sum &#x3D; 0;
+        for(int i &#x3D; 0;i&lt;nums.size();i++)&#123;
+            assert(nums[i] &gt; 0);
+            sum +&#x3D; nums[i];
+        &#125;
+        if(sum%2)
+            return false;
+        int n &#x3D; nums.size();
+        int C &#x3D; sum&#x2F;2;
+        vector&lt;bool&gt; memo (C+1,false);
+        for(int i &#x3D; 0;i&lt;&#x3D; C;i++)
+            memo[i] &#x3D; (nums[0] &#x3D;&#x3D; i);
+        for(int i &#x3D;1;i&lt;n;i++)
+            for(int j &#x3D; C;j&gt;&#x3D;nums[i];j--)
+                memo[j]  &#x3D; memo[j] || memo[j-nums[i]];
+        return memo[C];
+        &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题322 Coin change<br>例题377 Combination Sum IV<br>例题474 Ones and zeroes<br>例题139 Word Break<br>例题494 target sum</p>
+<p>例题300 最长上升子序列</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    int lengthOfLIS(vector&lt;int&gt; &amp; nums)&#123;
+        if(nums.size() &#x3D;&#x3D; 0)
+            return 0;
+        vecotr&lt;int&gt; memo(nums.size(),1);
+        for(int i &#x3D; 1; i &lt; nums.size();i++)
+            for(int j &#x3D; 0; j&lt;i;j++)
+                if(nums[j] &lt; nums [i])
+                    memo[i] &#x3D; max(memo[i],1+memo[j]);
+        &#x2F;&#x2F; 将以i结尾的memo[i]的最大值都计算出来
+        int res &#x3D; 1;
+        for(int i &#x3D; 0,i&lt;nums.size();i++)
+            res &#x3D; max(res,memo[i]);
+        return res;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题376</p>
+<h2><span id="更多关于动态规划">更多关于动态规划</span></h2><h3><span id="最长公共子序列-lcs">最长公共子序列 （LCS)</span></h3><h3><span id="dijkstra-单源最短路径算法">dijkstra 单源最短路径算法</span></h3><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
       </categories>
@@ -8085,6 +8275,145 @@ public:
     &#125;
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>例题52<br>例题37<br>求解数独</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>算法面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bat文件批量操作</title>
+    <url>/2021/05/15/%E5%B0%8F%E6%9D%A8%E5%87%BA%E5%93%81%E7%A5%9E%E5%99%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="批量操作">批量操作</span></h2><h3><span id="批量替换文件名称的部分名称">批量替换文件名称的部分名称</span></h3><pre class="line-numbers language-none"><code class="language-none">@echo off
+set &#x2F;p str1&#x3D; 请输入要替换的文件(文件夹)名字符串（可替换空格）：
+set &#x2F;p str2&#x3D; 请输入替换后的文件(文件夹)名字符串（若删除直接回车）：
+echo.
+echo 正在操作中，请稍候……
+for &#x2F;f &quot;delims&#x3D;&quot; %%a in (&#39;dir &#x2F;s &#x2F;b ^|sort &#x2F;+65535&#39;) do (
+if &quot;%%~nxa&quot; neq &quot;%~nx0&quot; (
+set &quot;file&#x3D;%%a&quot;
+set &quot;name&#x3D;%%~na&quot;
+set &quot;extension&#x3D;%%~xa&quot;
+call set &quot;name&#x3D;%%name:%str1%&#x3D;%str2%%%&quot;
+setlocal enabledelayedexpansion
+ren &quot;!file!&quot; &quot;!name!!extension!&quot; 2&gt;nul
+endlocal
+)
+)
+exit
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>新建txt文档，将上述代码输入，然后更改后缀名为bat</p>
+<p>双击bat文件即可。</p>
+<p>注意事项：<br>注意：<br>需要将该执行bat文件放入想要修改的文件所在的文件夹内<br>bat操作只对与bat在同一个文件夹中的文件起作用，针对全部文件类型</p>
+<p>首先输入原文件中想要替换的部分文件名称<br>例子：<br>文件夹内存在文件<br>“张三的作业.txt”<br>这里输入 张三</p>
+<p>再输入想要替换成的文件名称（如果输入为空，直接敲打回车，则删除之前选择的部分文件名）</p>
+<p>如果输入 李四<br>则文件改为 “李四的作业.txt”</p>
+<p>如果不输入直接回车<br>则文件名变为 “的作业.txt”</p>
+<h3><span id="批量生成某一类型的文件">批量生成某一类型的文件</span></h3><pre class="line-numbers language-none"><code class="language-none">@echo off
+set &#x2F;p w&#x3D;请输入要生成文件的格式(即扩展名并以回车结束)：
+set &#x2F;p name&#x3D;请输入要生成文件的格式(即扩展名并以回车结束)：
+set a&#x3D;0
+:loop
+set &#x2F;a a+&#x3D;1
+type nul&gt;%name%%a%.%w%
+if %a% &#x3D;&#x3D; 20 goto end
+goto loop
+:end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述同理。</p>
+<p>注意事项：</p>
+<p>首先输入要生成的文件类型的后缀名称（类似txt,docx,csv)<br>再输入文件名称<br>a为生成相同文件名的序列</p>
+<pre class="line-numbers language-none"><code class="language-none">set &#x2F;a a+&#x3D;1 将结尾的数字1改变递增
+ 0 1 2 3 4
+set &#x2F;a a+&#x3D;2
+ 0 2 4 6 8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">if %a% &#x3D;&#x3D; 20 goto end<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里是创建文件个数，这里设置为20个。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>小杨出品神器</category>
+      </categories>
+      <tags>
+        <tag>bat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法面试8-贪心算法</title>
+    <url>/2021/05/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="贪心算法">贪心算法</span></h2><p>例题455</p>
+<pre class="line-numbers language-none"><code class="language-none">class Solution&#123;
+public:
+    int findContentChildren(vector&lt;int&gt; &amp;g,vector&lt;int&gt; &amp;s)&#123;
+        &#x2F;&#x2F; 从大到小的排序
+        sort(g.begin(),g.end(),greater&lt;int&gt;());
+        sort(s.begin(),s.end(),greater&lt;int&gt;());
+        int si &#x3D; 0,gi &#x3D; 0;
+        int res &#x3D; 0;
+        while(gi &lt;g.size() &amp;&amp; si &lt;s.size())
+        &#123;
+            if(s[si] &gt;&#x3D; g[gi])&#123;
+                res ++;
+                si++;
+                gi++;
+            &#125;
+            else
+                gi++;
+            &#x2F;&#x2F;满足不了最贪心的，寻找下一个次贪心的
+        &#125;
+        return res;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例题 392<br>给定两个字符串s，t,问s是不是t的子序列</p>
+<p>例题435<br>给定一组区间，问最少删除多少个区间，可以让这些区间互相不重叠<br>给定区间的七十点永远小于终止点<br>[1,2],[2,3]不算重叠</p>
+<h3><span id="动态规划">动态规划</span></h3><pre class="line-numbers language-none"><code class="language-none">
+class Solution&#123;
+
+public:
+    int eraseOverlapIntervals(vector&lt;vector&lt;int&gt;&gt; &amp; intervals)&#123;
+        if(intervals.size() &#x3D;&#x3D; 0)
+            return 0;
+        sort(intervals.begin(),intervals.end(),[](const vector &amp;a, const vector&lt;int&gt; &amp;b)&#123;
+            return a[1] &lt; b[1];
+            &#125;);
+        &#x2F;&#x2F; memo[i] 表示使用intervals[0..i]的区间能构成的最长不重叠区间序列
+        vector&lt;int&gt; memo(intervals.size(),1);
+        for(int i &#x3D;1;i&lt;intervals.size();i++)   
+            for(int j &#x3D; 0;j&lt;i;j++)
+                if(intervals[i].start &gt;&#x3D; intervals[j].end)
+                    memo[i] &#x3D; max(memo[i],1+memo[j]);
+                    &#x2F;&#x2F;以索引[i]结尾的最长序列
+        int res &#x3D; 0;
+        for(int i &#x3D;0;i&lt;memo.size();i++)
+            res &#x3D; max(res,memo[i]);
+        return intervals.size() -res;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="贪心算法">贪心算法：</span></h3><p>按照区间的结尾排序，每次选择结尾最早的，且和前一个区间不重叠的区间</p>
+<pre class="line-numbers language-none"><code class="language-none">
+class Solution&#123;
+
+public:
+    int eraseOverlapIntervals(vector&lt;vector&lt;int&gt;&gt; &amp; intervals)&#123;
+        if(intervals.size() &#x3D;&#x3D; 0)
+            return 0;
+        sort(intervals.begin(),intervals.end(),[](const vector&lt;int&gt; &amp;a ,const vector&lt;int&gt; &amp;b) 
+        &#123; 
+            return a[1] &lt; b[1];
+
+        &#125;);
+        &#x2F;&#x2F; 按照end 升序排序
+        int res &#x3D;1;
+        int pre &#x3D; 0;
+        for(int i &#x3D;1;i&lt;intervals.size();i++)
+                if(intervals[i].start &gt;&#x3D; intervals[pre].end)&#123;
+                    res ++;
+                    pre &#x3D; i;
+                &#125;
+        return intervals.size() - res;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="贪心选择性质">贪心选择性质</span></h2><p>如果无法举出反例，如何证明贪心算法的正确性<br>反证法</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>C++</category>
