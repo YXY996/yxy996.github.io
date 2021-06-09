@@ -8421,4 +8421,86 @@ addr<span class="token punctuation">.</span>sin_addr<span class="token punctuati
         <tag>知识点面试</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Hexo上传github</title>
+    <url>/2021/06/09/hexo%E4%B8%8A%E4%BC%A0github/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>当初小白，辖研究终于搞定了hexo上传github。今天发表文章的时候，github<br>官方提醒我输入密码上传的服务在8/31号之后终止。慌的一笔，只好研究怎么可以不用密码，直接用电脑生成的密钥进行上传。所有操作均是在虚拟机ubuntu系统上完成。</p>
+<p>打开终端</p>
+<pre class="line-numbers language-none"><code class="language-none">$ cd ~&#x2F;.ssh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用 ssh-keygen 生成密钥</p>
+<pre class="line-numbers language-none"><code class="language-none">$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里设定密码两次</p>
+<pre class="line-numbers language-none"><code class="language-none">Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>密钥生成成功</p>
+<pre class="line-numbers language-none"><code class="language-none">Your identification has been saved in &#x2F;home&#x2F;you&#x2F;.ssh&#x2F;id_rsa.
+Your public key has been saved in &#x2F;home&#x2F;you&#x2F;.ssh&#x2F;id_rsa.pub.
+The key fingerprint is:
+…………………此处是密钥内容…………………… your_email@example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>进入自己的github网站<br>首页菜单栏中点击 Settings –&gt; SSH and GPG keys –&gt; Add SSH key，然后将生成的 id_rsa.pub 中的内容全选复制到 key 输入框中，然后点击 Add key 完成添加公钥。</p>
+<p>这里如果要查看自己的私钥进行下列操作</p>
+<pre class="line-numbers language-none"><code class="language-none">cd ~&#x2F;.ssh
+ls
+cat id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>将命令后显示的内容全部复制到add key的页面框内即可。</p>
+<p>测试配置是否成功</p>
+<pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>更改hexo 配置文件</p>
+<pre class="line-numbers language-none"><code class="language-none">deploy:
+  type: &#39;git&#39;
+  repository: git@github.com:YXY996&#x2F;yxy996.github.io.git
+  branch: main
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大功告成，撒花。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模型改进</title>
+    <url>/2021/06/09/%E6%A8%A1%E5%9E%8B%E6%94%B9%E8%BF%9B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>模型改进<br>需要判断特殊情况下的模型运动</p>
+<p>水平竖直方向同时做位移运动 是圆弧运动<br>lcostheta? lsintheta?</p>
+<p>需要自定义初始化而非随机初始化<br>验证正确与否的方法：</p>
+<p>特殊情况判断<br>竖直状态下 角度初始值为0<br>竖直向上运动 单摆的角度会一直为0</p>
+<p>水平方向位移与竖直方向的位移的夹角恰好是单摆与竖直方向的角度<br>这个时候单摆的摇摆不会改变？</p>
+<p>验证1：<br>当初始化state为[0,0,0,0,0,0]<br>初始化单摆的角度为0<br>这个时候只给模型竖直向上的位移，结果单摆也竖直向上运动</p>
+<p>验证2：<br>简单化，水平位移与竖直位移相等，支点位移角度应该是45度，这个时候单摆的运动观察。</p>
+<p>完成：<br>1.<br>增加变量t到state中<br>给小车一个随时间变化的位移<br>画出关于x-t的图像  cos函数</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机操作系统</title>
+    <url>/2021/06/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="操作系统面试持续更新">操作系统面试(持续更新)</span></h2><h3><span id="1请说一下源码到可执行文件的过程">1.请说一下源码到可执行文件的过程</span></h3><p>1）预编译<br>主要处理源代码文件中以”#”开头的预编译指令。处理规则如下<br>1.删除所有的#define，展开所有的宏定义<br>2.处理所有的条件预编译指令<br>如”#if”,”#endif”,”#ifdef”,”#elif”和”#else”<br>3.处理”#include”预编译指令，将文件内容替换到它的位置，这个过程是递归进行的，文件中包含其他文件<br>4.删除所有注释，”//“ 和” ** “<br>5.保留所有的”#pragma” 编译器指令，编译器需要用到他们。如”#pragma once”是为了防止有文件被重复引用<br>6.添加行号和文件标识，便于编译时编译器产生调试用的行号信息，和编译是产生的编译错误或警告能够显示行号。</p>
+<p>2)编译<br>把预编译之后生成的xxx.i或xxx.ii文件，进行一系列词法分析，语法分析，语法分析及优化后，生成相对应的汇编代码文件。</p>
+<p>1.词法分析：<br>将源代码程序导入到扫描机道中，将其中的字符序列分割成一系列的记号。<br>2.语法分析：<br>语法分析器对由扫描产生的记号，进行语法分析，产生语法树。由语法分析器输出的语法树是一种以表达式为结点的树。 在语法分析的同时，就把运算法优先级确定下来，如果出现表达式不合法，各种括号不匹配，表达式中缺少操作，编译器报错。<br>3.语义分析：<br>语法分析器只是完成对表达式语法层面的分析，语义分析器则对表达式是否有意义进行判断，其分析的语义是静态语义–在编译期能分清的语义，相对应的动态语义是在运行期间才能确定的语义。例如：将一个int型赋值给int * 型，语义分析程序就发现类型不匹配，就会报错。<br>4.优化：<br>源代码级别的一个优化过程。<br>5.目标代码生成：<br>由代码生成器将中间代码转换成目标机器代码，生成一系列的代码序列–汇编语言表示。<br>6.目标代码优化：<br>目标代码优化器对上述的目标机器代码进行优化：寻找合适的寻址方式，使用位移来替代乘法运算，删除多余的指令等。</p>
+<p>3)汇编<br>将汇编代码转换成机器可以执行的指令(机器码文件)。汇编器的汇编过程相对于编译器来说更简单，没有复杂的语法，也没有语义，更不需要做指令优化，只是根据汇编指令和机器指令的对照表一一翻译过来，汇编过程有汇编器as完成。经汇编之后，产生目标文件（与可执行文件格式几乎一样)xxx.o(windows),xxx.obj(linux)</p>
+<p>4)链接<br>链接的过程:地址和空间的分配，符号决议(也叫做符号绑定，倾向于动态链接)和重定位。将不同的源文件产生的目标文件进行链接，从而形成一个可执行的程序。链接分为静态链接和动态链接。</p>
+<p>1.静态链接：<br>函数和数据被编译进一个二进制文件。在静态库的情况下，在编译链接可执行文件时，链接器<br>从库中复制这些函数和数据并把他们和应用程序的其他模块组合起来创建最终的可执行文件。<br>空间浪费：<br>因为每个可执行程序中对所有需要的目标文件都要有一个副本，所以如果多个程序对同一个目标文件都有依赖的时候，会出现同一个目标文件都在内存存在多个副本。<br>更新困难：<br>每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。<br>运行速度快：<br>但是静态链接的优点就是，在可执行程序中已经具备所有执行程序所需要的任何东西，在执行的时候运行速度快。</p>
+<p>2.动态链接<br>动态链接的基本思想是把程序按照模块拆分成各个相对独立部分，在程序运行时才将他们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件。动态库就是在需要调用其中的函数时，根据函数映射表找到该函数，然后调入堆栈执行。<br>共享库：<br>就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多分，副本，而是这多个程序在执行时共享同一份副本。<br>更新方便：<br>更新时只需要替换原来的目标文件，而无需将所有的程序重新链接一遍。当程序下一次运行时，新版本的目标文件会自动加载到内存并且链接起来，程序就完成了升级的目标。<br>性能损耗：<br>因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定的损失。</p>
+<h3><span id="2-进程与线程的概念">2 进程与线程的概念</span></h3><p>进程是操作系统进行资源调度和分配的基本单位，实现了操作系统的并发。<br>线程时进程的子任务，是CPU调度和分派的基本单位，用于保证程序的实时性，实现进程内部的并发。线程是操作系统可识别的最小执行和调度单位。每个线程都独自占用一个虚拟处理器，独自的寄存器组，指令计数器和处理器状态。每个线程完成不同任务，但是共享同一地址空间。(也就是同样的动态内存，映射文件，目标代码等等)，打开的文件队列和其他内核资源。</p>
+<h3><span id="3-为什么要有进程线程其中有什么区别">3 为什么要有进程线程，其中有什么区别</span></h3><p>进程是指在系统中正在运行的一个应用程序，程序一旦运行起来就是进程。进程是系统资源分配的最小单位，且每个进程拥有独立的地址空间，实现了操作系统的并发。线程是进程的子任务，是CPU最小执行和调度的基本单位，实现了进程内部的并发。</p>
+<p>线程是进程的一个实体，是进程的一条执行路径，比进程更小的独立运行的基本单位，线程也被称为轻量级进程，一个程序至少有一个进程，一个进程至少有一个线程。</p>
+<p>每个线程都独自占用一个虚拟处理器，独自的寄存器组，指令计数器和处理器状态。每个线程完成不同的任务但是共享同一地址空间(也就是同样的动态内存，映射文件和目标代码等)，打开的文件队列和其他内核资源。</p>
+<p>为什么要有线程？</p>
+<p>进程在执行的过程中如果阻塞，整个进程就会挂起，即使进程中有些工作不依赖于等待的资源，仍然不会执行，单进程各个函数之间不是并发执行，影响资源的使用效率，利用多进程解决维护进程系统开销大，创建进程时，分配资源，建立PCB,进程撤销时，回收资源，撤销PCB，进程切换，保存当前进程的状态信息。从通信机制上来讲，线程间有方便的通信机制。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>计算机基础</tag>
+      </tags>
+  </entry>
 </search>
