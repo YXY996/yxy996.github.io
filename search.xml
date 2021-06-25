@@ -8503,4 +8503,18 @@ cat id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span><s
         <tag>计算机基础</tag>
       </tags>
   </entry>
+  <entry>
+    <title>研究总体流程</title>
+    <url>/2021/06/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%B1%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>研究目前基础物理模型已建立。<br>需要验证代码与建立运动方程式的正确性与一致性。<br>数值计算运用常微分方程与python程序plot所画图进行对比。</p>
+<p>以下是当前所处状态的可视化流程图。</p>
+<p><img src="/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.png" alt="png"></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
 </search>
