@@ -8517,4 +8517,252 @@ cat id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span><s
         <tag>深度学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux指令（更新中）</title>
+    <url>/2021/07/01/linux%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="linux指令">Linux指令</span></h2><h3><span id="文件操作">文件操作</span></h3><p>1.创建文件</p>
+<pre class="line-numbers language-none"><code class="language-none">int open(const char &amp;pathname,int flags,mode_t mode);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+#include &lt;sys&#x2F;types.h&gt;
+#include &lt;sys&#x2F;stat.h&gt;
+#include &lt;fcntl.h&gt;
+int open(const char &amp;pathname,int flags,mode_t mode);
+    参数： 
+        -pathname：要创建的文件的路径
+        -flags：对文件的操作权限和其他设置
+            -必选项：O_RDONLY O_WRONLY O_RDWR
+            -可选项：O_CREAT 文件不存在创建文件
+        -mode：八进制的数，表示创建出的新文件的操作权限，比如：0775
+        最终的权限是：mode &amp; ~umask
+        0777 -&gt; 111111111   
+    &amp;
+        0775 -&gt; 111111101
+    -----------------------------------------
+                111111101
+    按位与：0和任何数都为0
+    umask抹去某些权限
+    flags参数是一个int类型数据，占4个字节 32位
+    flag 32个位 每一个位都是一个标志位。
+*&#x2F;
+#include &lt;sys&#x2F;types.h&gt;
+#include &lt;sys&#x2F;stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;unistd.h&gt;
+int main()&#123;
+    &#x2F;&#x2F;创建一个新的文件
+    int fd &#x3D; open(&quot;create.txt&quot;, O_RDWR | O_CREAT, 0777);
+    if(fd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+    &#125;
+    &#x2F;&#x2F;关闭
+    close(fd);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2.打开已存在文件</p>
+<pre class="line-numbers language-none"><code class="language-none">int open(const char &amp;pathname,int flags);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+        #include &lt;sys&#x2F;types.h&gt;
+        #include &lt;sys&#x2F;stat.h&gt;
+        #include &lt;fcntl.h&gt;
+        &#x2F;&#x2F;打开一个已经存在的文件
+        int open(const char &amp;pathname,int flags);
+            参数：
+                - pathname：要打开的文件的路径
+                - flags：对文件的操作权限和其他设置
+                  O_RDONLY O_WRONLY O_RDWR 这三个设置是互斥的
+            返回值：返回一个新的文件描述符。如果调用失败返回-1
+        errono：属于linux系统函数库，库里面的一个全局变量 记录的是最近的错误号。
+        
+        #include &lt;stdio.h&gt;
+        void perror(const char *s); 作用：打印error对应的错误描述
+            s参数：用户描述，比如hello，最终输出的内容是hello：xxx（实际的错误描述）
+
+        #include &lt;errno.h&gt;
+
+        &#x2F;&#x2F;创建一个新的文件
+        int open(const char &amp;pathname,int flags,mode_t mode);
+
+       
+*&#x2F;
+#include &lt;sys&#x2F;types.h&gt;
+#include &lt;sys&#x2F;stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include&lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int fd &#x3D; open(&quot;a.txt&quot;, O_RDONLY);
+    if(fd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+    &#125;
+    &#x2F;&#x2F;读写操作
+    
+    &#x2F;&#x2F;关闭
+    close(fd);
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3.复制文件</p>
+<pre class="line-numbers language-none"><code class="language-none">ssize_t read(int fd,void *buf,size_t count);
+ssize_t write(int fd,void *buf,size_t count);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+    #include&lt;unistd.h&gt;
+    ssize_t read(int fd,void *buf,size_t count);
+        参数：
+            -fd：文件描述符 ，open得到的，通过这个文件描述符操作某个文件
+            -buf：需要读取数据存放的地方，数组的地址
+            -count：指定的数组的大小
+        返回值：
+            -成功：
+                &gt;0:返回实际读取到的字节数
+                &#x3D;0：文件已经读取完成
+            -失败：-1 ，并且设置perror
+    #include&lt;unistd.h&gt;
+    ssize_t write(int fd,void *buf,size_t count);
+        参数：
+            -fd:文件描述符，open得到的，通过这个文件描述符操作某个文件
+            -buf：要往磁盘写入的数据，数据
+            -count：要写的数据的实际大小
+        返回值：
+            -成功：
+                &gt;0:返回实际读取到的字节数
+                -失败：-1 ，并且设置perror
+*&#x2F;
+#include&lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;sys&#x2F;types.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;fcntl.h&gt;
+int main()&#123;
+    &#x2F;&#x2F;通过open打开english.txt
+    int srcfd &#x3D; open(&quot;english.txt&quot;, O_RDONLY);
+    if(srcfd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;创建一个新的文件（拷贝文件）
+    int destfd &#x3D; open(&quot;cpy.txt&quot;, O_WRONLY | O_CREAT, 0664);
+    if(destfd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;频繁的读写操作
+    char buf[1024] &#x3D; &#123;0&#125;;
+    int len &#x3D; 0;
+    while ((len &#x3D; read(srcfd, buf, sizeof(buf)))&gt;0)&#123;
+        write(destfd, buf, len);
+    &#125;
+    &#x2F;&#x2F;关闭文件
+    close(destfd);
+    close(srcfd);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>4.lseek </p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+    标准C库函数
+    #include&lt;stdio.h&gt;
+    int fseek(FILE *stream,long offset,int whence)
+    
+    Linux 系统函数
+    #include &lt;sys&#x2F;types.h&gt;
+    #include &lt;unistd.h&gt;
+    off_t lseek(int fd, off_t offset, int whence);
+        参数
+            -fd:文件描述符，通过open得到，通过fd操作某个文件
+            -offset：偏移量
+            -whence：
+                SEEK_SET
+                    设置文件指针的偏移量
+                SEEK_CUR
+                    设置偏移量：当前位置+第二个参数offset的值
+                SEEK_END    
+                    设置偏移量：文件大小+第二个参数offset的值
+        返回值：返回文件指针的位置
+    作用：
+        1.移动文件指针到文件头
+        lseek(fd,0,SEEK_SET);
+        
+        2.获取当前文件指针的位置
+        lseek(fd,0,SEEK_CUR);
+
+        3.获取文件长度
+        lseek(fd,0,SEEK_END);
+
+        4.扩展文件的长度，当前文件10b，110b，增加了100b
+        lseek(fd,100,SEEK_END);从文件末尾向后偏移100
+
+        注意：需要写入一次数据
+        
+*&#x2F;
+#include &lt;sys&#x2F;types.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int fd &#x3D; open(&quot;hello.txt&quot;, O_RDWR);
+    if(fd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;扩展文件的长度
+    int ret &#x3D; lseek(fd, 100, SEEK_END);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;lseek&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;写入一个空数据
+    write(fd, &quot; &quot;, 1);
+    close(fd);
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>5.获取文件信息</p>
+<pre class="line-numbers language-none"><code class="language-none">int stat(const char *pathname, struct stat *statbuf);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+       #include &lt;sys&#x2F;types.h&gt;
+       #include &lt;sys&#x2F;stat.h&gt;
+       #include &lt;unistd.h&gt;
+
+       int stat(const char *pathname, struct stat *statbuf);
+            作用：获取一个文件信息
+            参数：
+                -pathname：操作的文件的路径
+                -statbuf：结构体变量，传出参数，用于保存获取到的信息
+            返回值：
+                成功：返回0
+                失败：返回-1，设置errno
+
+       int lstat(const char *pathname, struct stat *statbuf);
+            参数：
+                -pathname：操作的文件的路径
+                -statbuf：结构体变量，传出参数，用于保存获取到的信息
+            返回值：
+                成功：返回0
+                失败：返回-1，设置errno        
+
+*&#x2F;
+#include&lt;sys&#x2F;types.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;unistd.h&gt;
+int main()&#123;
+    struct stat statbuf;
+    int ret &#x3D; stat(&quot;a.txt&quot;, &amp;statbuf);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;stat&quot;);
+        return -1;
+    &#125;
+    printf(&quot;size: %ld\n&quot;, statbuf.st_size);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+      </tags>
+  </entry>
 </search>

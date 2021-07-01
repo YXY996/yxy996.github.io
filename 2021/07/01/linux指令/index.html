@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="云台设计, 小杨的博客">
+    <meta name="keywords" content="Linux指令（更新中）, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>云台设计 | 小杨的博客</title>
+    <title>Linux指令（更新中） | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">云台设计</h1>
+                    <h1 class="description center-align post-title">Linux指令（更新中）</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
-                                <span class="chip bg-color">云台设计</span>
+                            <a href="/tags/Linux%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">Linux基础</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                控制系统
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-09
+                    2021-07-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-09
+                    2021-07-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -514,53 +514,244 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="云台设计构想及编程应用c语言c转换未完成">云台设计构想及编程应用（C语言—–C＋＋转换未完成）</span></h2><p>控制平台设计构想<br>传感器读取初始数据<br>卡尔曼滤波算法获取yaw，roll，pitch的角度<br>将数据转化为电机的目标值<br>    测量值如果和目标值相等<br>        读取磁编码测量其位置值<br>    测量值与目标值不相等<br>        经过位置环，速度环，电流环<br>            改变电机位置</p>
-<p>状态预测：<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)<br>或者<br>𝑋(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑋(𝑘−1)+B(k)u(k)</p>
-<p>这里X(k,k-1)是利用k-1时刻预测的当前状态结果<br>X(k-1)是k-1时刻最优值<br>A(k,k-1)是X(k-1)状态下的变换矩阵，它是算法对状态变量进行预测的依据<br>B(k)是作用在控制量上的变换矩阵，在大多数实际情况下并没有控制收益<br>u(k)是当前状态的控制增益，一般没有这个变量，可以设为0</p>
-<p>协方差阵预测：<br>P(𝑘,𝑘−1)=𝐴(𝑘,𝑘−1)𝑃(𝑘−1) 𝐴^𝑇 (𝑘,𝑘−1)+𝐵(𝑘,𝑘−1)𝑄(𝑘−1)𝐵^𝑇 (𝑘,𝑘−1)</p>
-<p>P(𝑘,𝑘−1)是k时刻系统协方差矩阵<br>P(k-1)是k-1时刻系统协方差矩阵<br>Q(k-1)是系统过程的协方差矩阵</p>
-<p>滤波增益：<br>根据k时刻的协方差矩阵的预测值计算卡尔曼收益<br>𝐾(𝑘)=(𝑝(𝑘,𝑘−1) 𝐶^𝑇 (𝑘))/((𝐶(𝑘)𝑃(𝑘,𝑘−1) 𝐶^𝑇 (𝑘)+𝑅(𝑘))<br>k(k)是卡尔曼增益，是滤波的中间结果<br>C(k)是对象的预测矩阵<br>R(k)是对象测量噪声的协方差矩阵，是一个数值，作为已知条件输入滤波器。<br>这个值过大过小都会使滤波效果变差，且R(k)取值越小收敛越快,所以可以通过实验手段寻找合适的R(k)值再利用它进行真实的滤波.</p>
-<p>协方差阵估计：<br>目的：为了求k时刻的协方差矩阵（为得到k+1时刻的卡尔曼输出值做准备）<br>𝑃(𝑘)=(1−𝐾(𝑘)𝐶(𝑘))𝑃(𝑘,𝑘−1)<br>当p(k,k-1)为一个一维矩阵的时候,C(k)是1</p>
-<p>状态估计：<br>𝑋(k)=𝑋(𝑘,𝑘−1）+𝐾(𝑘)(𝑌(𝑘)−𝐶(𝑘)𝑋(𝑘,𝑘−1))<br>X(k)是k时刻状态变量的最优估计值<br>Y(K)是对象的测量</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;1. 结构体类型定义
-typedef struct 
-&#123;
-    float LastP;&#x2F;&#x2F;上次估算协方差 初始化值为0.02
-    float Now_P;&#x2F;&#x2F;当前估算协方差 初始化值为0
-    float out;&#x2F;&#x2F;卡尔曼滤波器输出 初始化值为0
-    float Kg;&#x2F;&#x2F;卡尔曼增益 初始化值为0
-    float Q;&#x2F;&#x2F;过程噪声协方差 初始化值为0.001
-    float R;&#x2F;&#x2F;观测噪声协方差 初始化值为0.543
-&#125;KFP；&#x2F;&#x2F;Kalman Filter parameter
+                <h2><span id="linux指令">Linux指令</span></h2><h3><span id="文件操作">文件操作</span></h3><p>1.创建文件</p>
+<pre class="line-numbers language-none"><code class="language-none">int open(const char &amp;pathname,int flags,mode_t mode);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+#include &lt;sys&#x2F;types.h&gt;
+#include &lt;sys&#x2F;stat.h&gt;
+#include &lt;fcntl.h&gt;
+int open(const char &amp;pathname,int flags,mode_t mode);
+    参数： 
+        -pathname：要创建的文件的路径
+        -flags：对文件的操作权限和其他设置
+            -必选项：O_RDONLY O_WRONLY O_RDWR
+            -可选项：O_CREAT 文件不存在创建文件
+        -mode：八进制的数，表示创建出的新文件的操作权限，比如：0775
+        最终的权限是：mode &amp; ~umask
+        0777 -&gt; 111111111   
+    &amp;
+        0775 -&gt; 111111101
+    -----------------------------------------
+                111111101
+    按位与：0和任何数都为0
+    umask抹去某些权限
+    flags参数是一个int类型数据，占4个字节 32位
+    flag 32个位 每一个位都是一个标志位。
+*&#x2F;
+#include &lt;sys&#x2F;types.h&gt;
+#include &lt;sys&#x2F;stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;unistd.h&gt;
+int main()&#123;
+    &#x2F;&#x2F;创建一个新的文件
+    int fd &#x3D; open(&quot;create.txt&quot;, O_RDWR | O_CREAT, 0777);
+    if(fd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+    &#125;
+    &#x2F;&#x2F;关闭
+    close(fd);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2.打开已存在文件</p>
+<pre class="line-numbers language-none"><code class="language-none">int open(const char &amp;pathname,int flags);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+        #include &lt;sys&#x2F;types.h&gt;
+        #include &lt;sys&#x2F;stat.h&gt;
+        #include &lt;fcntl.h&gt;
+        &#x2F;&#x2F;打开一个已经存在的文件
+        int open(const char &amp;pathname,int flags);
+            参数：
+                - pathname：要打开的文件的路径
+                - flags：对文件的操作权限和其他设置
+                  O_RDONLY O_WRONLY O_RDWR 这三个设置是互斥的
+            返回值：返回一个新的文件描述符。如果调用失败返回-1
+        errono：属于linux系统函数库，库里面的一个全局变量 记录的是最近的错误号。
+        
+        #include &lt;stdio.h&gt;
+        void perror(const char *s); 作用：打印error对应的错误描述
+            s参数：用户描述，比如hello，最终输出的内容是hello：xxx（实际的错误描述）
 
-&#x2F;&#x2F;2. 以高度为例 定义卡尔曼结构体并初始化参数
-KFP KFP_height&#x3D;&#123;0.02,0,0,0,0.001,0.543&#125;;
+        #include &lt;errno.h&gt;
 
-&#x2F;**
- *卡尔曼滤波器
- *@param KFP *kfp 卡尔曼结构体参数
- *   float input 需要滤波的参数的测量值（即传感器的采集值）
- *@return 滤波后的参数（最优值）
- *&#x2F;
- float kalmanFilter(KFP *kfp,float input)
- &#123;
-     &#x2F;&#x2F;预测协方差方程：k时刻系统估算协方差 &#x3D; k-1时刻的系统协方差 + 过程噪声协方差
-     kfp-&gt;Now_P &#x3D; kfp-&gt;LastP + kfp-&gt;Q;
-     &#x2F;&#x2F;卡尔曼增益方程：卡尔曼增益 &#x3D; k时刻系统估算协方差 &#x2F; （k时刻系统估算协方差 + 观测噪声协方差）
-     kfp-&gt;Kg &#x3D; kfp-&gt;Now_P &#x2F; (kfp-&gt;NOw_P + kfp-&gt;R);
-     &#x2F;&#x2F;更新最优值方程：k时刻状态变量的最优值 &#x3D; 状态变量的预测值 + 卡尔曼增益 * （测量值 - 状态变量的预测值）
-     kfp-&gt;out &#x3D; kfp-&gt;out + kfp-&gt;Kg * (input -kfp-&gt;out);&#x2F;&#x2F;因为这一次的预测值就是上一次的输出值
-     &#x2F;&#x2F;更新协方差方程: 本次的系统协方差付给 kfp-&gt;LastP 威下一次运算准备。
-     kfp-&gt;LastP &#x3D; (1-kfp-&gt;Kg) * kfp-&gt;Now_P;
-     return kfp-&gt;out；
- &#125;
+        &#x2F;&#x2F;创建一个新的文件
+        int open(const char &amp;pathname,int flags,mode_t mode);
 
-&#x2F;**
- *调用卡尔曼滤波器 实践
- *&#x2F;
-int height;
-int kalman_height&#x3D;0;
-kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+       
+*&#x2F;
+#include &lt;sys&#x2F;types.h&gt;
+#include &lt;sys&#x2F;stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include&lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int fd &#x3D; open(&quot;a.txt&quot;, O_RDONLY);
+    if(fd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+    &#125;
+    &#x2F;&#x2F;读写操作
+    
+    &#x2F;&#x2F;关闭
+    close(fd);
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3.复制文件</p>
+<pre class="line-numbers language-none"><code class="language-none">ssize_t read(int fd,void *buf,size_t count);
+ssize_t write(int fd,void *buf,size_t count);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+    #include&lt;unistd.h&gt;
+    ssize_t read(int fd,void *buf,size_t count);
+        参数：
+            -fd：文件描述符 ，open得到的，通过这个文件描述符操作某个文件
+            -buf：需要读取数据存放的地方，数组的地址
+            -count：指定的数组的大小
+        返回值：
+            -成功：
+                &gt;0:返回实际读取到的字节数
+                &#x3D;0：文件已经读取完成
+            -失败：-1 ，并且设置perror
+    #include&lt;unistd.h&gt;
+    ssize_t write(int fd,void *buf,size_t count);
+        参数：
+            -fd:文件描述符，open得到的，通过这个文件描述符操作某个文件
+            -buf：要往磁盘写入的数据，数据
+            -count：要写的数据的实际大小
+        返回值：
+            -成功：
+                &gt;0:返回实际读取到的字节数
+                -失败：-1 ，并且设置perror
+*&#x2F;
+#include&lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;sys&#x2F;types.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;fcntl.h&gt;
+int main()&#123;
+    &#x2F;&#x2F;通过open打开english.txt
+    int srcfd &#x3D; open(&quot;english.txt&quot;, O_RDONLY);
+    if(srcfd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;创建一个新的文件（拷贝文件）
+    int destfd &#x3D; open(&quot;cpy.txt&quot;, O_WRONLY | O_CREAT, 0664);
+    if(destfd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;频繁的读写操作
+    char buf[1024] &#x3D; &#123;0&#125;;
+    int len &#x3D; 0;
+    while ((len &#x3D; read(srcfd, buf, sizeof(buf)))&gt;0)&#123;
+        write(destfd, buf, len);
+    &#125;
+    &#x2F;&#x2F;关闭文件
+    close(destfd);
+    close(srcfd);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>4.lseek </p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+    标准C库函数
+    #include&lt;stdio.h&gt;
+    int fseek(FILE *stream,long offset,int whence)
+    
+    Linux 系统函数
+    #include &lt;sys&#x2F;types.h&gt;
+    #include &lt;unistd.h&gt;
+    off_t lseek(int fd, off_t offset, int whence);
+        参数
+            -fd:文件描述符，通过open得到，通过fd操作某个文件
+            -offset：偏移量
+            -whence：
+                SEEK_SET
+                    设置文件指针的偏移量
+                SEEK_CUR
+                    设置偏移量：当前位置+第二个参数offset的值
+                SEEK_END    
+                    设置偏移量：文件大小+第二个参数offset的值
+        返回值：返回文件指针的位置
+    作用：
+        1.移动文件指针到文件头
+        lseek(fd,0,SEEK_SET);
+        
+        2.获取当前文件指针的位置
+        lseek(fd,0,SEEK_CUR);
+
+        3.获取文件长度
+        lseek(fd,0,SEEK_END);
+
+        4.扩展文件的长度，当前文件10b，110b，增加了100b
+        lseek(fd,100,SEEK_END);从文件末尾向后偏移100
+
+        注意：需要写入一次数据
+        
+*&#x2F;
+#include &lt;sys&#x2F;types.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int fd &#x3D; open(&quot;hello.txt&quot;, O_RDWR);
+    if(fd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;扩展文件的长度
+    int ret &#x3D; lseek(fd, 100, SEEK_END);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;lseek&quot;);
+        return -1;
+    &#125;
+    &#x2F;&#x2F;写入一个空数据
+    write(fd, &quot; &quot;, 1);
+    close(fd);
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>5.获取文件信息</p>
+<pre class="line-numbers language-none"><code class="language-none">int stat(const char *pathname, struct stat *statbuf);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+       #include &lt;sys&#x2F;types.h&gt;
+       #include &lt;sys&#x2F;stat.h&gt;
+       #include &lt;unistd.h&gt;
+
+       int stat(const char *pathname, struct stat *statbuf);
+            作用：获取一个文件信息
+            参数：
+                -pathname：操作的文件的路径
+                -statbuf：结构体变量，传出参数，用于保存获取到的信息
+            返回值：
+                成功：返回0
+                失败：返回-1，设置errno
+
+       int lstat(const char *pathname, struct stat *statbuf);
+            参数：
+                -pathname：操作的文件的路径
+                -statbuf：结构体变量，传出参数，用于保存获取到的信息
+            返回值：
+                成功：返回0
+                失败：返回-1，设置errno        
+
+*&#x2F;
+#include&lt;sys&#x2F;types.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;unistd.h&gt;
+int main()&#123;
+    struct stat statbuf;
+    int ret &#x3D; stat(&quot;a.txt&quot;, &amp;statbuf);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;stat&quot;);
+        return -1;
+    &#125;
+    printf(&quot;size: %ld\n&quot;, statbuf.st_size);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -574,8 +765,8 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BA%91%E5%8F%B0%E8%AE%BE%E8%AE%A1/">
-                                    <span class="chip bg-color">云台设计</span>
+                                <a href="/tags/Linux%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">Linux基础</span>
                                 </a>
                             
                         </div>
@@ -1008,17 +1199,18 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/14/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/07/01/linux%E6%8C%87%E4%BB%A4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="算法基础1">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Linux指令（更新中）">
                         
-                        <span class="card-title">算法基础1</span>
+                        <span class="card-title">Linux指令（更新中）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1028,26 +1220,27 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">算法基础</span>
+                    <a href="/tags/Linux%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">Linux基础</span>
                     </a>
                     
                 </div>
@@ -1061,13 +1254,13 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/08/%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84/">
+                <a href="/2021/06/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%B1%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="指针与数组">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="研究总体流程">
                         
-                        <span class="card-title">指针与数组</span>
+                        <span class="card-title">研究总体流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1078,14 +1271,14 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
@@ -1095,8 +1288,8 @@ kalman_height &#x3D; kalmanFilter(&amp;KFP_height,(float)height);<span aria-hidd
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">C++进阶笔记</span>
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
                     </a>
                     
                 </div>
