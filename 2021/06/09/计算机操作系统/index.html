@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-06-09
+                    2021-07-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    8.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    29 分
                 </div>
                 
 
@@ -527,6 +527,140 @@
 <p>每个线程都独自占用一个虚拟处理器，独自的寄存器组，指令计数器和处理器状态。每个线程完成不同的任务但是共享同一地址空间(也就是同样的动态内存，映射文件和目标代码等)，打开的文件队列和其他内核资源。</p>
 <p>为什么要有线程？</p>
 <p>进程在执行的过程中如果阻塞，整个进程就会挂起，即使进程中有些工作不依赖于等待的资源，仍然不会执行，单进程各个函数之间不是并发执行，影响资源的使用效率，利用多进程解决维护进程系统开销大，创建进程时，分配资源，建立PCB,进程撤销时，回收资源，撤销PCB，进程切换，保存当前进程的状态信息。从通信机制上来讲，线程间有方便的通信机制。</p>
+<p>区别：<br>1.一个线程只能属于一个进程，而一个进程可以有多个线程，但至少由一个线程。线程依赖进程而存在。每个独立的进程有一个程序的入口，程序出口。但线程不能独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。<br>2.进程是资源分配的最小单位，线程是CPU调度的最小单位。<br>3.进程在执行过程中拥有独立的地址空间，而多个线程共享进程的资源。（同一个进程中的多个线程共享代码段(代码和常量),数据段(全局变量和静态变量),扩展段(堆存储)。但是每个线程拥有自己的栈段，栈段又叫运行时段，用来存放所有局部变量和临时变量。<br>4.系统开销：<br>由于在创建或者撤销进程时，系统都要为之分配或回收资源，如内存空间，I/O设备，PCB程序控制块等。因此操作系统所付出的开销将显著的大于在创建或撤销线程时的开销。类似的，在进程切换时，涉及到整个当前进程CPU环境的保存以及新被调度运行的进程的CPU环境的设置。而线程切换只需保存和设置少量寄存器的内容，并不涉及存储器管理方面的操作。可见，进程切换的开销也远大于线程切换的开销。<br>5.进程间不会相互影响，线程一个线程挂掉将导致整个进程挂掉。<br>6.通信：<br>由于同一进程中的多个线程具有相同的地址空间，致使它们之间的同步和通信的实现，也变得比较容易。线程间可以直接读写进程数据段(如全局变量)来进行通信–需要进程同步和互斥手段的辅助，以保证数据的一致性。进程间通信主要包括管道，系统IPC(包括消息队列，信号量，信号，共享内存),以及套接字socket.</p>
+<h3><span id="4什么是信号量">4.什么是信号量</span></h3><p>信号量(semaphore)与已经介绍过的IPC结构不同，它是一个计数器，可以用来控制多个进程对共享资源的访问。信号量用于实现进程间的互斥和同步，而不是用于存储进程间通信数据。<br>特点：<br>1)信号量用于进程间同步，若要在进程间传递数据需要结合共享内存。<br>2)信号量基于操作系统的PV操作，程序对信号量的操作都是原子操作。抽象数据类型，信号量。</p>
+<p>一个整形(semaphore)，两个原子操作，进入临界区之前执行P操作，离开临界区执行V操作。<br>P()：sem-1 如果sem&lt;0 等待，否则继续<br>V()：sem+1 如果sem&lt;=0就代表有进程在等待，唤醒一个挂在信号量上等待的P,FIFO原则<br>信号量是一个整数，被保护，只有PV操作能改变值</p>
+<p>3)每次对信号量的PV操作不仅限于对信号值加1或减1，而是可以加减任意正整数。</p>
+<pre class="line-numbers language-none"><code class="language-none">class semaphore&#123;
+    int sem;
+    &#x2F;&#x2F;等待队列，sem&lt;0 线程被存在等待队列
+    waitQueue q;
+&#125;
+semaphore::P()&#123;
+    sem--;his 
+    if(sem&lt;0)&#123;
+        Add this thread t to q
+        &#x2F;&#x2F;线程放入等待队列
+        block(p);
+    &#125;
+&#125;
+semaphore::V()&#123;
+    sem++;
+    if(sem&lt;&#x3D;0)&#123;
+        Remove a thread t from q
+        &#x2F;&#x2F;唤醒一个在等待的线程
+        wakeup(t);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其系统调用为<br>sem_wait(sem_t * sem):以原子操作的方式将信号量减1，如果信号量值为0，则sem_wait被阻塞，直到信号量具有非0值。<br>sem_post(sem_t * sem)：以原子操作将信号量加1.当信号量大于0时，其他正在调用sem_wait等待信号量的线程将被唤醒。</p>
+<h3><span id="5线程通信的方式">5.线程通信的方式</span></h3><p>临界区：<br>通过多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问。<br>互斥量Synchronized/Lock：采用互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有一个，所以可以保证公共资源不会被多个线程同时访问。当进入临界区时，需要获得互斥锁并且加锁；那么其他线程先要访问临界区就需要等待锁的释放。当离开临界区时，需要对互斥锁解锁，以唤醒其他等待该互斥锁的线程。<br>锁时一个抽象的数据结构<br>一个二进制状态(解锁/绑定)<br>Lock::Acquire() 锁被释放之前一直等待，然后得到锁<br>Lock::release() 释放锁，唤醒任何等待的进程<br>怎么实现：<br> 原子操作<br>    test-and-set<br>        从内存中读值<br>        测试该值是否为1，不为1进入临界区<br>        内存值设为1<br>其主要的系统调用如下：<br>pthread_mutex_init:初始化互斥锁<br>pthread_mutex_destroy：销毁互斥锁<br>pthread_mutex_lock:以原子操作的方式给一个互斥锁加锁，如果目标互斥锁已经被上锁，pthread_mutex_lock调用将其阻塞，直到该互斥锁的占有者将其解锁<br>pthread_mutex_unlock:以一个原子操作的方式给一个互斥锁解锁</p>
+<p>信号量semphore:为控制具有有限数量的用户资源而设计的，它允许多个线程在同一时刻去访问同一个资源，但一般需要限制同一时刻访问此资源的<strong>最大线程数目</strong>。<br>条件变量，顾名思义，<strong>一个或多个线程等待某个布尔表达式为真，即等待别的线程唤醒它</strong>.信号量会与互斥量一起使用，条件本身是由互斥量保护的。线程在改变条件状态前必须锁住互斥量。<br>其主要的系统调用如下：<br>pthread_cond_init：初始化条件变量<br>pthread_cond_destroy：销毁条件变量<br>pthread_cond_signal： 唤醒一个等待目标条件变量的线程。哪个线程被唤醒取决于调度策略和优先级。<br>pthread_cond_wait:等待目标条件变量。需要一个加锁的互斥锁确保操作的原子性。该函数中在<strong>进入wait状态前首先进行解锁，然后接收到信号后会再加锁，保证该线程对共享资源的正确访问。</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;条件变量实现
+&#x2F;&#x2F;需要维持在每个条件队列
+&#x2F;&#x2F;线性等待的条件等待signal()
+class Condition()&#123;
+    &#x2F;&#x2F;等待的线程数
+    int numwaiting &#x3D; 0;
+    waitQueue q;
+&#125;
+Condition::Wait(lock)&#123;
+    numwaiting++;
+    Add this thread t to q
+    &#x2F;&#x2F;一定要先释放锁
+    release(lock);
+    schedule();&#x2F;&#x2F;需要互斥锁，阻塞再这里，等待信号量满足条件
+    require(lock);
+&#125;
+Condition::Signal()&#123;
+    &#x2F;&#x2F;和信号量不一样，不一定执行--操作
+    if(numwaiting &gt; 0)&#123;
+        remove a thread from q
+        wakeup(t);&#x2F;&#x2F;需要互斥锁
+        numwaiting --;
+
+    &#125;
+&#125;
+&#x2F;&#x2F;从管程看生产者消费者问题
+class BoundBuffer&#123;
+    &#x2F;&#x2F;保证互斥
+    Lock lock;
+    &#x2F;&#x2F;buffer 内容计数
+    int count &#x3D; 0;
+    &#x2F;&#x2F;两个条件变量
+    Condition notFull,not Empty;
+
+&#125;
+BoundBuffer::Deposit(c)&#123;
+    &#x2F;&#x2F;线程进入管程，只有一个线程能进去
+    lock-&gt;Acquire();
+    while(count &#x3D;&#x3D; n)
+        &#x2F;&#x2F;当前已经满了，睡眠，在wait中一定要释放互斥锁
+        notFull.wait(&amp;lock);
+    Add c to Buffer;
+    count++;
+    notEmpty.Signal();
+    lock-&gt;release;
+
+&#125;
+BoundBuffer::Remove(c)&#123;
+    lock-&gt;Acquire();
+    while(count &#x3D;&#x3D; 0)&#123;
+        notEmpty.wait(&amp;lock);
+
+    &#125;
+    remove c from buffer;
+    count--;
+    &#x2F;&#x2F;有空闲了，唤醒notFull中的线程
+    notFull.Signal();
+    lock-&gt;release();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="6虚拟内存为什么要有虚拟内存什么是虚拟地址空间">6.虚拟内存？为什么要有虚拟内存？什么是虚拟地址空间？</span></h3><p>虚拟内存。虚拟内存是一种内存管理技术，它会使程序自己认为自己拥有一块很大且连续的内存，然而这个程序在内存中不是连续的，并且有些还在磁盘上，在需要的时候进行数据交换。<br>为什么要有虚拟内存？<br>在早期的计算机中，是没有虚拟内存的概念的。我们运行一个程序，会把程序全部装入内存中，然后运行。<br>当运行多个程序的时候，经常会出现如下的问题：<br>    地址空间不隔离，没有权限保护。<br>由于程序都是直接访问物理内存，所以一个进程可以修改其他进程的内存数据，甚至修改内核地址空间里的数据。<br>    内存使用效率低<br>当内存空间不足的时候，将其他程序暂时拷贝到硬盘，然后新程序装入内存运行。由于大量的数据装入装出，内存效率十分低下。<br>    程序运行地址不稳定<br>因为程序内存地址都是随机分配的，所以程序运行的地址也是不确定的，内存管理复杂。<br>虚拟地址的优点：<br>    避免用户直接访问物理地址，防止一些破坏性操作，保护操作系统。<br>    每个进程都分配4GB的虚拟内存，用户程序可使用比实际物理内存更大的地址空间。<br>    当进程通信时，可采用虚存共享的方式实现。当不同的进程使用相同的代码时，比如库文件中的代码，物理内存中可以只存储一份这样的代码，不同的进程只需要把自己的虚拟内存映射过去就可以了。    简化了链接器，加载器这样的程序的内存管理。<br>节省内存。<br>什么是虚拟空间？<br>虚拟地址空间是对于一个单一进程的概念，<strong>这个进程看到的将是从地址0000开始的整个内存空间</strong> 。虚拟存储器是一个抽象概念，它为每个进程提供了一个假象，好像每一个进程都在独占地使用主存。<strong>每个进程看到的存储器都是一致的</strong>,称为虚拟地址空间。从最低的地址看起：程序代码和数据，堆，共享库，栈，内存虚拟存储器。</p>
+<p>虚拟内存技术使得不同进程在运行过程中，它所看到的是自己独自占有了当前系统的4G内存，所有进程共享同一物理内存，<strong>每个进程只把自己目前需要的虚拟内存空间映射并存储到物理内存上</strong>。事实上，在每个进程创建加载时，内核只是为进程”创建”了虚拟内存的布局，具体就是初始化进程控制表中内存相关的链表，实际上<strong>并不立即</strong>就把虚拟内存对应位置的程序数据和代码(.text.data段)拷贝到物理内存中，只是建立好虚拟内存和磁盘文件的映射就好(叫做存储器映射)，等到运行到对应程序时，才会通过<strong>缺页异常</strong>，来拷贝数据。还有进程运行过程中，要动态分配内存，比如<strong>malloc时，也只是分配了虚拟内存，即为这块虚拟内存对应的页表项做相应设置，当进程真正访问到此数据时，才引发缺页异常。</strong> 可以认为虚拟空间都被映射到了磁盘空间中(事实上也是按需要映射到磁盘空间上，通过mmap)，并且由页表记录映射位置。当<strong>访问到某个地址的时候，通过页表中的有效位，可以得知此数据是否在内存中</strong>,如果不是，则通过缺页异常，将磁盘对应的数据拷贝到内存中，如果没有空闲内存则选择牺牲页面，替换其他页面。</p>
+<h3><span id="7mmap原理">7.mmap原理</span></h3><p>mmap是用来建立从虚拟空间到磁盘空间的映射的，可以将一个虚拟空间地址映射到一个磁盘文件上，当不设置这个地址时，则由系统自动设置，函数返回对应的内存地址(虚拟地址)。使用mmap分配内存，在<strong>堆和栈之间找一对空闲的内存分配</strong>.这两种方式分配的是虚拟内存，没有分配物理内存。真正的分配要在第一次访问已经分配的虚拟内存空间的时候，发生缺页中断，由操作系统分配物理内存，建立虚拟内存和物理内存之间的映射关系。</p>
+<h3><span id="8进程控制块包含信息和组织方式">8.进程控制块包含信息和组织方式</span></h3><p>进程控制块(PCB)是系统为了管理进程设置的一个专门的数据结构。系统用它来记录进程的外部特征，进程描述的运动变化过程。同时，系统可以利用PCB来控制和管理进程。所以说，PCB是系统感知进程存在的唯一标志。<br>PCB含有以下三大类信息：<br>进程标识信息：本进程标识，父进程标识，用户标识<br>处理机状态信息保存区：<br>保存进程的运行现场信息。用户可见的寄存器，控制和状态寄存器，栈指针(过程调用，系统调用，中断处理和返回需要用到)<br>进程控制信息：<br>调度和状态信息：如进程状态，等待事件和等待原因，进程优先级<br>进程通信信息：如消息队列指针，信号量等互斥和同步机制，这些信息存放在接收方的进程块中。<br>存储管理信息：进程在辅存储器内的地址，包含指向本进程映像存储空间的数据结构。<br>进程所用资源：包含进程所需全部资源，已经分得的资源，如主存资源，I/O设备，打开文件表等。<br>有关数据结构连接信息：父子进程连接起来，进程可以连接到一个进程队列中，或连接到相关的其他进程PCB。<br>PCB组织方式<br>一般是链表：更好的完成动态插入和删除。一个状态的进程对应PCB中的一个链表，如就绪链表，阻塞链表。</p>
+<h3><span id="9mallocrealloccalloc的区别">9.malloc,realloc,calloc的区别</span></h3><p>1.malloc函数</p>
+<pre class="line-numbers language-none"><code class="language-none">void * malloc(unsigned int num_size);
+int * p &#x3D; (int *)malloc(20*sizeof(int));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>申请20个int类型的空间<br>2.calloc函数</p>
+<pre class="line-numbers language-none"><code class="language-none">void * calloc(size_t,size_t size);
+int * p &#x3D; calloc(20,sizeof(int));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>malloc的申请空间是随机化的，callloc的申请的空间的值初始化为0<br>3.realloc 函数</p>
+<pre class="line-numbers language-none"><code class="language-none">void realloc(void * p,size_t new_size);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>给分配的额外分配空间，用于扩充容量。<br>这里有几个问题：<br>1.堆和栈最大可分配的内存的大小<br>2.堆和栈的内存管理方式<br>3.堆和栈的分配效率<br>首先针对第一个问题，一般来说对于一个进程栈的大小远远小于堆的大小。在linux中你可以使用ulimit-s(单位kb)来查看一个进程栈的最大可分配大小，一般来说不超过8M，有的甚至不超过2M，不过这个可以设置，而对于堆你会发现，针对一个进程堆的最大可分配的大小在G的数量级上，不同的操作系统可能不一样，比如32位系统最大不超过2G,而64位系统最大不超过4G，所以当你需要一个分配的大小的内存时，请用new，即用堆。</p>
+<p>其次针对第二个问题，<strong>栈是系统数据结构</strong>，对于进程/线程是唯一的，它的分配与释放由<strong>操作系统来维护</strong>，不需要开发者来管理。在执行函数时，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时，这些存储单元会被自动释放。栈内存分配运算内置于处理器执行集中，效率很高。不同的操作系统对栈都有一定的限制。堆上的内存分配，也成为<strong>动态内存分配</strong> .程序在运行的期间用malloc申请的内存，这部分内存<strong>由程序员自己负责管理</strong>,其生存期由开发者决定：在何时分配，分配多少，并在何时用free来释放该内存。这是唯一可以由开发者参与管理的内存。使用的好坏直接决定系统的性能和稳定。</p>
+<p>由上可知，<strong>当我们需要的内存很少，又能确定到底需要多少内存的时候，请使用栈。而当你需要在运行时才知道需要多少内存的时候，请用堆。</strong></p>
+<p>最后针对第三个问题，栈是机器系统提供的数据结构，计算机会在底层对栈提供支持：分配专门的寄存器存放在栈的地址，压栈出栈都有专门的指令执行，这就决定了栈的效率比较高。堆是C/C++函数提供的，它的机制是很复杂的，例如<strong>为了分配一块内存</strong>，库函数会按照一定的算法(具体的算法可以参考数据结构、操作系统)在堆内存中搜索可用的足够大小的空间，如果没有足够大小的空间(<strong>内存碎片过多</strong>),就有可能调用系统功能去增加程序数据段的内存空间，这样就有机会分到足够大小的内存，然后进行返回。显然，堆的效率要比栈要低的多。</p>
+<h3><span id="10并行和并发">10.并行和并发</span></h3><p>并发（concurrency):指宏观上看起来两个程序同时运行，比如在单核cpu上的多任务。但是微观上看两个程序的指令是交织着运行的。你的指令之间穿插这我的指令，我的指令穿插这你的，在单个周期内只运行了一个指令。这种并发不能提高计算机的性能，只能提高效率。</p>
+<p>并行(parallelism):指<strong>严格物理意义上统一时刻的同时运行</strong>,比如多核cpu，两个程序分别运行在两个核上，两者之间相互不影响。这样说来并行的确提高了计算机的效率，所以现在的cpu都是往多核方面发展的。</p>
+<h3><span id="11如何修改文件的最大句柄数">11.如何修改文件的最大句柄数</span></h3><p>linux默认的最大文件句柄数是1024个，在linux服务器文件并发量比较大的情况下，系统会报”to many open files”的错误。所以在linux服务器高并发调优时，往往需要预先调优linux参数，修改linux最大文件句柄数。</p>
+<p>有两种方法：<br>1.ulimit-n &lt;可以同时打开的文件数&gt; 。将当前进程的最大句柄数修改为指定的参数（注意：该方法只针对当前进程有效，重新打开shell或者重新开启一个进程，参数还是之前的值)<br>2.对所有进程都有效的方法，修改linux系统参数<br>vi/etc/security/limits.conf添加</p>
+<p>soft nofile 65536<br>hard nofile 65536<br>将最大句柄数改为65536<br>修改以后保存，注销当前用户，重新登录，修改后的参数就生效了。</p>
+<h3><span id="12进程加载和终止调用的函数fork和vfork的区别">12.进程加载和终止调用的函数？fork和vfork的区别</span></h3><p>fork()创建一个继承的子进程<br>当调用fork时，内核会把所有的内部数据结构复制一份，复制进程的页表项，然后把<strong>父进程的地址空间中的内容逐页的复制到子进程的地址空间中</strong>但从多核角度来说，逐页的复制方式是十分耗时的。</p>
+<p>父进程返回子进程的id，子进程返回0 不成功id&lt;0<br>复制父进程所有的变量和内存<br>复制父进程所有的cpu寄存器</p>
+<pre class="line-numbers language-none"><code class="language-none">int pid &#x3D; fork();
+if(pid &#x3D;&#x3D; 0)&#123;
+    &#x2F;&#x2F;做什么都行（关闭网络连接）
+    &#x2F;&#x2F;调用exec()加载新程序取代当前运行进程，地址空间，代码数据也换掉了。
+    exec(&quot;program&quot;,argc,argv0,argv1...)
+&#125;
+&#x2F;&#x2F;等待子进程结束child_status &#x3D; wait(pid);
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在fork()后立刻执行exec所造成的地址空间的浪费。vfork()轻量级fork，创建进程时<strong>不再创建同样的内存映像</strong></p>
+<p>子进程必须要立刻执行一次对exec的系统调用，或者调用_exit()退出，<strong>vfork()会挂起父进程直到子进程终止或者运行了一个新的可执行文件的映像。通过这样的方式，vfork()避免了地址空间的按页复制。</strong><br>**<br>COP<strong>Y On Write (写的时候进行复制)，在实际地址空间复制的时候并没有真实的复制，而是复制父进程地址空间所需要的元数据（页表），指向同一块地址空间，</strong>当父进程或者子进程对某一个地址单元写操作会触发一个异常，使得触发异常的页复制成两份。只有写的时候才会。**</p>
+<p>fork和vfork的区别<br>f<strong>ork(</strong>)的父子进程的执行次序不确定。<strong>vfork()保证子进程先运行</strong>在调用exec或exit僵尸与父进程数据是共享的，在它<strong>调用exec或exit之后父进程才可能被调度运行</strong></p>
+<h3><span id="13孤儿进程-amp-僵尸进程">13.孤儿进程 &amp; 僵尸进程</span></h3><p><strong>孤儿进程</strong><br>父进程运行结束，但子进程还在运行（未运行结束），这样的子进程为孤儿进程。<br>每当出现一个孤儿进程，内核就把孤儿进程的父进程设置为init，而init进程会循环的wait()它的已经退出的子进程。这样当一个孤儿进程凄凉的结束了其生命周期的时候，init进程就会代表父进程回收。孤儿进程不会有什么危害。</p>
+<p><strong>僵尸进程</strong><br>一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵尸进程。</p>
+<h3><span id="14管道的读写特点">14.管道的读写特点</span></h3><p>使用管道时需要注意以下几种特殊的情况（假设都是阻塞的I/O操作）<br>1.所有的指向管道写端的文件描述符都关闭了（管道写端引用计数为0），进程从管道的读端读数据，那么管道中剩余的数据被读取以后，再次read会返回0.就像读到文件末尾一样。</p>
+<p>2.如果有指向管道写端的文件描述符没有关闭（管道的写端引用计数大于0），而持有管道写端的进程也没有往管道中写数据 ，这个时候有进程从管道中读取数据，那么管道中剩余的数据被读取后再次read会阻塞，直到管道中有数据可读，才读取数据并返回。</p>
+<p>3.如果所有指向管道读端的文件描述符都关闭了（管道的读端引用计数为0），这个时候有进程向管道中写数据，那么该进程会收到一个信号SIGPIPE，通常会导致进程异常终止。</p>
+<p>4.如果有指向管道读端的文件描述符没有关闭，（管道的读端引用计数大于0），而持有管道读端的进程也没有从管道中读数据，这时有进程向管道写数据，那么在管道被写满的时候，再次write会被阻塞，直到管道中有空位置才能写入数据并返回。</p>
+<p>总结：<br>    读管道：<br>        管道中有数据，read返回实际读到的字节数<br>        管道中无数据：<br>            写端全部关闭，read返回0 （相当于读到文件的末尾）<br>            写端没有完全关闭，read阻塞等待。<br>    写管道：<br>        管道读端全部被关闭，进程异常终止（进程收到SIFPIPE信号）<br>        管道读端没有完全关闭：<br>            管道已满，write阻塞<br>            管道没有满,write将数据写入并返回实际写入的字节数。</p>
+<h3><span id="15常见io模型5种异步io应用场景有什么缺点">15.常见I/O模型？5种？异步IO应用场景？有什么缺点</span></h3><p>几个概念 ：同步，异步，阻塞，非阻塞<br>首先来解释同步和异步的概念，这两个概念与消息通知机制有关。也就是同步与异步主要是从消息通知机制角度来说的。<br><strong>同步异步概念</strong>：<br>所谓<strong>同步</strong>就是一个任务的完成需要依赖另外一个任务时，<strong>只有等待被依赖的任务完成后，依赖的任务才能算完成，这是一种可靠的任务序列</strong>。要么成功都成功，要么失败都失败，两个任务的状态可以保持一致。</p>
+<p>所谓<strong>异步</strong>是不需要等待被依赖的任务完成，只是通知被依赖的任务要完成什么工作，依赖的任务也立即执行，只要自己完成了整个任务就算完成了。至于被依赖的任务最终是否真正完成，依赖它的任务无法确定。所以它是<strong>不可靠的任务序列</strong>。</p>
+<p>1）同步<br>就是再发出一个功能调用时，<strong>没有得到结果之前，该调用就不返回</strong>,同步I/O指的是，必须等待IO操作完成后，控制权才返回给用户进程。也就是必须一件一件事情做，等前一件事情做完了才能做下一件事情。就是我们调用一个功能，该功能没有结束前，我死等结果。</p>
+<p>2）异步<br>当一个异步调用发出后，调用者不能立即得到结果。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1257,7 +1391,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">165.4k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             
             

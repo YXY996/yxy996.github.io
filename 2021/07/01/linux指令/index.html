@@ -473,21 +473,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-01
+                    2021-07-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    13 分
                 </div>
                 
 
@@ -751,6 +751,202 @@ int main()&#123;
     printf(&quot;size: %ld\n&quot;, statbuf.st_size);
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>6.判断某个文件是否有某个权限，或者某个文件是否存在</p>
+<pre class="line-numbers language-none"><code class="language-none">int access(const char * pathname,int mode);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+       #include &lt;unistd.h&gt;
+
+       int access(const char *pathname, int mode);
+        作用：判断某个文件是否有某个权限，或者判断文件是否存在
+        参数：
+            -pathname ：判断的文件路径
+            -mode：
+                R_OK:判断文件内是否有读权限
+                W_OK:判断文件内是否有写权限
+                X_OK:判断文件内是否有执行权限
+                F_OK:判断文件内是否存在
+        返回值：
+            成功返回0 ，失败返回-1
+*&#x2F;
+
+
+#include&lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int ret &#x3D; access(&quot;a.txt&quot;, F_OK);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;access&quot;);
+        return -1;
+    &#125;
+    printf(&quot;文件存在!!\n&quot;);
+    return 0;
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>7.修改文件的权限</p>
+<pre class="line-numbers language-none"><code class="language-none">int chmod(const char *pathname,mode_t mode);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+       #include &lt;sys&#x2F;stat.h&gt;
+
+       int chmod(const char *pathname, mode_t mode);
+        作用：修改文件的权限
+        参数：
+            -pathname 需要修改的文件的路径
+            -mode:需要修改的权限值，八进制的数
+        返回值：成功返回0 失败返回-1
+
+*&#x2F;
+#include&lt;unistd.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int ret &#x3D; chmod(&quot;a.txt&quot;, 0777);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;chmod&quot;);
+        return -1;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>8.缩减或扩展文件到指定的大小</p>
+<pre class="line-numbers language-none"><code class="language-none">int truncate(const char *path,off_t length);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+SYNOPSIS
+       #include &lt;unistd.h&gt;
+       #include &lt;sys&#x2F;types.h&gt;
+
+       int truncate(const char *path, off_t length);
+            作用：缩减或扩展文件的尺寸至指定的大小
+            参数：
+                -path：需要修改的文件的路径
+                -length：需要最终文件变成的大小
+            返回值:成功返回0 失败返回-1
+*&#x2F;
+#include &lt;unistd.h&gt;
+#include &lt;sys&#x2F;types.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int ret &#x3D; truncate(&quot;b.txt&quot;, 5);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;truncate&quot;);
+        return -1;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>9.创建一个目录</p>
+<pre class="line-numbers language-none"><code class="language-none">int mkdir(const char* pathname,mode_t mode);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+       #include &lt;sys&#x2F;stat.h&gt;
+       #include &lt;sys&#x2F;types.h&gt;
+
+       int mkdir(const char *pathname, mode_t mode);
+        作用：创建一个目录
+        参数：  
+            pathname：创建的目录的路径
+            mode：权限 8进制的数
+        返回值：
+            成功返回0 失败返回-1
+*&#x2F; 
+
+#include &lt;sys&#x2F;stat.h&gt;
+#include &lt;sys&#x2F;types.h&gt;
+#include&lt;stdio.h&gt;
+int main()&#123;
+    int ret &#x3D; mkdir(&quot;aaa&quot;, 0777);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;mkdir&quot;);
+        return -1;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>10.修改目录名称</p>
+<pre class="line-numbers language-none"><code class="language-none">int rename(const char *oldpath,const char *newpath);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+       #include &lt;stdio.h&gt;
+
+       int rename(const char *oldpath, const char *newpath);
+
+*&#x2F;
+#include &lt;stdio.h&gt;
+int main()&#123;
+    int ret &#x3D; rename(&quot;aaa&quot;, &quot;bbb&quot;);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;rename&quot;);
+        return -1;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>11.修改进程的工作目录</p>
+<pre class="line-numbers language-none"><code class="language-none">int chdir(const char *path);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+       #include &lt;unistd.h&gt;
+
+       int chdir(const char *path);
+            作用：修改进程的工作目录
+                比如在&#x2F;home&#x2F;yxy目录下启动了一个可执行程序a.out,进程的工作目录&#x2F;home&#x2F;yxy
+            参数：
+                path：需要修改的工作目录
+
+       #include &lt;unistd.h&gt;
+
+       char *getcwd(char *buf, size_t size);
+       作用：获取当前的工作目录
+       参数：
+            -buf：存储的路径，指向的是一个数组，传出参数
+            -size：数组的大小
+
+        返回值：
+            返回的指向的一块内存，这个数据就是第一个参数
+
+
+*&#x2F;
+
+
+#include &lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;sys&#x2F;stat.h&gt;
+#include&lt;sys&#x2F;types.h&gt;
+#include&lt;fcntl.h&gt;
+int main()&#123;
+    &#x2F;&#x2F;获取当前的工作目录
+    char buf[128];
+    getcwd(buf, sizeof(buf));
+    printf(&quot;当前的工作目录是:%s\n&quot;,buf);
+
+    &#x2F;&#x2F;修改工作目录
+
+    int ret &#x3D; chdir(&quot;&#x2F;home&#x2F;yxy&#x2F;Linux&#x2F;lesson13&quot;);
+    if(ret &#x3D;&#x3D; -1)&#123;
+        perror(&quot;chdir&quot;);
+        return -1;
+    &#125;
+
+    &#x2F;&#x2F;创建一个新的文件
+    int fd &#x3D; open(&quot;chdir.txt&quot;, O_CREAT | O_RDWR, 0664);
+    if(fd &#x3D;&#x3D; -1)&#123;
+        perror(&quot;open&quot;);
+        return -1;
+    &#125;
+    close(fd);
+
+    &#x2F;&#x2F;获取当前的工作目录
+    char buf1[128];
+    getcwd(buf1, sizeof(buf));
+    printf(&quot;当前的工作目录是:%s\n&quot;,buf1);
+
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="2内存映射的注意事项">2.内存映射的注意事项</span></h3><p>1.如果对mmap的返回值(ptr)做++操作，munmap是否能成功</p>
+<p>void * ptr =  mmap(….);<br>ptr++;可以进行++操作<br>munmap(ptr,len);  //错误，要保存地址   new  delete</p>
+<p>2.如果open时O_RDONLY,mmap时prot参数指定PROT_READ | PROT_WRITE 会怎样？</p>
+<p>错误，返回MAP_FAILED;<br>open()函数中的权限建议和PROT参数的权限保持一致</p>
+<p>3.如果文件偏移量1000 会怎样？<br>偏移量必须是4k的整数倍，错误，返回MAP_FAILED</p>
+<p>4.mmap什么情况下会调用失败？<br>    -第二个参数 length = 0<br>    -第三个参数 prot<br>        -只指定了写权限<br>        - prot  PROT_READ | PROT_WRITE<br>            第五个参数通过open函数时指定的O_RDONLY /O_WRONLY</p>
+<p>5.可以open的时候O_CREAT 一个新文件来创建映射区吗？<br>    -可以的，但是创建的文件的大小如果为0的话，肯定不行<br>    -可以对新的文件进行扩展<br>        -lseek()<br>        -truncate()</p>
+<p>6.mmap后关闭文件描述符，对mmap映射有没有影响？<br>int fd = open(“xxx”);<br>mmap(,,,fd,,);<br>close(fd);<br>映射区还在，创建映射区的fd被关闭了没有任何影响</p>
+<p>7.对ptr越界操作会怎么样？<br>void * ptr = mmap(NULL,100,,,,);<br>4K<br>越界操作操作的是非法的内存，—&gt;产生段错误</p>
+<h3><span id="阻塞信号集和未决信号集">阻塞信号集和未决信号集</span></h3><p>1.用户通过键盘 crtl + c产生2号信号SIGINT(信号被创建）<br>2.信号产生但是没有被处理（未决）<br>    在内核中将所有的没有被处理的信号存储在一个集合中(未决信号集)<br>    SIGINT信号状态被存储在第二个标志位上<br>        这个标志位的值为0，说明信号不是未决状态<br>        这个标志位的值为1，说明信号处于未决状态<br>3.这个未决状态的信号需要被处理，处理之前需要和另一个信号集(阻塞信号集)，进行一个比较。<br>    -阻塞信号集默认不阻塞任何的信号<br>    -如果先要阻塞某些信号，需要用户调用系统的API</p>
+<p>4.在处理的时候和阻塞信号集中的标志位进行查询，看是不是对该信号设置阻塞。<br>    -如果没有阻塞，这个信号就被处理。<br>    -如果阻塞了，这个信号就继续处于未决状态，直到阻塞接触，这个信号被处理。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -1483,7 +1679,7 @@ int main()&#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">165.4k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             
             
