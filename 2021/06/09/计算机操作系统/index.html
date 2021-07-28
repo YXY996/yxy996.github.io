@@ -1,0 +1,1676 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="计算机操作系统, 小杨的博客">
+    <meta name="description" content="分享笔记心得，互相学习">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>计算机操作系统 | 小杨的博客</title>
+    <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小杨的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小杨的博客</div>
+        <div class="logo-desc">
+            
+            分享笔记心得，互相学习
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/YXY996" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/YXY996" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">计算机操作系统</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">计算机基础</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/C/" class="post-category">
+                                C++
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-06-09
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-07-21
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    41 分
+                </div>
+                
+
+                 <span id="busuanzi_container_site_pv" style='display:none'>
+                </span> <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv" >
+                </span> 
+                
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2><span id="操作系统面试持续更新">操作系统面试(持续更新)</span></h2><h3><span id="1请说一下源码到可执行文件的过程">1.请说一下源码到可执行文件的过程</span></h3><p>1）预编译<br>主要处理源代码文件中以”#”开头的预编译指令。处理规则如下<br>1.删除所有的#define，展开所有的宏定义<br>2.处理所有的条件预编译指令<br>如”#if”,”#endif”,”#ifdef”,”#elif”和”#else”<br>3.处理”#include”预编译指令，将文件内容替换到它的位置，这个过程是递归进行的，文件中包含其他文件<br>4.删除所有注释，”//“ 和” ** “<br>5.保留所有的”#pragma” 编译器指令，编译器需要用到他们。如”#pragma once”是为了防止有文件被重复引用<br>6.添加行号和文件标识，便于编译时编译器产生调试用的行号信息，和编译是产生的编译错误或警告能够显示行号。</p>
+<p>2)编译<br>把预编译之后生成的xxx.i或xxx.ii文件，进行一系列词法分析，语法分析，语法分析及优化后，生成相对应的汇编代码文件。</p>
+<p>1.词法分析：<br>将源代码程序导入到扫描机道中，将其中的字符序列分割成一系列的记号。<br>2.语法分析：<br>语法分析器对由扫描产生的记号，进行语法分析，产生语法树。由语法分析器输出的语法树是一种以表达式为结点的树。 在语法分析的同时，就把运算法优先级确定下来，如果出现表达式不合法，各种括号不匹配，表达式中缺少操作，编译器报错。<br>3.语义分析：<br>语法分析器只是完成对表达式语法层面的分析，语义分析器则对表达式是否有意义进行判断，其分析的语义是静态语义–在编译期能分清的语义，相对应的动态语义是在运行期间才能确定的语义。例如：将一个int型赋值给int * 型，语义分析程序就发现类型不匹配，就会报错。<br>4.优化：<br>源代码级别的一个优化过程。<br>5.目标代码生成：<br>由代码生成器将中间代码转换成目标机器代码，生成一系列的代码序列–汇编语言表示。<br>6.目标代码优化：<br>目标代码优化器对上述的目标机器代码进行优化：寻找合适的寻址方式，使用位移来替代乘法运算，删除多余的指令等。</p>
+<p>3)汇编<br>将汇编代码转换成机器可以执行的指令(机器码文件)。汇编器的汇编过程相对于编译器来说更简单，没有复杂的语法，也没有语义，更不需要做指令优化，只是根据汇编指令和机器指令的对照表一一翻译过来，汇编过程有汇编器as完成。经汇编之后，产生目标文件（与可执行文件格式几乎一样)xxx.o(windows),xxx.obj(linux)</p>
+<p>4)链接<br>链接的过程:地址和空间的分配，符号决议(也叫做符号绑定，倾向于动态链接)和重定位。将不同的源文件产生的目标文件进行链接，从而形成一个可执行的程序。链接分为静态链接和动态链接。</p>
+<p>1.静态链接：<br>函数和数据被编译进一个二进制文件。在静态库的情况下，在编译链接可执行文件时，链接器<br>从库中复制这些函数和数据并把他们和应用程序的其他模块组合起来创建最终的可执行文件。<br>空间浪费：<br>因为每个可执行程序中对所有需要的目标文件都要有一个副本，所以如果多个程序对同一个目标文件都有依赖的时候，会出现同一个目标文件都在内存存在多个副本。<br>更新困难：<br>每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。<br>运行速度快：<br>但是静态链接的优点就是，在可执行程序中已经具备所有执行程序所需要的任何东西，在执行的时候运行速度快。</p>
+<p>2.动态链接<br>动态链接的基本思想是把程序按照模块拆分成各个相对独立部分，在程序运行时才将他们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件。动态库就是在需要调用其中的函数时，根据函数映射表找到该函数，然后调入堆栈执行。<br>共享库：<br>就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多分，副本，而是这多个程序在执行时共享同一份副本。<br>更新方便：<br>更新时只需要替换原来的目标文件，而无需将所有的程序重新链接一遍。当程序下一次运行时，新版本的目标文件会自动加载到内存并且链接起来，程序就完成了升级的目标。<br>性能损耗：<br>因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定的损失。</p>
+<h3><span id="2-进程与线程的概念">2 进程与线程的概念</span></h3><p>进程是操作系统进行资源调度和分配的基本单位，实现了操作系统的并发。<br>线程时进程的子任务，是CPU调度和分派的基本单位，用于保证程序的实时性，实现进程内部的并发。线程是操作系统可识别的最小执行和调度单位。每个线程都独自占用一个虚拟处理器，独自的寄存器组，指令计数器和处理器状态。每个线程完成不同任务，但是共享同一地址空间。(也就是同样的动态内存，映射文件，目标代码等等)，打开的文件队列和其他内核资源。</p>
+<h3><span id="3-为什么要有进程线程其中有什么区别">3 为什么要有进程线程，其中有什么区别</span></h3><p>进程是指在系统中正在运行的一个应用程序，程序一旦运行起来就是进程。进程是系统资源分配的最小单位，且每个进程拥有独立的地址空间，实现了操作系统的并发。线程是进程的子任务，是CPU最小执行和调度的基本单位，实现了进程内部的并发。</p>
+<p>线程是进程的一个实体，是进程的一条执行路径，比进程更小的独立运行的基本单位，线程也被称为轻量级进程，一个程序至少有一个进程，一个进程至少有一个线程。</p>
+<p>每个线程都独自占用一个虚拟处理器，独自的寄存器组，指令计数器和处理器状态。每个线程完成不同的任务但是共享同一地址空间(也就是同样的动态内存，映射文件和目标代码等)，打开的文件队列和其他内核资源。</p>
+<p>为什么要有线程？</p>
+<p>进程在执行的过程中如果阻塞，整个进程就会挂起，即使进程中有些工作不依赖于等待的资源，仍然不会执行，单进程各个函数之间不是并发执行，影响资源的使用效率，利用多进程解决维护进程系统开销大，创建进程时，分配资源，建立PCB,进程撤销时，回收资源，撤销PCB，进程切换，保存当前进程的状态信息。从通信机制上来讲，线程间有方便的通信机制。</p>
+<p>区别：<br>1.一个线程只能属于一个进程，而一个进程可以有多个线程，但至少由一个线程。线程依赖进程而存在。每个独立的进程有一个程序的入口，程序出口。但线程不能独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。<br>2.进程是资源分配的最小单位，线程是CPU调度的最小单位。<br>3.进程在执行过程中拥有独立的地址空间，而多个线程共享进程的资源。（同一个进程中的多个线程共享代码段(代码和常量),数据段(全局变量和静态变量),扩展段(堆存储)。但是每个线程拥有自己的栈段，栈段又叫运行时段，用来存放所有局部变量和临时变量。<br>4.系统开销：<br>由于在创建或者撤销进程时，系统都要为之分配或回收资源，如内存空间，I/O设备，PCB程序控制块等。因此操作系统所付出的开销将显著的大于在创建或撤销线程时的开销。类似的，在进程切换时，涉及到整个当前进程CPU环境的保存以及新被调度运行的进程的CPU环境的设置。而线程切换只需保存和设置少量寄存器的内容，并不涉及存储器管理方面的操作。可见，进程切换的开销也远大于线程切换的开销。<br>5.进程间不会相互影响，线程一个线程挂掉将导致整个进程挂掉。<br>6.通信：<br>由于同一进程中的多个线程具有相同的地址空间，致使它们之间的同步和通信的实现，也变得比较容易。线程间可以直接读写进程数据段(如全局变量)来进行通信–需要进程同步和互斥手段的辅助，以保证数据的一致性。进程间通信主要包括管道，系统IPC(包括消息队列，信号量，信号，共享内存),以及套接字socket.</p>
+<h3><span id="4什么是信号量">4.什么是信号量</span></h3><p>信号量(semaphore)与已经介绍过的IPC结构不同，它是一个计数器，可以用来控制多个进程对共享资源的访问。信号量用于实现进程间的互斥和同步，而不是用于存储进程间通信数据。<br>特点：<br>1)信号量用于进程间同步，若要在进程间传递数据需要结合共享内存。<br>2)信号量基于操作系统的PV操作，程序对信号量的操作都是原子操作。抽象数据类型，信号量。</p>
+<p>一个整形(semaphore)，两个原子操作，进入临界区之前执行P操作，离开临界区执行V操作。<br>P()：sem-1 如果sem&lt;0 等待，否则继续<br>V()：sem+1 如果sem&lt;=0就代表有进程在等待，唤醒一个挂在信号量上等待的P,FIFO原则<br>信号量是一个整数，被保护，只有PV操作能改变值</p>
+<p>3)每次对信号量的PV操作不仅限于对信号值加1或减1，而是可以加减任意正整数。</p>
+<pre class="line-numbers language-none"><code class="language-none">class semaphore&#123;
+    int sem;
+    &#x2F;&#x2F;等待队列，sem&lt;0 线程被存在等待队列
+    waitQueue q;
+&#125;
+semaphore::P()&#123;
+    sem--;his 
+    if(sem&lt;0)&#123;
+        Add this thread t to q
+        &#x2F;&#x2F;线程放入等待队列
+        block(p);
+    &#125;
+&#125;
+semaphore::V()&#123;
+    sem++;
+    if(sem&lt;&#x3D;0)&#123;
+        Remove a thread t from q
+        &#x2F;&#x2F;唤醒一个在等待的线程
+        wakeup(t);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其系统调用为<br>sem_wait(sem_t * sem):以原子操作的方式将信号量减1，如果信号量值为0，则sem_wait被阻塞，直到信号量具有非0值。<br>sem_post(sem_t * sem)：以原子操作将信号量加1.当信号量大于0时，其他正在调用sem_wait等待信号量的线程将被唤醒。</p>
+<h3><span id="5线程通信的方式">5.线程通信的方式</span></h3><p>临界区：<br>通过多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问。<br>互斥量Synchronized/Lock：采用互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有一个，所以可以保证公共资源不会被多个线程同时访问。当进入临界区时，需要获得互斥锁并且加锁；那么其他线程先要访问临界区就需要等待锁的释放。当离开临界区时，需要对互斥锁解锁，以唤醒其他等待该互斥锁的线程。<br>锁时一个抽象的数据结构<br>一个二进制状态(解锁/绑定)<br>Lock::Acquire() 锁被释放之前一直等待，然后得到锁<br>Lock::release() 释放锁，唤醒任何等待的进程<br>怎么实现：<br> 原子操作<br>    test-and-set<br>        从内存中读值<br>        测试该值是否为1，不为1进入临界区<br>        内存值设为1<br>其主要的系统调用如下：<br>pthread_mutex_init:初始化互斥锁<br>pthread_mutex_destroy：销毁互斥锁<br>pthread_mutex_lock:以原子操作的方式给一个互斥锁加锁，如果目标互斥锁已经被上锁，pthread_mutex_lock调用将其阻塞，直到该互斥锁的占有者将其解锁<br>pthread_mutex_unlock:以一个原子操作的方式给一个互斥锁解锁</p>
+<p>信号量semphore:为控制具有有限数量的用户资源而设计的，它允许多个线程在同一时刻去访问同一个资源，但一般需要限制同一时刻访问此资源的<strong>最大线程数目</strong>。<br>条件变量，顾名思义，<strong>一个或多个线程等待某个布尔表达式为真，即等待别的线程唤醒它</strong>.信号量会与互斥量一起使用，条件本身是由互斥量保护的。线程在改变条件状态前必须锁住互斥量。<br>其主要的系统调用如下：<br>pthread_cond_init：初始化条件变量<br>pthread_cond_destroy：销毁条件变量<br>pthread_cond_signal： 唤醒一个等待目标条件变量的线程。哪个线程被唤醒取决于调度策略和优先级。<br>pthread_cond_wait:等待目标条件变量。需要一个加锁的互斥锁确保操作的原子性。该函数中在<strong>进入wait状态前首先进行解锁，然后接收到信号后会再加锁，保证该线程对共享资源的正确访问。</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;条件变量实现
+&#x2F;&#x2F;需要维持在每个条件队列
+&#x2F;&#x2F;线性等待的条件等待signal()
+class Condition()&#123;
+    &#x2F;&#x2F;等待的线程数
+    int numwaiting &#x3D; 0;
+    waitQueue q;
+&#125;
+Condition::Wait(lock)&#123;
+    numwaiting++;
+    Add this thread t to q
+    &#x2F;&#x2F;一定要先释放锁
+    release(lock);
+    schedule();&#x2F;&#x2F;需要互斥锁，阻塞再这里，等待信号量满足条件
+    require(lock);
+&#125;
+Condition::Signal()&#123;
+    &#x2F;&#x2F;和信号量不一样，不一定执行--操作
+    if(numwaiting &gt; 0)&#123;
+        remove a thread from q
+        wakeup(t);&#x2F;&#x2F;需要互斥锁
+        numwaiting --;
+
+    &#125;
+&#125;
+&#x2F;&#x2F;从管程看生产者消费者问题
+class BoundBuffer&#123;
+    &#x2F;&#x2F;保证互斥
+    Lock lock;
+    &#x2F;&#x2F;buffer 内容计数
+    int count &#x3D; 0;
+    &#x2F;&#x2F;两个条件变量
+    Condition notFull,not Empty;
+
+&#125;
+BoundBuffer::Deposit(c)&#123;
+    &#x2F;&#x2F;线程进入管程，只有一个线程能进去
+    lock-&gt;Acquire();
+    while(count &#x3D;&#x3D; n)
+        &#x2F;&#x2F;当前已经满了，睡眠，在wait中一定要释放互斥锁
+        notFull.wait(&amp;lock);
+    Add c to Buffer;
+    count++;
+    notEmpty.Signal();
+    lock-&gt;release;
+
+&#125;
+BoundBuffer::Remove(c)&#123;
+    lock-&gt;Acquire();
+    while(count &#x3D;&#x3D; 0)&#123;
+        notEmpty.wait(&amp;lock);
+
+    &#125;
+    remove c from buffer;
+    count--;
+    &#x2F;&#x2F;有空闲了，唤醒notFull中的线程
+    notFull.Signal();
+    lock-&gt;release();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="6虚拟内存为什么要有虚拟内存什么是虚拟地址空间">6.虚拟内存？为什么要有虚拟内存？什么是虚拟地址空间？</span></h3><p>虚拟内存。虚拟内存是一种内存管理技术，它会使程序自己认为自己拥有一块很大且连续的内存，然而这个程序在内存中不是连续的，并且有些还在磁盘上，在需要的时候进行数据交换。<br>为什么要有虚拟内存？<br>在早期的计算机中，是没有虚拟内存的概念的。我们运行一个程序，会把程序全部装入内存中，然后运行。<br>当运行多个程序的时候，经常会出现如下的问题：<br>    地址空间不隔离，没有权限保护。<br>由于程序都是直接访问物理内存，所以一个进程可以修改其他进程的内存数据，甚至修改内核地址空间里的数据。<br>    内存使用效率低<br>当内存空间不足的时候，将其他程序暂时拷贝到硬盘，然后新程序装入内存运行。由于大量的数据装入装出，内存效率十分低下。<br>    程序运行地址不稳定<br>因为程序内存地址都是随机分配的，所以程序运行的地址也是不确定的，内存管理复杂。<br>虚拟地址的优点：<br>    避免用户直接访问物理地址，防止一些破坏性操作，保护操作系统。<br>    每个进程都分配4GB的虚拟内存，用户程序可使用比实际物理内存更大的地址空间。<br>    当进程通信时，可采用虚存共享的方式实现。当不同的进程使用相同的代码时，比如库文件中的代码，物理内存中可以只存储一份这样的代码，不同的进程只需要把自己的虚拟内存映射过去就可以了。    简化了链接器，加载器这样的程序的内存管理。<br>节省内存。<br>什么是虚拟空间？<br>虚拟地址空间是对于一个单一进程的概念，<strong>这个进程看到的将是从地址0000开始的整个内存空间</strong> 。虚拟存储器是一个抽象概念，它为每个进程提供了一个假象，好像每一个进程都在独占地使用主存。<strong>每个进程看到的存储器都是一致的</strong>,称为虚拟地址空间。从最低的地址看起：程序代码和数据，堆，共享库，栈，内存虚拟存储器。</p>
+<p>虚拟内存技术使得不同进程在运行过程中，它所看到的是自己独自占有了当前系统的4G内存，所有进程共享同一物理内存，<strong>每个进程只把自己目前需要的虚拟内存空间映射并存储到物理内存上</strong>。事实上，在每个进程创建加载时，内核只是为进程”创建”了虚拟内存的布局，具体就是初始化进程控制表中内存相关的链表，实际上<strong>并不立即</strong>就把虚拟内存对应位置的程序数据和代码(.text.data段)拷贝到物理内存中，只是建立好虚拟内存和磁盘文件的映射就好(叫做存储器映射)，等到运行到对应程序时，才会通过<strong>缺页异常</strong>，来拷贝数据。还有进程运行过程中，要动态分配内存，比如<strong>malloc时，也只是分配了虚拟内存，即为这块虚拟内存对应的页表项做相应设置，当进程真正访问到此数据时，才引发缺页异常。</strong> 可以认为虚拟空间都被映射到了磁盘空间中(事实上也是按需要映射到磁盘空间上，通过mmap)，并且由页表记录映射位置。当<strong>访问到某个地址的时候，通过页表中的有效位，可以得知此数据是否在内存中</strong>,如果不是，则通过缺页异常，将磁盘对应的数据拷贝到内存中，如果没有空闲内存则选择牺牲页面，替换其他页面。</p>
+<h3><span id="7mmap原理">7.mmap原理</span></h3><p>mmap是用来建立从虚拟空间到磁盘空间的映射的，可以将一个虚拟空间地址映射到一个磁盘文件上，当不设置这个地址时，则由系统自动设置，函数返回对应的内存地址(虚拟地址)。使用mmap分配内存，在<strong>堆和栈之间找一对空闲的内存分配</strong>.这两种方式分配的是虚拟内存，没有分配物理内存。真正的分配要在第一次访问已经分配的虚拟内存空间的时候，发生缺页中断，由操作系统分配物理内存，建立虚拟内存和物理内存之间的映射关系。</p>
+<h3><span id="8进程控制块包含信息和组织方式">8.进程控制块包含信息和组织方式</span></h3><p>进程控制块(PCB)是系统为了管理进程设置的一个专门的数据结构。系统用它来记录进程的外部特征，进程描述的运动变化过程。同时，系统可以利用PCB来控制和管理进程。所以说，PCB是系统感知进程存在的唯一标志。<br>PCB含有以下三大类信息：<br>进程标识信息：本进程标识，父进程标识，用户标识<br>处理机状态信息保存区：<br>保存进程的运行现场信息。用户可见的寄存器，控制和状态寄存器，栈指针(过程调用，系统调用，中断处理和返回需要用到)<br>进程控制信息：<br>调度和状态信息：如进程状态，等待事件和等待原因，进程优先级<br>进程通信信息：如消息队列指针，信号量等互斥和同步机制，这些信息存放在接收方的进程块中。<br>存储管理信息：进程在辅存储器内的地址，包含指向本进程映像存储空间的数据结构。<br>进程所用资源：包含进程所需全部资源，已经分得的资源，如主存资源，I/O设备，打开文件表等。<br>有关数据结构连接信息：父子进程连接起来，进程可以连接到一个进程队列中，或连接到相关的其他进程PCB。<br>PCB组织方式<br>一般是链表：更好的完成动态插入和删除。一个状态的进程对应PCB中的一个链表，如就绪链表，阻塞链表。</p>
+<h3><span id="9mallocrealloccalloc的区别">9.malloc,realloc,calloc的区别</span></h3><p>1.malloc函数</p>
+<pre class="line-numbers language-none"><code class="language-none">void * malloc(unsigned int num_size);
+int * p &#x3D; (int *)malloc(20*sizeof(int));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>申请20个int类型的空间<br>2.calloc函数</p>
+<pre class="line-numbers language-none"><code class="language-none">void * calloc(size_t,size_t size);
+int * p &#x3D; calloc(20,sizeof(int));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>malloc的申请空间是随机化的，callloc的申请的空间的值初始化为0<br>3.realloc 函数</p>
+<pre class="line-numbers language-none"><code class="language-none">void realloc(void * p,size_t new_size);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>给分配的额外分配空间，用于扩充容量。<br>这里有几个问题：<br>1.堆和栈最大可分配的内存的大小<br>2.堆和栈的内存管理方式<br>3.堆和栈的分配效率<br>首先针对第一个问题，一般来说对于一个进程栈的大小远远小于堆的大小。在linux中你可以使用ulimit-s(单位kb)来查看一个进程栈的最大可分配大小，一般来说不超过8M，有的甚至不超过2M，不过这个可以设置，而对于堆你会发现，针对一个进程堆的最大可分配的大小在G的数量级上，不同的操作系统可能不一样，比如32位系统最大不超过2G,而64位系统最大不超过4G，所以当你需要一个分配的大小的内存时，请用new，即用堆。</p>
+<p>其次针对第二个问题，<strong>栈是系统数据结构</strong>，对于进程/线程是唯一的，它的分配与释放由<strong>操作系统来维护</strong>，不需要开发者来管理。在执行函数时，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时，这些存储单元会被自动释放。栈内存分配运算内置于处理器执行集中，效率很高。不同的操作系统对栈都有一定的限制。堆上的内存分配，也成为<strong>动态内存分配</strong> .程序在运行的期间用malloc申请的内存，这部分内存<strong>由程序员自己负责管理</strong>,其生存期由开发者决定：在何时分配，分配多少，并在何时用free来释放该内存。这是唯一可以由开发者参与管理的内存。使用的好坏直接决定系统的性能和稳定。</p>
+<p>由上可知，<strong>当我们需要的内存很少，又能确定到底需要多少内存的时候，请使用栈。而当你需要在运行时才知道需要多少内存的时候，请用堆。</strong></p>
+<p>最后针对第三个问题，栈是机器系统提供的数据结构，计算机会在底层对栈提供支持：分配专门的寄存器存放在栈的地址，压栈出栈都有专门的指令执行，这就决定了栈的效率比较高。堆是C/C++函数提供的，它的机制是很复杂的，例如<strong>为了分配一块内存</strong>，库函数会按照一定的算法(具体的算法可以参考数据结构、操作系统)在堆内存中搜索可用的足够大小的空间，如果没有足够大小的空间(<strong>内存碎片过多</strong>),就有可能调用系统功能去增加程序数据段的内存空间，这样就有机会分到足够大小的内存，然后进行返回。显然，堆的效率要比栈要低的多。</p>
+<h3><span id="10并行和并发">10.并行和并发</span></h3><p>并发（concurrency):指宏观上看起来两个程序同时运行，比如在单核cpu上的多任务。但是微观上看两个程序的指令是交织着运行的。你的指令之间穿插这我的指令，我的指令穿插这你的，在单个周期内只运行了一个指令。这种并发不能提高计算机的性能，只能提高效率。</p>
+<p>并行(parallelism):指<strong>严格物理意义上统一时刻的同时运行</strong>,比如多核cpu，两个程序分别运行在两个核上，两者之间相互不影响。这样说来并行的确提高了计算机的效率，所以现在的cpu都是往多核方面发展的。</p>
+<h3><span id="11如何修改文件的最大句柄数">11.如何修改文件的最大句柄数</span></h3><p>linux默认的最大文件句柄数是1024个，在linux服务器文件并发量比较大的情况下，系统会报”to many open files”的错误。所以在linux服务器高并发调优时，往往需要预先调优linux参数，修改linux最大文件句柄数。</p>
+<p>有两种方法：<br>1.ulimit-n &lt;可以同时打开的文件数&gt; 。将当前进程的最大句柄数修改为指定的参数（注意：该方法只针对当前进程有效，重新打开shell或者重新开启一个进程，参数还是之前的值)<br>2.对所有进程都有效的方法，修改linux系统参数<br>vi/etc/security/limits.conf添加</p>
+<p>soft nofile 65536<br>hard nofile 65536<br>将最大句柄数改为65536<br>修改以后保存，注销当前用户，重新登录，修改后的参数就生效了。</p>
+<h3><span id="12进程加载和终止调用的函数fork和vfork的区别">12.进程加载和终止调用的函数？fork和vfork的区别</span></h3><p>fork()创建一个继承的子进程<br>当调用fork时，内核会把所有的内部数据结构复制一份，复制进程的页表项，然后把<strong>父进程的地址空间中的内容逐页的复制到子进程的地址空间中</strong>但从多核角度来说，逐页的复制方式是十分耗时的。</p>
+<p>父进程返回子进程的id，子进程返回0 不成功id&lt;0<br>复制父进程所有的变量和内存<br>复制父进程所有的cpu寄存器</p>
+<pre class="line-numbers language-none"><code class="language-none">int pid &#x3D; fork();
+if(pid &#x3D;&#x3D; 0)&#123;
+    &#x2F;&#x2F;做什么都行（关闭网络连接）
+    &#x2F;&#x2F;调用exec()加载新程序取代当前运行进程，地址空间，代码数据也换掉了。
+    exec(&quot;program&quot;,argc,argv0,argv1...)
+&#125;
+&#x2F;&#x2F;等待子进程结束child_status &#x3D; wait(pid);
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在fork()后立刻执行exec所造成的地址空间的浪费。vfork()轻量级fork，创建进程时<strong>不再创建同样的内存映像</strong></p>
+<p>子进程必须要立刻执行一次对exec的系统调用，或者调用_exit()退出，<strong>vfork()会挂起父进程直到子进程终止或者运行了一个新的可执行文件的映像。通过这样的方式，vfork()避免了地址空间的按页复制。</strong><br>**<br>COP<strong>Y On Write (写的时候进行复制)，在实际地址空间复制的时候并没有真实的复制，而是复制父进程地址空间所需要的元数据（页表），指向同一块地址空间，</strong>当父进程或者子进程对某一个地址单元写操作会触发一个异常，使得触发异常的页复制成两份。只有写的时候才会。**</p>
+<p>fork和vfork的区别<br>f<strong>ork(</strong>)的父子进程的执行次序不确定。<strong>vfork()保证子进程先运行</strong>在调用exec或exit僵尸与父进程数据是共享的，在它<strong>调用exec或exit之后父进程才可能被调度运行</strong></p>
+<h3><span id="13孤儿进程-amp-僵尸进程">13.孤儿进程 &amp; 僵尸进程</span></h3><p><strong>孤儿进程</strong><br>父进程运行结束，但子进程还在运行（未运行结束），这样的子进程为孤儿进程。<br>每当出现一个孤儿进程，内核就把孤儿进程的父进程设置为init，而init进程会循环的wait()它的已经退出的子进程。这样当一个孤儿进程凄凉的结束了其生命周期的时候，init进程就会代表父进程回收。孤儿进程不会有什么危害。</p>
+<p><strong>僵尸进程</strong><br>一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵尸进程。</p>
+<h3><span id="14管道的读写特点">14.管道的读写特点</span></h3><p>使用管道时需要注意以下几种特殊的情况（假设都是阻塞的I/O操作）<br>1.所有的指向管道写端的文件描述符都关闭了（管道写端引用计数为0），进程从管道的读端读数据，那么管道中剩余的数据被读取以后，再次read会返回0.就像读到文件末尾一样。</p>
+<p>2.如果有指向管道写端的文件描述符没有关闭（管道的写端引用计数大于0），而持有管道写端的进程也没有往管道中写数据 ，这个时候有进程从管道中读取数据，那么管道中剩余的数据被读取后再次read会阻塞，直到管道中有数据可读，才读取数据并返回。</p>
+<p>3.如果所有指向管道读端的文件描述符都关闭了（管道的读端引用计数为0），这个时候有进程向管道中写数据，那么该进程会收到一个信号SIGPIPE，通常会导致进程异常终止。</p>
+<p>4.如果有指向管道读端的文件描述符没有关闭，（管道的读端引用计数大于0），而持有管道读端的进程也没有从管道中读数据，这时有进程向管道写数据，那么在管道被写满的时候，再次write会被阻塞，直到管道中有空位置才能写入数据并返回。</p>
+<p>总结：<br>    读管道：<br>        管道中有数据，read返回实际读到的字节数<br>        管道中无数据：<br>            写端全部关闭，read返回0 （相当于读到文件的末尾）<br>            写端没有完全关闭，read阻塞等待。<br>    写管道：<br>        管道读端全部被关闭，进程异常终止（进程收到SIFPIPE信号）<br>        管道读端没有完全关闭：<br>            管道已满，write阻塞<br>            管道没有满,write将数据写入并返回实际写入的字节数。</p>
+<h3><span id="15常见io模型5种异步io应用场景有什么缺点">15.常见I/O模型？5种？异步IO应用场景？有什么缺点</span></h3><p>几个概念 ：同步，异步，阻塞，非阻塞<br>首先来解释同步和异步的概念，这两个概念与消息通知机制有关。也就是同步与异步主要是从消息通知机制角度来说的。<br><strong>同步异步概念</strong>：<br>所谓<strong>同步</strong>就是一个任务的完成需要依赖另外一个任务时，<strong>只有等待被依赖的任务完成后，依赖的任务才能算完成，这是一种可靠的任务序列</strong>。要么成功都成功，要么失败都失败，两个任务的状态可以保持一致。</p>
+<p>所谓<strong>异步</strong>是不需要等待被依赖的任务完成，只是通知被依赖的任务要完成什么工作，依赖的任务也立即执行，只要自己完成了整个任务就算完成了。至于被依赖的任务最终是否真正完成，依赖它的任务无法确定。所以它是<strong>不可靠的任务序列</strong>。</p>
+<p>1）同步<br>就是再发出一个功能调用时，<strong>没有得到结果之前，该调用就不返回</strong>,同步I/O指的是，必须等待IO操作完成后，控制权才返回给用户进程。也就是必须一件一件事情做，等前一件事情做完了才能做下一件事情。就是我们调用一个功能，该功能没有结束前，我死等结果。</p>
+<p>2）异步<br>当一个异步调用发出后，调用者不能立即得到结果。实际处理这个调用的部件在完成后，通过状态，通知和调用来通知调用者。我调用一个功能，不知道该功能的结果，该功能有结果后通知我（回调通知）</p>
+<p>阻塞与非阻塞<br>阻塞和非阻塞这两个概念与程序（线程）等待消息通知（无所谓同步或者异步）时的状态有关。也就是说阻塞与非阻塞主要是程序（线程）<strong>等待消息通知时的状态角度来说的</strong>。</p>
+<p>3)阻塞<br>阻塞调用是指调用结果返回前，当前线程会被挂起（线程进入非可执行状态，在这个状态下，cpu不会给线程分配时间片，即线程暂停运行）。函数只有在得到结果之前才会返回。对于<strong>同步调用来说，很多时候当前进程还是激活的，只是逻辑上当前函数没有返回而已</strong>。就是调用函数，<strong>函数在没有接收完数据或者没有得到结果之前不会返回。</strong></p>
+<p>4）非阻塞<br>指在不能立刻得到结果之前，该函数不会阻塞当前线程，而是会<strong>立刻返回</strong>。</p>
+<p>5种常见IO模型<br>1.阻塞IO<br>应用程序调用一个IO函数，导致<strong>程序阻塞，等待数据准备好</strong>，这个时候有进程从管道中读取数据，那么管道中剩余的数据被读取后再次read会阻塞，直到管道中有数据可读，才读取数据并返回。<br>2.非阻塞IO<br>我们把一个SOCKET接口设置为非阻塞就是告诉内核，<strong>当请求的I/O操作无法完成时，不要将进程睡眠，而是返回一个错误</strong>，这样我们的IO操作函数将不断的测试数据是否已经准备好，如果没有准备好，继续测试，直到数据准备好为止。在这个不断测试的过程中，会大量的占用CPU的时间。<br>3.IO复用模型会用到select,poll,epoll函数。这几个函数也会使进程阻塞，但是和阻塞IO不同的是，这三个函数可以同时阻塞多个IO操作。而且可以同时对多个读操作，多个写操作的IO函数进行检测，直到有数据可读或可写时，才真正调用IO函数。<br>4.信号驱动<br><strong>开启套接字的信号驱动式IO功能。通过sigaction系统调用安装一个信号处理函数</strong>，该系统调用让内核在描述符就绪时发送SIGIO信号通知我们，在信号处理函数中调用IO操作函数处理数据。<br>5.异步IO模型<br><strong>当一个异步过程调用发出后，调用者不能立刻得到结果。</strong>，实际处理这个调用的部件在完成后，通过状态，通知，回调来通知调用者的输入输出操作。与信号驱动IO的主要区别，信号驱动IO主要是通知我们何时开启一个IO操作，<strong>而异步IO模型是由内核通知我们IO操作何时完成。</strong>。</p>
+<h3><span id="16进程控制块包含信息和组织方式">16.进程控制块包含信息和组织方式</span></h3><p>进程控制块（PCB）是系统为了管理进程设置的一个专门的数据结构。系统用它来记录进程的外部特征，描述进程的运动变化过程。同时，系统可以利用PCB来控制和管理进程，所以说PCB是系统感知进程存在的唯一标志。</p>
+<p>PCB含有以下三大类信息：<br>进程标识信息：本进程标识，父进程标识，用户标识<br>处理机状态信息保存区：<br>保存进程的运行现场信息，<strong>用户可见到的寄存器，控制和状态寄存器</strong>，栈指针（过程调用，系统调用，中断处理和返回需要用到）</p>
+<p>进程控制信息：<br>调度和状态信息：如进程状态，等待事件和等待原因，进程优先级，进程通信信息：如消息队列指针，信号量等互斥和同步机制，这些信息存放在接收方的进程控制块中。存储管理信息:进程在辅存储器内的地址，包含指向本进程映像存储空间的数据结构。进程所用资源：包括进程所需全部资源，已经分得的资源，如主存资源，IO设备，打开文件表等。有关数据结构连接信息：父子进程连接起来，进程可以连接到一个进程队列中，或连接到相关的其他进程PCB。<br>PCB组织方式<br>一般是链表，更好的完成动态插入删除。一个状态的进程对应PCB中的一个链表。如就绪链表，阻塞链表。</p>
+<h3><span id="17请说一说操作系统中的程序的内存结构">17.请说一说操作系统中的程序的内存结构</span></h3><p>可以看到一个可执行程序存储在（没有调入内存）时分为<strong>代码段，数据区和未初始化数据区三部分。</strong><br>BSS段（未初始化数据区）：通常用来存放程序中未初始化的全局变量和静态变量的一块内存区域。<strong>BSS段属于静态分配，程序结束后静态变量资源由系统自动释放。</strong><br>数据段：存放程序中<strong>已初始化的全局变量的一块内存区域</strong>。数据段也属于静态内存分配</p>
+<p>代码段：存放程序执行代码的一块内存区域。这部分区域的大小在程序运行前就已经确定，并且内存区域属于只读。在代码段中也有可能包含一些<strong>只读的常数变量。</strong><br>text段和data段在编译时已经分配了空间，而<strong>BSS段并不占用可执行文件的大小，它是由链接器来获取内存的。</strong></p>
+<p>bss段（未进行初始化的数据）的内容<strong>并不存放在磁盘上的程序文件中</strong>，其原因是在内核在程序开始运行前将他们置为0.需要存放在程序文件中的只有正文段和初始化数据段。BSS的大小从可执行文件中得到，然后<strong>链接器得到这个大小的内存块，紧跟在数据段的后面，当这个内存进入程序的地址空间后全部清零。</strong>包含数据段和BSS段的整个区段此时称之为数据区。<br>可执行程序在运行时又多出两个区域：栈区和堆区</p>
+<p>栈区：由编译器自动释放，存放函数的参数值，局部变量等。每当一个函数被调用时，该函数的返回类型和一些调用的信息被存放在栈中。然后这个被调用的函数再为他的自动变量和临时变量在栈上分配空间。每调用一个函数一个新的栈就会被使用。<strong>栈区是从高地址为向低地址位增长的，是一个连续的内存区域，最大容量是由系统预先定义好的，申请的占空间超过这个界限就会提示溢出，用户能从栈中获取的空间较小。</strong></p>
+<p>堆区：用于动态分配内存，位于BSS和栈中间的的地址区域。<strong>由程序员申请分配和释放。</strong> <strong>堆是从低地址位向高地址位增长，采用链式存储结构。频繁的malloc、free造成内存空间的不连续，产生碎片。</strong>当申请堆空间时，库函数是按照一定的算法搜索可用的足够大的空间，因此堆的效率要比栈低得多。</p>
+<h3><span id="18虚拟内存的技术实现">18.虚拟内存的技术实现</span></h3><p>虚拟内存的实现需要加你了在离散分配的内存管理方式的基础上，虚拟内存的实现有以下三种方式：<br>1.请求分页存储管理：建立在基本分页系统的基础上，为了支持虚拟存储器功能而增加了请求调页功能和页面置换功能。请求分页是目前最常用的一种实现虚拟存储器的方法。<br>2.请求分段存储管理<br>3.请求段页式存储管理<br>不管是上面哪种实现方式，我们一般需要：<br>1.一定容量的内存和外存，在载入程序的时候，只需要将程序的一部分装入内存而将其他部分留在外存，然后程序就可以执行了。<br>2.缺页中断：如果需要执行的指令或访问的数据尚未在内存（称为缺页或缺段），则<strong>由处理器通知操作系统将相应的页面或段调入内存，然后执行程序。</strong><br>3.虚拟地址空间：逻辑地址到物理地址的变换。</p>
+<h3><span id="19缺页步骤">19.缺页步骤</span></h3><p>缺页是指当CPU请求一个虚拟地址时，虚拟地址所对应的页在物理内存中不存在。此时MMU会产生缺页错误，然后由内核的缺页处理程序从磁盘中调入对应的页到主存中。在处理完成后，CPU会重新执行导致错误的指令，从而读取到对应的内存数据。<br>下面时缺页时的地址翻译的过程（第一步到第三步与页命中时相同）<br>1.处理器生成一个虚拟地址，并把它传送给MMU<br>2.MMU生成根据地址生成VPN，然后请求高速缓存、主存，获取PTE的数据。<br>3.高速缓存，主存向MMU返回PTE数据<br>4.由于判断出PTE有效位是0，所以CPU将发出一次异常，将控制权转移给内核中的缺页异常处理程序。<br>5.缺页或异常处理程序确定出物理内存中的牺牲页，如果这个页面被修改过了（D标志位位1），那么将牺牲页换出到磁盘。<br>6.缺页处理程序从磁盘中调入新的页面到主存，并且更新PTE<br>7.缺页处理程序将控制权返回给原来的进程。再次执行导致缺页的指令。再次执行后，就会产生页命中时的情况了。</p>
+<h3><span id="20页面置换算法">20.页面置换算法</span></h3><p>上文提到缺页，但是当内存满了的时候，就需要从内存中按照一定的置换算法决定内存把哪个页面放弃，存入新的页<br>最佳置换算法OPT<br>算法思想：每次选择淘汰的页面将是以后永不使用，或者最长时间内不再被访问的页面。这样可以保证最低的缺页率。最佳置换算法可以保证最低的缺页率，但是实际上，只有进程执行的过程中才能知道接下来会访问到哪个页面。操作系统无法提前预判页面的访问序列，因此最佳置换算法是无法实现的。</p>
+<p>先入先出置换算法FIFO<br>总是选择在主存中停留时间最长（即最老的）一页置换，即先进入内存的页，先退出内存。<br>当为进程分配的物理块数增大时，缺页次数不减反增的异常现象称之为贝莱蒂(belay)异常。<br><strong>只有FIFO算法会产生belay异常</strong>。另外FIFO算法虽然实现简单，但是该算法与进程实际运行时的规律不适应。因此<strong>先进入的页面也有可能时最经常被访问的。因此算法性能差。</strong></p>
+<p>最长时间未用置换算法LRU<br>算法思想:每次淘汰的页面时最近最久未使用的页面<br>实现方法：赋予每个页面对应的页表项中，<strong>用访问字段记录该页面自上次访问以来所经历的时间t。</strong>当需要淘汰一个页面时，选择现有页面中t最大的页面，即最近最久未使用。<br>LRU置换算法虽然时比较好的算法，但要求系统有较多的支持硬件。为了了解一个进程在内存中各个页面各有多少时间未被进程访问，以及如何快速的知道那一页时最近最久未使用的页面，须有两类硬件之一的支持：<strong>寄存器和栈。</strong><br>寄存器<br>为了记录某进程在内存中各页的使用情况，须为每个在内存中的页面配置一个移位寄存器，可表示为<br>R= Rn-1 Rn-2 …R0<br>当进程访问某物理块时，要将<strong>相应的寄存器的Rn-1位置置成1，此时定时信号将每隔一定时间（例如100ms）将寄存器右移1位。如果我们把n位寄存器的数看作是一个整数，那么具有最小数值的寄存器所对应的页面</strong>，就是最近最久未使用的页面。</p>
+<p>栈<br>可利用一个特殊的栈来保存当前使用的各个页面的页面号。每当进程访问某页面的时候，便将该页面从栈中移除，将它压入栈顶。因此，<strong>栈顶始终是最新被访问的编号，栈底则是最近最久未使用页面的页面号。</strong></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">计算机基础</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">谢谢你请我吃糖果🍬</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'mtODWYVhtCigkQw0txyftoMA-gzGzoHsz',
+        appKey: 'IEEkpA8t8wLdzEff2jk2nIFG',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '别走呀，理理我，留个言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/06/09/hexo%E4%B8%8A%E4%BC%A0github/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Hexo上传github">
+                        
+                        <span class="card-title">Hexo上传github</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/blog/" class="post-category">
+                                    blog
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/06/09/%E6%A8%A1%E5%9E%8B%E6%94%B9%E8%BF%9B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="模型改进">
+                        
+                        <span class="card-title">模型改进</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="6601699944"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">杨新宇</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">207.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" style='display:none'
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" style='display:none'
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/YXY996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:614533604@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=614533604" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 614533604" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

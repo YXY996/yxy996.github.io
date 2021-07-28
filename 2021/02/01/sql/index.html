@@ -1,0 +1,1622 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="MySQL, 小杨的博客">
+    <meta name="description" content="分享笔记心得，互相学习">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>MySQL | 小杨的博客</title>
+    <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小杨的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小杨的博客</div>
+        <div class="logo-desc">
+            
+            分享笔记心得，互相学习
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/YXY996" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/YXY996" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MySQL</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/MySQL/" class="post-category">
+                                MySQL
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-02-01
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-02-05
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    28 分
+                </div>
+                
+
+                 <span id="busuanzi_container_site_pv" style='display:none'>
+                </span> <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv" >
+                </span> 
+                
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1409311773&auto=1&height=66"></iframe>
+
+<p>mysql的学习笔记(持续更新中)<br>mysql<br>##基础操作</p>
+<h3><span id="登陆mysql">登陆mysql</span></h3><p>mysql -uroot-p输入密码</p>
+<h3><span id="查看数据库信息的基本指令">查看数据库信息的基本指令</span></h3><p>–显示数据库<br>show databases;<br>–如何在数据库服务器中创建我们的数据库<br>create database test;<br>–切换数据库<br>use test<br>–显示数据库中所有的表<br>show tables;<br>–如何创建一个数据表<br>create table pet(<br>name varchar(20),<br>owner varchar(20),<br>species varchar(20),<br>sex char(1),<br>birth date,<br>death date<br>);<br>-查看数据表结构<br>mysql-describe pet;<br>省略写成 desc pet<br>–如何查看数据表 中的记录<br>mysql&gt; select *from pet;<br>Empty set (0.01 sec)<br>–如何往数据表中添加数据记录<br>insert into pet values(‘pul’,’Die’,’hamer’,’f’,’1990-3-3’,NULL);<br>//大小写均可以<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>inser into pet values(‘旺财’,’周星驰’,’dog’,’公’,’1996-3-1’,NULL);<br>–mysql 常用数据类型有哪些<br>mysql 支持多种类型，可以分为三类<br>create table testType<br>(<br>    number TINYINT<br>    );</p>
+<p>INSERT INTO testType VALUES(127);<br>select * from testType;<br>+——–+<br>| number |<br>+——–+<br>|    127 |<br>+——–+<br>1 row in set (0.00 sec)</p>
+<h3><span id="数据记录常见操作">数据记录常见操作</span></h3><p>–增加<br>INSERT<br>INSERT INTO pet VALUES (‘puffball’, ‘Diane’, ‘hamster’, ‘f’, ‘1990-03-30’, NULL);<br>–删除<br>Delete<br>删除数据<br>DELETE FROM pet where name = ‘squirrel’;<br>删除表<br>delete table pet;<br>–修改<br>update<br>UPDATE pet SET name = ‘squirrel’ where owner = ‘Diane’;<br>–查询<br>select<br>SELECT * from pet;</p>
+<h2><span id="mysql建表约束-sql">mysql建表约束 .sql</span></h2><h3><span id="1主键约束">1.主键约束</span></h3><p>他能够唯一确定一张表中的一条记录，也就是我们通过给某个字段添加约束，使得该字段不重复且不为空<br>create table user(<br>    id int primary key,<br>    name varchar(20)<br>    );<br>INSERT INTO user VALUES(1,’张三’);<br>INSERT INTO user VALUES(2,’李四’);<br>//注意一定要注意逗号等符号的格式，中英文切换容易造成格式错误</p>
+<h3><span id="2联合主键">2.联合主键</span></h3><p>–只要联合的主键值加起来不重复就可以 //完全重复不可以.其中至少有一个不相同可以<br>create table user2(<br>id int,<br>name varchar(20),<br>password varchar(20),<br>primary key (id,name)<br>);<br>insert into user2 values(1,’张三’,’123’);<br>insert into user2 values(2,’张三’,’123’);<br>insert into user2 values(1,’李四’,’123’);<br>insert into user2 values(NULL,’李四’,’123’);<br>//并且主键值都不能为空</p>
+<h4><span id="-添加主键约束">- 添加主键约束</span></h4><p>– 如果忘记设置主键，还可以通过SQL语句设置（两种方式）：<br>ALTER TABLE user ADD PRIMARY KEY(id);//选择数据表，然后添加数据类型为主键约束<br>ALTER TABLE user MODIFY id INT PRIMARY KEY;//将数据表中的某一个数据修改为主键约束</p>
+<h3><span id="3自增约束">3.自增约束</span></h3><p>–自增约束的主键由系统自动递增分配<br>create table user(<br>    id int primary key auto_increment,<br>    name varchar(20));</p>
+<h3><span id="4唯一约束">4.唯一约束</span></h3><p>insert into user5 values(1,’张三’);</p>
+<p>create table user6(<br>    id int,<br>    name varchar(20),<br>    unique (name));<br>create table user7(<br>    id int,<br>    name varchar(20)unique);<br>create table user8(<br>    id int,<br>    name varchar(20),<br>    unique (id,name));<br>mysql&gt; desc user8;<br>+——-+————-+——+—–+———+——-+<br>| Field | Type        | Null | Key | Default | Extra |<br>+——-+————-+——+—–+———+——-+<br>| id    | int         | YES  | MUL | NULL    |       |<br>| name  | varchar(20) | YES  |     | NULL    |       |<br>+——-+————-+——+—–+———+——-+</p>
+<p>insert into user8 values(1,’张三’);<br>insert into user8 values(1,’张三’);<br>如何删除唯一约束<br>–mysql&gt; alter table user7 drop index name;<br>Query OK, 0 rows affected (0.00 sec)<br>Records: 0  Duplicates: 0  Warnings: 0</p>
+<p>mysql&gt; desc user7;<br>+——-+————-+——+—–+———+——-+<br>| Field | Type        | Null | Key | Default | Extra |<br>+——-+————-+——+—–+———+——-+<br>| id    | int         | YES  |     | NULL    |       |<br>| name  | varchar(20) | YES  |     | NULL    |       |<br>+——-+————-+——+—–+———+——-+<br>–modify添加<br>alter table user7 modify name varchar(20) unique;</p>
+<h3><span id="5非空约束">5.非空约束</span></h3><p>–修饰字段不能为空NULL<br>create table user9(<br>    id int,<br>    name varchar(20) not NULL);<br>INSERT INTO user9(id)values(1);</p>
+<p>–mysql&gt; INSERT INTO user9(id)values(1);<br>ERROR 1364 (HY000): Field ‘name’ doesn’t have a default VALUE</p>
+<p>INSERT INTO user9(name)values(‘zhang’);<br>INSERT INTO user9 values(1,’zhang’);<br>//设定name为非空值，则不能为空，id可为空<br>mysql&gt; select * from user9;<br>+——+——-+<br>| id   | name  |<br>+——+——-+<br>| NULL | zhang |<br>|    1 | zhang |<br>+——+——-+<br>2 rows in set (0.00 sec)</p>
+<a id="more"></a>
+<p>–默认约束<br>–就是当我们插入字段值时，如果没有传值就会使用默认值<br>create table user10(<br>id int,<br>name varchar(20),<br>age int default 10);<br>mysql&gt; desc user10;<br>+——-+————-+——+—–+———+——-+<br>| Field | Type        | Null | Key | Default | Extra |<br>+——-+————-+——+—–+———+——-+<br>| id    | int         | YES  |     | NULL    |       |<br>| name  | varchar(20) | YES  |     | NULL    |       |<br>| age   | int         | YES  |     | 10      |       |<br>+——-+————-+——+—–+———+——-+<br>3 rows in set (0.00 sec)<br>insert into user10 (id,name)values(1,’zhangsan’);<br>//age 未赋值 所以age显示默认值<br>mysql&gt; select * from user10;<br>+——+———-+——+<br>| id   | name     | age  |<br>+——+———-+——+<br>|    1 | zhangsan |   10 |<br>+——+———-+——+<br>1 row in set (0.00 sec)</p>
+<h3><span id="6外键约束">6.外键约束</span></h3><p>–涉及到两个表 父表子表<br>–主表 副表<br>–班级<br>create table classes(<br>id int primary key,<br>name varchar(20)<br>);</p>
+<p>–学生表<br>create table students(<br>id int primary key,<br>name varchar(20),<br>class_id int,<br>foreign key (class_id) references classes (id)<br>);</p>
+<p>insert into classes values(1,’一班’);<br>insert into classes values(2,’二班’);<br>insert into classes values(3,’三班’);<br>insert into classes values(4,’四班’);</p>
+<p>mysql&gt; select * from classes;<br>+—-+——–+<br>| id | name   |<br>+—-+——–+<br>|  1 | 一班   |<br>|  2 | 二班   |<br>|  3 | 三班   |<br>|  4 | 四班   |<br>+—-+——–+<br>4 rows in set (0.00 sec)<br>–删除主表中的数据</p>
+<p>mysql&gt; delete from classes where id=4;<br>Query OK, 1 row affected (0.01 sec)</p>
+<p>mysql&gt; select * from classes;<br>+—-+——–+<br>| id | name   |<br>+—-+——–+<br>|  1 | 一班   |<br>|  2 | 二班   |<br>|  3 | 三班   |<br>+—-+——–+<br>3 rows in set (0.00 sec)</p>
+<p>insert into students values(1001,’zhangsan’,1);<br>insert into students values(1002,’zhangsan’,2);<br>insert into students values(1003,’zhangsan’,3);<br>//因为刚才通过delete和删除了四班 所以只输入前三组数据<br>insert into students values(1004,’zhangsan’,4);<br>//查看结果没有问题 classses父表中的班级数据被子表引用<br>mysql&gt; select * from students;<br>+——+———-+———-+<br>| id   | name     | class_id |<br>+——+———-+———-+<br>| 1001 | zhangsan |        1 |<br>| 1002 | zhangsan |        2 |<br>| 1003 | zhangsan |        3 |<br>+——+———-+———-+<br>3 rows in set (0.00 sec)<br>再次尝试删除主表数据</p>
+<p>mysql&gt; delete from classes where id=3;<br>ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (<code>test</code>.<code>students</code>, CONSTRAINT <code>students_ibfk_1</code> FOREIGN KEY (<code>class_id</code>) REFERENCES <code>classes</code> (<code>id</code>))<br>得到的结果是erro 说明当主表的记录被副表引用后，是不可以被删除的。但是被引用前可以随意删除</p>
+<h2><span id="5数据库的三大设计范式sql">5.数据库的三大设计范式.sql</span></h2><h3><span id="1nf">1NF</span></h3><p>  INF<br>  –数据表中的 所有字段都是不可分割的原子值<br>  create table student2(<br>  id int primary key,<br>  name varchar(20),<br>  address varchar(30)<br>  );</p>
+<p>  insert into student2 values(1,’zhangsan’,’武侯区武侯大道100号’);<br>  insert into student2 values(2,’lisi’,’武侯区京城大道200号’);<br>  insert into student2 values(3,’wang5’,’高新区王府大道300号’);<br>mysql&gt; select * from student2;<br>+—-+———-+—————————–+<br>| id | name     | address                     |<br>+—-+———-+—————————–+<br>|  1 | zhangsan | 武侯区武侯大道100号         |<br>|  2 | lisi     | 武侯区京城大道200号         |<br>|  3 | wang5    | 高新区王府大道300号         |<br>+—-+———-+—————————–+<br>3 rows in set (0.00 sec)</p>
+<p>–字段值还可以继续拆分的就不满足第一范式<br> create table student3(<br> id int primary key,<br> name varchar(20),<br> district varchar(30),<br> number varchar(30));</p>
+<p>先创建了一个数据表，之后发现数据表中数据不完善，需要再添加一个变量的时候，这里使用alter命令。<br>mysql&gt; alter table student3 add details varchar(30);<br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0</p>
+<p>mysql&gt; desc student3;<br>+———-+————-+——+—–+———+——-+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+———-+————-+——+—–+———+——-+<br>| id       | int         | NO   | PRI | NULL    |       |<br>| name     | varchar(20) | YES  |     | NULL    |       |<br>| district | varchar(30) | YES  |     | NULL    |       |<br>| number   | varchar(30) | YES  |     | NULL    |       |<br>| details  | varchar(30) | YES  |     | NULL    |       |<br>+———-+————-+——+—–+———+——-+<br>//添加<br>mysql&gt; alter table student3 add details varchar(30);<br>//指定某一个位置添加新变量<br>mysql&gt; alter table student3 add details varchar(30) after district;</p>
+<p>//删除<br>mysql&gt; alter table student3 drop details varchar(30);</p>
+<p>insert into student3 values(1,’zhangsan’,’武侯区’,’武侯大道’,’100号’);<br>insert into student3 values(2,’lisi’,’武侯区’,’京城大道’,’200号’);<br>insert into student3 values(3,’wang5’,’高新区’,’王府大道’,’300号’);</p>
+<p>mysql&gt; select *from student3;<br>+—-+———-+———–+————–+——–+<br>| id | name     | district  | details      | number |<br>+—-+———-+———–+————–+——–+<br>|  1 | zhangsan | 武侯区    | 武侯大道     | 100号  |<br>|  2 | lisi     | 武侯区    | 京城大道     | 200号  |<br>|  3 | wang5    | 高新区    | 王府大道     | 300号  |<br>+—-+———-+———–+————–+——–+<br>3 rows in set (0.00 sec)</p>
+<!--more-->
+<p>–范式设计的越详细，对于某些实际操作可能更好，但不一定都是好的</p>
+<h3><span id="2nf">2NF</span></h3><p>–2.第二范式<br>–必须满足第一范式的前提下，第二范式要求，除主键外的每一列都必须完全依赖于主键<br>–如果要出现不完全依赖，只可能发生在联合逐渐的情况下<br>–订单表<br>create table myorder(<br>product_id int,<br>customer_id int,<br>product_name varchar(20),<br>customer_name varchar(20),<br>primary key(product_id,customer_id)<br>);<br>–除主键以外的其他列，只依赖于主键的部分字段<br>–拆表<br>create table myorder(<br>order_id int primary key,<br>product_id int,<br>customer_id);<br>create table product(<br>id int primary key,<br>name varchar(20));<br>create table customer(<br>id int primary key,<br>name varchar(20));<br>–分成三个表之后，就满足了第二范式的设计！</p>
+<h3><span id="3nf">3NF</span></h3><p>–3.第三范式<br>–3NF<br>–必须先满足第二范式，除开主键列的其他列之间不能有传递依赖关系</p>
+<p>create table myorder(<br>    order_id int primary key,<br>    product_id int,<br>    customer_id int，<br>    //customer_phone varchar(20)<br>);<br>create table customer(create table customer(<br>id int primary key,<br>name varchar(20));<br>    id int primary key,<br>    name varchar(20)<br>    phone varchar(20)<br>    );<br>customer_phone 和 customer_id可能存在联系，和除主键外的其他列存在联系不符合第三范式<br>所以在这里将phone这一列放到table customer中</p>
+<h2><span id="例题查询边学边练">例题(查询边学边练）</span></h2><p>– 创建数据库<br>CREATE DATABASE select_test;<br>– 切换数据库<br>USE select_test;</p>
+<h3><span id="创建学生表">创建学生表</span></h3><p>CREATE TABLE student (<br>    no VARCHAR(20) PRIMARY KEY,<br>    name VARCHAR(20) NOT NULL,<br>    sex VARCHAR(10) NOT NULL,<br>    birthday DATE, – 生日<br>    class VARCHAR(20) – 所在班级<br>);</p>
+<h3><span id="创建教师表">创建教师表</span></h3><p>CREATE TABLE teacher (<br>    no VARCHAR(20) PRIMARY KEY,<br>    name VARCHAR(20) NOT NULL,<br>    sex VARCHAR(10) NOT NULL,<br>    birthday DATE,<br>    profession VARCHAR(20) NOT NULL, – 职称<br>    department VARCHAR(20) NOT NULL – 部门<br>);</p>
+<h3><span id="创建课程表">创建课程表</span></h3><p>CREATE TABLE course (<br>    no VARCHAR(20) PRIMARY KEY,<br>    name VARCHAR(20) NOT NULL,<br>    t_no VARCHAR(20) NOT NULL, – 教师编号<br>    – 表示该 tno 来自于 teacher 表中的 no 字段值<br>    FOREIGN KEY(t_no) REFERENCES teacher(no)<br>);</p>
+<h3><span id="成绩表">成绩表</span></h3><p>CREATE TABLE score (<br>    s_no VARCHAR(20) NOT NULL, – 学生编号<br>    c_no VARCHAR(20) NOT NULL, – 课程号<br>    degree DECIMAL, – 成绩<br>    – 表示该 s_no, c_no 分别来自于 student, course 表中的 no 字段值<br>    FOREIGN KEY(s_no) REFERENCES student(no),<br>    FOREIGN KEY(c_no) REFERENCES course(no),<br>    – 设置 s_no, c_no 为联合主键<br>    PRIMARY KEY(s_no, c_no)<br>);</p>
+<p>– 查看所有表<br>SHOW TABLES;<br>mysql&gt; show tables;<br>+———————–+<br>| Tables_in_select_test |<br>+———————–+<br>| course                |<br>| score                 |<br>| student               |<br>| teacher               |<br>+———————–+<br>4 rows in set (0.00 sec)</p>
+<h3><span id="添加学生表数据">添加学生表数据</span></h3><p>INSERT INTO student VALUES(‘101’, ‘曾华’, ‘男’, ‘1977-09-01’, ‘95033’);<br>INSERT INTO student VALUES(‘102’, ‘匡明’, ‘男’, ‘1975-10-02’, ‘95031’);<br>INSERT INTO student VALUES(‘103’, ‘王丽’, ‘女’, ‘1976-01-23’, ‘95033’);<br>INSERT INTO student VALUES(‘104’, ‘李军’, ‘男’, ‘1976-02-20’, ‘95033’);<br>INSERT INTO student VALUES(‘105’, ‘王芳’, ‘女’, ‘1975-02-10’, ‘95031’);<br>INSERT INTO student VALUES(‘106’, ‘陆军’, ‘男’, ‘1974-06-03’, ‘95031’);<br>INSERT INTO student VALUES(‘107’, ‘王尼玛’, ‘男’, ‘1976-02-20’, ‘95033’);<br>INSERT INTO student VALUES(‘108’, ‘张全蛋’, ‘男’, ‘1975-02-10’, ‘95031’);<br>INSERT INTO student VALUES(‘109’, ‘赵铁柱’, ‘男’, ‘1974-06-03’, ‘95031’);</p>
+<h3><span id="添加教师表数据">添加教师表数据</span></h3><p>INSERT INTO teacher VALUES(‘804’, ‘李诚’, ‘男’, ‘1958-12-02’, ‘副教授’, ‘计算机系’);<br>INSERT INTO teacher VALUES(‘856’, ‘张旭’, ‘男’, ‘1969-03-12’, ‘讲师’, ‘电子工程系’);<br>INSERT INTO teacher VALUES(‘825’, ‘王萍’, ‘女’, ‘1972-05-05’, ‘助教’, ‘计算机系’);<br>INSERT INTO teacher VALUES(‘831’, ‘刘冰’, ‘女’, ‘1977-08-14’, ‘助教’, ‘电子工程系’);</p>
+<h3><span id="添加课程表数据">添加课程表数据</span></h3><p>INSERT INTO course VALUES(‘3-105’, ‘计算机导论’, ‘825’);<br>INSERT INTO course VALUES(‘3-245’, ‘操作系统’, ‘804’);<br>INSERT INTO course VALUES(‘6-166’, ‘数字电路’, ‘856’);<br>INSERT INTO course VALUES(‘9-888’, ‘高等数学’, ‘831’);</p>
+<h3><span id="添加成绩表数据">添加成绩表数据</span></h3><p>INSERT INTO score VALUES(‘103’, ‘3-105’, ‘92’);<br>INSERT INTO score VALUES(‘103’, ‘3-245’, ‘86’);<br>INSERT INTO score VALUES(‘103’, ‘6-166’, ‘85’);<br>INSERT INTO score VALUES(‘105’, ‘3-105’, ‘88’);<br>INSERT INTO score VALUES(‘105’, ‘3-245’, ‘75’);<br>INSERT INTO score VALUES(‘105’, ‘6-166’, ‘79’);<br>INSERT INTO score VALUES(‘109’, ‘3-105’, ‘76’);<br>INSERT INTO score VALUES(‘109’, ‘3-245’, ‘68’);<br>INSERT INTO score VALUES(‘109’, ‘6-166’, ‘81’);</p>
+<h2><span id="例题操作">例题操作</span></h2><h3><span id="1查询student表中的所有数据">–1.查询student表中的所有数据</span></h3><p>mysql&gt; select * from student;<br>+—–+———–+—–+————+——-+<br>| no  | name      | sex | birthday   | class |<br>+—–+———–+—–+————+——-+<br>| 101 | 曾华      | 男  | 1977-09-01 | 95033 |<br>| 102 | 匡明      | 男  | 1975-10-02 | 95031 |<br>| 103 | 王丽      | 女  | 1976-01-23 | 95033 |<br>| 104 | 李军      | 男  | 1976-02-20 | 95033 |<br>| 105 | 王芳      | 女  | 1975-02-10 | 95031 |<br>| 106 | 陆军      | 男  | 1974-06-03 | 95031 |<br>| 107 | 王尼玛    | 男  | 1976-02-20 | 95033 |<br>| 108 | 张全蛋    | 男  | 1975-02-10 | 95031 |<br>| 109 | 赵铁柱    | 男  | 1974-06-03 | 95031 |<br>+—–+———–+—–+————+——-+<br>9 rows in set (0.00 sec)</p>
+<h3><span id="2查询student表中的所有记录的snamessex和class列">–2.查询student表中的所有记录的sname，ssex和class列</span></h3><p>mysql&gt; select name,sex,class from student;<br>+———–+—–+——-+<br>| name      | sex | class |<br>+———–+—–+——-+<br>| 曾华      | 男  | 95033 |<br>| 匡明      | 男  | 95031 |<br>| 王丽      | 女  | 95033 |<br>| 李军      | 男  | 95033 |<br>| 王芳      | 女  | 95031 |<br>| 陆军      | 男  | 95031 |<br>| 王尼玛    | 男  | 95033 |<br>| 张全蛋    | 男  | 95031 |<br>| 赵铁柱    | 男  | 95031 |<br>+———–+—–+——-+<br>9 rows in set (0.00 sec)</p>
+<h3><span id="3查询教师所有的单位不重复的department">–3.查询教师所有的单位，不重复的department</span></h3><p>//直接查询会有重复部分<br>mysql&gt; select department from teacher;<br>+—————–+<br>| department      |<br>+—————–+<br>| 计算机系        |<br>| 计算机系        |<br>| 电子工程系      |<br>| 电子工程系      |<br>+—————–+<br>4 rows in set (0.00 sec)</p>
+<p>//这里使用distinct语句来排除重复<br>mysql&gt; select distinct department from teacher;<br>+—————–+<br>| department      |<br>+—————–+<br>| 计算机系        |<br>| 电子工程系      |<br>+—————–+<br>2 rows in set (0.00 sec)</p>
+<h3><span id="4-查询score表中成绩在60-80之间的所有记录">–4 查询score表中成绩在60-80之间的所有记录</span></h3><p>–查询区间between …and ..<br>mysql&gt; select * from score where degree between 60 and 80;<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 105  | 3-245 |     75 |<br>| 105  | 6-166 |     79 |<br>| 109  | 3-105 |     76 |<br>| 109  | 3-245 |     68 |<br>+——+——-+——–+<br>–直接使用运算符比较<br>mysql&gt; select * from score where degree&gt;60 and degree&lt;80;<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 105  | 3-245 |     75 |<br>| 105  | 6-166 |     79 |<br>| 109  | 3-105 |     76 |<br>| 109  | 3-245 |     68 |<br>+——+——-+——–+</p>
+<h3><span id="5查询score表中成绩为8586或88的记录">–5.查询score表中成绩为85，86或88的记录</span></h3><p>mysql&gt; select * from score where degree in(85,86,88);<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-245 |     86 |<br>| 103  | 6-166 |     85 |<br>| 105  | 3-105 |     88 |<br>+——+——-+——–+</p>
+<h3><span id="6-查询student表中95301班或性别为女的记录">–6  查询student表中“95301班”或性别为“女”的记录</span></h3><p>–or表示或者<br>mysql&gt; select * from student where class=’95301’ or’sex=’女’;<br>    ‘&gt; select * from student where class=’95031’ or’sex=’女’;<br>ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘女’<br>//上述问题也是由于单引号位置问题，仔细检查即可，有错误的时候看erro提示<br>mysql&gt; select * from student where class=’95031’ or sex=’女’;<br>+—–+———–+—–+————+——-+<br>| no  | name      | sex | birthday   | class |<br>+—–+———–+—–+————+——-+<br>| 102 | 匡明      | 男  | 1975-10-02 | 95031 |<br>| 103 | 王丽      | 女  | 1976-01-23 | 95033 |<br>| 105 | 王芳      | 女  | 1975-02-10 | 95031 |<br>| 106 | 陆军      | 男  | 1974-06-03 | 95031 |<br>| 108 | 张全蛋    | 男  | 1975-02-10 | 95031 |<br>| 109 | 赵铁柱    | 男  | 1974-06-03 | 95031 |<br>+—–+———–+—–+————+——-+</p>
+<h3><span id="7-以class降序查询student表的所有记录">–7 以class降序查询student表的所有记录</span></h3><p>–升序 降序<br>desc 降序<br>asc  升序 （不写也默认升序）<br>mysql&gt; select *from student order by class desc;<br>+—–+———–+—–+————+——-+<br>| no  | name      | sex | birthday   | class |<br>+—–+———–+—–+————+——-+<br>| 101 | 曾华      | 男  | 1977-09-01 | 95033 |<br>| 103 | 王丽      | 女  | 1976-01-23 | 95033 |<br>| 104 | 李军      | 男  | 1976-02-20 | 95033 |<br>| 107 | 王尼玛    | 男  | 1976-02-20 | 95033 |<br>| 102 | 匡明      | 男  | 1975-10-02 | 95031 |<br>| 105 | 王芳      | 女  | 1975-02-10 | 95031 |<br>| 106 | 陆军      | 男  | 1974-06-03 | 95031 |<br>| 108 | 张全蛋    | 男  | 1975-02-10 | 95031 |<br>| 109 | 赵铁柱    | 男  | 1974-06-03 | 95031 |<br>+—–+———–+—–+————+——-+</p>
+<h3><span id="8以cno升序degree降序查询score表的记录">–8.以cno升序，degree降序查询score表的记录</span></h3><p>mysql&gt; select * from score order by c_no asc, degree desc;<br>//课程编号首先按照升序排列，同一课程编号内的score按照降序排列<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>| 105  | 3-105 |     88 |<br>| 109  | 3-105 |     76 |<br>| 103  | 3-245 |     86 |<br>| 105  | 3-245 |     75 |<br>| 109  | 3-245 |     68 |<br>| 103  | 6-166 |     85 |<br>| 109  | 6-166 |     81 |<br>| 105  | 6-166 |     79 |<br>+——+——-+——–+</p>
+<h3><span id="9查询95301班级的人数">–9.查询‘95301’班级的人数</span></h3><p>–统计count</p>
+<p>mysql&gt; select count(<em>)from student where class=’95031’;<br>+———-+<br>| count(</em>) |<br>+———-+<br>|        5 |<br>+———-+</p>
+<!--more-->
+<h3><span id="10-查询score表中的最高分的学生学号和课程号">–10 查询score表中的最高分的学生学号和课程号</span></h3><p>–mysql&gt; select s_no,c_no from score where degree=(select max(degree) from score);<br>//按照括号内首先找出表中的最高分 select  max(degree) from score;<br>然后来查询最高分的学生学号和课程号 select s_no,c_no score where degree =select  max(degree) from score;</p>
+<p>+——+——-+<br>| s_no | c_no  |<br>+——+——-+<br>| 103  | 3-105 |<br>+——+——-+<br>–第二种做法：排序<br>首先将分数按升序或者降序排序，然后找出排在首位或者末尾的数据</p>
+<p>mysql&gt; select s_no,c_no,degree from score order by degree;<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 109  | 3-245 |     68 |<br>| 105  | 3-245 |     75 |<br>| 109  | 3-105 |     76 |<br>| 105  | 6-166 |     79 |<br>| 109  | 6-166 |     81 |<br>| 103  | 6-166 |     85 |<br>| 103  | 3-245 |     86 |<br>| 105  | 3-105 |     88 |<br>| 103  | 3-105 |     92 |<br>然后找出排在首位或者末尾的数据<br>这里是通过desc找到从最后开始倒数的第一个数据<br>limit<br>第一个数字表示从哪个位置开始<br>第二个数字代表插入几组数据<br>limit 0,1<br>mysql&gt; select s_no,c_no,degree from score order by degree desc limit 0,1;<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>+——+——-+——–+</p>
+<h3><span id="11查询每门课的平均成绩">–11.查询每门课的平均成绩</span></h3><p>//查询有几门课程<br>select * from course;<br>–avg<br>select avg(degree) from score where c_no=’3-105’;<br>mysql&gt; select avg(degree) from score where c_no=’3-105’;</p>
+<p>+————-+<br>| avg(degree) |<br>+————-+<br>|     85.3333 |<br>+————-+</p>
+<p>select avg(degree) from score where c_no=’3-245’;<br>select avg(degree) from score where c_no=’6-166’;<br>select avg(degree) from score where c_no=’9-888’;</p>
+<p>–能不能在一个sql语句中写呢？<br>select c_no,avg(degree) from score group by c_no;</p>
+<p>mysql&gt; select c_no,avg(degree) from score group by c_no;<br>+——-+————-+<br>| c_no  | avg(degree) |<br>+——-+————-+<br>| 3-105 |     85.3333 |<br>| 3-245 |     76.3333 |<br>| 6-166 |     81.6667 |<br>+——-+————-+<br>//这里尝试不通过课程编号进行分组，通过学生编号进行分组，这里求出的数值代表每名学生所有成绩的平均值.<br>//因此这个语句主要取决于group by的后半部分<br>mysql&gt; select s_no,avg(degree) from score group by s_no;</p>
+<p>+——+————-+<br>| s_no | avg(degree) |<br>+——+————-+<br>| 103  |     87.6667 |<br>| 105  |     80.6667 |<br>| 109  |     75.0000 |</p>
+<h3><span id="12-查询score表中至少有两名学生选修的并以3开头的课程的平均分数">–12 查询score表中至少有两名学生选修的，并以3开头的课程的平均分数</span></h3><p>3%模糊查询<br>select c_no ,avg(degree),count(*)from score group by c_no<br>having count(c_no)&gt;=2<br>and c_no like ‘3%’;</p>
+<p>mysql&gt; select c_no ,avg(degree),count(<em>)from score group by c_no<br>    -&gt; having count(c_no)&gt;=2 and c_no like ‘3%’;<br>+——-+————-+———-+<br>| c_no  | avg(degree) | count(</em>) |<br>+——-+————-+———-+<br>| 3-105 |     85.3333 |        3 |<br>| 3-245 |     76.3333 |        3 |</p>
+<h3><span id="13-查询分数大于70-小于90的-s_no-列">–13 查询分数大于70 小于90的 s_no 列</span></h3><p> select s_no,degree from score where degree&gt;70 and degree&lt;90;<br> select s_no,degree from score where degree between 70 and 90;</p>
+<p> mysql&gt; select s_no,degree from score where degree&gt;70 and degree&lt;90;<br>+——+——–+<br>| s_no | degree |<br>+——+——–+<br>| 103  |     86 |<br>| 103  |     85 |<br>| 105  |     88 |<br>| 105  |     75 |<br>| 105  |     79 |<br>| 109  |     76 |<br>| 109  |     81 |<br>+——+——–+</p>
+<h3><span id="14-查询所有学生的sname">–14 查询所有学生的sname</span></h3><p>select no,name from student;<br>+—–+———–+<br>| no  | name      |<br>+—–+———–+<br>| 101 | 曾华      |<br>| 102 | 匡明      |<br>| 103 | 王丽      |<br>| 104 | 李军      |<br>| 105 | 王芳      |<br>| 106 | 陆军      |<br>| 107 | 王尼玛    |<br>| 108 | 张全蛋    |<br>| 109 | 赵铁柱    |</p>
+<p>select s_no,c_no ,degree from score;</p>
+<p>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>| 103  | 3-245 |     86 |<br>| 103  | 6-166 |     85 |<br>| 105  | 3-105 |     88 |<br>| 105  | 3-245 |     75 |<br>| 105  | 6-166 |     79 |<br>| 109  | 3-105 |     76 |<br>| 109  | 3-245 |     68 |<br>| 109  | 6-166 |     81 |<br>+——+——-+——–+</p>
+<p>select name,no,degree from student,score where student.no=score.s_no;<br>+———–+—–+——–+<br>| name      | no  | degree |<br>+———–+—–+——–+<br>| 王丽      | 103 |     92 |<br>| 王丽      | 103 |     86 |<br>| 王丽      | 103 |     85 |<br>| 王芳      | 105 |     88 |<br>| 王芳      | 105 |     75 |<br>| 王芳      | 105 |     79 |<br>| 赵铁柱    | 109 |     76 |<br>| 赵铁柱    | 109 |     68 |<br>| 赵铁柱    | 109 |     81 |<br>+———–+—–+——–+</p>
+<h3><span id="15-查询所有学生的s_nocname和degree列">–15 查询所有学生的s_no,cname,和degree列</span></h3><p>首先分别查看score，course表格</p>
+<p>mysql&gt; select c_no,s_no,degree from score;<br>+——-+——+——–+<br>| c_no  | s_no | degree |<br>+——-+——+——–+<br>| 3-105 | 103  |     92 |<br>| 3-245 | 103  |     86 |<br>| 6-166 | 103  |     85 |<br>| 3-105 | 105  |     88 |<br>| 3-245 | 105  |     75 |<br>| 6-166 | 105  |     79 |<br>| 3-105 | 109  |     76 |<br>| 3-245 | 109  |     68 |<br>| 6-166 | 109  |     81 |<br>+——-+——+——–+</p>
+<p>mysql&gt; select no,name from course;<br>+——-+—————–+<br>| no    | name            |<br>+——-+—————–+<br>| 3-105 | 计算机导论      |<br>| 3-245 | 操作系统        |<br>| 6-166 | 数字电路        |<br>| 9-888 | 高等数学        |</p>
+<p>+——-+—————–+<br>制定新的表格包含no，name（来自course）和degree(score)<br>增加条件（course里的课程编号与score里的c_no 相等）</p>
+<p>mysql&gt; select no,name,degree from course,score where course.no=score.c_no;<br>+——-+—————–+——–+<br>| no    | name            | degree |<br>+——-+—————–+——–+<br>| 3-105 | 计算机导论      |     92 |<br>| 3-105 | 计算机导论      |     88 |<br>| 3-105 | 计算机导论      |     76 |<br>| 3-245 | 操作系统        |     86 |<br>| 3-245 | 操作系统        |     75 |<br>| 3-245 | 操作系统        |     68 |<br>| 6-166 | 数字电路        |     85 |<br>| 6-166 | 数字电路        |     79 |<br>| 6-166 | 数字电路        |     81 |<br>+——-+—————–+——–+</p>
+<h3><span id="16-查询所有学生的snamecname和degree">–16 查询所有学生的sname，cname和degree</span></h3><h4><span id="更改数据表的列尝试">更改数据表的列尝试</span></h4><p>mysql&gt; select name,name,degree from student,course,score where student.no=score.s_no and where course.no=score.c_no;<br>ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘where course.no=score.c_no’ at line 1</p>
+<p>!!我这里尝试按照视频中操作，但因为course和student里的name相同起了冲突<br>这里按照之前操作数据表的方法 将student中的name改为sname！！<br>mysql&gt; alter table student drop name;<br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0</p>
+<p>mysql&gt; alter table student add sname varchar(20) first;<br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br>desc查看 发现更改成功！<br>mysql&gt; desc student;<br>+———-+————-+——+—–+———+——-+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+———-+————-+——+—–+———+——-+<br>| sname    | varchar(20) | YES  |     | NULL    |       |<br>| no       | varchar(20) | NO   | PRI | NULL    |       |<br>| sex      | varchar(10) | NO   |     | NULL    |       |<br>| birthday | date        | YES  |     | NULL    |       |<br>| class    | varchar(20) | YES  |     | NULL    |       |<br>+———-+————-+——+—–+———+——-+</p>
+<p>select sname,name,degree from student,course,score where student.no=score.s_no and where course.no=score.c_no;<br>这里再次尝试操作发现还是错误 检查得知虽然数据表中name改为sname<br>但是sname中的数据为NULL空 所以需要通过对于数据进行操作 </p>
+<p>+—–+———–+<br>| no  | name      |<br>+—–+———–+<br>| 101 | 曾华      |<br>| 102 | 匡明      |<br>| 103 | 王丽      |<br>| 104 | 李军      |<br>| 105 | 王芳      |<br>| 106 | 陆军      |<br>| 107 | 王尼玛    |<br>| 108 | 张全蛋    |<br>| 109 | 赵铁柱    |<br>–更改数据<br>UPDATE student SET sname = ‘曾华 ‘ where no = 101;<br>UPDATE student SET sname = ‘匡明’ where no = 102;<br>UPDATE student SET sname = ‘王丽’ where no = 103;<br>UPDATE student SET sname = ‘李军’ where no = 104;<br>UPDATE student SET sname = ‘王芳’ where no = 105;<br>UPDATE student SET sname = ‘陆军’ where no = 106;<br>UPDATE student SET sname = ‘王尼玛’ where no = 107;<br>UPDATE student SET sname = ‘张全蛋’ where no = 108;<br>UPDATE student SET sname = ‘赵铁柱’ where no = 109;</p>
+<p>mysql&gt; select * from student;<br>+——-+—–+—–+————+——-+<br>| sname | no  | sex | birthday   | class |<br>+——-+—–+—–+————+——-+<br>| NULL  | 101 | 男  | 1977-09-01 | 95033 |<br>| NULL  | 102 | 男  | 1975-10-02 | 95031 |<br>| NULL  | 103 | 女  | 1976-01-23 | 95033 |<br>| NULL  | 104 | 男  | 1976-02-20 | 95033 |<br>| NULL  | 105 | 女  | 1975-02-10 | 95031 |<br>| NULL  | 106 | 男  | 1974-06-03 | 95031 |<br>| NULL  | 107 | 男  | 1976-02-20 | 95033 |<br>| NULL  | 108 | 男  | 1975-02-10 | 95031 |<br>| NULL  | 109 | 男  | 1974-06-03 | 95031 |<br>+——-+—–+—–+————+——-+</p>
+<p>select sname,name,degree from student,course,score where student.no=score.s_no and course.no=score.c_no;<br>成功！</p>
+<p>mysql&gt; select sname,name,degree from student,course,score where student.no=score.s_no and course.no=score.c_no;<br>+———–+—————–+——–+<br>| sname     | name            | degree |<br>+———–+—————–+——–+<br>| 王丽      | 计算机导论      |     92 |<br>| 王丽      | 操作系统        |     86 |<br>| 王丽      | 数字电路        |     85 |<br>| 王芳      | 计算机导论      |     88 |<br>| 王芳      | 操作系统        |     75 |<br>| 王芳      | 数字电路        |     79 |<br>| 赵铁柱    | 计算机导论      |     76 |<br>| 赵铁柱    | 操作系统        |     68 |<br>| 赵铁柱    | 数字电路        |     81 |<br>+———–+—————–+——–+</p>
+<h4><span id="更改数据表的列不改变数据的简单方法">更改数据表的列不改变数据的简单方法</span></h4><p>!!重点 数据操作指令多加练习<br>前面更改数据表列名的方法很麻烦<br>查找后发现可以直接修改列名的方法</p>
+<h4><span id="在操作里给得到的数据结果起别名原始数据名称不易读">在操作里给得到的数据结果起别名（原始数据名称不易读）</span></h4><p>ex<br>alter table student change sname name varchar(20);<br>change oldname newname +数据类型<br>mysql&gt; select sname,name,degree,student.no as stu_sno,course.no as cou_cno from<br>student,course,score where student.no=score.s_no and course.no=score.c_no;<br>+———–+—————–+——–+———+———+<br>| sname     | name            | degree | stu_sno | cou_cno |<br>+———–+—————–+——–+———+———+<br>| 王丽      | 计算机导论      |     92 | 103     | 3-105   |<br>| 王丽      | 操作系统        |     86 | 103     | 3-245   |<br>| 王丽      | 数字电路        |     85 | 103     | 6-166   |<br>| 王芳      | 计算机导论      |     88 | 105     | 3-105   |<br>| 王芳      | 操作系统        |     75 | 105     | 3-245   |<br>| 王芳      | 数字电路        |     79 | 105     | 6-166   |<br>| 赵铁柱    | 计算机导论      |     76 | 109     | 3-105   |<br>| 赵铁柱    | 操作系统        |     68 | 109     | 3-245   |<br>| 赵铁柱    | 数字电路        |     81 | 109     | 6-166   |<br>+———–+—————–+——–+———+———+</p>
+<h3><span id="17查询95031班学生每门课的平均分">–17查询“95031”班学生每门课的平均分</span></h3><p>查询score中课程c_no,并计算成绩（degree）的平均值avg<br>score的数据通过子查询（ ）来选择要操作的班级“95031”<br>最后成绩需要按每门课程操作 将数据分类group by c_no<br> mysql&gt; select c_no,avg(degree) from score<br> where s_no in (select no from student<br> where class=’95031’) group by c_no;<br>+——-+————-+<br>| c_no  | avg(degree) |<br>+——-+————-+<br>| 3-105 |     82.0000 |<br>| 3-245 |     71.5000 |<br>| 6-166 |     80.0000 |<br>+——-+————-+</p>
+<h3><span id="18-查询选修3-105课程的成绩高于109号同学3-105成绩的所有同学的记录">–18 查询选修“3-105”课程的成绩高于“109”号同学“3-105”成绩的所有同学的记录</span></h3><p>mysql&gt; select * from score where c_no=’3-105’<br>and degree &gt;<br>(select degree from score where s_no =’109’ and c_no=’3-105’);<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>| 105  | 3-105 |     88 |<br>+——+——-+——–+</p>
+<h3><span id="19-查询成绩高于学号为109课程号3-105的成绩的所有记录">–19  查询成绩高于学号为“109”课程号“3-105”的成绩的所有记录</span></h3><p>/和18的区别在于只要成绩比这名同学的3-105成绩高就可以，不限制课程成绩类型/</p>
+<p>mysql&gt; select * from score where  degree &gt;(select degree from score where s_no =’109’ and c_no=’3-105’);<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 3-105 |     92 |<br>| 103  | 3-245 |     86 |<br>| 103  | 6-166 |     85 |<br>| 105  | 3-105 |     88 |<br>| 105  | 6-166 |     79 |<br>| 109  | 6-166 |     81 |<br>+——+——-+——–+</p>
+<h3><span id="20-查询和学号为108101的同学同年出生的所有学生的s_nosname和sbirthday">–20 查询和学号为108，101的同学同年出生的所有学生的s_no,sname和sbirthday</span></h3><p>mysql&gt; select * from student where no in(108,101);<br>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>+———–+—–+—–+————+——-+</p>
+<p>mysql&gt; select year(birthday) from student where no in(108,101);<br>+—————-+<br>| year(birthday) |<br>+—————-+<br>|           1977 |<br>|           1975 |<br>+—————-+</p>
+<p>mysql&gt; select * from student where year(birthday) in (select year(birthday) from student where no in(108,101));<br>+———–+—–+—–+————+——-+<br>| sname     | no  | sex | birthday   | class |<br>+———–+—–+—–+————+——-+<br>| 曾华      | 101 | 男  | 1977-09-01 | 95033 |<br>| 匡明      | 102 | 男  | 1975-10-02 | 95031 |<br>| 王芳      | 105 | 女  | 1975-02-10 | 95031 |<br>| 张全蛋    | 108 | 男  | 1975-02-10 | 95031 |<br>+———–+—–+—–+————+——-+<br>//这里的条件用in 不用= 是因为这是对于多个条件</p>
+<h3><span id="21查询张旭教师任课的学生成绩">21.查询“张旭”教师任课的学生成绩</span></h3><p>理清思路<br>1.查询成绩 先选择课程号c_no(来源于score表)<br>2.选择的课程号根据任课教师编号 t_no（来源于course表）<br>3.选择任课教师根据教师名字（来源于teacher表）<br>mysql&gt; select * from score where c_no=(select no from course where t_no=(select<br>no from teacher where name= ‘张旭’));<br>+——+——-+——–+<br>| s_no | c_no  | degree |<br>+——+——-+——–+<br>| 103  | 6-166 |     85 |<br>| 105  | 6-166 |     79 |<br>| 109  | 6-166 |     81 |<br>+——+——-+——–+</p>
+<h3><span id="22查询选修课课程的同学数多于5人的教师姓名">22.查询选修课课程的同学数多于5人的教师姓名</span></h3><h4><span id="数据不够自己凑">数据不够自己凑</span></h4><p>INSERT INTO score VALUES(‘101’, ‘3-105’, ‘90’);<br>INSERT INTO score VALUES(‘102’, ‘3-105’, ‘81’);<br>INSERT INTO score VALUES(‘104’, ‘3-105’, ‘89’);</p>
+<h4><span id="无限套娃-一步步理解">无限套娃 一步步理解</span></h4><p>mysql&gt; select name from teacher where no=(select t_no from course where no=(select c_no from score group by c_no having count(<em>)&gt;5));<br>+——–+<br>| name   |<br>+——–+<br>| 王萍   |<br>+——–+<br>//</em> 来查询更多信息<br>mysql&gt; select * from teacher where no=(select t_no from course where no=(select c_no from score group by c_no having count(*)&gt;5));<br>+—–+——–+—–+————+————+————–+<br>| no  | name   | sex | birthday   | profession | department   |<br>+—–+——–+—–+————+————+————–+<br>| 825 | 王萍   | 女  | 1972-05-05 | 助教       | 计算机系     |<br>+—–+——–+—–+————+————+————–+</p>
+<p>————————————————————————————————————————————————————————————————<br>End！</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">谢谢你请我吃糖果🍬</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'mtODWYVhtCigkQw0txyftoMA-gzGzoHsz',
+        appKey: 'IEEkpA8t8wLdzEff2jk2nIFG',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '别走呀，理理我，留个言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/02/01/mysql%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="MySQL第二部分">
+                        
+                        <span class="card-title">MySQL第二部分</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/01/sql/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="MySQL">
+                        
+                        <span class="card-title">MySQL</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+mysql的学习笔记(持续更新中)mysql##基础操作
+登陆mysqlmysql -uroot-p输入密码
+查看数据库信息的基本指令–显示数据库show databases;–如何在数据库服务器中创建我们的数据库create data
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="6601699944"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">杨新宇</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">207.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" style='display:none'
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" style='display:none'
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/YXY996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:614533604@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=614533604" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 614533604" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

@@ -1,0 +1,1721 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="深层学习疑难知识点, 小杨的博客">
+    <meta name="description" content="分享笔记心得，互相学习">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>深层学习疑难知识点 | 小杨的博客</title>
+    <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小杨的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小杨的博客</div>
+        <div class="logo-desc">
+            
+            分享笔记心得，互相学习
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/YXY996" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/YXY996" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">深层学习疑难知识点</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/python/" class="post-category">
+                                python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-03-30
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-04-27
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                 <span id="busuanzi_container_site_pv" style='display:none'>
+                </span> <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv" >
+                </span> 
+                
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>有关深层学习的疑难知识点<br>self含义<br><strong>init</strong> 方法的第一个参数永远是 self ，表示创建的实例本身，因此，在 <strong>init</strong> 方法的内部，就可以把各种属性绑定到 self，因为 self 就指向创建的实例本身。<br>使用了 <strong>init</strong> 方法，在创建实例的时候就不能传入空的参数了，必须传入与 <strong>init</strong> 方法匹配的参数，<br>但是 self 不需要传，python解释器会自己把实例变量传进去。自动调用构造函数。</p>
+<pre class="line-numbers language-none"><code class="language-none">
+class Student():
+    name &#x3D; &#39;&#39;
+    age &#x3D; 0
+    def __init__(self,age,num):
+        #   它是构造函数
+        print(&#39;student&#39;)
+    #行为     与   特征
+    def do_homework(self):
+        print(&#39;homework&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>student1 = Student()<br>student1.<strong>init</strong>()</p>
+<p>()的意义<br>类有一个名为 <strong>init</strong>() 的特殊方法（构造方法），该方法在类实例化时会自动调用，像下面这样：</p>
+<p>def <strong>init</strong>(self):<br>    self.data = []</p>
+<p>类定义了 <strong>init</strong>() 方法，类的实例化操作会自动调用 <strong>init</strong>() 方法。<br>如下实例化类 MyClass，对应的 <strong>init</strong>() 方法就会被调用:<br>x = MyClass()<br>self代表类的实例，而非类</p>
+<p>类是创建实例的模板，而实例则是一个一个具体的对象，各个实例拥有的数据都互相独立，互不影响； 方法就是与实例绑定的函数，和普通函数不同，方法可以直接访问实例的数据； 通过在实例上调用方法，我们就直接操作了对象内部的数据，但无需知道方法内部的实现细节。</p>
+<p>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。</p>
+<p>optimizer理解</p>
+<p>step这个函数使用的是参数空间(param_groups)中的grad,也就是当前参数空间对应的梯度，这也就解释了为什么optimzier使用之前需要zero清零一下，因为如果不清零，那么使用的这个grad就得同上一个mini-batch有关，这不是我们需要的结果。再回过头来看，我们知道optimizer更新参数空间需要基于反向梯度，因此，当调用optimizer.step()的时候应当是loss.backward()的时候</p>
+<pre class="line-numbers language-none"><code class="language-none">def step(self, closure&#x3D;None):
+    &quot;&quot;&quot;Performs a single optimization step.
+
+    Arguments:
+        closure (callable, optional): A closure that reevaluates the model
+            and returns the loss.
+    &quot;&quot;&quot;
+    loss &#x3D; None
+    if closure is not None:
+        loss &#x3D; closure()
+
+    for group in self.param_groups:
+        for p in group[&#39;params&#39;]:
+            if p.grad is None:
+                continue
+            grad &#x3D; p.grad.data  #.data——获得该节点的值，即Tensor类型的值
+                                #.grad——获得该节点处的梯度信息
+            if grad.is_sparse:
+                raise RuntimeError(&#39;Adam does not support sparse gradients, &#39;
+                                    &#39;please consider SparseAdam instead&#39;)
+            amsgrad &#x3D; group[&#39;amsgrad&#39;]
+
+            state &#x3D; self.state[p]
+
+            # State initialization
+            if len(state) &#x3D;&#x3D; 0:
+                state[&#39;step&#39;] &#x3D; 0
+                # Exponential moving average of gradient values
+                state[&#39;exp_avg&#39;] &#x3D; torch.zeros_like(p.data)
+                # Exponential moving average of squared gradient values
+                state[&#39;exp_avg_sq&#39;] &#x3D; torch.zeros_like(p.data)
+                if amsgrad:
+                    # Maintains max of all exp. moving avg. of sq. grad. values
+                    state[&#39;max_exp_avg_sq&#39;] &#x3D; torch.zeros_like(p.data)
+
+            exp_avg, exp_avg_sq &#x3D; state[&#39;exp_avg&#39;], state[&#39;exp_avg_sq&#39;]
+            if amsgrad:
+                max_exp_avg_sq &#x3D; state[&#39;max_exp_avg_sq&#39;]
+            beta1, beta2 &#x3D; group[&#39;betas&#39;]
+
+            state[&#39;step&#39;] +&#x3D; 1
+            bias_correction1 &#x3D; 1 - beta1 ** state[&#39;step&#39;]
+            bias_correction2 &#x3D; 1 - beta2 ** state[&#39;step&#39;]
+
+            if group[&#39;weight_decay&#39;] !&#x3D; 0:
+                grad.add_(group[&#39;weight_decay&#39;], p.data)
+
+            # Decay the first and second moment running average coefficient
+            exp_avg.mul_(beta1).add_(1 - beta1, grad)
+            exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+            if amsgrad:
+                # Maintains the maximum of all 2nd moment running avg. till now
+                torch.max(max_exp_avg_sq, exp_avg_sq, out&#x3D;max_exp_avg_sq)
+                # Use the max. for normalizing running avg. of gradient
+                denom &#x3D; (max_exp_avg_sq.sqrt() &#x2F; math.sqrt(bias_correction2)).add_(group[&#39;eps&#39;])
+            else:
+                denom &#x3D; (exp_avg_sq.sqrt() &#x2F; math.sqrt(bias_correction2)).add_(group[&#39;eps&#39;])
+
+            step_size &#x3D; group[&#39;lr&#39;] &#x2F; bias_correction1
+
+            p.data.addcdiv_(-step_size, exp_avg, denom)
+
+    return loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在optimizer的step函数的内部，只使用gradients来更新参数，根本不使用参数本身的值（除了weight decay，但我们将在外围处理）。然后我们可以在optimizer处理之前，简单地执行权重衰减。在计算梯度之后仍然必须进行相同操作（否则会影响gradients值），所以在训练循环中，你必须找到这个位置。</p>
+<pre class="line-numbers language-none"><code class="language-none">loss.backward()
+
+#Do the weight decay here!
+
+optimizer.step()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，optimizer应该设置为wd = 0，否则它会进行L2正则化，这正是我们现在不想要的。现在，在那个位置，我们必须循环所有参数，并做weight decay更新。你的参数应该都在optimizer的字典param_groups中，因此循环看起来像这样：</p>
+<pre class="line-numbers language-none"><code class="language-none">loss.backward()
+
+for group in optimizer.param_groups():
+
+for param in group[&#39;params&#39;]:
+
+param.data &#x3D; param.data.add(-wd * group[&#39;lr&#39;], param.data)
+
+optimizer.step()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>闭包函数<br>闭包函数：<br>如果一个函数定义在另一个函数的作用域内，并且引用了外层函数的变量，则该函数称为闭包。闭包是Python所支持的一种特性，它让在非global scope定义的函数可以引用其外围空间中的变量，这些外围空间中被引用的变量叫做这个函数的环境变量。环境变量和这个非全局函数一起构成了闭包。</p>
+<pre class="line-numbers language-none"><code class="language-none">def line_conf(a, b):
+    def line(x):
+        return a * x + b
+    return line<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>嵌套函数line中的代码访问了a和b变量，line本身函数体内并不存在这两个变量，所以会逐级向外查找，往上走一层就找到了来自主函数line_conf传递的a, b。若往外直至全局作用域都查找不到的话代码会抛异常。</p>
+<pre class="line-numbers language-none"><code class="language-none">line_A &#x3D; line_conf(2, 1) #y&#x3D;2x+b
+line_B &#x3D; line_conf(3, 2) #y&#x3D;3x+2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>打印x对应y的值<br>print(line_A(1)) #3<br>print(line_B(1)) #5</p>
+<p>内包的语法为</p>
+<pre class="line-numbers language-none"><code class="language-none">def 父函数(参数):             #这里的参数外部传递给子函数作其函数参数
+    def 子函数（参数）：  #这里的参数为外部传递给子函数作其自变量额值
+        fuction
+    return  子函数值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>调用语法：</p>
+<p>变量=父函数（赋给子函数的参数）<br>result=变量（子函数自变量的值）<br>result的值为子函数的计算值</p>
+<p>！！当闭包执行完后，仍然能够保持住当前的运行环境。<br>这里每次经过权重更新后得到的新的参数</p>
+<p>zip的使用方法<br>zip 方法在 Python 2 和 Python 3 中的不同：在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。<br>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。<br>这里* 单独就可以看作一个解压的步骤，将列表中的元素提出<br>zip按照对应关系一一打包</p>
+<p>mask<br>这里的non_final_mask是判断下一步状态是否存在的索引<br>state_batch 是四个元素<br>action_batch 是一个元素<br>决定每一步的动作时<br>如果时根据Q价值最大选择<br>则：<br>action的决定取决于decide_action，每走一步更新一下决定下一步的action，并且记录下来形成action_batch?<br>否则：<br>随机选择<br>no_final_mask中元素为0时，则next_state_values不存在<br>self.model(state_batch)最后经过神经网络输出的是两个结果，分别对应向左和向右移动的Q值</p>
+<p>gather函数<br>c = a.gather(0, b) # dim=0    索引b按照矩阵a的每一列去寻找<br>d = a.gather(1, b) # dim=1      索引b按照矩阵a的每一行去寻找</p>
+<p>expected_state_value<br>相当于qtable<br>loss损失函数去计算state_value和expected_state_value的差值 </p>
+<p>super() 函数是用于调用父类(超类)的一个方法。</p>
+<p>super() 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO）、重复调用（钻石继承）等种种问题。<br>super(type[, object-or-type])<br>type – 类<br>object-or-type – 类，一般是 self</p>
+<pre class="line-numbers language-none"><code class="language-none">class A:
+     def add(self, x):
+         y &#x3D; x+1
+         print(y)
+class B(A):
+    def add(self, x):
+        super().add(x)
+b &#x3D; B()
+b.add(2)  # 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>np.squeeze（）函数用法：</p>
+<p>np.squeeze（）函数可以删除数组形状中的单维度条目，即把shape中为1的维度去掉，但是对非单维的维度不起作用。<br>作用：从数组的形状中删除单维度条目，即把shape中为1的维度去掉<br>场景：在机器学习和深度学习中，通常算法的结果是可以表示向量的数组（即包含两对或以上的方括号形式[[]]），如果直接利用这个数组进行画图可能显示界面为空（见后面的示例）。我们可以利用squeeze（）函数将表示向量的数组转换为秩为1的数组，这样利用matplotlib库函数画图时，就可以正常的显示结果了。</p>
+<p>greedy方法</p>
+<p>最简单的exploration方法就是epsilon-greedy，即设置一个探索率epsilon来平衡两者的关系——在大部分时间里采用现阶段最优策略，在少部分时间里实现探索。<br>什么是贪婪算法? 简单说,就是,任何时候的决策,都是选择当前观察的最优解,而没有整体长远的规划.<br>贪婪算法的优点是容易理解,简单快速.但缺点是,得到的往往是局部最优解,而不是全局最优.</p>
+<p>贪婪算法是如何在“exploit”和“explore”之间实现权衡，以尽可能实现最大化收益的呢？ 首先，从算法的名称我们知道，这是一种贪婪的算法。<br>纯粹贪婪的算法，放到这种多臂老虎机的场景来看就是每次都选择当前那个最好的臂摇，即使从长远来看可能非常不好。那么，ϵϵ-贪婪算法和贪婪算法的区别在哪呢？<br>就像它的名字所展示的那样，区别仅仅就在这个ϵ。这个ϵ代表执行执行“探索”的概率。比如设置ϵ=0.1，那么就表示有10%的概率会进行“探索”操作，<br>而90%会进行“利用”操作，也就是摇当前最好的臂。如果以摇老虎机臂的过程，用次数来算的话，也就是，每10次操作，仅有1次操作去进行探索——尝试其他的臂。</p>
+<p>若当前随机产生的0-1的浮点数大于当前的贪婪参数epsilon，则随机决策产生动作。反之则由训练网络net产生Q值并选择最大Q值的动作。</p>
+<p>1、ϵ设置的越高，收敛到最佳收益的速度越快。这个很好理解。随机探索的概率越大，越能更快的探索到最好的臂。<br>2、在0.1-0.5，ϵ设置的越低，最终的平均收益越高。这个也是比较好理解的。每次都很大概率的随机探索，就会存在很多利用效果不好的臂的情况。</p>
+<p>一个状态的Q值 = （当前状态进行某一个动作a进行到下一个状态的价值 + 时间折扣 * 采取某一行动a到下一个状态的Q值）<br>state_action_value<br>expected_state_action_value</p>
+<p>state_action_value<br>从当前状态s实际执行动作a走到下一步s+1 所获得推测eval Q值</p>
+<p>若当前状态s所对应的下一个状态s+1存在 </p>
+<p>nn.Linear<br>linear 的初始化部分代码<br>y=Ax+b<br>y = xA^T +b</p>
+<pre class="line-numbers language-none"><code class="language-none">class Linear(Module):
+    ...
+    __constants__ &#x3D; [&#39;bias&#39;]
+    
+    def __init__(self, in_features, out_features, bias&#x3D;True):
+        super(Linear, self).__init__()
+        self.in_features &#x3D; in_features
+        self.out_features &#x3D; out_features
+        self.weight &#x3D; Parameter(torch.Tensor(out_features, in_features))
+        if bias:
+            self.bias &#x3D; Parameter(torch.Tensor(out_features))
+        else:
+            self.register_parameter(&#39;bias&#39;, None)
+        self.reset_parameters()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例</p>
+<pre class="line-numbers language-none"><code class="language-none">import torch
+nn1 &#x3D; torch.nn.Linear(100, 50)
+input1 &#x3D; torch.randn(140, 100)
+output1 &#x3D; nn1(input1)
+output1.size()
+torch.Size([140, 50])
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里weight = [out_features,in_features]<br>A 是weight<br>具体计算为[140,100] × [50,100]的转置 + bias = [140,100] × [100,50] + bias 最后得到的维度为[140,50]。<br>至于对于bias和weight的初始化，根据网上所讲的是来有关维度值的均匀分布</p>
+<p>forward<br>我们在定义自已的网络的时候，需要继承nn.Module类，并重新实现构造函数__init__和forward这两个方法。但有一些注意技巧：</p>
+<p>（1）一般把网络中具有可学习参数的层（如全连接层、卷积层等）放在构造函数<strong>init</strong>()中，当然我也可以把不具有参数的层也放在里面；</p>
+<p>（2）一般把不具有可学习参数的层(如ReLU、dropout、BatchNormanation层)可放在构造函数中，也可不放在构造函数中，如果不放在构造函数__init__里面，则在forward方法里面可以使用nn.functional来代替</p>
+<p>（3）forward方法是必须要重写的，它是实现模型的功能，实现各个层之间的连接关系的核心。</p>
+<p>拿线性变化举例，其中的权重需要不停的更新，这就是需要维持的状态，<br>而以激活函数来说，一般来说都是可以直接使用的，<br>只要给定相应的输入，那么使用后就有确定的输出。</p>
+<h2><span id="linear的计算方式">linear的计算方式，</span></h2><p>就是权重矩阵W乘以输入矩阵X，然后加上偏置项b，即Wx+b。</p>
+<h2><span id="fc1x的调用流程">fc1(x)的调用流程</span></h2><p>Python中可以在一个类中定义__call__方法来让一个类的实例对象直接调用这个函数。也就是说比如我下面这段程序：</p>
+<p>class A():<br>def <strong>init</strong>(self, n):<br>self.n = n</p>
+<p>def <strong>call</strong>(self, x):<br>return self.n + x</p>
+<p>调用A(3)(5)的结果就是8。由于nn.Linear是module是子类，然后module又定义了__call__方法来隐式的调用了forward，所以fc1(x)实质上就等价于fc1.forward(x)。</p>
+<p>nn.module<br>输出权重和bias的方法</p>
+<pre class="line-numbers language-none"><code class="language-none">print(&quot;self.fc1.weight&quot;)
+print(self.fc1.weight.t(),self.fc1.bias)
+print(&quot;self.fc2.weight&quot;)
+print(self.fc2.weight,self.fc1.bias)
+print(&quot;self.fc3.weight&quot;)
+print(self.fc3.weight,self.fc1.bias)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2><span id="权重更新">权重更新</span></h2><p>每个episode之间权重参数相互关联<br>main_q_main_network和target_q_network在初始化的时候权重参数不同<br>每进行两次episode试错后，将main_q_network的参数传递给target网络</p>
+<p>DQN</p>
+<p>DDQN的逻辑<br>从理论上说，这种方法不能完全减少overestimate，只能减少一部分。但经过数值实验，人们发现上述的改变对于overestimate的减少还是非常可观的。由于其与一般DQN（fixed Q-target）相比几乎没有产生新的成本，所以DDQN也成为了目前DQN训练的必备技术之一。</p>
+<h2><span id="bellman-equation">bellman equation</span></h2><p>贝尔曼方程：当前状态的价值和下一步的价值及当前的奖励<br>价值函数分解为当前奖励（离开当前状态的即时价值）和下一步的价值两部分<br>当前状态的价值函数  =<br>当前状态根据策略（概率）进行下一步动作时所获得的价值<br>+<br>根据某一策略（概率）达到下一个状态，下一个状态的价值函数 * discount</p>
+<p>我们如何知道它后继状态的value funciton为0.8，10。其实这些值一开始可以任意初始化，<br>后面可以学习更新，就类似于神经网络的权值参数，一开始任意初始化，后面通过loss反向更新一样。<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35261164">https://zhuanlan.zhihu.com/p/35261164</a><br>即 [Vπ(s)] 为 [Qπ(s,a)] 在策略 [π(a|s)] 下的和 (所有动作下的期望价值)<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/59122948">https://www.zhihu.com/question/59122948</a></p>
+<p>神经网络<br>线性方程：f = Wx<br>非线性方程：f = W2xmax(0,W1x)<br>这里的max相当于一个激活函数</p>
+<h2><span id="激活函数">激活函数</span></h2><h2><span id="sigmoid">sigmoid</span></h2><p>某些数据是线性不可分的，所以需要激活函数去非线性分割数据<br>在每一层输出的时候都需要激活函数，去达到非线性表达<br>问题：<br>看梯度变化，求导<br>当存在多层隐藏层的神经网络，会达到梯度消失<br>w1   w2    w3     w4   loss<br>0.01 0.1   0.3    0.5</p>
+<h2><span id="relu">RELU</span></h2><p>ReLU处理了它的sigmoid、tanh中常见的梯度消失问题，<br>同时也是计算梯度最快的激励函数。</p>
+<p>所以目前sigmoid不用，开始使用RELU<br>tanh</p>
+<h2><span id="过拟合">过拟合</span></h2><p>正则化项在神经网络中的重要作用<br>L2正则化惩罚项    λW^2<br>实际预测过程中泛化越强越好<br>越多的神经元，越能够表达复杂的模型</p>
+<h2><span id="初始化">初始化</span></h2><p>权重初始化为随机初始化<br>bias初始化可为0，可为1</p>
+<p>##dropout<br>全连接操作<br>dropout随机选择<br>保留率60%<br>去掉40%<br>迭代的时候，去随机选择<br>去降低过拟合的风险</p>
+<h2><span id="bacthsize">bacthsize</span></h2><p>每次取样品的大小<br>数值越大越好，<br>性能好的话64,128.<br>一般的16，32.<br>取决于计算机的性能。显存大小。</p>
+<h2><span id="学习率">学习率</span></h2><p>学习率设置过高可能导致在用梯度损失更新梯度后获得的是极小值，而不是最小值</p>
+<h2><span id="卷积神经网络">卷积神经网络</span></h2><p>卷积神经网络的组成<br>输入层<br>卷积层<br>激活函数<br>池化层<br>全连接层</p>
+<h3><span id="卷积层">卷积层</span></h3><p>filter帮助进行信息的提取<br>将输入划分成一个个小区域，提取每一个区域获得一个数值。<br>经过卷积层之后获得特征图。<br>32* 32 * 3 image<br>5* 5* 3 filter<br>提取的数据X和filter对应的W 做内积操作 +bias<br>卷积之后都需要采取激活函数，进行非线性转化</p>
+<h3><span id="stride-滑动">stride 滑动</span></h3><p>stride的数值越大，会获得较小的特征图。<br>为了获得更多的特征，需要让stride值变小。为了效率不能取太小。</p>
+<h3><span id="padding">padding</span></h3><p>防止边缘数据提取次数过少</p>
+<p>在原始的输入像5* 5 * 3四周加了两圈0 变成7 * 7 * 3<br>输入 = 7 * 7<br>Filter = 3* 3<br>Pad = 1<br>Output = ？</p>
+<p>height out = height in - height kernel +2* padding / stride  +1<br>width out = width in - width kernel +2* padding / stride  +1</p>
+<h3><span id="池化层pooling-layer">池化层pooling layer</span></h3><p>对于特征图进行的操作<br>压缩特征图<br>对于filter size内的特征数据进行下面两种操作<br>mean<br>max<br>-2+0.8* 4.3 +0</p>
+<h3><span id="神经元死亡bias的更新">神经元死亡bias的更新</span></h3><p>神经元在训练过程中的“死亡”，通常是学习率过大造成的。</p>
+<p>这个神经元已经经过若干次迭代，其参数 (w⃗ ,b) 已经迭代得趋于稳定。<br>现在，神经元接收到了一个异常输入 x⃗ 。比方说，它的某一维特征 xi 与对应的权重 wi 的乘积 wixi 非常大。<br>一般来说，这意味着 xi 的绝对值非常大。于是，ReLU 的输入就会很大，对应 ReLU 的输出 y 也就会很大。好了，假设这个 ReLU 神经元期望的输出（ground truth）是 y^，这个时候损失就会很大——损失一般是 |y−y^| 的增函数，记为 f(|y−y^|)。<br>解答：<br>这里当输入一个异常x，会导致输出远远大于期望y值，在反向传播过程中，会因为此次异常数据X，而降低权重w，<br>但更新权重的时候根据学习率部分更新。bias的系数为1.b的变化直接映射到loss的变化。当异常数据导致relu的输出足够大的时候，<br>bias会变成一个负数。</p>
+<h3><span id="duelingwork">duelingwork</span></h3><p>Dueling的这种结构的优势在于学习效率，Value[V(s)]的更新将会触及到所有的动作跟着<br>value[V(s)]一起更新，如果是Q的话，你只能更新当前状态下的状态-动作值函数。</p>
+<h3><span id="td-error">TD-error</span></h3><p>常将 rt+γ⋅Qπ(st+1,at+1) 的值记作 yt 。<br>因为 yt 中包含了真实的奖励值 rt ，所以认为 yt 比 Qπ(st,at) 更准确。<br>将 yt 命名为 TD target，而将 yt−Qπ(st,at) 的值命名为 TD error。<br>TD error 的绝对值越小，就表明模型预测误差越小，预测的结果越准确。所以，在确定好 TD error 的计算方式后，可以通过 梯度下降 方法来更新模型的参数，降低 TD error 。<br>时序差分学习的目的是让模型预测出的 Qπ(st,at) 值不断的接近TD target 。</p>
+<h2><span id="梯度裁剪">梯度裁剪</span></h2><p>torch.nn.utils.clip_grad_norm_(parameters, max_norm, norm_type=2)<br>parameters (Iterable[Tensor] 或 Tensor) —— 一个由张量或单个张量组成的可迭代对象（模型参数），将梯度归一化（原文： an iterable of Tensors or a single Tensor that will have gradients normalized）<br>max_norm (float or int) – 梯度的最大范数（原文：max norm of the gradients）<br>norm_type (float or int) – 所使用的范数类型。默认为L2范数，可以是无穷大范数（‘inf’）（原文：type of the used p-norm. Can be for infinity norm.‘inf’）</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">谢谢你请我吃糖果🍬</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'mtODWYVhtCigkQw0txyftoMA-gzGzoHsz',
+        appKey: 'IEEkpA8t8wLdzEff2jk2nIFG',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '别走呀，理理我，留个言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/04/04/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%953-%E9%93%BE%E8%A1%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="算法面试3-链表">
+                        
+                        <span class="card-title">算法面试3-链表</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">算法面试</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/26/DQN/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="DQN">
+                        
+                        <span class="card-title">DQN</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="6601699944"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">杨新宇</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">207.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" style='display:none'
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" style='display:none'
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/YXY996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:614533604@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=614533604" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 614533604" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

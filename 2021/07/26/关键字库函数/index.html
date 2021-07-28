@@ -1,0 +1,2023 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="关键字库函数, 小杨的博客">
+    <meta name="description" content="分享笔记心得，互相学习">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>关键字库函数 | 小杨的博客</title>
+    <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小杨的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小杨的博客</div>
+        <div class="logo-desc">
+            
+            分享笔记心得，互相学习
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/YXY996" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/YXY996" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">关键字库函数</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">C++进阶笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/C/" class="post-category">
+                                C++
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-26
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-07-28
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    25 分
+                </div>
+                
+
+                 <span id="busuanzi_container_site_pv" style='display:none'>
+                </span> <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv" >
+                </span> 
+                
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1><span id="关键字库函数">关键字库函数</span></h1><h2><span id="sizeof和strlen">sizeof和strlen</span></h2><p>1.strlen是头文件’cstring’中的函数，sizeof是C++中的运算符。</p>
+<p>2**.strlen测量的是字符串的实际长度**(其源代码如下)，以¥n结束。而<strong>sizeof测量的是字符数组的分配大小。</strong></p>
+<p>·strlen源代码：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">size_t strlen(const char *str)&#123;
+    size_t length &#x3D; 0;
+    while(*str++)
+        ++length;
+    return length;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>举例:</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int main()&#123;
+    char arr[10] &#x3D; &quot;hello&quot;;
+    cout &lt;&lt; strlen(arr) &lt;&lt; endl; &#x2F;&#x2F;5
+    cout &lt;&lt; sizeof(arr) &lt;&lt; endl; &#x2F;&#x2F;10
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3.若字符数组arr作为函数的形参，sizeof(arr)中arr被当作字符指针来处理，strlen(arr)中arr依然是字符数组，从下述程序的运行结果中可以看出。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+
+void size_of(char arr[])&#123;
+    cout &lt;&lt; sizeof(arr) &lt;&lt; endl;
+    cout &lt;&lt; strlen(arr) &lt;&lt; endl;
+&#125;
+
+int main()&#123;
+    char arr[20] &#x3D; &quot;hello&quot;;
+    size_of(arr);  &#x2F;&#x2F; 8   5
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>4.s<strong>trlen本身是库函数，因此在程序运行过程</strong>中，计算长度。而<strong>sizeof在编译</strong>时计算长度。</p>
+<p>5.sizeof的参数可以是类型，也可以是变量。*<em>strlen的参数必须是char <em>类型</em></em>的变量。</p>
+<h2><span id="lambda表达式匿名函数">lambda表达式（匿名函数）</span></h2><p>lambda 表达式的定义形式如下：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">[capture list](parameter list)-&gt;return type
+&#123;
+    function body
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中：</p>
+<ul>
+<li>capture list：捕获列表，指lambda表达式所在函数中定义的局部变量的列表，通常为空，但如果函数体中用到了lambda表达式所在函数的局部变量，必须捕获该变量，即将此变量写在捕获列表中。捕获方式分为：<strong>引用快捷捕获[&amp;]</strong>,<strong>值捕获方式[=].</strong> </li>
+<li>return type,parameter list ,function body:分别标识返回值类型，参数列表，函数体，和普通函数一样。</li>
+</ul>
+<hr>
+<p>举例：</p>
+<p>lambda表达式常搭配排序算法使用：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main()&#123;
+    vector&lt;int&gt;arr &#x3D; &#123;3,4,76,12,54,90,34&#125;;
+    sort(arr.begin(),arr.end(),[](int a,int b) &#123;
+        return a&gt;b;
+    &#125;);  &#x2F;&#x2F;降序排列
+    for(auto a:arr)&#123;
+        cout&lt;&lt;a&lt;&lt;&quot; &quot;;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="explicit的作用">explicit的作用</span></h2><p>作用：用来声明类构造函数是显示调用的，而非隐式调用，可以阻止调用构造函数时进行隐式转换。只可用于修饰单参构造函数，因为无参构造函数和多参构造函数本身就是显示调用的，再加上explicit关键字并没有意义。</p>
+<p>隐式转换：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+class A&#123;
+public:
+    int var;
+    A(int tmp)&#123;
+        var &#x3D; tmp;
+        cout&lt;&lt;var;
+    &#125;
+&#125;;
+int main()&#123;
+    A ex &#x3D; 10;  &#x2F;&#x2F;发生了隐式转换
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述代码中，A ex = 10，在编译时，进行了隐式转换，将10转换成A类型的对象，然后将该对象赋值给ex，等同如下操作：</p>
+<p>为了避免隐式转换，可用explicit关键字进行声明：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+class A&#123;
+public:
+    int var;
+    explicit A(int tmp)&#123;
+        var &#x3D; tmp;
+        cout&lt;&lt;var&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()&#123;
+    A ex(100);
+    A ex1 &#x3D; 10;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">error: conversion from ‘int’ to non-scalar type ‘A’ requested<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2><span id="static的作用">static的作用</span></h2><h3><span id="static定义静态变量静态函数">static定义静态变量，静态函数</span></h3><p>保持变量内容持久：<strong>static 作用于局部变量，改变局部变量的生存周期</strong>，使得该变量存在于定义后直到程序运行结束的这段时间。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int fun()&#123;
+    static int var &#x3D; 1 ; &#x2F;&#x2F;var只在第一次进入这个函数的时候初始化
+    var +&#x3D; 1;
+    return var;
+&#125;
+int main()&#123;
+    for(int i&#x3D; 0;i&lt;10;++i)&#123;
+        cout&lt;&lt;fun()&lt;&lt;&quot; &quot;; &#x2F;&#x2F;2,3,4,5,6,7,8,9,10,11
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>隐藏:static作用于全局变量和参数，改变了全局变量和函数的作用域，使得全局变量和函数只能在定义它的文件中使用，在源文件中不具有全局可见性。（注：普通全局变量和函数具有全局可见性，即其他的源文件也可以使用）</p>
+<p>static 作用于类的成员变量和类的成员函数，使得类变量或者类成员函数和类有关，也就是说<strong>可以不定义类的对象就可以通过类访问这些静态成员</strong>。注意：类的静态成员函数只能<strong>访问静态成员变量</strong>或者<strong>静态成员函数</strong>，而<strong>不能将静态成员函数定义成虚函数。</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#inlcude&lt;iostream&gt;
+using namespace std;
+class A&#123;
+private:
+    int var;
+    static int s_var; &#x2F;&#x2F;静态成员变量
+public:
+    void show()&#123;
+        cout&lt;&lt;s_var++&lt;&lt;endl;
+    &#125;
+    static void s_show()&#123;
+        cout&lt;&lt;s_var&lt;&lt;endl;
+        &#x2F;&#x2F;cout&lt;&lt;var&lt;&lt;endl; --&gt;invalid use of member ‘A::var’ in static member function
+        &#x2F;&#x2F;show();
+    &#125;
+&#125;;
+int A::s_var &#x3D; 1; &#x2F;&#x2F;静态成员变量在类外进行初始化赋值，默认初始化为0
+int main()&#123;
+    &#x2F;&#x2F;cout&lt;&lt;A::sa&lt;&lt;endl; 
+    A ex;
+    ex.show();
+    A::s_show(); &#x2F;&#x2F; &#x3D;&#x3D; ex.s_show();
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3><span id="static类中使用的注意事项">static类中使用的注意事项</span></h3><p>static静态成员变量：</p>
+<ul>
+<li>1.静态成员变量是在类内进行声明，在类外进行定义和初始化，在类外进行<strong>定义和初始化的时候不要出现static关键字和private，public，protected</strong>访问规则。</li>
+<li>2.静态成员变量相当于类域中的全局变量，<strong>被类的所有对象所共享，包括派生类的对象。</strong></li>
+<li>3.静态成员变量可以<strong>作为成员函数的参数</strong>，而普通成员变量不可以。</li>
+</ul>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+public:
+    static int s_var;
+    int var;
+    void fun1(int i &#x3D; s_var);&#x2F;&#x2F;正确，静态成员变量可以作为成员函数的参数
+    void fun2(int i &#x3D; var); &#x2F;&#x2F;erro invalid use of non_static data member &#39;A::var&#39;
+    
+&#125;;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>4.<strong>静态数据成员</strong>的类型可以是<strong>所属类的类型</strong>，而<strong>普通数据成员</strong>的类型只能是<strong>该类类型的指针或引用</strong>。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+public:
+    static A s_var;&#x2F;&#x2F;正确，静态数据成员
+    A var; &#x2F;&#x2F; error field &#39;var&#39; has incomplete type &#39;A&#39;
+    A *p; &#x2F;&#x2F;正确 指针
+    A &amp;var1; &#x2F;&#x2F;正确 引用
+&#125;;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>static<strong>静态成员函数不能调用非静态成员变量或者非静态成员函数</strong>，因为静态成员函数<strong>没有this指针</strong>。静态成员函数作为类作用域的全局函数。</li>
+<li><strong>静态成员函数不能声明成虚函数(virtual) , const 函数和volatile函数</strong></li>
+</ol>
+<h3><span id="static全局变量和普通全局变量">static全局变量和普通全局变量</span></h3><p>相同点：</p>
+<p>存储方式：普通全局变量和static全局变量都是静态存储方式</p>
+<p>不同点：</p>
+<p>作用域：<strong>普通全局变量的作用域是整个源程序</strong>，当一个源程序由多个源文件组成时，普通全局变量在各个源文件都是有效的，<strong>静态全局变量则限制其作用域，即只在定义该变量的源文件内有效。在同一源程序的其他源文件中不能使用它</strong>。由于静态全局变量的作用域限于一个源文件内，只能<strong>为该源文件内的函数公用，因此可以避免在其他源文件中引起错误</strong>。</p>
+<h2><span id="const-的作用">const 的作用</span></h2><p>作用：</p>
+<ul>
+<li>const修饰成员变量，<strong>定义成const常量，相较于宏常量，节省内存空间</strong>，提高了效率。</li>
+<li>const修饰函数参数，使得传递过来的<strong>函数参数的值不能改变</strong>。</li>
+<li>const修饰成员函数，使得成员函数不能修改任何类型的成员变量（mutable修饰的变量除外），也<strong>不能调用const成员函数，因为非const成员可能会修改成员变量。</strong></li>
+</ul>
+<p>在类中的用法：</p>
+<p>const成员变量：</p>
+<p>1.const成员变量只能在类内声明，定义，<strong>在构造函数初始化列表中初始化</strong>。</p>
+<p>2.<strong>const成员变量只在某个对象的生存周期内是常量，对于整个类而言却是可变的</strong>，因为类可以创建多个对象，<strong>不同类的const成员变量的值是不同的</strong>。因此<strong>不能在类的声明中初始化const成员变量，类的对象没有创建，编译器不知道它的值。</strong></p>
+<p>const成员函数：</p>
+<ol>
+<li>不能修改成员变量的值，除非由mutable修饰，只能访问成员变量。</li>
+<li>不能调用非常量成员函数，以防修改成员变量的值。</li>
+</ol>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+public:
+    int var;
+    A(int tmp):var(tmp)&#123;&#125;
+    void c_fun(int tmp)const &#x2F;&#x2F;const成员函数
+    &#123;
+        var &#x3D; tmp; &#x2F;&#x2F;error 在const成员函数中，不能修改任何类成员变量
+        fun(tmp);
+        &#x2F;&#x2F;error  const成员函数不能调用非const成员函数，因为非const成员函数可能会修改成员变量
+        
+    &#125;
+    void fun(int tmp)&#123;
+        var &#x3D; tmp;
+    &#125;
+&#125;;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="define和const区别">define和const区别</span></h2><p>区别：</p>
+<ul>
+<li>编译阶段：define是在编译预处理阶段进行替换，const是在编译阶段确定其值。</li>
+<li>安全性**:define定义的宏常量<strong>没有数据类型，只是进行简单的替换，</strong>不会进行类型安全的检查**，const定义的常量是有类型的，要进行判断，可以避免一些低级错误。</li>
+<li>内存占用：define定义的宏常量，在<strong>程序中使用多少次就会进行多少次替换，内存中有多个备份，占用的是代码段的空间</strong>，const定义的常量占用<strong>静态存储区的空间</strong>，程序运行过程中只有一份。</li>
+<li>调试：<strong>define定义的宏常量不能调试</strong>，因为在预编译阶段就已经替换了，<strong>const定义的常量可以进行调试</strong>。</li>
+</ul>
+<p>const的优点：</p>
+<p>有数据类型，在定义时可以进行安全检查。</p>
+<p>可调式。</p>
+<p>占用较少的空间。</p>
+<h2><span id="define和typedef的区别">define和typedef的区别</span></h2><p>原理：#define作为预处理指令，在编译预处理时进行替换操作，不作正确性检查，只有在编译已被展开的源程序时才会发现可能的错误并报错。typedef时关键字，在编译时处理，有类型检查的功能，用来给一个已经存在的类型一个别名，但不能在一个函数定义里面使用typedef。</p>
+<p>功能：typedef用来定义类型的别名，方便使用。#define不仅可以为类型取别名，还可以定义常量，变量，编译开关等。</p>
+<p>作用域：#define没有作用域 的限制，只要是之前预定义过的宏，在以后的程序中都可以使用，而typedef有自己的作用域。</p>
+<p>指针的操作：typedef和#define在处理指针时不完全一样。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#define INTPTR1 int *
+typedef int *INTPTR2;
+using namespace std;
+int main()&#123;
+    INTPTR1 p1,p2;   &#x2F;&#x2F;p1:int *; p2:int
+    INTPTR p3,p4;    &#x2F;&#x2F;p3:int * ;p4:int *
+    int var &#x3D;1;
+    const INTPTR1 p5 &#x3D; &amp;var; &#x2F;&#x2F;相当于const int *p5 常量指针，即不可以通过p5去修改p5指向的内容，但是p5可以指向其他内容
+    
+    const INTPTR2 p6 &#x3D; &amp;var;
+    &#x2F;&#x2F;相当于 int * const p6 指针常量，不可使p6再指向其他的内容。
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">指针常量和常量指针的区别--&gt;参考语言特性<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2><span id="宏实现比较大小以及两个数中的最小值">宏实现比较大小，以及两个数中的最小值</span></h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#define MAX(X,Y) ((X)&gt;(Y)?(X):(Y))
+#define MIN(X,Y) ((X&lt;Y)?(X):(Y))
+using namespace std;
+int main()&#123;
+    int var1 &#x3D; 10,var2 &#x3D; 100;
+    cout&lt;&lt;MAX(var1,var2)&lt;&lt;endl;
+    cout&lt;&lt;MIN(var1,var2)&lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="inline的作用">inline的作用</span></h2><p>作用：</p>
+<p><strong>inline是一个关键字，可以用于定义内联函数</strong>。内联函数，像普通函数一样被调用，但是在<strong>调用时并不通过函数调用的机制而是直接在调用点处展开，这样可以大大减少由函数调用带来的开销，</strong>从而提高程序的运行效率。</p>
+<p>使用方法：</p>
+<p>1.类内定义成员函数默认时内联函数</p>
+<p>在<strong>类内定义成员函数，可以不用在函数头部加inline关键字</strong> ，因为编译器会自动将类内定义的函数（构造函数，析构函数，普通成员函数等）声明为内联函数，代码如下：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+public:
+    int var;
+    A(int tmp)&#123;
+        var &#x3D; tmp;
+    &#125;
+    void fun()&#123;
+        cout&lt;&lt;var&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2.类外定义成员函数，若想定义为内联函数，需要关键字声明</p>
+<p>当在类内声明函数，在类外定义函数时，如果想将该函数定义为内联函数，则可以在类内声明时不加inline关键字，而在类外定义函数时加上inline关键字。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+public:
+    int var;
+    A(int tmp)&#123;
+        var &#x3D; tmp;
+    &#125;
+    void fun();
+&#125;
+inline void A::fun()&#123;
+    cout&lt;&lt;var&lt;&lt;endl;
+&#125;
+int main()&#123;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>另外，可以在声明函数和定义函数的同时加上inline，也可以只在函数声明时加inline，而定义函数时不加inline。<strong>只要确保在调用该函数之前把inline的信息告知编译器即可。</strong></p>
+<h3><span id="inline的工作原理">inline的工作原理</span></h3><p><strong>内联函数不是在调用时发生控制转移关系</strong>，而是<strong>在编译阶段将函数体嵌入到每一个调用该函数的语句块中</strong>，编译器会将程序中出现内联函数的调用表达式用内联函数的函数体来替换。</p>
+<p><strong>普通函数调用</strong>是将程序执行<strong>转移到被调用函数所存放的内存地址</strong>，当函数执行完之后，<strong>返回到执行此函数前的地方</strong>。转移操作需要保护现场，被调用函数执行完后，再恢复现场，该过程需要<strong>较大的资源开销。</strong></p>
+<h3><span id="define和inline的区别">define和inline的区别</span></h3><p><strong>内联函数在编译时</strong>展开，而<strong>宏在编译处理时展开</strong>，在编译的时候，内联函数直接嵌入到目标代码中去，而宏只是一个简单的文本替换。</p>
+<p>内联函数时真正的函数，<strong>和普通函数调用的方法一样，在调用点处直接展开，避免了函数的参数压栈操作，减少了调用的开销</strong>。而宏定义编写较为复杂，需增加一些括号来避免歧义。</p>
+<p><strong>宏定义只进行文本替换</strong>。不会对参数类型，语句能否正常编译等进行检查<strong>。而内联函数是真正的函数，会对参数的类型，函数体内的语句编写是否正确等进行检查。</strong></p>
+<p>使用举例：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#define MAX(a,b) ((a)&gt;(b)?(a):(b))
+using namespace std;
+inline int fun_max(int a,int b)&#123;
+    return a&gt;b ?a :b;
+&#125;
+int main()&#123;
+    int var &#x3D;1;
+    cout&lt;&lt;MAX(var,5)&lt;&lt;endl;
+    cout&lt;&lt;fun_max(var,0);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="new的作用">new的作用</span></h2><p>new是C++的关键字，用来动态分配内存，实现方式如下：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int *p &#x3D; new int[5];<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>new:内存分配成功，返回该对象类型的指针，分配失败，抛出bad_alloc异常。</p>
+<p>malloc：成功申请内存，返回指向该内存的指针。分配失败，返回NULL指针。</p>
+<h2><span id="delete实现原理">delete实现原理</span></h2><p>delete的实现原理：</p>
+<p>首先<strong>执行该对象所属类的析构函数。</strong></p>
+<p>进而通过调用operator delete的标准库函数<strong>来释放所占的内存空间。</strong></p>
+<p>delete和delete[]的区别：</p>
+<p><strong>delete用来释放单个对象所占的空间</strong>，只会调用一次析构函数。</p>
+<p><strong>delete[] 用来释放数组空间</strong>，会对数组中的每个成员都调用一次析构函数。</p>
+<h2><span id="new-malloc-delete-free">new malloc delete free</span></h2><ul>
+<li><p>在使用的时候new，delete搭配使用，malloc和free搭配使用</p>
+<p><strong>malloc，free是库函数，而new delete是关键字。</strong></p>
+<p>-new申请空间时，无需指定分配空间的大小，编译器会根据类型自行计算，<strong>malloc在申请空间时，需要确定所申请空间的大小</strong>。</p>
+</li>
+<li><p>new申请空间时，<strong>返回的类型是对象的指针类型</strong>，无需强制类型转换，是类型安全的操作符；*<em>malloc申请空间时，返回的是 void * 类型,需要进行强制类型的转换*</em>，转换为对象类型的指针。</p>
+</li>
+<li><p>new分配失败时，会抛出bad_alloc异常，malloc分配失败会返回空指针。</p>
+</li>
+<li><p><strong>对于自定义的类型</strong>，new首先调用operator new()函数申请空间（<strong>底层通过malloc</strong>）实现，然后调用构造函数进行初始化，最后返回自定义类型的指针。delete首先调用析构函数，然后调用operator delete()释放空间（<strong>底层通过free实现</strong>）。<strong>malloc，free无法进行自定义类型的对象的构造和析构。</strong></p>
+</li>
+<li><p><strong>new操作符从自由存储区上为对象动态分配内存</strong>，而<strong>malloc函数从堆上动态分配内存</strong>（自由存储区不等于堆）。</p>
+</li>
+</ul>
+<h2><span id="malloc的原理">malloc的原理</span></h2><p>malloc的原理：<br>当开辟的空间小于128K时，调用brk()函数，通过移动_enddata来实现。</p>
+<p>当开辟空间大于128K时，调用mmap()函数，通过在虚拟地址空间中开辟一块内存空间来实现。</p>
+<p>malloc的底层实现：</p>
+<p>brk()函数实现原理：向高地址的方向移动指向数据段高地址的指针_enddata。</p>
+<p>mmap内存映射原理：</p>
+<ol>
+<li>进程启动映射过程，并<strong>在虚拟地址空间中为映射创建虚拟映射区域。</strong></li>
+<li>调用内核空间的系统函数<strong>mmap()**，实现文件物理地址和进程虚拟地址的</strong>一一映射关系。**</li>
+<li>进程发起<strong>对这片映射空间的访问，引发缺页异常</strong>，实现文件内容<strong>到物理内存（主存）的拷贝。</strong></li>
+</ol>
+<h2><span id="volatile的作用">volatile的作用</span></h2><p>volatile的作用:当对象的值可能在程序的控制或检测之外被改变时，应该将该对象<strong>声明为volatile,告知编译器不应对这样的对象进行优化读取和存储</strong>。</p>
+<p>volatile不具有原子性。</p>
+<p>volatile对编译器的影响：使用该关键字后，编译器不会对相应的对象进行优化，即不会将变量从内存缓存到寄存器中，防止多个线程有可能使用内存中的变量，有可能使用寄存器中的变量，<strong>从而导致程序错误。出现不一致的现象。</strong></p>
+<p>使用volatile关键字的场景：</p>
+<ul>
+<li>当多个线程都会用到某一变量，并且该变量的值有可能发生改变时，需要用volatile关键字对该变量进行修饰。</li>
+<li>中断服务程序中访问的变量或并行设备的硬件寄存器的变量，最好用volatile关键字修饰。</li>
+</ul>
+<p>volatile关键字和const关键字可以同时使用，某种类型可以既是volatile又是const，同时具有两者的属性。</p>
+<h2><span id="返回函数中静态变量的地址会发生什么">返回函数中静态变量的地址会发生什么？</span></h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int *fun(int tmp)&#123;
+    static int var &#x3D; 10;
+    var *&#x3D;tmp;
+    return &amp;var;
+&#125;
+int main()&#123;
+    cout&lt;&lt;*fun(5)&lt;&lt;endl;
+    return 0;
+&#125;
+&#x2F;&#x2F; 50<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>说明：上述代码中在函数fun中定义了静态局部变量var，使得离开该函数的作用域后，该变量不会销毁，返回到主函数中，该变量依然存在。但是，该静态局部变量直到程序运行结束后才销毁，浪费内存空间。</p>
+<h2><span id="extern-c的作用">extern C的作用</span></h2><p>当C++程序需要调用C语言编写的函数，C++使用链接指示，即extern C指出任意非C++函数所用的语言。</p>
+<p>举例：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;可能出现在C++头文件&lt;cstring&gt;中的链接指示
+extern &quot;C&quot;&#123;
+    int strcmp(const char*,const char *);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>extern “C” 的作用是让 C++ 编译器将 extern “C” 声明的代码当作 C 语言代码处理，可以避免 C++ 因符号修饰导致代码不能和C语言库中的符号进行链接的问题。</p>
+<h2><span id="sizeof11">sizeof（1==1）</span></h2><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+void main()&#123;
+    printf(&quot;%ld\n&quot;,sizeof(1&#x3D;&#x3D;1));
+&#125;
+&#x2F;&#x2F;运行结果为4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    cout&lt;&lt;sizeof(1&#x3D;&#x3D;1)&lt;&lt;endl;
+    return 0;
+&#125;
+&#x2F;&#x2F; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>原因：</p>
+<p><strong>C语言没有布尔类型 sizeof(1==1) —-&gt;sizeof(1) 按照字节处理</strong> ，4字节，也有可能是8字节。</p>
+<p><strong>C++拥有布尔类型，sizeof(1==1) —–&gt;sizeof(true) 按照bool类型处理</strong>，所以是一个字节。</p>
+<h2><span id="strcpy函数有什么缺陷">strcpy函数有什么缺陷?</span></h2><p>strcpy函数的缺陷：<strong>strcpy函数不检查目的缓冲区的大小边界</strong>，而是将源字符逐一的全部赋值给目的字符串地址起始的一块连续的内存空间，同时加上字符串终止符，<strong>会导致其他变量被覆盖。</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int main()&#123;
+    int var &#x3D; 0x11112222;
+    char arr[10];
+    cout&lt;&lt;&quot;Address : var &quot;&lt;&lt;&amp;var&lt;&lt;endl;
+    cout&lt;&lt;&quot;Address :arr&quot;&lt;&lt;&amp;arr&lt;&lt;endl;
+    strcpy(arr,&quot;hello world!&quot;);
+    cout&lt;&lt;&quot;var:&quot;&lt;&lt;hex&lt;&lt;var&lt;&lt;endl; &#x2F;&#x2F;将变量var以16进制输出
+    cout&lt;&lt;&quot;arr:&quot;&lt;&lt;arr&lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>说明：从上述代码中可以看出，变量var的后六位被字符串“hello world！”的“d!￥0”这三个字符改变，则三个字符对应的ascii码十六进制为￥0(0x00) ,!(0x21),d(0x64)。</p>
+<p>原因：变量arr只分配的10个内存空间，通过上述程序中的地址可以看出arr和var的内存中是连续存放的，但是在调用strcpy函数进行拷贝时，源字符串的<strong>“hello world！”所占的内存空间为13，因此在拷贝的过程中会占用var的内存空间，导致var的后六位被覆盖。</strong></p>
+<h2><span id="auto类型推导的原理">auto类型推导的原理：</span></h2><p>编译器根据初始值来推算变量的类型，要求用auto定义变量时必须有初始值。编译器推断出来的auto类型有时和初始值类型并不完全一样。编译器会适当改变结果类型使其更符合初始化规则。</p>
+<h2><span id="class和struct的异同">class和struct的异同</span></h2><p>struct和class都可以自定义数据类型，也可以支持继承操作。</p>
+<p>struct中默认的访问级别是public，默认的继承级别是public。class默认的访问级别是private ，默认的继承级别也是private。</p>
+<p>当class继承struct或者struct继承class时，默认的继承级别取决于class或struct本身，class（private继承），struct（public继承）取决于派生类的默认继承级别。</p>
+<pre class="line-numbers language-none"><code class="language-none">struct A&#123;&#125;;
+class B:A&#123;&#125;; &#x2F;&#x2F;private 继承
+struct C :B&#123;&#125;; &#x2F;&#x2F;public继承<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>举例：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+public:
+    void funA()&#123;
+        cout&lt;&lt;&quot;class A&quot;&lt;&lt;endl;
+    &#125;
+    
+&#125;;
+struct B: A&#123;
+    &#x2F;&#x2F;由于B是struct A的默认继承级别为public
+public:
+    void funB()&#123;
+        cout&lt;&lt;&quot;class B&quot;&lt;&lt;endl;
+    &#125;
+&#125;;
+class C: B&#123;
+    &#x2F;&#x2F;由于C是class ，B的默认继承级别为private ，所以无法访问基类B中的printB函数  
+&#125;;
+int main()&#123;
+    A ex1;
+    ex1.funA(); &#x2F;&#x2F;class A
+    B ex2;
+    ex2.funB(); &#x2F;&#x2F;class B
+    ex2.funA(); 
+    &#x2F;&#x2F;struct B继承class A是public继承 所以可以调用funA()
+    C ex3; 
+    ex3.funB(); &#x2F;&#x2F;error 
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2><span id="struct和union的区别">struct和union的区别</span></h2><p>说明：union是联合体，struct是结构体</p>
+<p>区别：</p>
+<ul>
+<li>联合体和结构体都是由若干个数据类型不同的数据成员组成，使用时联合体只有一个有效的成员，而结构体所有的成员都有效。</li>
+<li>对联合体的不同成员赋值，将会覆盖其他成员的值，而对于结构体的对不同成员赋值时，相互不影响。</li>
+<li>联合体的大小为其内部所有变量的最大值，按照最大类型的倍数进行分配大小。结构体分配内存的大小遵循内存对齐原则。</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+typedef union 
+&#123;
+    char c[10];
+    char cc1;  &#x2F;&#x2F;char 1字节 按该类型的倍数分配大小
+&#125; u11;
+typedef union 
+&#123;
+    char c[10];
+    int i;   &#x2F;&#x2F;int 4字节，按该类型的倍数分配大小
+&#125; u22;
+
+typedef union
+&#123;
+    char c[10];
+    double d; &#x2F;&#x2F; double 8 字节，按该类型的倍数分配大小
+&#125; u33;
+
+typedef struct s1
+&#123;
+    char c;   &#x2F;&#x2F; 1 字节
+    double d; &#x2F;&#x2F; 1（char）+ 7（内存对齐）+ 8（double）&#x3D; 16 字节
+&#125; s11;
+
+typedef struct s2
+&#123;
+    char c;   &#x2F;&#x2F; 1 字节
+    char cc;  &#x2F;&#x2F; 1（char）+ 1（char）&#x3D; 2 字节
+    double d; &#x2F;&#x2F; 2 + 6（内存对齐）+ 8（double）&#x3D; 16 字节
+&#125; s22;
+
+typedef struct s3
+&#123;
+    char c;   &#x2F;&#x2F; 1 字节
+    double d; &#x2F;&#x2F; 1（char）+ 7（内存对齐）+ 8（double）&#x3D; 16 字节
+    char cc;  &#x2F;&#x2F; 16 + 1（char）+ 7（内存对齐）&#x3D; 24 字节
+&#125; s33;
+
+int main()
+&#123;
+    cout &lt;&lt; sizeof(u11) &lt;&lt; endl; &#x2F;&#x2F; 10
+    cout &lt;&lt; sizeof(u22) &lt;&lt; endl; &#x2F;&#x2F; 12
+    cout &lt;&lt; sizeof(u33) &lt;&lt; endl; &#x2F;&#x2F; 16
+    cout &lt;&lt; sizeof(s11) &lt;&lt; endl; &#x2F;&#x2F; 16
+    cout &lt;&lt; sizeof(s22) &lt;&lt; endl; &#x2F;&#x2F; 16
+    cout &lt;&lt; sizeof(s33) &lt;&lt; endl; &#x2F;&#x2F; 24
+
+    cout &lt;&lt; sizeof(int) &lt;&lt; endl;    &#x2F;&#x2F; 4
+    cout &lt;&lt; sizeof(double) &lt;&lt; endl; &#x2F;&#x2F; 8
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">C++进阶笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">谢谢你请我吃糖果🍬</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'mtODWYVhtCigkQw0txyftoMA-gzGzoHsz',
+        appKey: 'IEEkpA8t8wLdzEff2jk2nIFG',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '别走呀，理理我，留个言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/07/26/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="语言特性">
+                        
+                        <span class="card-title">语言特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">C++进阶笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="排序算法实现">
+                        
+                        <span class="card-title">排序算法实现</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">排序算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="6601699944"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">杨新宇</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">207.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" style='display:none'
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" style='display:none'
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/YXY996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:614533604@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=614533604" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 614533604" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

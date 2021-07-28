@@ -1,0 +1,2169 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="设计模式, 小杨的博客">
+    <meta name="description" content="分享笔记心得，互相学习">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>设计模式 | 小杨的博客</title>
+    <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小杨的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小杨的博客</div>
+        <div class="logo-desc">
+            
+            分享笔记心得，互相学习
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/YXY996" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/YXY996" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">设计模式</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/C/" class="post-category">
+                                C++
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-07-28
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    22 分
+                </div>
+                
+
+                 <span id="busuanzi_container_site_pv" style='display:none'>
+                </span> <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv" >
+                </span> 
+                
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1><span id="设计模式">设计模式</span></h1><h2><span id="单例模式">单例模式</span></h2><p>保证类的实例化对象只有一个，并且提供一个访问它的全局访问点。</p>
+<p>应用场景：</p>
+<ul>
+<li>标识文件系统的类，一个操作系统一定是只有一个文件系统，因此文件系统的类的实例有且仅有一个。</li>
+<li>打印机打印程序的实例，一台计算机可以连接好几台打印机，但是计算机上的打印程序只有一个，就可以<strong>通过单例模式来避免两个打印作业同时输出到打印机。</strong></li>
+</ul>
+<p>实现方式：</p>
+<p>单例模式可以通过全局或者静态变量的形式实现，这样比较简单，但是这样会影响封装性，难以保证别的代码不会对全局变量造成影响。</p>
+<p>默认的构造函数，拷贝构造函数，赋值构造函数声明为私有的，这样进制在类的外部创建该对象。</p>
+<p>全局访问点也要定义为<strong>静态类型的成员函数</strong>，没有参数，返回该类的指针类型。<strong>因此使用实例化对象的时候是通过类直接调用该函数，并不是先创建一个该类的对象，通过对象调用</strong>。</p>
+<p>不安全的实现方式：</p>
+<p>原因：考虑当两个线程同时调用 getInstance 方法，并且同时检测到instance是NULL，两个线程会同时实例化对象，不符合单例模式的要求。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class Singleton&#123;
+private:
+    static Singleton * instance;
+    Singleton()&#123;&#125;
+    Singleton(const Singleton &amp;tmp)&#123;&#125;
+    Singleton &amp; operator &#x3D; (const Singleton &amp;tmp)&#123;&#125;
+public:
+    static Singleton *getInstance()&#123;
+        if(instance &#x3D;&#x3D; NULL)&#123;
+            instance &#x3D; new Singleton();
+        &#125;
+        return instance;
+    &#125;
+&#125;;
+Singleton *Singleton :: instance &#x3D; NULL;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>分类：h</p>
+<ul>
+<li><strong>懒汉模式</strong>：直到第一次用到类的实例时才会去实例化，上面是懒汉实现。</li>
+<li><strong>饿汉模式</strong>：类定义的时候就实例化</li>
+</ul>
+<p>线程安全的懒汉模式实现：</p>
+<p>方法：加锁</p>
+<p>存在的问题：每次判断实例对象是否为NULL，都要被锁定，如果是多线程，就会造成大量线程阻塞。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Singleton&#123;
+private:
+    static pthread_mutex_t mutex;
+    static Singleton *instance;
+    Singleton()&#123;
+        pthread_mutex_init(&amp;mutex,NULL);
+    &#125;
+    Singleton(const Singleton &amp;tmp);
+    Singleton &amp; operator &#x3D; (const Singleton &amp;tmp);
+public:
+    static Singleton * getInstance()&#123;
+        pthread_mutex_lock(&amp;mutex);
+        if(instance &#x3D;&#x3D; NULL)&#123;
+            instance &#x3D; new Singleton();
+        &#125;
+        pthread_mutex_unlock(&amp;mutex);
+        return instance;
+    &#125;
+&#125;;
+Singleton *Singleton ::instance &#x3D; NULL;
+pthread_mutex_t Singleton::mutex;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>方法：内部静态变量，在全局访问点getInstance中定义静态实例</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Singleton&#123;
+private:
+    static pthread_mutex_t mutex;
+    Singleton()&#123;
+        pthread_mutex_init(&amp;mutex,NULL);
+    &#125;
+    Singleton(const Singleton &amp;temp);
+    Singleton &amp; operator &#x3D; (const Singleton &amp;temp);
+public:
+    static Singleton * getInstance()&#123;
+        static Singleton instance;
+        return instance;
+    &#125;
+&#125;;
+pthread_mutex_t Singleton::mutex;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>饿汉模式的实现：</p>
+<p>饿汉模式本身就是线程安全的，不用加锁。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Singleton&#123;
+private:
+    static Singleton *instance;
+    Singleton(const Singleton &amp;tmp);
+    Singleton &amp; operator &#x3D; (const Singleton &amp;tmp);
+protected:
+    Singleton()&#123;&#125;
+public:
+    static Singleton * getInstance()&#123;
+        return instance;
+    &#125;
+&#125;;
+Singleton *Singleton ::instance &#x3D; new Singleton();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="工厂模式">工厂模式</span></h2><p>工厂模式：包括简单工厂模式，抽象工厂模式，工厂方法模式</p>
+<p>简单工厂模式：主要用于创建对象。用一个工厂来根据输入的条件产生不同的类，然后根据不同的类的虚函数得到不同的结果。</p>
+<p>工厂方法模式：修正了简单工厂模式不遵守开放封闭原则。把选择判断移到了客户端去实现，如果<strong>想添加新功能就不用修改原来的类，直接修改客户端即可</strong>。</p>
+<p>抽象工厂模式：定义了一个创建一系列相关或相互依赖的接口，而无需指定他们的具体类。</p>
+<h3><span id="1简单工厂模式">1.简单工厂模式</span></h3><p>主要用于创建对象。用一个工厂来根据输入的条件产生不同的类，然后根据不同类的虚函数得到不同的结果。</p>
+<p>应用场景：</p>
+<p>适用于针对不同情况创建不同类时，只需传入工厂类的参数即可，无需了解具体实现方法。例如计算器中对于同样的输入，执行不同的操作：加减乘除。</p>
+<p>实现方式：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+&#x2F;&#x2F;here is the product class
+class Operation_Pos()&#123;
+public:
+    int var1,var2;
+    virtual double GetResult()&#123;
+        double res &#x3D; 0;
+        return res;
+    &#125;
+&#125;;
+class Add_Operation_Pos : public Operation_Pos&#123;
+public:
+    virtual double GetResult()&#123;
+        return var1 + var2;
+    &#125;
+    
+&#125;;
+class Sub_Operation_Pos : public Operation_Pos&#123;
+public:
+    virtual double GetResult()&#123;
+        return var1 - var2;
+    &#125;
+    
+&#125;;
+class Mul_Operation_Pos : public Operation_Pos&#123;
+public:
+    virtual double GetResult()&#123;
+        return var1 * var2;
+    &#125;
+    
+&#125;;
+class Div_Operation_Pos : public Operation_Pos&#123;
+public:
+    virtual double GetResult()&#123;
+        return var1 &#x2F; var2;
+    &#125;
+&#125;;
+
+&#x2F;&#x2F;here is factory class
+class Factory&#123;
+public:
+    static Operation_Pos *CreateProduct(char op)&#123;
+        switch(op)&#123;
+            case &#39;+&#39;:
+                return new Add_Operation_Pos();
+            case &#39;-&#39;:
+                return new Sub_Operation_Pos();                   case &#39;*&#39;:
+                return new Mul_Operation_Pos();                   case &#39;&#x2F;&#39;:
+                return new Div_Operation_Pos();
+            default:
+                return new Add_Operation_Pos();
+        &#125;
+    &#125;
+&#125;;
+int main()&#123;
+    int a,b;
+    cin&gt;&gt;a&gt;&gt;b;
+    Operation_Pos *p &#x3D; Factory::CreateProduct(&#39;+&#39;);
+    p-&gt;var1 &#x3D; a;
+    p-&gt;var2 &#x3D; b;
+    cout&lt;&lt;p-&gt;GetResult()&lt;&lt;endl;
+    
+    p &#x3D; Factory::CreateProduct(&#39;*&#39;);
+    p-&gt;var1 &#x3D; a;
+    p-&gt;var2 &#x3D; b;
+    cout&lt;&lt;p-&gt;GetResult()&lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="2工厂方法模式">2.工厂方法模式</span></h3><p>修正了简单工厂模式中不遵守开放封闭原则。把选择判断移到了客户端去实现，如果想添加新功能就不用修改原来的类，直接修改客户端即可。</p>
+<p>应用场景：</p>
+<p>一个类不知道它所需要的对象的类：在工厂方法模式中，客户端不需要直到产品类的类名，只需要知道所对应的工厂即可，<strong>具体的产品对象由具体工厂类创建，客户端需要知道创建具体产品的工厂类</strong>。</p>
+<p>一个类通过其派生类来指定创建哪个对象：在工厂模式中，<strong>对于抽象工厂类只需要提供一个创建产品的接口，而由其派生类来确定具体要创建的对象</strong>，利用面向对象的多态性和里氏代换原则，程序运行时，派生类对象将<strong>覆盖父类对象</strong>，从而使系统更容易扩展。</p>
+<p>将创建对象的任务委托给多个工厂派生类中的某一个，<strong>客户端在使用时可以无需关心是哪个工厂派生类创建产品派生类，需要时再动态指定</strong>，可将具体工厂类的类名存储在配置文件或数据库。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+ &#x2F;&#x2F;here is the product class
+class Operation_Pos&#123;
+public:
+    int var1,var2;
+    virtual double GetResult()&#123;
+        double res &#x3D; 0;
+        return res;
+    &#125;
+&#125;;
+
+class Add_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 + var2;
+     &#125;
+&#125;;
+
+class Sub_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 - var2;
+     &#125;
+&#125;;
+
+class Mul_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 * var2;
+     &#125;
+&#125;;
+
+class Div_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 &#x2F; var2;
+     &#125;
+&#125;;
+
+class Factory&#123;
+public:
+    virtual Operation_Pos *CreateProduct() &#x3D; 0;
+&#125;;
+
+class Add_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct()&#123;
+        return new Add_Operation_Pos();
+    &#125;
+&#125;;
+
+class Sub_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct()&#123;
+        return new Sub_Operation_Pos();
+    &#125;
+&#125;;
+
+class Mul_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct()&#123;
+        return new Mul_Operation_Pos();
+    &#125;
+&#125;;
+
+class Div_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct()&#123;
+        return new Div_Operation_Pos();
+    &#125;
+&#125;;
+
+int main()&#123;
+    int a,b;
+    cin&gt;&gt;a&gt;&gt;b;
+    &#x2F;&#x2F;
+    Add_Factory *p_fac &#x3D; new Add_Factory();
+    &#x2F;&#x2F;
+    Operation_Pos *p_pro &#x3D; p_fac-&gt;CreateProduct();
+    p_pro-&gt;var1 &#x3D; a;
+    p_pro-&gt;var2 &#x3D; b;
+    cout&lt;&lt;p_pro-&gt;GetResult()&lt;&lt;endl;
+    &#x2F;&#x2F;
+    Mul_Factory *p_fac1 &#x3D; new Mul_Factory();
+    &#x2F;&#x2F;
+    Operation_Pos *p_pro1 &#x3D; p_fac1-&gt;CreateProduct();
+    p_pro1-&gt;var1 &#x3D; a;
+    p_pro1-&gt;var2 &#x3D; b;
+    cout &lt;&lt; p_pro1-&gt;GetResult() &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="3抽象工厂模式">3.抽象工厂模式</span></h3><p>定义了一个创建一系列相关或相互依赖的接口，而无需指定他们的具体类</p>
+<p>应用场景：</p>
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建，组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个产品族，而每次只是用其中某一个产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>产品等级结构稳定，设计完成后，不会向系统中增加新的产品等级结构或者删除已有的产品等级结构。</li>
+</ul>
+<p>实现方式：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+ &#x2F;&#x2F;here is the product class
+class Operation_Pos&#123;
+public:
+    int var1,var2;
+    virtual double GetResult()&#123;
+        double res &#x3D; 0;
+        return res;
+    &#125;
+&#125;;
+
+class Add_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 + var2;
+     &#125;
+&#125;;
+
+class Sub_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 - var2;
+     &#125;
+&#125;;
+
+class Mul_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 * var2;
+     &#125;
+&#125;;
+
+class Div_Operation_Pos : public Operation_Pos
+&#123;
+public:
+     virtual double GetResult()&#123;
+         return var1 &#x2F; var2;
+     &#125;
+&#125;;
+
+&#x2F;*............................................*&#x2F;
+class Operation_Neg&#123;
+public:
+    int var1,var2;
+    virtual double GetResult()&#123;
+        double res &#x3D; 0;
+        return res;
+    &#125;
+&#125;
+
+class Add_Operation_Neg : public Operation_Neg&#123;
+public:
+    virtual double GetResult()&#123;
+        return -(var1 + var2);
+    &#125;
+&#125;;
+
+class Sub_Operation_Neg:public Operation_Neg&#123;
+public:
+    virtual double GetResult()&#123;
+        return -(var1-var2);
+    &#125;
+&#125;;
+
+class Mul_Operation_Neg:public Operation_Neg&#123;
+public:
+    virtual double GetResult()&#123;
+        return -(var1*var2);
+    &#125;
+&#125;;
+
+class Div_Operation_Neg:public Operation_Neg&#123;
+public:
+    virtual double GetResult()&#123;
+        return -(var1&#x2F;var2);
+    &#125;
+&#125;;
+
+&#x2F;&#x2F;.................................................
+
+&#x2F;&#x2F;here is the factory class
+
+class Factory&#123;
+public:
+    virtual Operation_Pos *CreateProduct_Pos() &#x3D; 0;
+    virtual Operation_Neg *CreateProduct_Neg() &#x3D; 0;
+&#125;;
+
+class Add_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct_Pos()&#123;
+        return new Add_Operation_Pos();
+    &#125;
+    Operation_Pos *CreateProduct_Neg()&#123;
+        return new Add_Operation_Neg();
+    &#125;
+&#125;;
+
+class Sub_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct()&#123;
+        return new Sub_Operation_Pos();
+    &#125;
+    Operation_Pos *CreateProduct_Neg()&#123;
+        return new Sub_Operation_Neg();
+    &#125;
+&#125;;
+
+class Mul_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct()&#123;
+        return new Mul_Operation_Pos();
+    &#125;
+    Operation_Pos *CreateProduct_Neg()&#123;
+        return new Mul_Operation_Neg();
+    &#125;
+&#125;;
+
+class Div_Factory : public Factory&#123;
+public:
+    Operation_Pos *CreateProduct()&#123;
+        return new Div_Operation_Pos();
+    &#125;
+    Operation_Pos *CreateProduct_Neg()&#123;
+        return new Div_Operation_Neg();
+    &#125;
+&#125;;
+
+int main()&#123;
+    int a,b;
+    cin&gt;&gt;a&gt;&gt;b;
+    &#x2F;&#x2F;
+    Add_Factory *p_fac &#x3D; new Add_Factory();
+    &#x2F;&#x2F;
+    Operation_Pos *p_pro &#x3D; p_fac-&gt;CreateProduct_Pos();
+    p_pro-&gt;var1 &#x3D; a;
+    p_pro-&gt;var2 &#x3D; b;
+    cout&lt;&lt;p_pro-&gt;GetResult()&lt;&lt;endl;
+    &#x2F;&#x2F;
+    Add_Factory * p_fac1  &#x3D; new Add_Factory();
+    &#x2F;&#x2F;
+    Operation_Neg *p_pro1 &#x3D; p_fac1-&gt;CreateProduct_Neg();
+    p_pro1-&gt;var1 &#x3D; a;
+    p_pro1-&gt;var2 &#x3D; b;
+    cout &lt;&lt; p_pro1-&gt;GetResult() &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2><span id="观察者模式">观察者模式</span></h2><h3><span id="观察者模式">观察者模式</span></h3><p>定义一种一（被观察类）对多（观察类）的关系，让多个观察对象同时监听一个被观察对象，被观察对象状态发生变化时，会通知所有的观察对象，使他们能够更新自己的状态。</p>
+<p>观察者模式存在两种角色:</p>
+<ul>
+<li>观察者：内部包含被观察者对象，当被观察者对象的状态发生变化时，<strong>更新自己</strong>的状态。（<strong>接收通知更新状态）</strong></li>
+<li>被观察者：内部包含了所有观察者对象，当状态发生变化时<strong>通知所有的观察者</strong>更新自己的状态。<strong>（发送通知）</strong></li>
+</ul>
+<p>应用场景：</p>
+<p>当一个对象的改变需要同时改变其他对象，且不知道具体有多少对象有待改变时，应该考虑使用观察者模式。</p>
+<p>一个抽象模型有两个方面，其中一个方面依赖于另一个方面，这时可以用观察者模式将这两者封装在独立的对象中使他们各自独立地改变和复用。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;list&gt;
+#include&lt;string&gt;
+using namespace std;
+class Subject;
+&#x2F;&#x2F;观察者基类 （内部实例化了被观察者的对象Sub）
+class Observer&#123;
+protected:
+    string name;
+    Subject *sub;
+public:
+    Observer(string name,Subject *sub)&#123;
+        this-&gt;name &#x3D; name;
+        this-&gt;sub &#x3D; sub;
+    &#125;
+    virtual void update() &#x3D; 0;
+&#125;;
+
+class StockObserver : public Observer&#123;
+public:
+    StockObserver(string name,Subject *sub):Observer(name,sub)&#123;
+        
+    &#125;
+    void update();
+&#125;;
+
+class NBAObserver : public Observer&#123;
+public:
+    NBAObserver(string name,Subject *sub):Observer(name,sub)&#123;
+        
+    &#125;
+    void update();
+&#125;;
+
+&#x2F;&#x2F;被观察者基类 （内部存放了所有的观察者对象，以便状态发生变化时，给观察者发通知）
+
+class Subject&#123;
+protected:
+    list&lt;Observer *&gt;observers;
+public:
+    string action ; &#x2F;&#x2F;被观察者对象的状态
+    virtual void attach(Observer *) &#x3D; 0;
+    virtual void detach(Observer *) &#x3D; 0;
+    virtual void notify() &#x3D; 0;
+&#125;;
+
+class Secretary : public Subject&#123;
+    void attach(Observer *observer)&#123;
+        observers.push_back(observer);
+    &#125;
+    void detach(Observer * observer)&#123;
+        list&lt;Observer *&gt;::iterator iter &#x3D; observers.begin();
+        while(iter!&#x3D;observers.end())&#123;
+            if((*iter) &#x3D;&#x3D; observer)&#123;
+                observers.erase(iter);
+                return;
+            &#125; 
+            ++iter;
+        &#125;
+    &#125;
+    
+    void notify()&#123;
+        list&lt;Observer *&gt;::iterator iter &#x3D;observers.begin();
+        while(iter!&#x3D;observers.end())&#123;
+            (*iter)-&gt;update();
+            ++iter;
+        &#125;
+    &#125;
+&#125;;
+
+void StockObserver :: update()&#123;
+    cout&lt;&lt;name &lt;&lt;&quot;收到消息：&quot;&lt;&lt;sub-&gt;action&lt;&lt;endl;
+    if(sub-&gt;action &#x3D;&#x3D; &quot;梁所长来了！&quot;)&#123;
+        cout&lt;&lt;&quot;我马上关闭股票装作很认真的样子&quot;&lt;&lt;endl;
+    &#125;
+&#125;
+
+void NBAObserver :: update()&#123;
+    cout&lt;&lt;name&lt;&lt;&quot;收到消息：&quot;sub-&gt;action&lt;&lt;endl;
+    if(sub-&gt;action &#x3D;&#x3D; &quot;梁所长来了！&quot;)&#123;
+        cout&lt;&lt;&quot;我马上关闭NBA，装作认真工作的样子&quot;&lt;&lt;endl;
+    &#125;
+    
+&#125;
+
+int main()&#123;
+    Subject *dwq &#x3D; new Secretary();
+    Observer *xs &#x3D; new NBAObserver(&quot;xiaoshuai&quot;,dwq);
+    Observer *zy &#x3D; new NBAObserver(&quot;zouyue&quot;,dwq);
+    Observer *lm &#x3D; new NBAObserver(&quot;limin&quot;,dwq);
+    dwq-&gt;attach(xs);
+    dwq-&gt;attach(zy);
+    dwq-&gt;attach(lm);
+    
+    dwq-&gt;action &#x3D;&#x3D; &quot;去吃饭了！&quot;;
+    dwq-&gt;notify();
+    cout&lt;&lt; endl;
+    dwq-&gt;action &#x3D; &quot;梁所长来了！&quot;;
+    dwq.notify();
+    return 0;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">xiaoshuai收到消息
+zouyue收到消息
+limin收到消息
+
+xiaoshuai收到消息梁所长来了！
+我马上关闭NBA，装作认真工作的样子
+zouyue收到消息梁所长来了！
+我马上关闭NBA，装作认真工作的样子
+limin收到消息梁所长来了！
+我马上关闭NBA，装作认真工作的样子<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1><span id="面向对象">面向对象</span></h1><p>面向对象：对象是指具体的某一个事物，这些事物的抽象就是类，类中包含数据（成员变量）和动作（成员方法）。</p>
+<h2><span id="面向对象的三大特性">面向对象的三大特性</span></h2><p>封装：将具体的实现过程和数据封装成一个函数，只能通过接口进行访问<strong>，降低耦合性。</strong>——&gt;代码之间应该相互独立 ，降低依赖关系易于扩展。</p>
+<p>继承：**<strong>子类继承父类的特征和行为**</strong>，子类有父类的<strong>非private</strong>方法或成员变量，子类可以对父类的方法进行<strong>重写</strong>，<strong>增强</strong>了类之间的<strong>耦合性</strong>，但是当父类的成员变量，成员函数，或者类本身被<strong>final关键字</strong>修饰的时候，修饰的类不能继承，修饰的成员不能重写或修改。</p>
+<p>多态：多态就是不同继承类的对象。对同一消息做出不同的响应，<strong>基类的指针指向或绑定到派生类的对象</strong>，使得基类指针呈现不同的表现方式。</p>
+<h2><span id="重载重写隐藏的区别">重载，重写，隐藏的区别</span></h2><p>概念解释：·  </p>
+<p><strong><u>重载</u>**：是指同一可访问区内被声明几个</strong>具有不同参数列<strong>（参数的类型，个数，顺序）的</strong>同名函数，<strong>根据参数列表确定调用哪个函数，</strong>重载不关心函数的返回类型。**</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class A&#123;
+public:
+    void fun(int tmp);
+    void fun(float tmp);
+    void fun(int tmp,float tmp1);
+    void fun(float tmp,int tmp1);
+    int fun(int tmp);   &#x2F;&#x2F; error 注意重载不关心函数返回类型
+    
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><strong><u>隐藏</u>**：是指派生类的函数屏蔽了与其同名的基类函数。只要同名函数，不管参数列表是否相同，基类函数都会被隐藏。——–&gt;**在派生类中构建的对象无法调用基类中的同名函数。</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class Base&#123;
+public:
+    void fun(int tmp,float tmp1)&#123;
+        cout&lt;&lt;&quot;Base::fun(int tmp,float tmp1)&quot;&lt;&lt;endl;
+    &#125;   
+&#125;;
+
+class Derive: public Base&#123;
+public:
+    void fun(int tmp)&#123;
+        cout&lt;&lt;&quot;Derive :: fun(int tmp)&quot;&lt;&lt;endl; &#x2F;&#x2F;隐藏基类中的同名函数
+    &#125;
+&#125;;
+
+int main()&#123;
+    Derive ex;
+    ex.fun(1);
+    ex.fun(1,0.01); &#x2F;&#x2F;error :candidate expects 1 arguement 2 provided
+    return 0;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>说明：上述代码中ex.fun(1,0.01) ;出现错误，说明派生类中将基类的同名函数隐藏了。若是<strong>想调用基类中的同名函数</strong>，可以<strong>加上类型名</strong>指明 <strong>ex.Base::fun(1,0.01)</strong>,这样就可以调用基类中的同名函数。</p>
+<p>**<u>重写（覆盖）</u>**：是指派生类中存在重写定义的函数，函数名，参数列表，返回值类型都必须同基类中被重写的函数一致，只有函数体不同。派生类调用时会调用派生类的重写函数，不会调用被重写函数。重写的基类中被重写函数必须有virtual修饰。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class Base&#123;
+public:
+    virtual void fun(int tmp)&#123;
+        cout &lt;&lt; &quot;Base :: fun(int tmp):&quot; &lt;&lt; tmp &lt;&lt; endl;
+
+    &#125;
+&#125;;
+class Derived : public Base&#123;
+public:
+    virtual void fun(int tmp)&#123;
+        cout &lt;&lt; &quot;Derived ::fun(int tmp)&quot; &lt;&lt; tmp &lt;&lt; endl;
+
+    &#125;
+&#125;;
+int main()&#123;
+    &#x2F;&#x2F;Base * p &#x3D; new Derived();
+    Derived ex;
+    ex.fun(3); &#x2F;&#x2F; Derived :: fun(int) :3
+    ex.Base::fun(4); &#x2F;&#x2F;Base::fun(int) :4 
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>重载和重写的区别：</p>
+<ul>
+<li>范围区别：对于类中函数的重载或者重写而言，<strong>重载发生在同一个类的内部</strong>，<strong>重写发生在不同的类之间</strong>（子类和父类之间）。</li>
+<li>参数区别：<strong>重载的函数</strong>需要与原函数有<strong>相同的函数名</strong>，<strong>不同的参数列表</strong>，不关注函数的返回值类型，<strong>重写的函数的函数名，参数列表和返回值类型都需要和原函数相同</strong>。父类中被重写的函数需要<strong>有virtual修饰</strong>。</li>
+<li>Virtual关键字:重写的函数<strong>基类中必须有virtual关键字</strong>修饰，重载的函数可以有virtual关键字的修饰也可以没有。</li>
+</ul>
+<p>隐藏和重写，重载的区别：</p>
+<p>范围区别：隐藏与重载范围不同。隐藏发生在不同类中。</p>
+<p>参数区别：隐藏函数和被隐藏函数参数列表可以相同，也可以不同，但函数名一定相同。<strong>当参数不同时，无论基类中的函数是否被virtual修饰，基类函数都是被</strong><u>隐藏</u><strong>而不是</strong>被<u>重写。</u></p>
+<p>如何理解C++是面向对象编程</p>
+<p>说明：该问题最好结合自己的项目经历进行展开解释。或举一些恰当的例子，同时对比下面向过程编程。</p>
+<ul>
+<li>面向过程编程：一种<strong>以执行程序操作的过程或函数为中心编写软件的方法</strong>。程序的<strong>数据</strong>通常存储在变量中，与这些<strong>过程是分开的</strong>。所以必须将变量传递给需要使用它们的函数。缺点：随着程序变得越来越复杂，<strong>程序数据与运行代码的分离可能会导致问题</strong>。例如，程序的规范经常会发生变化，从而需要更改数据的格式或数据结构的设计。当数据结构发生变化时，对数据进行操作的代码也必须更改为接受新的格式。查找需要更改的所有代码会为程序员带来额外的工作，并增加了使代码出现错误的机会。</li>
+<li>面向对象编程（Objective-Oriented Programming ,OOP），以创建和使用对象为中心。一个对象（Object）就是一个软件实体，它将<strong>数据和程序在一个单元中组合起来</strong>。对象的数据项，也称其为属性，存储在成员变量中。对象执行的过程称其为成员函数。将对象的数据绑在一起则被称之为封装。</li>
+</ul>
+<p><strong>面向对象编程的进一步说明</strong>：</p>
+<p>面向对象编程<strong>将数据成员和成员函数封装到一个类</strong>中，并声明数据成员和成员函数的访问级别（public ，private，protected）,以便控制类对象对数据成员和函数的访问，对数据成员起到一定的保护作用。而且在类的对象调用成员函数的时候，只知道成员函数的名，参数列表以及返回值类型即可，<strong>无需了解其函数的实现原理</strong>。当类<strong>内部的数据成员或者成员函数发生改变时</strong>，<strong>不影响类外部的代码</strong>。</p>
+<h2><span id="多态的实现">多态的实现</span></h2><p>多态：多态就是不同继承类的对象。对同一消息做出不同的响应，基类的指针呈现不同的表现方式。<strong>在基类函数前加上virtual关键字</strong>，在派生类中<strong>重写</strong>该函数，<strong>运行时将会根据对象的实际类型来调用相应的函数</strong>。如果对象类型是派生类，就调用派生类的函数，如果对象类型是基类，就调用基类的函数。</p>
+<p>实现方法：多态是通过虚函数实现的，虚函数的地址保存在虚函数表中，虚函数表的地址保存在含有虚函数的类的实例对象的内存空间中。</p>
+<p>实现过程：</p>
+<ul>
+<li>1.在<strong>类中用virtual关键字声明的函数叫做虚函数</strong>。</li>
+<li>2.存在虚函数的类都有一个虚函数表，当创建一个该类的对象时，<strong>该对象有一个指向虚函数表的虚表指针</strong>（虚函数表和类对应的，虚函数表指针和对象对应）。</li>
+<li>3.当基类指针指向派生类对象，基类指针调用虚函数时，基类指针指向派生类的虚表指针，由于该虚表指针指向派生类虚函数表，通过遍历虚表，寻找相应的虚函数。</li>
+</ul>
+<p>简单解释：基类指针指向派生类对象时，通过派生类对象的虚表指针找到虚函数表，进而找到相应的虚函数。 Derive::f()进行调用。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">谢谢你请我吃糖果🍬</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'mtODWYVhtCigkQw0txyftoMA-gzGzoHsz',
+        appKey: 'IEEkpA8t8wLdzEff2jk2nIFG',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '别走呀，理理我，留个言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/07/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="计算机网络">
+                        
+                        <span class="card-title">计算机网络</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">计算机基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/01/linux%E6%8C%87%E4%BB%A4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Linux指令（更新中）">
+                        
+                        <span class="card-title">Linux指令（更新中）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">Linux基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="6601699944"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">杨新宇</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">207.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" style='display:none'
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" style='display:none'
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/YXY996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:614533604@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=614533604" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 614533604" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

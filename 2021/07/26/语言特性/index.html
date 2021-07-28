@@ -1,0 +1,1978 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="语言特性, 小杨的博客">
+    <meta name="description" content="分享笔记心得，互相学习">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>语言特性 | 小杨的博客</title>
+    <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小杨的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小杨的博客</div>
+        <div class="logo-desc">
+            
+            分享笔记心得，互相学习
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/YXY996" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/YXY996" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">语言特性</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">C++进阶笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/C/" class="post-category">
+                                C++
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-26
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-07-28
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    18 分
+                </div>
+                
+
+                 <span id="busuanzi_container_site_pv" style='display:none'>
+                </span> <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv" >
+                </span> 
+                
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1><span id="语言特性">语言特性</span></h1><h2><span id="常量指针和指针常量的区别">常量指针和指针常量的区别</span></h2><h3><span id="常量指针">常量指针</span></h3><p>常量指针本质上是一个指针，只不过这个指针指向的对象是常量。</p>
+<p>特点：const的位置在指针声明运算符 *的左侧。只要const位于 * 的左侧，无论他在类型名的左边或右边，都表示指向常量的指针。（可以这样理解，* 左侧表示指针指向的对象，该对象为常量，那么该指针为常量指针。）</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">const int * p;
+int const *p;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>注意1:指针指向的对象不能通过这个指针来修改，也就是说常量指针可以被赋值为变量的地址，之所以叫做<strong>常量指针，是限制了通过这个指针修改变量的值。</strong></p>
+<p>例如：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    const int c_var  &#x3D; 8;
+    const int *p &#x3D; &amp;c_var;
+    *p &#x3D; 6; &#x2F;&#x2F;error assignment of read-only location &#39;*p&#39;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>注意2:虽然常量指针指向的对象不能变化，可是因为常量指针本身是一个变量，因此可以被重新赋值。</p>
+<p>例如：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    const int c_var1 &#x3D; 8;
+    const int c_var2 &#x3D; 8;
+    const int *p &#x3D; &amp;c_var1;
+    p &#x3D; &amp;c_var2;  &#x2F;&#x2F;常量指针p是地址
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="指针常量">指针常量</span></h3><p>指针常量的本质上是一个常量，只不过这个常量的值是一个指针。</p>
+<p>特点：const位于指针声明操作符右侧，表明该对象本身是一个常量，* 左侧表示指针指向的类型 ，即以 * 为分界线，其左侧表示指针指向的类型，右侧表示指针本身的性质。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int var;
+int * const c_p&#x3D; &amp;var;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>注意1：指针常量的值是指针，这个值因为是常量，所以指针本身不能改变。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    int var,var1;
+    int *const c_p &#x3D; &amp;var;
+    *c_p &#x3D; &amp;var1;   &#x2F;&#x2F;error assignment of read_only variable &#39;c_p&#39;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>注意2: 指针的内容可以改变</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    int var&#x3D; 3;
+    int * const c_var &#x3D; &amp;var;
+    *c_var &#x3D; 12;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="函数指针和指针函数的区别">函数指针和指针函数的区别</span></h2><h3><span id="指针函数">指针函数</span></h3><p>指针函数本质上是一个函数，只不过该函数的返回值是一个指针。相对于普通函数而言，只是返回值是指针。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+struct Type&#123;
+    int var1;
+    int var2;
+&#125;;
+Type * fun(int tmp1,int tmp2)&#123;
+    Type *t &#x3D; new Type();
+    t-&gt;var1 &#x3D; tmp1;
+    t-&gt;var2 &#x3D; tmp2;
+    return t;
+&#125;
+int main()&#123;
+    Type *t &#x3D; fun(5,6);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="函数指针">函数指针</span></h3><p>函数指针本质上是一个指针变量，只不过这个指针指向一个函数。函数指针即指向函数的指针。</p>
+<p>举例：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iosteam&gt;
+using namespace std;
+int fun1(int tmp1,int tmp2)&#123;
+    return tmp1 * tmp2;
+&#125;
+int fun2(int tmp1,int tmp2)&#123;
+    return tmp1&#x2F;tmp2;
+&#125;
+int main()&#123;
+    int (*fun)(int x,int y);
+    fun &#x3D; fun1;
+    cout&lt;&lt;fun(15,5)&lt;&lt;endl;
+    fun &#x3D; fun2;
+    cout&lt;&lt;fun(15,5)&lt;&lt;endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="区别">区别</span></h3><ul>
+<li><p>本质不同</p>
+<p>指针函数本质上是一个函数，其返回值为指针。</p>
+<p>函数指针本质上是一个指针变量，其值指向一个函数。</p>
+</li>
+<li><p>定义形式不同</p>
+<p>指针函数：</p>
+<pre class="line-numbers language-none"><code class="language-none">int  * fun(int tmp1,int tmp2) ;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里 * 表示函数返回值类型是指针类型函数指针:</p>
+<pre class="line-numbers language-none"><code class="language-none">int (*fun)(int tmp1,int tmp2);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里的 * 表示变量本身是指针类型。</p>
+</li>
+</ul>
+<h2><span id="左值和右值">左值和右值</span></h2><p>左值：指表达式结束后依然存在的持久对象。</p>
+<p>右值：表达式结束就不再存在的临时对象。</p>
+<p>左值和右值的区别：左值持久，右值短暂</p>
+<p>右值引用和左值引用的区别：</p>
+<p>左值引用不能绑定到要转换的表达式、字面常量或返回右值的表达式。右值引用恰好相反，可以绑定到这类表达式，但不能绑定到一个左值上。<br><strong>右值引用必须绑定到右值的引用，通过 &amp;&amp; 获得</strong>。右值引用只能绑定到一个将要销毁的对象上，因此可以自由地移动其资源。<br><strong>std::move 可以将一个左值强制转化为右值</strong>，继而可以通过右值引用使用该值，以用于移动语义。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+void fun1(int&amp; tmp) 
+&#123; 
+  cout &lt;&lt; &quot;fun1(int&amp; tmp):&quot; &lt;&lt; tmp &lt;&lt; endl; 
+&#125; 
+
+void fun2(int&amp;&amp; tmp) 
+&#123; 
+  cout &lt;&lt; &quot;fun2(int&amp;&amp; tmp)&quot; &lt;&lt; tmp &lt;&lt; endl; 
+&#125; 
+
+int main() 
+&#123; 
+  int var &#x3D; 11; 
+  fun1(12); &#x2F;&#x2F; error: cannot bind non-const lvalue reference of type &#39;int&amp;&#39; to an rvalue of type &#39;int&#39;
+  fun1(var);
+  fun2(1); 
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2><span id="move函数的实现原理">move()函数的实现原理</span></h2><p>move()两个作用：</p>
+<p><strong>独享指针所有权的转移</strong></p>
+<p><strong>左值到右值属性的转移</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template&lt;typename T&gt;
+typename remove_reference&lt;T&gt;::type &amp;&amp; move(T&amp;&amp;t)&#123;
+    return static_cast&lt;typename_reference&lt;T&gt;::type &amp;&amp;&gt;(t);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>说明：<strong>引用折叠原理</strong></p>
+<p>右值传递给上述的形参T&amp;&amp; 依然是右值，<strong>即T&amp;&amp; &amp;&amp; 相当于 T&amp;&amp;</strong></p>
+<p>左值传递给上述的形参T&amp;&amp;依然是左值，<strong>即T&amp;&amp; &amp;相当于T&amp;</strong></p>
+<p>小结：通过引用折叠原理可以知道，move()函数的形参既可以左值也可以是右值。</p>
+<p><strong>remove_reference</strong>具体实现：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;原始的，最通用版本
+template&lt;typename T&gt;struct remove_reference&#123;
+    typedef T type;
+&#125;
+&#x2F;&#x2F;部分版本特例化 将用于左值引用和右值引用
+template&lt;class T&gt;struct remove_reference&lt;T&amp;&gt;  &#x2F;&#x2F;左值引用
+&#123;
+    typedef T type;
+&#125;
+template&lt;class T&gt; struct remove_reference&lt;T&amp;&amp;&gt; &#x2F;&#x2F;右值引用
+&#123;
+    typedef T  type;  
+&#125;
+&#x2F;&#x2F;举例如下 下列定义的a,b,c三个变量都是int类型
+int i;
+remove_reference&lt;decltype(42)&gt;::type a;  &#x2F;&#x2F;使用原版本
+remove_reference&lt;decltype(i)&gt;::type a;  &#x2F;&#x2F;使用左值引用
+remove_reference&lt;decltype(std::move(i))&gt;::type b;  &#x2F;&#x2F;使用右值引用特例版本
+&#x2F;&#x2F;decltype 类似auto 可以进行类型推导<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>举例：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int var &#x3D; 10;
+&#x2F;&#x2F;转化过程
+1.std::move(var) &#x3D;&gt;std::move(int &amp;&amp; &amp;)&#x3D;&gt;折叠后std::move(int &amp;)
+2.此时：T类型为int &amp; ，typename remove_reference&lt;T&gt;::type 为 int，这里使用remove_reference 的左值引用的特例化版本
+3.通过static_cast 将int &amp; 强制转换为int &amp;&amp;
+整个std::move被实例化如下：
+    
+int &amp;&amp;move(int &amp;t)&#123;
+    return static_cast&lt;int &amp;&amp;&gt;(t);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>总结：std::move()实现原理：</p>
+<ul>
+<li>利用<strong>引用折叠原理</strong>将右值经过T&amp;&amp;传递类型保持不变还是右值，而左值经过T&amp;&amp;变为普通的左值引用，以<strong>保证模板可以传递任意实参</strong>，且保持类型不变。</li>
+<li>然后<strong>通过remove_reference移除引用，得到具体的类型T</strong></li>
+<li>最后<u>通过static_cast进行强制类型转换，返回T&amp;&amp;右值引用</u></li>
+</ul>
+<h2><span id="指针的大小和用法">指针的大小和用法</span></h2><p>指针：只想另外一种类型的复合类型</p>
+<p>指针的大小：在64位计算机中，<strong>指针占8个字节空间</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    int *p &#x3D; nullptr;
+    cout&lt;&lt;sizeof(p)&lt;&lt;endl; &#x2F;&#x2F;8
+    char *p1 &#x3D;nullptr;
+    cout&lt;&lt;sizeof(p1)&lt;&lt;endl; &#x2F;&#x2F;8
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>指针的用法</p>
+<p>1.指向普通对象的指针</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+    
+&#125;;
+int main()&#123;
+    A * p &#x3D; new A();
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>2.指向常量对象的指针，常量指针</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    const int c_var &#x3D; 10;
+    const int *p &#x3D; &amp;c_var;
+    cout&lt;&lt;*p&lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>3.指向函数的指针：函数指针</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int add(int a,int b)&#123;
+    return a+b;
+&#125;
+int main(void)&#123;
+    int (*fun_p)(int,int);
+    fun_p &#x3D; add;
+    cout&lt;&lt;fun_p(1,6)&lt;&lt;endl;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>4.<strong>指向对象成员的指针</strong>，包括指向<strong>对象成员函数</strong>的指针和指向<strong>对象成员变量</strong>的指针。特别注意：定义指向成员函数的指针时，要<strong>标明</strong>指针所属的<strong>类。</strong></p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+class A&#123;
+public:
+    int var1,var2;
+    int add()&#123;
+        return var1 * var2;
+    &#125; 
+&#125;;
+int main()&#123;
+    A ex;
+    ex.var1 &#x3D; 3;
+    ex.var2 &#x3D; 4;
+    int *p &#x3D; &amp;ex.var1; &#x2F;&#x2F;指向对象成员变量的指针
+    cout&lt;&lt;*p&lt;&lt;endl;
+    
+    int (A::*fun_p)();
+    fun_p &#x3D; &amp;A::add; &#x2F;&#x2F;指向对象成员函数的指针fun_p
+    cout&lt;&lt; (ex.*fun_p)()&lt;&lt;endl; &#x2F;&#x2F;函数指针 
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>5.this指针：指向类的当前对象的<strong>指针常量</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+class A&#123;
+public:
+    void set_name(string tmp)&#123;
+        this-&gt;name &#x3D; tmp;
+    &#125;
+    void set_age(int tmp)&#123;
+        this-&gt;age  &#x3D; tmp;
+    &#125;
+    void set_sex(int tmp)&#123;
+        this-&gt;sex &#x3D; tmp;
+    &#125;
+    void show()&#123;
+        cout&lt;&lt;&quot;Name : &quot;&lt;&lt;this-&gt;name&lt;&lt;endl;
+        cout&lt;&lt;&quot;Age : &quot;&lt;&lt;this-&gt;age&lt;&lt;endl;
+        cout&lt;&lt;&quot;Sex : &quot;&lt;&lt;this-&gt;sex&lt;&lt;endl;
+    &#125;
+private:
+    string name;
+    int age;
+    int sex;
+&#125;;
+int main()&#123;
+    A *p &#x3D; new A();
+    p-&gt;set_name(&quot;Alice&quot;);
+    p-&gt;set_age(16);
+    p-&gt;set_sex(1);
+    p-&gt;show();
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="悬空指针和野指针">悬空指针和野指针</span></h2><p>悬空指针：</p>
+<p>若指针指向一块内存空间，当这块内存空间被释放后，该指针仍然指向这块内存空间，此时称该指针为悬空指针。</p>
+<p>举例：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void *p &#x3D; malloc(size);
+free(p);
+&#x2F;&#x2F;此时p指向的内存空间已经被释放，p就是悬空指针
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p>野指针：</p>
+<p>“野指针”是指不确定其指向的指针，未初始化的指针为野指针。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void *p;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2><span id="强制类型转换">强制类型转换</span></h2><p>static_cast:用于数据的强制类型转换，强制将一种数据类型转换为另一种数据类型。</p>
+<ol>
+<li>用于基本数据类型的转换</li>
+<li>用于类层次之间的基类和派生类之间<strong>指针或者引用的转换</strong>（不要求必须包含虚函数，但是必须是有相互联系的类），<strong>进行上行转换（派生类的指针或引用转换成基类表示）是安全的</strong>，<strong>进行下行转换</strong>（基类的指针或引用转换成派生类表示），由于<strong>没有动态类型检查</strong>，所以是不安全的，<strong>最好用dynamic_cast进行下行转换</strong>。</li>
+<li>可以将空指针转化为目标类型的空指针</li>
+<li>可以将任何类型的表达式转化为void类型</li>
+</ol>
+<p>const_cast：强制去掉常量属性，不能用于去掉变量的常量性，只能<strong>用于去除指针和引用的常量性</strong>，将常量指针转化为非常量指针或者将常量引用转化为非常量引用（注意：表达式的类型和要转化的类型是相同的）。</p>
+<p>reinterpret_cast:改变指针或引用的类型，将指针或引用转换为一个足够长度的整型，将整型化为指向或引用类型。</p>
+<p>dynamic_cast：</p>
+<ul>
+<li>其他三种都是编译时完成的，<strong>动态类型转换是在程序运行时处理的</strong>，运行时会进行类型检查。</li>
+<li><strong>只能用于带有虚函数的基类或派生类的指针或引用对象的转换</strong>，转换成功<strong>返回指向类型的指针或引用</strong>，转换失败返回NULL，<strong>不能用于基本数据类型的转换</strong>。</li>
+<li>在<strong>向上进行转换时</strong>，即派生类类的指针转换成基类类的指针<strong>和static_cast效果是一样</strong>的。（这里只是改变了指针的类型，指针指向的对象的类型并未发生改变）</li>
+</ul>
+<p>上行转换永远是安全的，下行转换建议使用dynamic_cast.</p>
+<h2><span id="判断结构体是否相等">判断结构体是否相等</span></h2><p>需要重载操作符 == 判断两个结构体是否相等 ，<strong>不能用函数memcmp来判断两个结构体是否相等</strong>，因为memcmp函数是<strong>逐个字节进行比较的</strong>，而结构体存在<strong>内存空间中保存时存在字节对齐</strong>，字节对齐时补的字节内容是随机的，会产生<strong>垃圾值</strong>，所以无法进行比较。</p>
+<p>利用运算符重载来实现结构体对象的比较.</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+struct A
+&#123;
+    char c;
+    int val;
+    A(char c_tmp,int tmp):c(c_tmp),val(tmp)&#123;&#125;
+    friend bool operator&#x3D;&#x3D;(const A &amp;tmp1, const A &amp;tmp2);
+    &#x2F;&#x2F;友元运算符重载函数
+&#125;;
+
+bool operator&#x3D;&#x3D;(const A &amp;tmp1,const A &amp;tmp2)&#123;
+    return (tmp1.c &#x3D;&#x3D; tmp2.c &amp;&amp; tmp1.val &#x3D;&#x3D; tmp2.val);
+&#125;
+
+int main()&#123;
+    A ex1(&#39;a&#39;, 90), ex2(&#39;b&#39;, 80);
+    if(ex1 &#x3D;&#x3D; ex2)&#123;
+        cout &lt;&lt; &quot;ex1&#x3D;&#x3D;ex2&quot; &lt;&lt; endl;
+    &#125;
+    else&#123;
+        cout &lt;&lt; &quot;ex1!&#x3D;ex2&quot; &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2><span id="参数传递">参数传递</span></h2><p>参数传递的三种方式：</p>
+<ul>
+<li><strong>值传递：形参是实参的拷贝</strong>，函数对形参的所有操作不会影响实参。</li>
+<li>指针传递：本质上是值传递，只不过<strong>拷贝的是指针的值</strong>，拷贝之后，<strong>实参和形参是不同的指针，通过指针可以间接的访问指针所指向的对象</strong>，从而修改它所指向的对象的值。</li>
+<li><strong>引用传递</strong>：当形参是引用类型时，我们说<strong>它对应的实参被引用传递。</strong></li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+void fun1(int tmp)&#123;
+    cout &lt;&lt; &amp;tmp &lt;&lt; endl;
+&#125;
+
+void fun2(int *tmp)&#123;
+    cout &lt;&lt; tmp &lt;&lt; endl;
+&#125;
+
+void fun3(int &amp;tmp)&#123;
+    cout &lt;&lt; &amp;tmp &lt;&lt; endl;
+&#125;
+int main()&#123;
+    int var &#x3D; 5;
+    cout &lt;&lt; &quot;var 在主函数中的地址：&quot; &lt;&lt; &amp;var &lt;&lt; endl;
+    cout &lt;&lt; &quot;var 值传递时的地址：&quot;;
+    fun1(var);
+    cout &lt;&lt; &quot;var 指针传递时的地址：&quot;;
+    fun2(&amp;var);
+    cout &lt;&lt; &quot;var 引用传递时的地址：&quot;;
+    fun3(var);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>说明：从上述代码的运行结果可以看出，只有在值传递时，形参和实参的地址不一样。在函数体内操作的不是变量本身，引用传递和指针传递，在函数体内操作的时变量本身。</p>
+<h2><span id="模板实现">模板实现</span></h2><h3><span id="模板">模板</span></h3><p>模板：创建类或者函数的蓝图或者公式，分为<strong>函数模板和类模板</strong>。</p>
+<p>实现方式：模板定义以关键字template开始，后跟一个模板参数列表。</p>
+<p>模板参数列表不能为空</p>
+<p>模板类型参数前必须使用关键字class或者typename，在模板参数列表中这两个关键字含义相同，可互换使用。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template&lt;typename T,typename U...&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>函数模板：通过定义一个函数模板，可以避免每一种类型定义一个新函数。</p>
+<ul>
+<li>对于函数模板而言，<strong>模板类型参数可以用来指定返回类型或函数的参数类型</strong>，以及在函数体内用于变量声明或类型转换。</li>
+<li>函数模板实例化：当调用一个模板时，<strong>编译器用函数实参来推断模板实参</strong>，从而使用实参的类型来确定绑定到模板参数的类型。</li>
+</ul>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+
+template&lt;typename T&gt;
+T add_fun(const T &amp;tmp1,const T &amp;tmp2)&#123;
+    return tmp1 + tmp2;
+&#125;
+int main()&#123;
+    int var1, var2;
+    cin &gt;&gt; var1 &gt;&gt; var2;
+    cout &lt;&lt; add_fun(var1, var2);
+
+    double var3, var4;
+    cin &gt;&gt; var3 &gt;&gt; var4;
+    cout &lt;&lt; add_fun(var3, var4);
+
+    &#x2F;&#x2F; cout &lt;&lt; add_fun(var1, var3); 两者类型不同 出错
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>类模板：类似函数模板<strong>，类模板以关键字template开始</strong>，后跟模板参数列表。但是，编译器<strong>不能为类模板推断模板参数类型</strong>，需要在使用该类模板时，在模板后面的<strong>尖括号中指明类型。</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+template &lt;typename T&gt;
+class Complex
+&#123;
+public:
+    &#x2F;&#x2F;构造函数
+    Complex(T a, T b)
+    &#123;
+        this-&gt;a &#x3D; a;
+        this-&gt;b &#x3D; b;
+    &#125;
+
+    &#x2F;&#x2F;运算符重载
+    Complex&lt;T&gt; operator+(Complex &amp;c)
+    &#123;
+        Complex&lt;T&gt; tmp(this-&gt;a + c.a, this-&gt;b + c.b);
+        cout &lt;&lt; tmp.a &lt;&lt; &quot; &quot; &lt;&lt; tmp.b &lt;&lt; endl;
+        return tmp;
+    &#125;
+
+private:
+    T a;
+    T b;
+&#125;;
+
+int main()
+&#123;
+    Complex&lt;int&gt; a(10, 20);
+    Complex&lt;int&gt; b(20, 30);
+    Complex&lt;int&gt; c &#x3D; a + b;
+
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="函数模板和类模板的区别">函数模板和类模板的区别</span></h3><p>实例化方式不同 ：<strong>函数模板实例化</strong>由<strong>编译程序在处理函数调用时自动完成</strong>。<strong>类模板</strong>实例化需要在程序中<strong>显式指定。</strong></p>
+<p>实例化的结果不同：函数模板实例化是一个函数。类模板实例化后是一个类</p>
+<p>默认参数：<strong>类模板在模板参数列表中可以有默认参数</strong>。</p>
+<p><u>特化</u>：函数模板只能全特化 ，而类模板可以全特化也可以偏特化。</p>
+<p>调用方式不同：函数模板可以隐式调用，也可以显式调用，<strong>类模板只能显式调用</strong>。</p>
+<p>函数模板调用方式举例：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+template&lt;typename T&gt;
+T add_fun(const T &amp;tmp1,const T &amp;tmp2)&#123;
+    return tmp1 + tmp2;
+&#125;
+int main()&#123;
+    int var1, var2;
+    cin &gt;&gt; var1 &gt;&gt; var2;
+    cout &lt;&lt; add_fun&lt;int&gt;(var1, var2); &#x2F;&#x2F;显式调用
+
+    double var3, var4;
+    cin &gt;&gt; var3 &gt;&gt; var4;
+    cout &lt;&lt; add_fun(var3, var4);  &#x2F;&#x2F;隐式调用
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3><span id="可变参数模板">可变参数模板</span></h3><p>可变参数模板：接受可变数目参数的模板函数或模板类</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">C++进阶笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">谢谢你请我吃糖果🍬</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'mtODWYVhtCigkQw0txyftoMA-gzGzoHsz',
+        appKey: 'IEEkpA8t8wLdzEff2jk2nIFG',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '别走呀，理理我，留个言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/07/28/%E7%BC%96%E8%AF%91%E5%86%85%E5%AD%98/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="编译内存">
+                        
+                        <span class="card-title">编译内存</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">C++进阶笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/26/%E5%85%B3%E9%94%AE%E5%AD%97%E5%BA%93%E5%87%BD%E6%95%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="关键字库函数">
+                        
+                        <span class="card-title">关键字库函数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">C++进阶笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="6601699944"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">杨新宇</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">207.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" style='display:none'
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" style='display:none'
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/YXY996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:614533604@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=614533604" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 614533604" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
