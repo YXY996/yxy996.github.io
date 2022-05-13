@@ -13569,4 +13569,71 @@ int main()&#123;
         <tag>面试问题总结</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Typora激活</title>
+    <url>/2022/05/13/typora/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>需要文件：<br>！<a href="/image/app.asar%5D">下载插件</a></p>
+<p>将此文件替换typora的resources目录下的app.asar文件即可。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bat文件批量操作</title>
+    <url>/2021/05/15/%E5%B0%8F%E6%9D%A8%E5%87%BA%E5%93%81%E7%A5%9E%E5%99%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2><span id="批量操作">批量操作</span></h2><h3><span id="批量替换文件名称的部分名称">批量替换文件名称的部分名称</span></h3><pre class="line-numbers language-none"><code class="language-none">@echo off
+set &#x2F;p str1&#x3D; 请输入要替换的文件(文件夹)名字符串（可替换空格）：
+set &#x2F;p str2&#x3D; 请输入替换后的文件(文件夹)名字符串（若删除直接回车）：
+echo.
+echo 正在操作中，请稍候……
+for &#x2F;f &quot;delims&#x3D;&quot; %%a in (&#39;dir &#x2F;s &#x2F;b ^|sort &#x2F;+65535&#39;) do (
+if &quot;%%~nxa&quot; neq &quot;%~nx0&quot; (
+set &quot;file&#x3D;%%a&quot;
+set &quot;name&#x3D;%%~na&quot;
+set &quot;extension&#x3D;%%~xa&quot;
+call set &quot;name&#x3D;%%name:%str1%&#x3D;%str2%%%&quot;
+setlocal enabledelayedexpansion
+ren &quot;!file!&quot; &quot;!name!!extension!&quot; 2&gt;nul
+endlocal
+)
+)
+exit
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2><span id="新建txt文档将上述代码输入然后更改后缀名为bat">新建txt文档，将上述代码输入，然后更改后缀名为bat</span></h2><p>双击bat文件即可。</p>
+<p>注意事项：<br>注意：<br>需要将该执行bat文件放入想要修改的文件所在的文件夹内<br>bat操作只对与bat在同一个文件夹中的文件起作用，针对全部文件类型</p>
+<p>首先输入原文件中想要替换的部分文件名称<br>例子：<br>文件夹内存在文件<br>“张三的作业.txt”<br>这里输入 张三</p>
+<p>再输入想要替换成的文件名称（如果输入为空，直接敲打回车，则删除之前选择的部分文件名）</p>
+<p>如果输入 李四<br>则文件改为 “李四的作业.txt”</p>
+<p>如果不输入直接回车<br>则文件名变为 “的作业.txt”</p>
+<h3><span id="批量生成某一类型的文件">批量生成某一类型的文件</span></h3><pre class="line-numbers language-none"><code class="language-none">@echo off
+set &#x2F;p w&#x3D;请输入要生成文件的格式(即扩展名并以回车结束)：
+set &#x2F;p name&#x3D;请输入要生成文件的格式(即扩展名并以回车结束)：
+set a&#x3D;0
+:loop
+set &#x2F;a a+&#x3D;1
+type nul&gt;%name%%a%.%w%
+if %a% &#x3D;&#x3D; 20 goto end
+goto loop
+:end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述同理。</p>
+<p>注意事项：</p>
+<p>首先输入要生成的文件类型的后缀名称（类似txt,docx,csv)<br>再输入文件名称<br>a为生成相同文件名的序列</p>
+<pre class="line-numbers language-none"><code class="language-none">set &#x2F;a a+&#x3D;1 将结尾的数字1改变递增
+ 0 1 2 3 4
+set &#x2F;a a+&#x3D;2
+ 0 2 4 6 8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">if %a% &#x3D;&#x3D; 20 goto end<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里是创建文件个数，这里设置为20个。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>批量操作</category>
+      </categories>
+      <tags>
+        <tag>bat</tag>
+      </tags>
+  </entry>
 </search>
