@@ -13778,7 +13778,7 @@ set &#x2F;a a+&#x3D;2
       </tags>
   </entry>
   <entry>
-    <title>MYSQL相关配置</title>
+    <title>MySQL相关配置</title>
     <url>/2022/05/21/MYSQL%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1><span id="mysql相关配置">MYSQL相关配置</span></h1><h2><span id="环境变量配置">环境变量配置</span></h2><p>1.系统变量选择新建</p>
 <ul>
@@ -13802,7 +13802,7 @@ set &#x2F;a a+&#x3D;2
 <p>（4）最后点击“OK”即可，在项目的External Libraries下就能看的加载的JDBC驱动</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>MYSQL</category>
+        <category>MySQL</category>
       </categories>
       <tags>
         <tag>数据库</tag>
@@ -13834,6 +13834,263 @@ services.msc调出windows服务窗口
       </categories>
       <tags>
         <tag>vmware内部错误</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>法语学习Day1</title>
+    <url>/2022/05/22/%E6%B3%95%E8%AF%AD%E5%AD%A6%E4%B9%A0day1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1><span id="法语day1">法语day1</span></h1><h2><span id="数字">数字</span></h2><table>
+<thead>
+<tr>
+<th>1</th>
+<th align="center">un</th>
+<th>21</th>
+<th align="center">vingt-et-un</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td align="center">deux</td>
+<td>22</td>
+<td align="center">vingt-deux</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center">trois</td>
+<td>23</td>
+<td align="center">vingt-trois</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="center">quatre</td>
+<td>24</td>
+<td align="center">vingt-quatre</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="center">cinq</td>
+<td>25</td>
+<td align="center">vingt-cinq</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="center">six</td>
+<td>…..</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>7</td>
+<td align="center">sept</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>8</td>
+<td align="center">huit</td>
+<td>30</td>
+<td align="center">trente</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="center">neuf</td>
+<td>31</td>
+<td align="center">trente-et-un</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="center">dix</td>
+<td>32</td>
+<td align="center">trente-deux</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="center">onze</td>
+<td>…..</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>12</td>
+<td align="center">douze</td>
+<td>40</td>
+<td align="center">quarante</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="center"><strong>treize</strong></td>
+<td>50</td>
+<td align="center"><strong>cinquante</strong></td>
+</tr>
+<tr>
+<td>14</td>
+<td align="center">quatorze</td>
+<td>60</td>
+<td align="center"><strong>soixante</strong></td>
+</tr>
+<tr>
+<td>15</td>
+<td align="center"><strong>quinze</strong></td>
+<td>70</td>
+<td align="center">soixante-dix</td>
+</tr>
+<tr>
+<td>16</td>
+<td align="center">seize</td>
+<td>71</td>
+<td align="center">soixante et onze</td>
+</tr>
+<tr>
+<td>17</td>
+<td align="center">dix-sept</td>
+<td>72</td>
+<td align="center">soixante-douze</td>
+</tr>
+<tr>
+<td>18</td>
+<td align="center">dix-huit</td>
+<td>73</td>
+<td align="center">soixante-treize</td>
+</tr>
+<tr>
+<td>19</td>
+<td align="center">dix-neuf</td>
+<td>…</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>20</td>
+<td align="center">vingt</td>
+<td>80</td>
+<td align="center">quatre-vingts</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>81</th>
+<th>quatre-vingt-un</th>
+<th>99</th>
+<th align="center">quatre-vingt-dix-neuf</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>82</td>
+<td>quatre-vingt-deux</td>
+<td>100</td>
+<td align="center">cent</td>
+</tr>
+<tr>
+<td>83</td>
+<td>quatre-vingt-trois</td>
+<td>1000</td>
+<td align="center">mille</td>
+</tr>
+<tr>
+<td>84</td>
+<td>quatre-vingt-quatre</td>
+<td>10000</td>
+<td align="center">dix mille</td>
+</tr>
+<tr>
+<td>85</td>
+<td>quatre-vingt-cinq</td>
+<td>100000</td>
+<td align="center">cent mille</td>
+</tr>
+<tr>
+<td>….</td>
+<td></td>
+<td>100 0000</td>
+<td align="center">un million</td>
+</tr>
+<tr>
+<td>90</td>
+<td>quatre-vingt-dix</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>91</td>
+<td>quarte-vingt-onze</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>92</td>
+<td>quatre-vingt-douze</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>99</td>
+<td>quatre-vingt-dix-neuf</td>
+<td></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2><span id="问候语">问候语</span></h2><table>
+<thead>
+<tr>
+<th>名叫</th>
+<th>appelers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>早上好</td>
+<td>bonjour</td>
+</tr>
+<tr>
+<td>先生</td>
+<td>monsieur</td>
+</tr>
+<tr>
+<td>女士</td>
+<td>madame</td>
+</tr>
+<tr>
+<td>他</td>
+<td>il</td>
+</tr>
+<tr>
+<td>她 ，它</td>
+<td>elle</td>
+</tr>
+<tr>
+<td>我(主语)</td>
+<td>je</td>
+</tr>
+<tr>
+<td>我的</td>
+<td>mon</td>
+</tr>
+<tr>
+<td>你</td>
+<td>tu</td>
+</tr>
+<tr>
+<td>你们</td>
+<td>vous</td>
+</tr>
+<tr>
+<td>是</td>
+<td>oui</td>
+</tr>
+<tr>
+<td>否</td>
+<td>non</td>
+</tr>
+</tbody></table>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>宝～</category>
+      </categories>
+      <tags>
+        <tag>法语学习</tag>
       </tags>
   </entry>
 </search>
