@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="泛型程序设计, 小杨的博客">
+    <meta name="keywords" content="法语学习Day2, 小杨的博客">
     <meta name="description" content="分享笔记心得，互相学习">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>泛型程序设计 | 小杨的博客</title>
+    <title>法语学习Day2 | 小杨的博客</title>
     <link rel="icon" type="image/jpeg" href="/avatar.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">泛型程序设计</h1>
+                    <h1 class="description center-align post-title">法语学习Day2</h1>
                 </div>
             </div>
         </div>
@@ -441,8 +441,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">C++进阶笔记</span>
+                            <a href="/tags/%E6%B3%95%E8%AF%AD%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">法语学习</span>
                             </a>
                         
                     </div>
@@ -453,8 +453,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category">
-                                C++
+                            <a href="/categories/%E5%AE%9D%EF%BD%9E/" class="post-category">
+                                宝～
                             </a>
                         
                     </div>
@@ -466,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-27
+                    2022-05-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-06
+                    2022-05-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    353
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    1 分
                 </div>
                 
 
@@ -514,284 +514,163 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="泛型程序设计">泛型程序设计</span></h2><p>编写不依赖于具体数据类型的程序<br>将算法从特定的数据结构中抽象出来，成为通用的<br>C++的模板为泛型程序设计奠定了关键的基础</p>
-<h3><span id="概念和模型">概念和模型</span></h3><h4><span id="概念">概念</span></h4><p>概念:<br>用来界定具备一定功能的数据类型。例如：<br>将“可以比大小的所有数据类型（有比较运算符）”这一概念记为Comparable<br>将“具有公有的复制构造函数并可以用”=”赋值的数据类型” 这一概念记为Assignable<br>将“可以比大小，具有公有的复制构造函数并可以用“=”赋值的所有数据类型 这一概念记作Sortable<br>对于两个不同概念的A和B ，如果概念A所需求的所有功能也是概念B所需求的功能，那么<br>就说概念B是概念A的子概念。 例如：<br>Sortable 既是Comparable的子概念 ，也是Assignable的子概念</p>
-<h4><span id="模型">模型</span></h4><p>模型(model)：符合一个概念的数据类型称为该概念的模型，例如：<br>int 型是Comparable概念的模型<br>静态数组类型不是Assignable 概念的模型<br>（无法用 “=” 给整个静态数组赋值</p>
-<h4><span id="用概念作模板参数名">用概念作模板参数名</span></h4><p>为概念赋予一个名称，并使用该名称作为模板参数名<br>例如：<br>表示insertionSort这样一个函数模板的原型：</p>
-<pre class="line-numbers language-none"><code class="language-none">template&lt;class Sortable&gt;
-void insertionSort(Sortable a[],int n)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3><span id="stl">STL</span></h3><p>STL 简介<br>标准模板库，定义了一套概念体系，为泛型程序设计提供了逻辑基础<br>STL中的各个类模板，函数模板的参数都使用这个体系中的概念来规定的<br>使用STL的模板时，类型参数既可以是C++标准库中已有的类型，也可以是自定义的类型<br>只要这些类型是所要求概念的模型</p>
-<h4><span id="stl基本组件">STL基本组件</span></h4><p>容器（container)<br>容纳，包含一组元素的对象。<br>基本容器类模板<br>顺序容器<br>array,vector,deque,forward_list,list<br>有序关联容器<br>set,multiset,map,multimap<br>无序关联容器<br>unordered_set,unordered_multiset<br>unordered_map ,unordered_multimap</p>
-<p>容器适配器：<br>stack(栈)<br>queue（队列）<br>priority_queue(优先队列)</p>
-<p>迭代器（iterator)<br>提供了顺序访问容器每一个元素的方法<br>可以使用“++”运算符来获得指向下一个元素的迭代器<br>可以使用“*”运算符防卫迭代器所指向的元素，如果元素类型是类或结构体，还可以使用<br>“-&gt;”运算符直接访问该元素的一个成员<br>有些迭代器还支持通过”–”运算符获得指向上一个元素的迭代器<br>迭代器是泛化的指针： 指针也具有同样的特性，因此指针本身就是一种迭代器<br>使用独立于STL容器的迭代器 ，需要包含头文件”iterator”</p>
-<p>函数对象（function object)<br>一个行为类似函数的对象，对它可以像调用函数一样调用。<br>函数对象是泛化的函数：任何普通的函数和任何重载了“（）”运算符的类的对象都可以作为函数对象使用<br>使用STL的函数对象，需要包含头文件 “functional”</p>
-<p>算法(algorithms)<br>可以广泛用于不同的对象和内置的数据类型<br>STL包括了70多个算法<br>例如：排序算法，消除算法，计数算法，比较算法，变换算法，置换算法和容器管理等<br>使用STL的算法，需要包含头文件“algorithm”</p>
-<h5><span id="顺序容器">顺序容器</span></h5><h5><span id="向量">向量</span></h5><p>特点：<br>一个可以扩展的动态数组<br>随机访问，在尾部插入或删除元素快<br>在中间或头部插入或删除元素慢</p>
-<p>向量的容量：<br>容量（capacity）：世纪分配空间的大小<br>s.capacity() ：返回当前容量<br>s.reserve(n) : 若容量小于n，则对s进行扩展，使其容量至少为n</p>
-<h5><span id="双端队列deque">双端队列(deque)</span></h5><p>在两端插入或删除元素快<br>在中间插入或删除元素慢<br>随机访问较快，但比向量容器慢</p>
-<p>奇偶排序例题：<br>先按照从大到小顺序输出奇数，再按照从小到达顺序输出偶数<br>特点：先插入两端元素，速度较快</p>
-<pre class="line-numbers language-none"><code class="language-none">int main()&#123;
-    istream_iterator&lt;int&gt;i1(cin),i2; &#x2F;&#x2F;建立一对输入流迭代器
-    vector &lt;int&gt; s1(i1,i2); &#x2F;&#x2F;通过输入流迭代器从标准输入流中输入数据
-    sort(s1.begin(),s1.end()); &#x2F;&#x2F;将输入的整数排序
-    deque &lt;int&gt; s2; &#x2F;&#x2F;双端队列
-    for (vector &lt;int&gt;::iterator iter &#x3D; s1.begin();iter!&#x3D;s1.end();++iter)&#123;
-        if (*iter%2 &#x3D;&#x3D;0)
-            s2.push_back(*iter); &#x2F;&#x2F;偶数放到s2尾部
-        else
-            s2.push_front(*iter); &#x2F;&#x2F;奇数放到s2首部
-    &#125;
-    copy(s2.begin(),s2.end(),ostream_iterator&lt;int&gt;(cout,&quot; &quot;)); &#x2F;&#x2F;将s2的结果输出
-    cout&lt;&lt;endl;
-    return 0
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5><span id="列表">列表</span></h5><p>特点：<br>在任意位置插入和删除都很快<br>不支持随机访问<br>接合操作（splice）操作<br>s1.splice(p,s2,q1,q2):将s2中[q1,q2)移动到s1中p所指向元素之前</p>
-<h5><span id="单向链表forward_list">单向链表（forward_list)</span></h5><p>单向链表每个结点只有指向下个结点的指针，没有简单的方法来获取一个结点的前驱；<br>未定义insert,emplace,erase操作，而定义了insert_after,emplace_after,erase_after操作，其参数与list的insert,emplace,erase相同，但并不是插入或删除迭代器p1所指的元素，而是对p1所指元素之后的结点进行操作<br>不支持size操作</p>
-<h5><span id="数组array">数组(array)</span></h5><p>array是对内置数组的封装，提供了更安全，更方便的使用数组的方式<br>array的对象的大小是固定的，定义时除了需要指定元素类型，还需要指定容器大小<br>不能动态地改变容器大小</p>
-<h5><span id="顺序容器的比较">顺序容器的比较</span></h5><p>STL所提供的顺序容器各有利弊，需要根据自己的需求选择容器<br>若执行大量的随机访问操作，而且当扩展容器时只需要向容器尾部加入新的元素，就应当选择向量容器vector</p>
-<p>如果需要少量的随机访问操作，需要在容器两端插入或删除元素，则应选择双端队列deque</p>
-<p>如果不需要对容器进行随机访问，但是需要在中间位置插入或删除元素，就应当选择列表容器list或forward_list</p>
-<p>如果需要数组，array相对于内置数组而言，是一种更安全，更容易使用的数组类型</p>
-<h5><span id="顺序容器的插入迭代器">顺序容器的插入迭代器</span></h5><p>用于向容器头部，尾部，中间的指定位置插入元素的迭代器<br>包括前插迭代器(front_inserter),后插迭代器(back_inserter),和任意位置插入迭代器(inserter)</p>
-<p>例子：</p>
-<pre class="line-numbers language-none"><code class="language-none">list &lt;int&gt; s;
-back_inserter iter(s);
-*(iter++) &#x3D;5； #通过iter把5插入s尾】<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h5><span id="顺序容器的适配器">顺序容器的适配器</span></h5><p>以顺序容器为基础构建一些常用数据结构，是对顺序容器的封装<br>栈: 最先压入的元素最后被弹出<br>队列：最先压入的元素最先被弹出<br>优先级队列：最”大”的元素最先被弹出</p>
-<h5><span id="栈和队列模板">栈和队列模板</span></h5><p>栈模板</p>
-<pre class="line-numbers language-none"><code class="language-none">template&lt;class T,class Sequence &#x3D; deque&lt;T&gt; &gt;class stack;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>队列模板</p>
-<pre class="line-numbers language-none"><code class="language-none">template&lt;class T,class FrontInsertionSequence &#x3D; deque&lt;T&gt; &gt;class queue;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>栈可以用任何一种顺序容器作为基础容器，而队列只允许用前插顺序容器（双端队列或列表）</p>
-<h5><span id="栈和队列共同支持的操作">栈和队列共同支持的操作</span></h5><p>s1 op s2 ，op： ==，！=，&lt;,&lt;=,&gt;,&gt;=<br>它会对两个容器适配器之间的元素按字典序进行比较</p>
-<p>s.size() 返回s的元素个数<br>s.empty() 返回s是否为空<br>s.push(t) 将元素t压入到s中<br>s.pop() 将一个元素从s中弹出 ，对于栈来说，每次弹出的是最后被压入的元素，而对于队列来说，每次被弹出的是最先被压入的元素<br>不支持迭代器，因为它们不允许对任意元素进行访问</p>
-<h5><span id="栈和队列不同的操作">栈和队列不同的操作</span></h5><p>栈的操作<br>s.top() 返回栈顶元素的引用<br>队列操作<br>s.front() 获得队头元素的引用<br>s.back()  获得队尾元素的引用</p>
-<p>利用栈反向输出单词<br>示例：</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-#include&lt;iterator&gt;
-#include&lt;stack&gt;
-using namespace std;
-int main ()&#123;
-    stack &lt;char&gt; s;
-    string str;
-    cin &gt;&gt; str; &#x2F;&#x2F;从键盘输入一个字符串
-    &#x2F;&#x2F; 将字符串的每个元素顺序压入栈中
-    for (string::iterator iter &#x3D; str.begin();iter!&#x3D;str.end();++iter)
-        s.push(*iter);
-    &#x2F;&#x2F; 将栈中的元素弹出
-    while(!s.empty())&#123;
-        cout&lt;&lt;s.top();
-        s.pop();
-    &#125;
-    cout&lt;&lt;endl;
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>运行结果演示：<br>congratulations<br>snoitalutargnoc</p>
-<h5><span id="优先级队列">优先级队列</span></h5><p>优先级队列也像栈队列一样支持元素的压入和弹出，但元素弹出的顺序与元素的大小有关，每次弹出的总是容器中最”最大”的一个元素。</p>
-<pre class="line-numbers language-none"><code class="language-none">template &lt;class T,class Sequence &#x3D; vector&lt;T&gt; &gt;class priority_queue;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>优先级队列的基础容器必须是支持随机访问的顺序容器<br>支持栈和队列的size,empty,push,pop几个成员函数，用法与栈和队列相同<br>优先级队列并不支持比较操作<br>与栈类似，优先级队列提供一个top函数，可以获得下一个即将被弹出元素（即最”大”的元素）的引用</p>
-<p>例10-8 细胞分裂模拟<br>模拟一种细胞在诞生（即上次分裂）后会在500到20000秒内分裂成两个细胞，每个细胞又按照同样的规律继续分裂</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;10_8.cpp
-#include &lt;queue&gt;
-#include &lt;iostream&gt;
-#include &lt;cstdlib&gt; &#x2F;&#x2F;随机函数
-#include &lt;ctime&gt;　&#x2F;&#x2F;获得当地时间
-using namespace std;
-
-const int SPLIT_TIME_MIN &#x3D; 500;      &#x2F;&#x2F;细胞分裂最短时间
-const int SPLIT_TIME_MAX &#x3D; 2000;    &#x2F;&#x2F;细胞分裂最长时间
-
-class Cell; 
-priority_queue&lt;Cell&gt; cellQueue;
-
-
-class Cell &#123;    &#x2F;&#x2F;细胞类
-private:
-    static int count;   &#x2F;&#x2F;细胞总数
-    int id;             &#x2F;&#x2F;细胞编号
-    int time;           &#x2F;&#x2F;细胞分裂时间
-public:
-    Cell(int birth) : id(count++) &#123; 
-        &#x2F;*产生一定范围随机数的通用表示公式
-        要取得 [a,b) 的随机整数，使用 (rand() % (b-a))+ a;
-
-        要取得 [a,b] 的随机整数，使用 (rand() % (b-a+1))+ a;
-
-        要取得 (a,b] 的随机整数，使用 (rand() % (b-a))+ a + 1;
-
-        通用公式: a + rand() % n；其中的 a 是起始值，n 是整数的范围。
-
-        要取得 a 到 b 之间的随机整数，另一种表示：a + (int)b * rand() &#x2F; (RAND_MAX + 1)
-        *&#x2F;
-        time &#x3D; birth + (rand() % (SPLIT_TIME_MAX - SPLIT_TIME_MIN)) + SPLIT_TIME_MIN; &#x2F;&#x2F;分裂时间在最短时间与最长时间之间
-    &#125;
-    int getId() const &#123; return id; &#125;            &#x2F;&#x2F;得到细胞编号
-    int getSplitTime() const &#123; return time; &#125;   &#x2F;&#x2F;得到细胞分裂时间
-    bool operator &lt; (const Cell&amp; s) const &#123; return time &gt; s.time; &#125; &#x2F;&#x2F;重载运算符 
-
-    &#x2F;&#x2F;细胞分裂
-    void split() const &#123;    
-        Cell child1(time), child2(time);     &#x2F;&#x2F;建立两个子细胞
-        cout &lt;&lt; time &lt;&lt; &quot;s: Cell #&quot; &lt;&lt; id &lt;&lt; &quot; splits to #&quot; 
-            &lt;&lt; child1.getId() &lt;&lt; &quot; and #&quot; &lt;&lt; child2.getId() &lt;&lt; endl;
-        cellQueue.push(child1); &#x2F;&#x2F;将第一个子细胞压入优先级队列
-        cellQueue.push(child2); &#x2F;&#x2F;将第二个子细胞压入优先级队列
-    &#125;
-&#125;;
-int Cell::count &#x3D; 0;
-
-int main() &#123;
-    srand(static_cast&lt;unsigned&gt;(time(0)));
-    &#x2F;*使用当前时钟作为随机数种子
-    rand() 产生的随机数在每次运行的时候都是与上一次相同的。若要不同, 用函数 srand() 初始化它。
-    可以利用 srand((unsigned int)(time(NULL)) 的方法，产生不同的随机数种子，因为每一次运行程序的时间是不同的。
-    *&#x2F;
-    &#x2F;&#x2F;强制转换运算符 static_cast&lt;type&gt; (expr): static_cast 运算符执行非动态转换，没有运行时类检查来保证转换的安全性。例如，它可以用来把一个基类指针转换为派生类指针
-    int t;  
-    cout &lt;&lt; &quot;Simulation time: &quot;;
-    cin &gt;&gt; t; &#x2F;&#x2F;模拟时间长度
-    cellQueue.push(Cell(0));    
-    while (cellQueue.top().getSplitTime() &lt;&#x3D; t) &#x2F;&#x2F;如果最先要弹出的细胞分裂时间在观察时间内 
-    &#123;
-        cellQueue.top().split();    &#x2F;&#x2F;模拟下一次细胞的分裂
-        cellQueue.pop();            &#x2F;&#x2F;将刚刚分裂的细胞弹出
-    &#125;
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>运行结果：<br>Simulation time: 5000<br>1042s: Cell #0 splits to #1 and #2<br>2336s: Cell #2 splits to #3 and #4<br>2673s: Cell #1 splits to #5 and #6<br>3004s: Cell #4 splits to #7 and #8<br>3329s: Cell #3 splits to #9 and #10<br>3647s: Cell #7 splits to #11 and #12<br>3979s: Cell #9 splits to #13 and #14<br>4190s: Cell #6 splits to #15 and #16<br>4265s: Cell #8 splits to #17 and #18<br>4305s: Cell #5 splits to #19 and #20<br>4613s: Cell #10 splits to #21 and #22<br>4782s: Cell #11 splits to #23 and #24<br>4810s: Cell #14 splits to #25 and #26</p>
-<h4><span id="关联容器">关联容器</span></h4><p>关联容器的特点和接口<br>    每个关联容器都有一个键<br>    可以根据键高效的查找元素<br>接口<br>    插入：insert<br>    删除：erase<br>    查找：find<br>    定界：lower_bound ,upper_bound,equal_range<br>    计数：count</p>
-<p>单重关联容器（set,map)<br>    键值是唯一的，一个键值只能对应一个元素<br>多重关联容器（multiset,multimap)<br>    键值是不唯一的，一个键值可以对应多个元素<br>简单关联容器（set,multiset)<br>    容器只有一个类型参数，如set<k>,multiset<k>，表示键类型<br>    容器的元素就是键本身<br>二元关联容器（map,multimap)<br>    容器有两个类型参数，如map&lt;K,V&gt;,multimap&lt;K,V&gt;<br>    分别表示键和附加数据类型<br>    容器的元素类型是pair&lt;K,V&gt;,即由键类型和元素类型复合而成的二元组</k></k></p>
-<h5><span id="集合set">集合(set)</span></h5><p>集合用来存储一组无重复的元素。由于集合的元素本身是有序的，可以高效的查找指定元素，也可以方便的得到指定大小范围的元素在容器中所处的区间</p>
-<p>例题：<br>输入一串实数，将重复的去掉，取最大和最小值的中值，分别输出小于等于此中值和大于等于此中值的实数</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;10_9.cpp
-#include &lt;set&gt;
-#include &lt;iterator&gt;
-#include &lt;utility&gt;
-&#x2F;*
-头文件：#include &lt;utility&gt;
-类
-pair
-函数
-forward 保留引用类型（或者lvalue或rvalue) 参数从被遮掩完美转发。
-get 获取从元素的函数pair对象。
-make_pair 用于构造类型的对象的模板 helper 函数pair，其中的组件类型基于作为参数传递的数据类型。
-move 返回传入参数作为rvalue的引用。
-swap 交换两个 pair 对象的元素。
-运算符
-*&#x2F;
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() &#123;
-    set&lt;double&gt; s;
-    while (true) &#123;
-        double v;
-        cin &gt;&gt; v;
-        if (v &#x3D;&#x3D; 0) break;  &#x2F;&#x2F;输入0终止
-        &#x2F;*
-        
-        类模板：template&lt;class T1,class T2&gt; struct pair
-
-        参数：T1是第一个值的数据类型，T2是第二个值的数据类型。
-
-        功能：pair将一对值(T1和T2)组合成一个值，
-
-        这一对值可以具有不同的数据类型（T1和T2），
-
-        两个值可以分别用pair的两个公有函数first和second访问。
-        *&#x2F;
-        &#x2F;&#x2F;尝试将v插入
-        pair&lt;set&lt;double&gt;::iterator, bool&gt; r &#x3D; s.insert(v);  
-
-        if (!r.second)      &#x2F;&#x2F;如果v存在，输出提示信息
-            cout &lt;&lt; v &lt;&lt; &quot; is duplicated&quot; &lt;&lt; endl;
-    &#125;
-    set&lt;double&gt;::iterator iter1 &#x3D; s.begin();    &#x2F;&#x2F;得到第一个元素的迭代器
-    set&lt;double&gt;::iterator iter2 &#x3D; s.end();      &#x2F;&#x2F;得到末尾的迭代器
-    double medium &#x3D; (*iter1 + *(--iter2)) &#x2F; 2;  &#x2F;&#x2F;因为末尾的指针指向的是尾元素结束的下一个位置，所以--
-    &#x2F;&#x2F;输出小于或者等于中值的元素
-    cout &lt;&lt; &quot;&lt;&#x3D; medium: &quot;;
-    copy(s.begin(), s.upper_bound(medium), ostream_iterator&lt;double&gt;(cout, &quot; &quot;));
-    cout &lt;&lt; endl;
-    &#x2F;&#x2F;输出大于或等于中值的元素
-    cout &lt;&lt; &quot;&gt;&#x3D; medium: &quot;;
-    copy(s.lower_bound(medium), s.end(), ostream_iterator&lt;double&gt;(cout, &quot; &quot;));
-    cout &lt;&lt; endl;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5><span id="映射map">映射（map）</span></h5><p>映射与集合同属于单重关联容器，他们的主要区别在于，集合的元素类型是键本身，而映射的元素类型是由键和附加数据所构成的二元组。<br>在集合中按照键查找一个元素时，一般只是用来确定这个元素是否存在，而在映射中按照键查找一个元素时，除了能确定它的存在性外，还可以得到相应的附加数据。</p>
-<p>例题：<br>有五门课程，每门都有相应学分，从中选择三门，输出学分总和</p>
-<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
-#include&lt;map&gt;
-#include&lt;string&gt;
-#include&lt;utility&gt;
-using namespace std;
-int main()&#123;
-    map&lt;string,int&gt;courses;
-    &#x2F;&#x2F;将课程信息插入courses映射中
-    courses.insert(make_pair(&quot;CSAPP&quot;,3));
-    courses.insert(make_pair(&quot;C++&quot;,2));
-    courses.insert(make_pair(&quot;CSARCH&quot;,4));
-    courses.insert(make_pair(&quot;COMPLIER&quot;,4));
-    courses.insert(make_pair(&quot;OS&quot;,5));
-    int n &#x3D; 3;
-    int sum &#x3D; 0;
-    while(n&gt;0)&#123;
-        string name; &#x2F;&#x2F;输入课程名称
-        cin&gt;&gt;name;
-        map&lt;string,int&gt;::iterator iter &#x3D; courses.find(name);&#x2F;&#x2F;查找课程
-        if (iter &#x3D;&#x3D;course.end())   &#x2F;&#x2F;判断是否会找到 这里是未找到
-        &#123;
-            cout&lt;&lt;name&lt;&lt;&quot;is not available&quot;&lt;&lt;endl;
-        &#125;
-        else&#123;
-            sum +&#x3D; iter-&gt;second; &#x2F;&#x2F;累加学分
-            courses.erase(iter); &#x2F;&#x2F;将刚选过的课程从映射中删除
-            n--;
-        &#125;
-
-        &#125;
-
-    cout&lt;&lt;&quot;Total credit:&quot;&lt;&lt;sum&lt;&lt;endl;
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>执行结果：<br>CSAPP<br>CSAPP<br>CSAPPis not available  因为每执行某个对象的操作后就将次对象从映射中删除 所以找不到<br>COMPLIER<br>CSARCH<br>Total credit:11</p>
-<p>例题：统计一句话中每个字母出现的次数</p>
-<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
-#include &lt;map&gt;
-#include &lt;cctype&gt;
-&#x2F;*
-cctype头文件用于字符检测
-
-isalpha&#x2F;&#x2F;判断字符串是否为大小写字母
-isupper&#x2F;&#x2F;判断字符串是否为大写字母
-islower&#x2F;&#x2F;判断字符串是否为小写字母
-tolower&#x2F;&#x2F;把大写字母转化为小写
-toupper&#x2F;&#x2F;把小写字母转化为大写
-*&#x2F;
-using namespace std;
-int main()&#123;
-    map &lt;char,int&gt; s;
-    char c;
-    do&#123;
-        cin&gt;&gt;c;
-        if (isalpha(c))&#123; &#x2F;&#x2F;判断是否为字母
-            c &#x3D; tolower(c); &#x2F;&#x2F;将字母转换为小写
-            s[c]++; &#x2F;&#x2F;将该字母的出现频率+1
-        &#125;
-    &#125;
-    while(c!&#x3D;&#39;.&#39;); &#x2F;&#x2F;碰到&quot;.&quot;则结束输入
-    &#x2F;&#x2F;则输出每个字母出现次数
-    for(map&lt;char,int&gt;::iterator iter &#x3D; s.begin();iter!&#x3D; s.end();++iter)
-        cout&lt;&lt;iter-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;iter-&gt;second&lt;&lt;&quot; &quot;;
-    cout&lt;&lt;endl;
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1><span id="法语学习day2">法语学习day2</span></h1><h2><span id="单词变位">单词变位</span></h2><p>etre</p>
+<table>
+<thead>
+<tr>
+<th>我</th>
+<th>je suis</th>
+<th>我们</th>
+<th>nous sommes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>你</td>
+<td>tu es</td>
+<td>你们</td>
+<td>vous etes</td>
+</tr>
+<tr>
+<td>他</td>
+<td>il/elle est</td>
+<td>他们</td>
+<td>ils/elles sont</td>
+</tr>
+</tbody></table>
+<p>appler</p>
+<table>
+<thead>
+<tr>
+<th>我</th>
+<th>appelle</th>
+<th>我们</th>
+<th>applelons</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>你</td>
+<td>appelles</td>
+<td>你们</td>
+<td>appelez</td>
+</tr>
+<tr>
+<td>他</td>
+<td>applelle</td>
+<td>他们</td>
+<td>appellent</td>
+</tr>
+</tbody></table>
+<p>法语分阴性和阳性 n.m n.f</p>
+<table>
+<thead>
+<tr>
+<th>n.m</th>
+<th>francais</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>n.f</td>
+<td>francaise</td>
+</tr>
+<tr>
+<td>n.m</td>
+<td>chinois</td>
+</tr>
+<tr>
+<td>n.f</td>
+<td>chinoise</td>
+</tr>
+</tbody></table>
+<p>一般疑问句</p>
+<ol>
+<li><p>陈述句 + ? (语调上升)</p>
+<p>vous etes italien?    你是意大利人吗？</p>
+</li>
+<li><p>Est-ce que + 陈述句 +？</p>
+<p><strong>Est-ce que</strong> vous etes italien?</p>
+</li>
+<li><p>谓语动词  + 连字符  “-” +主语代词+？</p>
+<p>etes-vous italien?</p>
+</li>
+</ol>
+<p>特殊疑问句</p>
+<table>
+<thead>
+<tr>
+<th>qui</th>
+<th>谁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>que/quoi</td>
+<td>什么</td>
+</tr>
+<tr>
+<td>quel</td>
+<td>哪个</td>
+</tr>
+<tr>
+<td>combien</td>
+<td>多少 how much</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>怎么样</td>
+</tr>
+<tr>
+<td>ou</td>
+<td>哪里</td>
+</tr>
+<tr>
+<td>quand</td>
+<td>什么时候</td>
+</tr>
+<tr>
+<td>pourquoi</td>
+<td>为什么</td>
+</tr>
+</tbody></table>
+<p>陈述句 + 疑问词 + ？</p>
+<p>vous vous appelez comment ？ ——–&gt;您贵姓？</p>
+<p>疑问词 + est-ce que +陈述句 ？</p>
+<p>Comment est-ce que vous vous appelez?</p>
+<p><strong>Que est-ce que vous cherchez?</strong></p>
+<p>疑问词 + 谓语动词 + 连字符 + 主语代词 + ？</p>
+<p>Que cherchez-vous ?——-&gt; 你在找什么？</p>
+<p>(相互之间可以互相替换？)</p>
+<p>疑问词qui</p>
+<p>Qui est-ce ? 这是谁</p>
+<p>Cest Luce</p>
+<p>Qui etes-vous  ? 您是谁</p>
+<p>Je suis yxy.</p>
+<h2><span id="习题">习题</span></h2><p><img src="/image/524.png" alt="png"></p>
+<p>Tu  es  Alex.</p>
+<p>Non je suis Theo.</p>
+<p>Vous etes francaise? </p>
+<p>Moi? Oui ,je suis francaise.</p>
+<p>Madame Khalifa ,elle est francaise?</p>
+<p>Oui,elle est francaise.</p>
+<p>Qui est-ce?</p>
+<p>C’est laurent.</p>
+<p>Aldo c’est mon mari . elle est italien.</p>
+<p><img src="/image/5242.png" alt="png"><br><img src="/image/5243.png" alt="png"></p>
+<ol>
+<li>femme   妻子</li>
+<li>mari  丈夫</li>
+<li>appelle  叫</li>
+<li>nom  姓氏</li>
+<li>francaise  法国人</li>
+<li>appelez </li>
+<li>Qui  谁</li>
+<li>vous  </li>
+</ol>
+<p><img src="/image/5244.png" alt="png"></p>
+<p>Bonjour Je m’a appelle yxy.Je suis  chinois .Et vous?</p>
+<p> 你好，我叫yxy。我是中国人，你呢？</p>
+<p>Qui est-ce?</p>
+<p>C’est Luce. Elle s’appelle Luce. Elle est chinoise.</p>
+<p>这是谁？</p>
+<p>是lucy。她叫lucy。她是中国人。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
                 
             </div>
@@ -806,8 +685,8 @@ int main()&#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C-%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">C++进阶笔记</span>
+                                <a href="/tags/%E6%B3%95%E8%AF%AD%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">法语学习</span>
                                 </a>
                             
                         </div>
@@ -1240,17 +1119,18 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/03/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
+                <a href="/2022/05/24/%E6%B3%95%E8%AF%AD%E5%AD%A6%E4%B9%A0day2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="图像分析">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="法语学习Day2">
                         
-                        <span class="card-title">图像分析</span>
+                        <span class="card-title">法语学习Day2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1260,26 +1140,27 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category">
-                                    python
+                            <a href="/categories/%E5%AE%9D%EF%BD%9E/" class="post-category">
+                                    宝～
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90/">
-                        <span class="chip bg-color">图像分析</span>
+                    <a href="/tags/%E6%B3%95%E8%AF%AD%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">法语学习</span>
                     </a>
                     
                 </div>
@@ -1293,13 +1174,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/24/%E5%80%92%E5%8D%95%E6%91%86%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/">
+                <a href="/2022/05/22/%E6%B3%95%E8%AF%AD%E5%AD%A6%E4%B9%A0day1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="倒单摆深入学习">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="法语学习Day1">
                         
-                        <span class="card-title">倒单摆深入学习</span>
+                        <span class="card-title">法语学习Day1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1310,14 +1191,14 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category">
-                                    python
+                            <a href="/categories/%E5%AE%9D%EF%BD%9E/" class="post-category">
+                                    宝～
                                 </a>
                             
                             
@@ -1327,8 +1208,8 @@ int main()&#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Q%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%BE%8B/">
-                        <span class="chip bg-color">Q学习实例</span>
+                    <a href="/tags/%E6%B3%95%E8%AF%AD%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">法语学习</span>
                     </a>
                     
                 </div>
